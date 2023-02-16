@@ -1,7 +1,10 @@
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main'
 import MyPageMain from './pages/mypage/mypage_main'
 import Layout from './layouts/Layout';
+import Login from '../src/pages/login/Login';
+
 
 function App() {
   return (
@@ -11,6 +14,7 @@ function App() {
         <Route path="/" element={ <Layout /> } >
           <Route index element={ <Main />} />
           <Route path="/mypageMain" element={ <MyPageMain />} />
+          <Route path="/login" element={ <Login />} />
         </Route>
 
       </Routes>
