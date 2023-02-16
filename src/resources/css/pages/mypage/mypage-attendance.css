@@ -1,0 +1,47 @@
+main {
+    margin-top: 100px;
+}
+
+.title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* attendance box */
+.attendance-check-main-box1{
+    width: 35%;
+}
+
+.attendance-check-main-box2{
+    width: 60%;
+}
+
+.attendance-check-box{
+    padding-top: 15px;
+    border: 1px solid #c3c3c3;
+    border-radius: 20px;
+    height: 130px;
+}
+
+.work-btn {
+    width: 100px;
+    height: 25px;
+    margin: 10px;
+    color: #43B2CA;
+    font-size: 13px;
+    font-weight: bold        ;
+    border: 1px solid #43B2CA;
+    background-color: white;
+    border-radius: 25px;
+}
+
+/*  */
+.calender {
+    margin: 40px;
+    padding: 300px;
+    height: 100%;
+    border: 2px solid #000000;
+    text-align: center;
+    font-size: 300;
+}

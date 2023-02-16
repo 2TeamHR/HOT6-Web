@@ -1,0 +1,77 @@
+
+main {
+    margin-top: 100px;
+}
+
+.title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 120px;
+}
+
+.info-btn {
+    text-align: right;
+}
+
+.info-btn button {
+    width: 130px;
+    height: 35px;
+    border: 0px;
+    background-color: #5EDCB3;
+    border-radius: 15px;
+    color: white;
+}
+
+.table {
+    font-size: 25px;
+    margin: 200px 0px 0px 0px;
+}
+
+table {
+    margin: 100px 0px 100px 0px;
+}
+
+/* info list */
+.main_row {
+    margin: 100px 20% 200px 20%;
+}
+
+.main_row p {
+    margin: 15px 150px 15px 150px;
+}
+
+.main_row input {
+    margin: 15px 150px 15px 150px;
+    width: 50%;
+    height: 30%;
+    border: 1px solid #8a8a8a;
+    border-radius: 15px;
+}
+
+.info_head {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 10px;
+}
+
+.my_info {
+    font-size: 20px;
+    border-bottom: solid 1px black;
+    color: rgb(118, 118, 118);
+    letter-spacing: 3px;
+}
+
+.main_btn {
+    text-align: center;
+    margin-top: 10%;
+}
+
+.main_btn button {
+    border: 0px;
+    background-color: #5EDCB3;
+    color: white;
+    border-radius: 15px;
+    width: 20%;
+    height: 130%;
+    margin: 0px 5px 0px 5px;
+}

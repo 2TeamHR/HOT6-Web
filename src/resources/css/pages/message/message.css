@@ -1,0 +1,100 @@
+/* 상단 마진 */
+main {
+    margin-top: 50px;
+}
+
+.main {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* 큰박스 */
+.module{
+    width: 70%;
+    height: 700px;
+    margin: 10px 100px 10px 10px;
+    border: 1px solid #aaaaaa;
+    border-radius: 10px;
+}
+/* 작은박스 */
+.module2{
+    width: 14%;
+    height: 700px;
+    position:absolute;
+    border-right: 1px solid #aaaaaa;
+    border-radius: 10px;
+    
+}
+
+/* 메세지쓰기 버튼 */
+.info-update button {
+    background-color: #43B2CA;
+    width: 60%;
+    height: 7%;
+    border-radius: 10px;
+    border: 0px;
+    color: white;
+}
+
+/* 보내기 버튼 */
+.info-update2 button {
+    background-color: #43B2CA;
+    width: 6%;
+    height: 5%;
+    border-radius: px;
+    border: 0px;
+    color: white;
+    float: left;
+    margin-left: 350;
+    margin-top: 20;
+}
+
+
+
+.module-title{
+    padding: 10px 0px 20px 20px;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.center {
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+
+
+
+/* 메세지 쓰기란 전체 정렬 */
+
+.message-blank{
+
+    margin-top: 100px ;
+    margin-left: 350px;
+
+}
+
+.message-blank input{
+
+    width: 75%;
+
+}
+
+.file-upload input{
+
+    width: 75%;
+    height: 10%;
+
+}
+
+.write-place input{
+
+    width: 85%;
+    height: 40%;
+
+}
+
+.work-day {
+    color: #43B2CA;
+
+}

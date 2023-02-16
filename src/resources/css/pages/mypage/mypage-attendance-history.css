@@ -1,0 +1,61 @@
+
+main {
+    margin-top: 100px;
+}
+
+.title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 120px;
+}
+
+/* search */
+.search-btn button {
+    width: 130px;
+    height: 35px;
+    border: 0px;
+    background-color: #5EDCB3;
+    border-radius: 15px;
+    color: white;
+}
+
+.search-top {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* 사유서 버튼 */
+.sor-btn{
+    width: 40%;
+    height: 30px;
+    border: 0px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #a6a6a6;
+    background-color: #5e79dc;
+    color: white;
+}
+
+
+/* 모달창 */
+.modal-input-title{
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #a6a6a6;
+}
+
+.modal-input-content{
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    border: 1px solid #a6a6a6;
+}
+
+.modal-input-file{
+    width: 100%;
+}
+
+.model-info{
+    font-size: small;
+    font-weight: 800;
+}
