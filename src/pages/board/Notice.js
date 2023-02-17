@@ -100,7 +100,7 @@ const Notice = () => {
               <option value="nickName">작성자</option>
             </select>
             <input type="search" id="searchValue" name="searchValue" placeholder="검색할 내용을 입력하세요." />
-            <input type="submit" className="btn btn-secondary" defaultValue="검색하기" />
+            <input type="submit" className="btn btn-secondary" defaultValue="검색하기" value="검색"/>
           </form>
         </div>
         <br /><br />

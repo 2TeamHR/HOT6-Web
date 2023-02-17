@@ -17,7 +17,7 @@ const Login = () => {
       <input type="password" placeholder="비밀번호를 입력하세요." id="password" name="password" />
       <input type="checkbox" id="remember" name="remember" />
       <label htmlFor="remember" style={{"display":"inline-block","font-size":"small"}}>사번 저장</label>
-      <input type="submit" style={{"font-size":"large"}} defaultValue="로그인" className="btn_submit" />
+      <input type="submit" style={{"font-size":"large"}} defaultValue="로그인" className="btn_submit" value="로그인"/>
     </form>
     <h5><span>비밀번호를 잊으셨나요? <a href="#">비밀번호 찾기</a></span></h5>
     <h6>COPYRIGHTⓒ 2023 ???. ALL RIGHTS RESERVED.</h6>

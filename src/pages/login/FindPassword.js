@@ -19,7 +19,8 @@ const FindPassword = () => {
       <input type="birthday" placeholder="예) 19920509" id="birthday" name="birthday" /><br />
       <label htmlFor="phone">전화번호</label>
       <input type="phone" placeholder="예) 01044499199" id="phone" name="phone" />
-      <input type="submit" style={{"font-size":"large"}} defaultValue="비밀번호 초기화" onclick="alert('비밀번호가 초기화 되었습니다.')" />
+      <input type="submit" style={{"font-size":"large"}} defaultValue="비밀번호 초기화" onclick="alert('비밀번호가 초기화 되었습니다.')" value="비밀번호 초기화"/>
+    {/*  추후 비밀번호 찾기로 바꿔나갈 예정 */}
     </form>
   </div>
 </div>
