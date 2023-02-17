@@ -23,9 +23,11 @@ function Sidebar() {
                             <h3 className={`${sidebarStyle.h3} ${sidebarStyle.navSubtitle}`}></h3>
 
                             <div className={sidebarStyle.navDropdown}>
+                                <div href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
                                     <i className={`bx bx-home ${sidebarStyle.navIcon}`}></i>
                                     <span className={sidebarStyle.navName}>마이페이지</span>
                                     <i className={`bx bx-chevron-down ${sidebarStyle.navIcon} ${sidebarStyle.navDropdownIcon}`}></i>
+                                </div>
                                 <div className={sidebarStyle.navDropdownCollapse}>
                                     {/* <!-- 중분류 --> */}
                                     <div className={sidebarStyle.navDropdownContent}>
@@ -43,9 +45,11 @@ function Sidebar() {
                         <div className={sidebarStyle.navItems}>
 
                             <div className={sidebarStyle.navDropdown}>
+                                <div href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
                                     <i className={`bx bx-user ${sidebarStyle.navIcon}`}></i>
                                     <span className={sidebarStyle.navName}>인사</span>
                                     <i className={`bx bx-chevron-down ${sidebarStyle.navIcon} ${sidebarStyle.navDropdownIcon}`}></i>
+                                </div>
                                 <div className={sidebarStyle.navDropdownCollapse}>
                                     {/* <!-- 중분류 --> */}
                                     <div className={sidebarStyle.navDropdownContent}>
@@ -78,9 +82,11 @@ function Sidebar() {
                         <div className={sidebarStyle.navItems}>
 
                             <div className={sidebarStyle.navDropdown}>
+                                <div href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
                                     <i className={`bx bx-building-house ${sidebarStyle.navIcon}`}></i>
                                     <span className={sidebarStyle.navName}>근태</span>
                                     <i className={`bx bx-chevron-down ${sidebarStyle.navIcon} ${sidebarStyle.navDropdownIcon}`}></i>
+                                </div>
                                 <div className={sidebarStyle.navDropdownCollapse}>
                                     {/* <!-- 중분류 --> */}
                                     <div className={sidebarStyle.navDropdownContent}>
@@ -106,11 +112,11 @@ function Sidebar() {
                          <div className={sidebarStyle.navItems}>
 
                             <div className={sidebarStyle.navDropdown}>
-                                <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
+                                <div href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
                                     <i className={`bx bx-edit ${sidebarStyle.navIcon}`}></i>
-                                    <span className={sidebarStyle.navName}>근태</span>
+                                    <span className={sidebarStyle.navName}>전자결재</span>
                                     <i className={`bx bx-chevron-down ${sidebarStyle.navIcon} ${sidebarStyle.navDropdownIcon}`}></i>
-                                </a>
+                                </div>
                                 <div className={sidebarStyle.navDropdownCollapse}>
                                     {/* <!-- 중분류 --> */}
                                     <div className={sidebarStyle.navDropdownContent}>
@@ -179,6 +185,7 @@ function Sidebar() {
                                             <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>공지사항</a>
                                             <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>커뮤니티</a>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
