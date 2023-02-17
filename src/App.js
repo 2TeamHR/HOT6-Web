@@ -4,8 +4,9 @@ import Main from './pages/Main'
 import MyPageMain from './pages/mypage/mypage_main'
 import Layout from './layouts/Layout';
 import Login from '../src/pages/login/Login';
-import SalaryCheck from './pages/salary/Salary_check';
 import FindPassword from '../src/pages/login/FindPassword';
+import ChangePassword from '../src/pages/login/ChangePassword';
+import SalaryCheck from './pages/salary/Salary_check';
 import Community from './pages/board/Community';
 import Notice from './pages/board/Notice';
 
@@ -17,6 +18,7 @@ function App() {
         {/* 레이아웃 사이에 넣기 */}
         <Route path="/login" element={<Login />} />
         <Route path="/findpassword" element={<FindPassword />} />
+        <Route path="/ChangePassword" element={<ChangePassword />} />
         <Route path="/" element={<Layout />} >
           <Route index element={<Main />} />
           <Route path="/mypageMain" element={<MyPageMain />} />
