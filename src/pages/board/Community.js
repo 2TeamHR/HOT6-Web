@@ -30,7 +30,7 @@ const Community = () => {
                 <td>킹보성</td>
                 <td>작성자2</td>
                 <td>2023-01-10 18:33</td>
-                <td>2155</td>
+                <td>21</td>
               </tr>
               <tr style={{ "cursor": "pointer" }}>
                 <td>40</td>

@@ -12,23 +12,23 @@ import Notice from './pages/board/Notice';
 
 function App() {
   return (
-      <BrowserRouter>
-        <Routes>
-          {/* 레이아웃 사이에 넣기 */}
-          <Route path="/login" element={ <Login />} />
-          <Route path="/" element={ <Layout /> } >
-            <Route index element={ <Main />} />
-            <Route path="/mypageMain" element={ <MyPageMain />} />
-            <Route path="/salaryCheck" element={ <SalaryCheck />} />
-            <Route path="/findpassword" element={<FindPassword />} />
-            <Route path="/board/community" element={<Community />} />
-            <Route path="/board/notice" element={<Notice />} />
-          </Route>
+    <BrowserRouter>
+      <Routes>
+        {/* 레이아웃 사이에 넣기 */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/findpassword" element={<FindPassword />} />
+        <Route path="/" element={<Layout />} >
+          <Route index element={<Main />} />
+          <Route path="/mypageMain" element={<MyPageMain />} />
+          <Route path="/salaryCheck" element={<SalaryCheck />} />
+          <Route path="/board/community" element={<Community />} />
+          <Route path="/board/notice" element={<Notice />} />
+        </Route>
 
 
-        </Routes>
+      </Routes>
 
-      </BrowserRouter>
+    </BrowserRouter>
   );
 }
 
