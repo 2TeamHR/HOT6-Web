@@ -1,0 +1,35 @@
+.noticeTitle { 
+    width: 70%;
+    font-size:20px;
+    padding: 15px;
+}
+
+.notice {
+    font-size: 40px;
+}
+
+.noticeDate {
+    display: inline-block;
+    color:grey;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.noticeList {
+
+    padding-left: 15px;
+    padding-top: 5px;
+    font-size: 14px;
+    display: inline-block;
+    color: grey;
+}
+
+
+.dot {
+    height: 8px;
+    width: 8px;
+    background-color: #f87171;
+    border-radius: 50%;
+    display: flex;
+    margin-left: 1px;
+}

@@ -4,6 +4,7 @@ import Main from './pages/Main'
 import MyPageMain from './pages/mypage/mypage_main'
 import Layout from './layouts/Layout';
 import Login from '../src/pages/login/Login';
+import SalaryCheck from './pages/salary/Salary_check';
 
 
 function App() {
@@ -11,11 +12,13 @@ function App() {
     <BrowserRouter>
       <Routes>
        {/* 레이아웃 사이에 넣기 */}
-        <Route path="/" element={ <Layout /> } >
-          <Route index element={ <Main />} />
-          <Route path="/mypageMain" element={ <MyPageMain />} />
-          <Route path="/login" element={ <Login />} />
-        </Route>
+        <Route path="/login" element={ <Login />} />
+          <Route path="/" element={ <Layout /> } >
+            <Route index element={ <Main />} />
+            <Route path="/mypageMain" element={ <MyPageMain />} />
+            <Route path="/salaryCheck" element={ <SalaryCheck />} />
+          </Route>
+          
 
       </Routes>
 
