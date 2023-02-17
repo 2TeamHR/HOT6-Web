@@ -148,17 +148,14 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             급여
                                         </div>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>급여 조회</a>
+                                            <Link to="/salaryCheck" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>급여 조회</Link>
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             인사팀 관리
                                         </div>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>지급 조회</a>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>급여 지급</a>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직금 조회</a>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직금 등록</a>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직금 지급</a>
+                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>급여 지급 현황</a>
+                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직금 지급 현황</a>
                                     </div>
                                 </div>
                             </div>
