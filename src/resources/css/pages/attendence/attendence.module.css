@@ -1,0 +1,51 @@
+.employeeDepart {
+    float: left;
+    margin-left: 100px;
+    position: absolute;
+    margin-top: 80px;
+}
+
+
+.employeeName {
+    position: absolute;
+    margin-left: 400px;
+    margin-top: 50px;
+}
+
+
+.employeeCalender {
+    position: relative;
+    right: 300px;
+    width: 100px;
+    top: 28px;
+
+}
+
+.employeeCalender2 {
+    position: absolute;
+    /*margin-left: 100px;*/
+    right: 320px;
+}
+
+.employeeCalender3 {
+    position: absolute;
+    /*margin-left: 300px;*/
+    right: 85px;
+
+}
+
+.employeeCalender4 {
+    position: absolute;
+    /*margin-left: 300px;*/
+    right: 650px;
+    bottom: 100px;
+    width: 50%;
+
+
+}
+
+
+
+#dName {
+    margin-top: 100px;
+}

@@ -14,6 +14,7 @@ import Message from "./pages/messsage/message";
 import MessageSent from "./pages/messsage/MessageSent";
 import MessageTrash from "./pages/messsage/MessageTrash";
 import ReceivedMessage from "./pages/messsage/receivedMessage";
+import AttendanceManage from "./pages/attendence/AttendanceManage";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="/messsage/MessageSent" element={<MessageSent />} />
             <Route path="/messsage/MessageTrash" element={<MessageTrash />} />
             <Route path="/messsage/receivedMessage" element={<ReceivedMessage />} />
+            <Route path="/attendence/AttendanceManage" element={<AttendanceManage />} />
           </Route>
 
 

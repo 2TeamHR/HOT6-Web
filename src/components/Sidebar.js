@@ -93,7 +93,7 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             근태관리
                                         </div> <Link to="/myPageMain" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>메인</Link>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>근태 조회 및 관리</a>
+                                            <a href="/attendence/AttendanceManage" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>근태 조회 및 관리</a>
                                             <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>근무 시간 이력</a>
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>
