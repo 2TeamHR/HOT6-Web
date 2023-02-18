@@ -1,11 +1,12 @@
 import mypageStyle from '../../resources/css/pages/mypage/mypage.module.css';
+import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
 
 function MypageMain() {
 
     return (
         <>
-            <main className={mypageStyle.main}>
-            <div className={mypageStyle.mainClass}>
+            <main className={mainTitleStyle.main}>
+            <div className={mainTitleStyle.mainClass}>
                 <div className={mypageStyle.module}>
                     <p className={mypageStyle.moduleTitle}>나의 정보</p>
                     <div className={mypageStyle.profileImage}>
@@ -81,7 +82,7 @@ function MypageMain() {
                 </div>
             </div>
 
-            <div className={mypageStyle.mainClass}>
+            <div className={mainTitleStyle.mainClass}>
 
                 <div className={mypageStyle.module}>
                     <p className={`${mypageStyle.moduleTitle} fs-1 mt-5`}>쪽지함</p>
