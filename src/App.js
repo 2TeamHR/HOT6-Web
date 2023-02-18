@@ -9,6 +9,10 @@ import CertificationForm from './pages/es/CertificationForm'
 import FindPassword from '../src/pages/login/FindPassword';
 import Community from './pages/board/Community';
 import Notice from './pages/board/Notice';
+import Message from "./pages/messsage/message";
+import MessageSent from "./pages/messsage/MessageSent";
+import MessageTrash from "./pages/messsage/MessageTrash";
+import ReceivedMessage from "./pages/messsage/receivedMessage";
 
 function App() {
   return (
@@ -27,6 +31,10 @@ function App() {
             <Route path="/findpassword" element={<FindPassword />} />
             <Route path="/board/community" element={<Community />} />
             <Route path="/board/notice" element={<Notice />} />
+            <Route path="/messsage/message" element={<Message />} />
+            <Route path="/messsage/MessageSent" element={<MessageSent />} />
+            <Route path="/messsage/MessageTrash" element={<MessageTrash />} />
+            <Route path="/messsage/receivedMessage" element={<ReceivedMessage />} />
           </Route>
 
 
