@@ -5,6 +5,8 @@ import MyPageMain from './pages/mypage/mypage_main'
 import Layout from './layouts/Layout';
 import Login from '../src/pages/login/Login';
 import SalaryCheck from './pages/salary/Salary_check';
+import AllCheck from './pages/salary/Salary_allCheck';
+import Severance from './pages/salary/Salary_Severance'
 import CertificationForm from './pages/es/CertificationForm'
 import FindPassword from '../src/pages/login/FindPassword';
 import Community from './pages/board/Community';
@@ -20,6 +22,8 @@ function App() {
             <Route index element={ <Main />} />
             <Route path="/mypageMain" element={ <MyPageMain />} />
             <Route path="/salaryCheck" element={ <SalaryCheck />} />
+            <Route path="/allCheck" element={ <AllCheck />} />
+            <Route path="/severance" element={ <Severance />} />
             <Route path='CertificationForm' element={<CertificationForm />}/>
             <Route path="/findpassword" element={<FindPassword />} />
             <Route path="/board/community" element={<Community />} />

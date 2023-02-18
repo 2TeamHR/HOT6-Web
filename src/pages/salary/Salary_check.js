@@ -1,7 +1,7 @@
 import salaryStyle from '../../resources/css/pages/salary/salary.module.css';
 import salarytableStyle from '../../resources/css/pages/salary/salaryTable.module.css';
 import "react-datepicker/dist/react-datepicker.css";
-import SelectBoxes from './SalaryDatePiker';
+import SelectDatePiker from './SalaryDatePiker';
 import SalaryTable from './Salary_Table';
 import SalaryTable2 from './Salary_Table2';
 import { Link } from 'react-router-dom';
@@ -21,7 +21,7 @@ function SalaryCheck() {
                 <h1 className="fs-1 mt-5">급여 조회</h1>
             </div>
             <div className={salaryStyle.selectDate}>
-                <SelectBoxes />
+                <SelectDatePiker />
             </div>
         </div>
         <div className= {`pt-5 ${salarytableStyle.tableStyle}`}>

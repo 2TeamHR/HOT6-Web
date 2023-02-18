@@ -16,9 +16,10 @@ const months = [
   { label: '12', value: '12' },
 ];
 
-function SelectDatePiker() {
+function SelectDatePiker2() {
   const [year, setYear] = useState('2023');
   const [month, setMonth] = useState('02');
+  const [status, setStatus] = useState('지급대기');
 
   function handleYearChange(e) {
     setYear(e.target.value);
@@ -28,12 +29,15 @@ function SelectDatePiker() {
     setMonth(e.target.value);
   }
 
+  function handleStatusChange(e) {
+    setStatus(e.target.value);
+  }
+
   return (
     <div>
       <label className='mt-5 pl-3'>
         
-        <select value={year} onChange={handleYearChange}
-        style={{width:70}}>
+        <select value={year} onChange={handleYearChange} style={{width:70}}>
           <option value=""></option>
           {years.map((y) => (
             <option key={y} value={y}>
@@ -44,8 +48,7 @@ function SelectDatePiker() {
         <span className="ml-2">년</span>
       </label>
       <label className="ml-3">
-        <select value={month} onChange={handleMonthChange}
-        style={{width:50}}>
+        <select value={month} onChange={handleMonthChange} style={{width:50}}>
           <option value=""></option>
           {months.map((m) => (
             <option key={m.value} value={m.value}>
@@ -55,9 +58,15 @@ function SelectDatePiker() {
         </select>
         <span className="ml-2">일</span>
       </label>
+      <label className="ml-3">
+        <select value={status} onChange={handleStatusChange} style={{width:100}}>
+            <option>지급대기</option>
+            <option>지급완료</option>
+        </select>
+      </label>
       <button className='btn btn-primary ml-3'>조회하기</button>
     </div>
   );
 }
 
-export default SelectDatePiker;
+export default SelectDatePiker2;
