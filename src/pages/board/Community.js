@@ -30,7 +30,7 @@ const Community = () => {
                 <td>킹보성</td>
                 <td>작성자2</td>
                 <td>2023-01-10 18:33</td>
-                <td>2155</td>
+                <td>21</td>
               </tr>
               <tr style={{ "cursor": "pointer" }}>
                 <td>40</td>
@@ -98,7 +98,7 @@ const Community = () => {
               <option value="nickName">작성자</option>
             </select>
             <input type="search" id="searchValue" name="searchValue" placeholder="검색할 내용을 입력하세요." />
-            <input type="submit" id="searchList" className="btn btn-secondary" defaultValue="검색하기" />
+            <input type="submit" id="searchList" className="btn btn-secondary" defaultValue="검색하기" value="검색" />
           </form>
         </div>
         <br /><br />

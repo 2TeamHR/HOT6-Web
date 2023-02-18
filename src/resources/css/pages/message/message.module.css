@@ -1,6 +1,6 @@
 /* 상단 마진 */
 main {
-    margin-top: 50px;
+    margin-top: 90px;
 }
 
 .main {
@@ -27,26 +27,30 @@ main {
 }
 
 /* 메세지쓰기 버튼 */
-.info-update button {
+.infoUpdate button {
     background-color: #43B2CA;
-    width: 60%;
-    height: 7%;
+    width: 50%;
+    height: 40px;
     border-radius: 10px;
     border: 0px;
     color: white;
+    margin-left: 22%;
+
+    text-decoration: none;
+
 }
 
 /* 보내기 버튼 */
-.info-update2 button {
+.infoUpdate2 button {
     background-color: #43B2CA;
-    width: 6%;
+    width: 10%;
     height: 5%;
-    border-radius: px;
+    /*border-radius: px;*/
     border: 0px;
     color: white;
-    float: left;
+    /* float: left;
     margin-left: 350;
-    margin-top: 20;
+    margin-top: 20; */
 }
 
 
@@ -67,34 +71,48 @@ main {
 
 /* 메세지 쓰기란 전체 정렬 */
 
-.message-blank{
+.messageBlank{
 
-    margin-top: 100px ;
+    margin-top:  50px ;
     margin-left: 350px;
 
 }
 
-.message-blank input{
+.messageBlank input{
 
     width: 75%;
 
 }
 
-.file-upload input{
+/* 파일업로드 */
+.fileUpload input{
 
     width: 75%;
-    height: 10%;
+    height: 70px;
+}
+
+/* 내용작성란 */
+.writePlace input{
+
+    width: 83%;
+    height: 300px;
 
 }
 
-.write-place input{
-
-    width: 85%;
-    height: 40%;
-
-}
-
-.work-day {
+/* 글자 색 */
+.workDay {
     color: #43B2CA;
 
+}
+
+/* 주소록 버튼 */
+.messageBlank button{
+    border-color: #aaaaaa;
+    border-style: solid;
+    border-width: 1px;
+    margin-left: 5px;
+}
+
+Link {
+ color: black;
 }
