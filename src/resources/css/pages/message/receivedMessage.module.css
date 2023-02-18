@@ -1,0 +1,90 @@
+
+main {
+    margin-top: 90px;
+}
+
+.title {
+    font-size:5px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.textCenter {
+    font-size: 15px;
+}
+
+
+
+.table {
+    width: 98%;
+    margin-top: 1px;
+    margin-left: 10px;
+
+    border-top: 1px solid #aaaaaa;
+    border-bottom: 1px solid #aaaaaa;
+}
+
+.table2 {
+    margin-top: 200px;
+    margin-left: 280px;
+}
+
+
+
+.table td {
+    padding: 10px;
+    text-align: center;
+}
+
+
+.function {
+    margin-top: 100px;
+    margin-left: 280px;
+}
+
+
+.buttonOptionalSelect{
+    margin-left: 25px;
+}
+
+
+/* 휴지통쪽 버튼 클릭 상자 */
+.buttonOptionalSelect2{
+    margin-left: 32px;
+}
+
+
+/* 체크박스 읽음 삭제 위쪽 상자들 */
+
+.buttonTaskWrap {
+    float: left;
+    margin-left: 10px;
+
+}
+
+
+
+/* 체크 버튼 */
+.buttonCheckboxBlind {
+    margin-top: 6px;
+    border-color: black;
+}
+
+
+
+/* 읽음 , 삭제 */
+.buttonTaskSvg {
+    font-weight: bold;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border : none;
+    background-color: white;
+    
+}
+
+
+/* 글자 색 */
+.workDay {
+    color: #43B2CA;
+
+}
