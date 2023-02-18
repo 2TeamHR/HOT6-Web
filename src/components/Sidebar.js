@@ -23,9 +23,11 @@ function Sidebar() {
                             <h3 className={`${sidebarStyle.h3} ${sidebarStyle.navSubtitle}`}></h3>
 
                             <div className={sidebarStyle.navDropdown}>
+                                <div href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
                                     <i className={`bx bx-home ${sidebarStyle.navIcon}`}></i>
                                     <span className={sidebarStyle.navName}>마이페이지</span>
                                     <i className={`bx bx-chevron-down ${sidebarStyle.navIcon} ${sidebarStyle.navDropdownIcon}`}></i>
+                                </div>
                                 <div className={sidebarStyle.navDropdownCollapse}>
                                     {/* <!-- 중분류 --> */}
                                     <div className={sidebarStyle.navDropdownContent}>
@@ -43,9 +45,11 @@ function Sidebar() {
                         <div className={sidebarStyle.navItems}>
 
                             <div className={sidebarStyle.navDropdown}>
+                                <div href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
                                     <i className={`bx bx-user ${sidebarStyle.navIcon}`}></i>
                                     <span className={sidebarStyle.navName}>인사</span>
                                     <i className={`bx bx-chevron-down ${sidebarStyle.navIcon} ${sidebarStyle.navDropdownIcon}`}></i>
+                                </div>
                                 <div className={sidebarStyle.navDropdownCollapse}>
                                     {/* <!-- 중분류 --> */}
                                     <div className={sidebarStyle.navDropdownContent}>
@@ -78,9 +82,11 @@ function Sidebar() {
                         <div className={sidebarStyle.navItems}>
 
                             <div className={sidebarStyle.navDropdown}>
+                                <div href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
                                     <i className={`bx bx-building-house ${sidebarStyle.navIcon}`}></i>
                                     <span className={sidebarStyle.navName}>근태</span>
                                     <i className={`bx bx-chevron-down ${sidebarStyle.navIcon} ${sidebarStyle.navDropdownIcon}`}></i>
+                                </div>
                                 <div className={sidebarStyle.navDropdownCollapse}>
                                     {/* <!-- 중분류 --> */}
                                     <div className={sidebarStyle.navDropdownContent}>
@@ -106,11 +112,11 @@ function Sidebar() {
                          <div className={sidebarStyle.navItems}>
 
                             <div className={sidebarStyle.navDropdown}>
-                                <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
+                                <div href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
                                     <i className={`bx bx-edit ${sidebarStyle.navIcon}`}></i>
-                                    <span className={sidebarStyle.navName}>결재</span>
+                                    <span className={sidebarStyle.navName}>전자결재</span>
                                     <i className={`bx bx-chevron-down ${sidebarStyle.navIcon} ${sidebarStyle.navDropdownIcon}`}></i>
-                                </a>
+                                </div>
                                 <div className={sidebarStyle.navDropdownCollapse}>
                                     {/* <!-- 중분류 --> */}
                                     <div className={sidebarStyle.navDropdownContent}>
@@ -166,7 +172,7 @@ function Sidebar() {
                         <div className={sidebarStyle.navItems}>
 
                             <div className={sidebarStyle.navDropdown}>
-                                <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
+                                <a href="/board/notice" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
                                     <i className={`bx bx-message-edit ${sidebarStyle.navIcon}`}></i>
                                     <span className={sidebarStyle.navName}>게시판</span>
                                     <i className={`bx bx-chevron-down ${sidebarStyle.navIcon} ${sidebarStyle.navDropdownIcon}`}></i>
@@ -177,9 +183,10 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             게시판
                                         </div>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>공지사항</a>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>커뮤니티</a>
+                                            <a href="/board/notice" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>공지사항</a>
+                                            <a href="/board/community" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>커뮤니티</a>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -220,10 +227,10 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             메세지
                                         </div>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>메세지 보내기</a>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>받은 메세지</a>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>보낸 메세지</a>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>휴지통</a>
+                                            <a href="/messsage/message" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>메세지 보내기</a>
+                                            <a href="/messsage/receivedMessage" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>받은 메세지</a>
+                                            <a href="/messsage/MessageSent" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>보낸 메세지</a>
+                                            <a href="/messsage/MessageTrash" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>휴지통</a>
                                     </div>
                                 </div>
                             </div>
