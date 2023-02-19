@@ -15,6 +15,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import * as PropTypes from "prop-types";
 import DataTable from "./TestTable";
+import BasicButtons from "./ButtonStyle";
 
 
 
@@ -56,7 +57,7 @@ function AttendanceManage() {
             }}>부서 이름
             </span>
 
-                    <FormControl sx={{ml: 3, mb: 100,  minWidth: 170 }} size="small">
+                    <FormControl sx={{ml: 3,  minWidth: 170 }} size="small">
                         <InputLabel id="demo-select-small">Select</InputLabel>
                         <Select
                             labelId="demo-select-small"
@@ -113,6 +114,13 @@ function AttendanceManage() {
                 <div class={attendenceManage.employeeCalender4}>
                 <DataTable/>
                 </div>
+
+
+                <div class={attendenceManage.employeeCalender5}>
+                <BasicButtons/>
+                </div>
+
+
                 </main>
             </body>
 
