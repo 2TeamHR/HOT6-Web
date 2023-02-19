@@ -1,7 +1,6 @@
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import salaryStyle from '../../resources/css/pages/salary/salary.module.css';
-import SelectDatePiker2 from './Salary_DatePiker2';
 import attendenceManage from '../../resources/css/pages/attendence/attendence.module.css'
 import DatePicker from "react-datepicker";
 import InputLabel from '@mui/material/InputLabel';
@@ -11,9 +10,10 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import {useFormControl} from "@mui/material";
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
-import SalaryDataTable from './SalaryDataTable2';
+import SalaryDataTable2N from './SalaryDataTable2N';
+import SelectDatePiker3 from './Salary_DatePiker3';
 
-function Severance(){
+function SeveranceN(){
     
     let age;
 
@@ -41,7 +41,7 @@ function Severance(){
                 <h1 className="fs-1 mt-5">퇴직금 지급 현황</h1>
             </div>
             <div className={salaryStyle.selectDate}>
-                <SelectDatePiker2 />
+                <SelectDatePiker3 />
             </div>
         </div>
 
@@ -107,10 +107,10 @@ function Severance(){
         </div> */}
 
         <div className="pt-5 pl-5">
-            <SalaryDataTable />
+            <SalaryDataTable2N />
         </div>
         </>
     );
 }
 
-export default Severance;
+export default SeveranceN;

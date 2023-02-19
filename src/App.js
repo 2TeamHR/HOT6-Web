@@ -7,8 +7,6 @@ import Login from '../src/pages/login/Login';
 import FindPassword from '../src/pages/login/FindPassword';
 import ChangePassword from '../src/pages/login/ChangePassword';
 import SalaryCheck from './pages/salary/Salary_check';
-import AllCheck from './pages/salary/Salary_allCheck';
-import Severance from './pages/salary/Salary_Severance'
 import CertificationForm from './pages/es/CertificationForm'
 import Community from './pages/board/Community';
 import Notice from './pages/board/Notice';
@@ -17,6 +15,10 @@ import MessageSent from "./pages/messsage/MessageSent";
 import MessageTrash from "./pages/messsage/MessageTrash";
 import ReceivedMessage from "./pages/messsage/receivedMessage";
 import AttendanceManage from "./pages/attendence/AttendanceManage";
+import AllCheckN from './pages/salary/Salary_allCheckN';
+import AllCheckY from './pages/salary/Salary_allCheckY';
+import SeveranceN from './pages/salary/Salary_SeveranceN'
+import SeveranceY from './pages/salary/Salary_SeveranceY'
 
 function App() {
   return (
@@ -30,8 +32,10 @@ function App() {
             <Route index element={ <Main />} />
             <Route path="/mypageMain" element={ <MyPageMain />} />
             <Route path="/salaryCheck" element={ <SalaryCheck />} />
-            <Route path="/allCheck" element={ <AllCheck />} />
-            <Route path="/severance" element={ <Severance />} />
+            <Route path="/allCheckN" element={ <AllCheckN />} />
+            <Route path="/allCheckY" element={ <AllCheckY />} />
+            <Route path="/severanceN" element={ <SeveranceN />} />
+            <Route path="/severanceY" element={ <SeveranceY />} />
             <Route path='CertificationForm' element={<CertificationForm />}/>
             <Route path="/board/notice" element={<Notice />} />
             <Route path="/board/community" element={<Community />} />

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import tableStyle from '../../resources/css/pages/salary/salaryTable.module.css';
+import PayMentButton from './Salary_PayMentButton';
 
 const columns = [
     { field: 'id', headerName: '사번', width: 70 },
@@ -24,7 +24,7 @@ const rows = [
     { id: 6, team: '무슨팀', rank: '성명', name: '이', salary: 150000, bonus: 50000, tax: 20000, totalSalary: 180000 },
 ];
 
-export default function SalaryDataTable() {
+export default function SalaryDataTableN() {
     return (
         <div className="pl-5" style={{ height: 400, width: '90%' }}>
             <DataGrid
@@ -35,6 +35,7 @@ export default function SalaryDataTable() {
                 rowsPerPageOptions={[5]}
                 checkboxSelection
             />
+            <PayMentButton style={{}} />
         </div>
     );
 }

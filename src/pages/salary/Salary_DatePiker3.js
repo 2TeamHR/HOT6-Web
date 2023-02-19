@@ -22,7 +22,7 @@ const statues = [
 ];
 
 
-function SelectDatePiker2() {
+function SelectDatePiker3() {
   const [year, setYear] = useState('2023');
   const [month, setMonth] = useState('02');
   const [status, setStatus] = useState('지급대기');
@@ -44,9 +44,9 @@ function SelectDatePiker2() {
 
     console.log(paymentStatus);
     if (paymentStatus === 'Y') {
-      window.location.href = 'http://localhost:3000/allcheckY';
+      window.location.href = 'http://localhost:3000/severanceY';
     } else {
-      window.location.href = 'http://localhost:3000/allcheckN';
+      window.location.href = 'http://localhost:3000/severanceN';
     }
   }
 
@@ -87,4 +87,4 @@ function SelectDatePiker2() {
   );
 }
 
-export default SelectDatePiker2;
+export default SelectDatePiker3;

@@ -11,9 +11,10 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import {useFormControl} from "@mui/material";
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
-import SalaryDataTable from './SalaryDataTable';
+import SalaryDataTableN from './SalaryDataTableN';
+import PayMentButton from './Salary_PayMentButton';
 
-function AllCheck(){
+function AllCheckN(){
     
     let age;
 
@@ -107,10 +108,10 @@ function AllCheck(){
         </div> */}
 
         <div className="pt-5 pl-5">
-            <SalaryDataTable className="pl-5" />
+            <SalaryDataTableN className="pl-5" />
         </div>
         </>
     );
 }
 
-export default AllCheck;
+export default AllCheckN;

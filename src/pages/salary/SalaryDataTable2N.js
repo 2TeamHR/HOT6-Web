@@ -23,7 +23,7 @@ const rows = [
     { id: 6, team: '무슨팀', rank: '사원', name: '노재영', salary: 150000, bonus: 50000, tax: 20000, totalSalary: 180000 },
 ];
 
-export default function SalaryDataTable2() {
+export default function SalaryDataTable2N() {
     return (
         <div className="pl-5" style={{ height: 400, width: '90%' }}>
             <DataGrid 
