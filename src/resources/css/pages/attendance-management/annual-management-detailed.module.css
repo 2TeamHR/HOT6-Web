@@ -1,40 +1,30 @@
 
-main {
-    margin-top: 100px;
-}
-
-.title {
-    font-size: 25px;
-    font-weight: bold;
-    margin-bottom: 50px;
-}
-
-.user-name{
+.userName{
     text-align: right;
     font-size: 40px;
     margin-right: 50px;
 }
 
 /* 연차 이력 박스 */
-.annual-main-box{
+.annualMainBox{
     align-items: center;
-    height: 13%;
+    height: 26%;
     border: 1px solid #c3c3c3;
     border-radius: 15px;
 }
 
-.annual-main-box p {
+.annualMainbox p {
     font-size: 20px;
     margin-top: 1rem;
     text-align: center;
 }
 
 /* 연차 관리 버튼 */
-.main-btn{
+.mainBtn{
     margin: 50px 0px 100px 0px;
 }
 
-.annual-btn{
+.annualBtn{
     float: right;
     width: 10%;
     height: 40px;

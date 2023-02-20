@@ -53,7 +53,7 @@ function SelectDatePiker() {
             </option>
           ))}
         </select>
-        <span className="ml-2">일</span>
+        <span className="ml-2">월</span>
       </label>
       <button className='btn btn-primary ml-3'>조회하기</button>
     </div>

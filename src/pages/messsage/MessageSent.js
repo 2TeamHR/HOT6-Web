@@ -11,8 +11,8 @@ function MessageSent(){
     return (
     <>
         
-        <BootstrapLink/>
-            <body>
+
+
            
             <Sidebar/>
 
@@ -90,7 +90,7 @@ function MessageSent(){
             </div>
         </div>
         </main>
-    </body>
+
 
     </>
     );

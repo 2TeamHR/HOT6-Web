@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const years = Array.from({length: (new Date().getFullYear() - 2007)}, (_, i) => 2008 + i);
 const months = [
@@ -16,10 +17,18 @@ const months = [
   { label: '12', value: '12' },
 ];
 
+const statues = [
+  { label: '지급대기', value: 'N'},
+  { label: '지급완료', value: 'Y'},
+];
+
+
 function SelectDatePiker2() {
   const [year, setYear] = useState('2023');
   const [month, setMonth] = useState('02');
-  const [status, setStatus] = useState('지급대기');
+  const [status, setStatus] = useState('N');
+  
+  const navigate = useNavigate();
 
   function handleYearChange(e) {
     setYear(e.target.value);
@@ -33,12 +42,26 @@ function SelectDatePiker2() {
     setStatus(e.target.value);
   }
 
+  function handleClick() {
+
+
+    const paymentStatus = statues.find(statu => statu.value === status);
+
+    console.log(paymentStatus.value);
+    
+    if (paymentStatus.value === 'Y') {
+      navigate('/salary/checkY');
+    } else {
+      navigate('/salary/checkN');
+    }
+  }
+
+
   return (
     <div>
       <label className='mt-5 pl-3'>
         
         <select value={year} onChange={handleYearChange} style={{width:70}}>
-          <option value=""></option>
           {years.map((y) => (
             <option key={y} value={y}>
               {y}
@@ -49,22 +72,24 @@ function SelectDatePiker2() {
       </label>
       <label className="ml-3">
         <select value={month} onChange={handleMonthChange} style={{width:50}}>
-          <option value=""></option>
           {months.map((m) => (
             <option key={m.value} value={m.value}>
               {m.label}
             </option>
           ))}
         </select>
-        <span className="ml-2">일</span>
+        <span className="ml-2">월</span>
       </label>
       <label className="ml-3">
         <select value={status} onChange={handleStatusChange} style={{width:100}}>
-            <option>지급대기</option>
-            <option>지급완료</option>
+            {statues.map((status) => (
+              <option key={status.value} value={status.value}>
+                {status.label}
+              </option>
+            ))}
         </select>
       </label>
-      <button className='btn btn-primary ml-3'>조회하기</button>
+      <button className='btn btn-primary ml-3' onClick={handleClick}>조회하기</button>
     </div>
   );
 }

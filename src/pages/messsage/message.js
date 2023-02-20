@@ -4,13 +4,14 @@ import messageStyle from '../../resources/css/pages/message/message.module.css'
 import BootstrapLink from '../../components/bootstrap';
 import Sidebar from '../../components/Sidebar';
 import {Link} from "react-router-dom";
+import attendenceManage from "../../resources/css/pages/attendence/attendence.module.css";
 
 function Message() {
 
         return (
         <>
-    <BootstrapLink />
-<body>
+
+
 <Sidebar />
 
 
@@ -49,7 +50,7 @@ function Message() {
                     <div className={messageStyle.messageBlank}>
 
                     <div className={` ml-1 mr-4 pb-3 ${messageStyle.infoUpdate2}`} >
-                        <button onClick="location.href=''">보내기</button>
+                        <button >보내기</button>
                     </div>
 
                         
@@ -92,7 +93,7 @@ function Message() {
 </main>
 
        
-</body>
+
 
     </>
     );

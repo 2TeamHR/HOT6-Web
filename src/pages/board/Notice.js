@@ -11,7 +11,7 @@ const Notice = () => {
         <div className="table-area">
           <table className="table">
             <thead>
-              <tr style={{ "background-color": "#EEEEEE" }}>
+              <tr style={{ "backgroundColor": "#DDDDDD" }}>
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성자</th>
@@ -100,29 +100,29 @@ const Notice = () => {
               <option value="nickName">작성자</option>
             </select>
             <input type="search" id="searchValue" name="searchValue" placeholder="검색할 내용을 입력하세요." />
-            <input type="submit" className="btn btn-secondary" defaultValue="검색하기" value="검색" />
+            <input type="submit" className="btn btn-secondary" value="검색" />
           </form>
         </div>
         <br /><br />
         {/* 페이지 처리 */}
         <div className="pagingArea" align="center">
           {/* 맨 앞으로 이동 버튼 */}
-          <button onclick="location.href='/notice/list?currentPage=1'" disabled="disabled">
+          <button onClick={()=>""}>
             &lt;&lt;
           </button>
           {/* 이전 페이지 버튼 */}
-          <button onclick="location.href='/notice/list?currentPage=0'" disabled="disabled">
+          <button onClick={()=>""}>
             &lt;
           </button>
           {/* 숫자 버튼 */}
-          <button onclick="location.href='/notice/list?currentPage=1'" disabled="disabled">1</button>
-          <button onclick="location.href='/notice/list?currentPage=2'">2</button>
+          <button onClick={()=>""}>1</button>
+          <button onClick={()=>""}>2</button>
           {/* 다음 페이지 버튼 */}
-          <button onclick="location.href='/notice/list?currentPage=2'">
+          <button onClick={()=>""}>
             &gt;
           </button>
           {/* 마지막 페이지로 이동 버튼 */}
-          <button onclick="location.href='/notice/list?currentPage=2'">
+          <button onClick={()=>""}>
             &gt;&gt;
           </button>
         </div>

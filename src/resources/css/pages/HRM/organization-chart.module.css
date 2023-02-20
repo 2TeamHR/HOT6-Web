@@ -1,19 +1,9 @@
 
-main {
-    margin-top: 100px;
-}
-
-.title {
-    font-size: 25px;
-    font-weight: bold;
-    margin-bottom: 120px;
-}
-
-.info-btn {
+.infoBtn {
     text-align: right;
 }
 
-.info-btn button {
+.infoBtn button {
     width: 130px;
     height: 35px;
     border: 0px;
@@ -32,15 +22,15 @@ table {
 }
 
 /* info list */
-.main_row {
+.mainRow {
     margin: 100px 20% 200px 20%;
 }
 
-.main_row p {
-    margin: 15px 150px 15px 150px;
+.mainRow p {
+    margin: 15px 50px 15px 50px;
 }
 
-.main_row input {
+.mainRow input {
     margin: 15px 150px 15px 150px;
     width: 50%;
     height: 30%;
@@ -48,25 +38,26 @@ table {
     border-radius: 15px;
 }
 
-.info_head {
+.infoHead {
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 10px;
 }
 
-.my_info {
+.myInfo {
+    width: 100%;
     font-size: 20px;
     border-bottom: solid 1px black;
     color: rgb(118, 118, 118);
     letter-spacing: 3px;
 }
 
-.main_btn {
+.mainBtn {
     text-align: center;
     margin-top: 10%;
 }
 
-.main_btn button {
+.mainBtn button {
     border: 0px;
     background-color: #5EDCB3;
     color: white;

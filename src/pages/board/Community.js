@@ -9,7 +9,7 @@ const Community = () => {
           <h1 className="mt-5 text-center">커뮤니티 게시판</h1><br /><br />
           <table className="table table-hover">
             <thead>
-              <tr style={{ "background-color": "#EEEEEE" }}>
+              <tr style={{ "backgroundColor": "#DDDDDD" }}>
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성자</th>
@@ -98,30 +98,30 @@ const Community = () => {
               <option value="nickName">작성자</option>
             </select>
             <input type="search" id="searchValue" name="searchValue" placeholder="검색할 내용을 입력하세요." />
-            <input type="submit" id="searchList" className="btn btn-secondary" defaultValue="검색하기" value="검색" />
+            <input type="submit" id="searchList" className="btn btn-secondary" value="검색" />
           </form>
         </div>
         <br /><br />
         {/* 페이지 처리 */}
         <div className="pagingArea" align="center">
           {/* 맨 앞으로 이동 버튼 */}
-          <button onclick="location.href='/community/list?currentPage=1'" disabled="disabled">
+          <button onClick={()=>""}>
             &lt;&lt;
           </button>
           {/* 이전 페이지 버튼 */}
-          <button onclick="location.href='/community/list?currentPage=0'" disabled="disabled">
+          <button onClick={()=>""}>
             &lt;
           </button>
           {/* 숫자 버튼 */}
-          <button onclick="location.href='/community/list?currentPage=1'" disabled="disabled">1</button>
-          <button onclick="location.href='/community/list?currentPage=2'">2</button>
-          <button onclick="location.href='/community/list?currentPage=3'">3</button>
+          <button onClick={()=>""} disabled="disabled">1</button>
+          <button onClick={()=>""}>2</button>
+          <button onClick={()=>""}>3</button>
           {/* 다음 페이지 버튼 */}
-          <button onclick="location.href='/community/list?currentPage=2'">
+          <button onClick={()=>""}>
             &gt;
           </button>
           {/* 마지막 페이지로 이동 버튼 */}
-          <button onclick="location.href='/community/list?currentPage=3'">
+          <button onClick={()=>""}>
             &gt;&gt;
           </button>
         </div>

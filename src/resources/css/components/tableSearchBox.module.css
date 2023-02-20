@@ -1,16 +1,5 @@
-
-main {
-    margin-top: 100px;
-}
-
-.title {
-    font-size: 25px;
-    font-weight: bold;
-    margin-bottom: 60px;
-}
-
 /* search */
-.search-btn button {
+.searchBtn button {
     width: 130px;
     height: 35px;
     border: 0px;
@@ -19,7 +8,7 @@ main {
     color: white;
 }
 
-.search-top {
+.searchTop {
     display: table-cell;
     vertical-align: middle;
 }

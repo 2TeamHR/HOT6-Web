@@ -11,9 +11,8 @@ function MessageTrash(){
     return (
     <>
         
-        <BootstrapLink/>
-            <body>
-           
+
+
             <Sidebar/>
 
     {/* // <!--========== CONTENTS ==========--> */}
@@ -91,7 +90,7 @@ function MessageTrash(){
             </div>
         </div>
         </main>
-    </body>
+
 
     </>
     );
