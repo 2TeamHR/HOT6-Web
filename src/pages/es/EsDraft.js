@@ -8,24 +8,24 @@ function EsDraft() {
             <h4>전자결재 양식</h4>
 
             <Grid container>
-                <Grid>
+                <Grid item>
                     <Link to="/es/leaveForm" style={{ textDecoration: "none" }}>
-                        <Card>휴가 신청</Card>
+                        <Card sx={{ width: 200, height: 100 }}>휴가 신청</Card>
                     </Link>
                 </Grid>
-                <Grid>
+                <Grid item>
                     <Link to="/es/salaryForm" style={{ textDecoration: "none" }}>
-                        <Card>급여정정 신청</Card>
+                        <Card sx={{ width: 200, height: 100 }}>급여정정 신청</Card>
                     </Link>
                 </Grid>
-                <Grid>
+                <Grid item>
                     <Link to="/es/retireForm" style={{ textDecoration: "none" }}>
-                        <Card>퇴직 신청</Card>
+                        <Card sx={{ width: 200, height: 100 }}>퇴직 신청</Card>
                     </Link>
                 </Grid>
-                <Grid>
+                <Grid item>
                     <Link to="/es/certificationForm" style={{ textDecoration: "none" }}>
-                        <Card>증명서 신청</Card>
+                        <Card sx={{ width: 200, height: 100 }}>증명서 신청</Card>
                     </Link>
                 </Grid>
             </Grid>

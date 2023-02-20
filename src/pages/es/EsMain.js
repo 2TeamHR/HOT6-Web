@@ -221,9 +221,9 @@ const rows = [
 
 
 const steps = [
-  'Select master blaster campaign settings',
-  'Create an ad group',
-  'Create an ad',
+  '기안',
+  '중간결재 승인',
+  '최종결재 승인 대기',
 ];
 
 function HorizontalLabelPositionBelowStepper() {
