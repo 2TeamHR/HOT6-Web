@@ -121,6 +121,12 @@ function Sidebar() {
                                     {/* <!-- 중분류 --> */}
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
+                                            전자결재
+                                        </div>
+                                        <Link to="/es/main" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>메인</Link>
+                                    </div>
+                                    <div className={sidebarStyle.navDropdownContent}>
+                                        <div className={sidebarStyle.navDropdownContentTitle}>
                                             기안함
                                         </div>
                                         <Link to="/CertificationForm" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>기안하기</Link>
@@ -206,7 +212,7 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             캘린더
                                         </div>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>일정관리</a>
+                                            <Link to="schedule/main" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>일정관리</Link>
                                     </div>
                                 </div>
                             </div>

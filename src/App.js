@@ -17,6 +17,8 @@ import MessageSent from "./pages/messsage/MessageSent";
 import MessageTrash from "./pages/messsage/MessageTrash";
 import ReceivedMessage from "./pages/messsage/receivedMessage";
 import AttendanceManage from "./pages/attendence/AttendanceManage";
+import ScheduleMain from "./pages/schedule/ScheduleMain";
+import EsMain from './pages/es/EsMain';
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
             <Route path="/messsage/MessageTrash" element={<MessageTrash />} />
             <Route path="/messsage/receivedMessage" element={<ReceivedMessage />} />
             <Route path="/attendence/AttendanceManage" element={<AttendanceManage />} />
+            <Route path="/schedule/main" element={<ScheduleMain />} />
+            <Route path="/es/main" element={<EsMain />} />
           </Route>
 
 
