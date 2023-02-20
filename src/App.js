@@ -52,15 +52,14 @@ function App() {
             <Route path="/schedule/main" element={<ScheduleMain />} />
 
             {/* 전자결재 */}
+            <Route path="/es/main" element={<EsMain />} />
             <Route path='/es/draft' element={<EsDraft />}/>
             <Route path='/es/leaveForm' element={<LeaveForm />}/>
             <Route path='/es/retireForm' element={<RetireForm />}/>
             <Route path='/es/salaryForm' element={<SalaryForm />}/>
-            <Route path='/es/CertificationForm' element={<CertificationForm />}/>
+            <Route path='/es/certificationFrom' element={<CertificationForm />}/>
 
-
-
-            {/* mypage */}
+            {/* 마이페이지 */}
             <Route path="/mypage/main" element={ <MypageMain />} />
             <Route path="/mypage/attendance" element={<MypageAttendance />}/>
             <Route path="/mypage/management" element={<MypageManagement />}/>
@@ -68,34 +67,30 @@ function App() {
             <Route path="/mypage/attendance/history" element={<MypageAttendanceHistory />}/>
             <Route path="/mypage/annual/history" element={<MypageAnnualHistory />}/>
 
-           {/* annual */}
+           {/* 근태관리 */}
             <Route path="/annual/history" element={<AnnualHistory />}/>
             <Route path="/annual/payment" element={<AnnualPayment />}/>
             <Route path="/annual/management" element={<AnnualManagement />}/>
             <Route path="/annual/management/detailed" element={<AnnualManagementDetailed />}/>
 
-            {/* es */}
-            <Route path="/es/main" element={<EsMain />} />
-            <Route path='/es/certificationFrom' element={<CertificationForm />}/>
-
-            {/* HRM */}
+            {/* 인사 */}
             <Route path="/organization/chart" element={<OrganizationChart />}/>
             <Route path="/organization/create" element={<OrganizationCreate />}/>
             <Route path="/organization/certification" element={<OrganiCertification />} />
 
-            {/* money */}
+            {/* 급여 */}
             <Route path="/salary/check" element={ <SalaryCheck />} />
             <Route path="/salary/checkN" element={ <AllCheckN />} />
             <Route path="/salary/checkY" element={ <AllCheckY />} />
             <Route path="/salary/severanceN" element={ <SeveranceN />} />
             <Route path="/salary/severanceY" element={ <SeveranceY />} />
 
-            {/* board */}
+            {/* 게시판 */}
             <Route path="/board/notice" element={<Notice />} />
             <Route path="/board/community" element={<Community />} />
             <Route path="/board/notice" element={<Notice />} />
 
-            {/* message */}
+            {/* 메세지 */}
             <Route path="/messsage/message" element={<Message />} />
             <Route path="/messsage/MessageSent" element={<MessageSent />} />
             <Route path="/messsage/MessageTrash" element={<MessageTrash />} />
