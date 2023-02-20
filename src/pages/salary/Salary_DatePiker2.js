@@ -25,7 +25,7 @@ const statues = [
 function SelectDatePiker2() {
   const [year, setYear] = useState('2023');
   const [month, setMonth] = useState('02');
-  const [status, setStatus] = useState('지급대기');
+  const [status, setStatus] = useState('N');
 
   function handleYearChange(e) {
     setYear(e.target.value);
@@ -42,11 +42,13 @@ function SelectDatePiker2() {
   function handleClick() {
     const paymentStatus = statues.find(status => status.value === setStatus);
 
+    console.log(statues.find(status => status.value === setStatus));
+
     console.log(paymentStatus);
     if (paymentStatus === 'Y') {
-      window.location.href = 'http://localhost:3000/allcheckY';
+      // window.location.href = 'http://localhost:3000/allcheckY';
     } else {
-      window.location.href = 'http://localhost:3000/allcheckN';
+      // window.location.href = 'http://localhost:3000/allcheckN';
     }
   }
 
