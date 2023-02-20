@@ -45,67 +45,6 @@ function AllCheckY(){
             </div>
         </div>
 
-        {/* <div>
-            <span style={{
-
-                    position: "relative",
-                    top: 5
-            }}>부서 이름
-            </span>
-
-            <FormControl sx={{ml: 3, mb: 100,  minWidth: 170 }} size="small">
-                <Select
-                    labelId="demo-select-small"
-                    id="demo-select-small"
-                    value={age}
-                    label="Age"
-                    onChange={handleChange}
-                >
-                    <MenuItem value="">
-                        <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-            </FormControl>
-        </div> */}
-
-        {/* <div className={attendenceManage.employeeName}>
-            <span style={{
-
-                position: "relative",
-                top: 40
-            }}>사원명
-            </span>
-            <Box component="form" noValidate autoComplete="off">
-                <FormControl sx={{ml: 10,minWidth: 100 }}>
-                    <OutlinedInput placeholder="Please enter text" />
-                    <MyFormHelperText />
-                </FormControl>
-            </Box>
-
-
-            <div className={attendenceManage.employeeCalender}>
-                    <span>근무 일자</span>
-            </div>
-
-
-
-
-
-            <div class={attendenceManage.employeeCalender2}>
-                <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
-            </div>
-
-
-
-            <div class={attendenceManage.employeeCalender3}>
-                <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
-            </div>
-                <span>~</span>
-        </div> */}
-
         <div className="pt-5 pl-5">
             <SalaryDataTableY className="pl-5" />
         </div>

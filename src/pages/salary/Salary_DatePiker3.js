@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const years = Array.from({length: (new Date().getFullYear() - 2007)}, (_, i) => 2008 + i);
 const months = [
@@ -25,7 +26,8 @@ const statues = [
 function SelectDatePiker3() {
   const [year, setYear] = useState('2023');
   const [month, setMonth] = useState('02');
-  const [status, setStatus] = useState('지급대기');
+  const [status, setStatus] = useState('N');
+  const navigate = useNavigate();
 
   function handleYearChange(e) {
     setYear(e.target.value);
@@ -40,13 +42,15 @@ function SelectDatePiker3() {
   }
 
   function handleClick() {
-    const paymentStatus = statues.find(status => status.value === setStatus);
 
-    console.log(paymentStatus);
-    if (paymentStatus === 'Y') {
-      window.location.href = 'http://localhost:3000/severanceY';
+    const paymentStatus = statues.find(statu => statu.value === status);
+
+    console.log(paymentStatus.value);
+    
+    if (paymentStatus.value === 'Y') {
+      navigate('/severanceY');
     } else {
-      window.location.href = 'http://localhost:3000/severanceN';
+      navigate('/severanceN');
     }
   }
 
@@ -71,7 +75,7 @@ function SelectDatePiker3() {
             </option>
           ))}
         </select>
-        <span className="ml-2">일</span>
+        <span className="ml-2">월</span>
       </label>
       <label className="ml-3">
         <select value={status} onChange={handleStatusChange} style={{width:100}}>
