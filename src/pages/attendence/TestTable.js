@@ -36,11 +36,11 @@ const rows = [
 
 export default function DataTable() {
     return (
-        <div style={{ height: 400, width: '100%' }}>
+        <div style={{ height: 600, width: '100%' }}>
             <DataGrid
                 rows={rows}
                 columns={columns}
-                pageSize={5}
+                pageSize={10}
                 rowsPerPageOptions={[5]}
                 checkboxSelection
             />

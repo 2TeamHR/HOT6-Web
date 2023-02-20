@@ -28,6 +28,7 @@ function AttendanceManage() {
     function handleChange() {}
 
     const [startDate, setStartDate] = useState(new Date());
+    const [startDate2, setStartDate2] = useState(new Date());
     function MyFormHelperText() {
         const { focused } = useFormControl() || {};
 
@@ -44,12 +45,15 @@ function AttendanceManage() {
 
     return (
         <>
-            <BootstrapLink />
-            <body>
+
+
             <Sidebar />
                 <main>
 
+            <div className={attendenceManage.packageTitles}>
+
             <div className={attendenceManage.employeeDepart}>
+
             <span style={{
 
                     position: "relative",
@@ -85,7 +89,7 @@ function AttendanceManage() {
                       </span>
                     <Box component="form" noValidate autoComplete="off">
                         <FormControl sx={{ml: 10,minWidth: 100 }}>
-                            <OutlinedInput placeholder="Please enter text" />
+                            <OutlinedInput className={attendenceManage.inputText} placeholder="Please enter text" />
                             <MyFormHelperText />
                         </FormControl>
                     </Box>
@@ -99,30 +103,44 @@ function AttendanceManage() {
 
 
 
-                <div class={attendenceManage.employeeCalender2}>
-                <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+                <div className={attendenceManage.employeeCalender2}>
+                <DatePicker className={attendenceManage.employeeCalender2First} selected={startDate} onChange={date => setStartDate(date)} />
                 </div>
 
 
 
-                    <div class={attendenceManage.employeeCalender3}>
-                 <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+                    <div className={attendenceManage.employeeCalender3}>
+                 <DatePicker className={attendenceManage.employeeCalender2First} selected={startDate2} onChange={date => setStartDate2(date)} />
                  </div>
-                <span>~</span>
+
+                <div className={attendenceManage.text1}>~</div>
+
             </div>
 
-                <div class={attendenceManage.employeeCalender4}>
+
+
+
+            </div>
+
+
+                <div className={attendenceManage.employeeCalender4}>
                 <DataTable/>
                 </div>
 
+                    <div className={attendenceManage.employeeCalender5}>
+                        <BasicButtons />
+                    </div>
 
-                <div class={attendenceManage.employeeCalender5}>
-                <BasicButtons/>
-                </div>
+
+
+                    <div>
+                        <h1 className={attendenceManage.title}>근태 조회 및 관리</h1>
+                    </div>
+
 
 
                 </main>
-            </body>
+
 
         </>
         );

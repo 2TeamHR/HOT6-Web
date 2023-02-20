@@ -3,6 +3,12 @@ main {
     margin-top: 90px;
 }
 
+.title{
+    position: absolute;
+    left: 150px;
+    bottom: 900px;
+}
+
 .main {
     display: flex;
     justify-content: space-around;
