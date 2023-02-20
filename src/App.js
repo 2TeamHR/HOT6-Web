@@ -17,7 +17,6 @@ import Login from '../src/pages/login/Login';
 import FindPassword from '../src/pages/login/FindPassword';
 import ChangePassword from '../src/pages/login/ChangePassword';
 import SalaryCheck from './pages/salary/Salary_check';
-import CertificationForm from './pages/es/CertificationForm'
 import Community from './pages/board/Community';
 import Notice from './pages/board/Notice';
 import Message from "./pages/messsage/message";
@@ -31,6 +30,11 @@ import SeveranceN from './pages/salary/Salary_SeveranceN'
 import SeveranceY from './pages/salary/Salary_SeveranceY'
 import ScheduleMain from "./pages/schedule/ScheduleMain";
 import EsMain from './pages/es/EsMain';
+import EsDraft from './pages/es/EsDraft';
+import LeaveForm from './pages/es/LeaveForm';
+import RetireForm from './pages/es/RetireForm';
+import SalaryForm from './pages/es/SalaryForm';
+import CertificationForm from './pages/es/CertificationForm';
 import MypageMain from './pages/mypage/mypage_main';
 import OrganiCertification from './pages/HRM/Organization_Certification';
 
@@ -46,6 +50,15 @@ function App() {
             <Route index element={ <Main />} />
             <Route path="/attendence/AttendanceManage" element={<AttendanceManage />} />
             <Route path="/schedule/main" element={<ScheduleMain />} />
+
+            {/* 전자결재 */}
+            <Route path='/es/draft' element={<EsDraft />}/>
+            <Route path='/es/leaveForm' element={<LeaveForm />}/>
+            <Route path='/es/retireForm' element={<RetireForm />}/>
+            <Route path='/es/salaryForm' element={<SalaryForm />}/>
+            <Route path='/es/CertificationForm' element={<CertificationForm />}/>
+
+
 
             {/* mypage */}
             <Route path="/mypage/main" element={ <MypageMain />} />
