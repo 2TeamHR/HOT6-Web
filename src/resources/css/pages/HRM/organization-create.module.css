@@ -27,11 +27,11 @@ table {
 }
 
 .mainRow p {
-    margin: 15px 3% 15px 3%;
+    margin: 15px 50px 15px 50px;
 }
 
 .mainRow input {
-    margin: 15px 3% 15px 3%;
+    margin: 15px 150px 15px 150px;
     width: 50%;
     height: 30%;
     border: 1px solid #8a8a8a;
@@ -45,6 +45,7 @@ table {
 }
 
 .myInfo {
+    width: 100%;
     font-size: 20px;
     border-bottom: solid 1px black;
     color: rgb(118, 118, 118);

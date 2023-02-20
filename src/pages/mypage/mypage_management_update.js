@@ -1,7 +1,7 @@
 import mpManagement from '../../resources/css/pages/mypage/mypage-management.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
 
-function MypageManagement (){
+function MypageManagementUpdate (){
 
     return(
         <>
@@ -30,7 +30,9 @@ function MypageManagement (){
                     </div>
                     <div className="mb-3">
                         <p className={mpManagement.infoHead}>이메일</p>
-                        <p className={mpManagement.myInfo}>asd1234@5DO.com</p>
+                        <div class="mb-3">
+                            <input/>
+                        </div>
                     </div>
                     <div className="mb-3">
                         <p className={mpManagement.infoHead}>내선번호</p>
@@ -38,7 +40,9 @@ function MypageManagement (){
                     </div>
                     <div className="mb-3">
                         <p className={mpManagement.infoHead}>휴대번호</p>
-                        <p className={mpManagement.myInfo}>010.1234.5678</p>
+                        <div class="mb-3">
+                            <input/>
+                        </div>
                     </div>
                     <div className="mb-3">
                         <p className={mpManagement.infoHead}>직급</p>
@@ -46,7 +50,9 @@ function MypageManagement (){
                     </div>
                     <div className="mb-3">
                         <p className={mpManagement.infoHead}>주소</p>
-                        <p className={mpManagement.myInfo}>서울시 마포구 아현동 123-34</p>
+                        <div class="mb-3">
+                            <input/>
+                        </div>
                     </div>
                     <div className="mb-3">
                         <p className={mpManagement.infoHead}>생년월일</p>
@@ -68,4 +74,4 @@ function MypageManagement (){
     );
 }
 
-export default MypageManagement;
+export default MypageManagementUpdate;
