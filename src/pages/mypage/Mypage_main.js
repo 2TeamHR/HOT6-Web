@@ -1,7 +1,13 @@
 import mypageStyle from '../../resources/css/pages/mypage/mypage.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
+import { Link } from 'react-router-dom';
 
 function MypageMain() {
+
+
+    const mypageManagementHref = () => {
+        document.location.href = "/mypage/management"
+    }
 
     return (
         <>
@@ -24,7 +30,7 @@ function MypageMain() {
                         <span>5DO001</span>
                     </div>
                     <div className={`${mypageStyle.infoUpdate} text-center mt-3`}>
-                        <button>개인정보 변경</button>
+                        <button onClick={mypageManagementHref}>개인정보 변경</button>
                     </div>
                 </div>
 
@@ -62,7 +68,7 @@ function MypageMain() {
                             <span className="fs-3 fw-bold">분</span>
                         </div>
                     </div>
-                    <div className="">
+                    <div>
                         <div className="ml-5 mr-5">
                             <span className="fw-300">출근 시간</span>
                             <span className="fw-300 float-right">08:45:19</span>
@@ -77,7 +83,7 @@ function MypageMain() {
                         <button className={mypageStyle.workBtn}>퇴근하기</button>
                     </div>
                     <div className={mypageStyle.seeMore}>
-                        <p><a href="#!">더보기 +</a></p>
+                        <p><Link to="/mypage/attendance">더보기 +</Link></p>
                     </div>
                 </div>
             </div>
@@ -106,7 +112,7 @@ function MypageMain() {
                         <span>이순신사원</span>
                     </div>
                     <div className={mypageStyle.seeMore}>
-                        <p>더보기 +</p>
+                    <p><Link to="/mypage/attendance">더보기 +</Link></p>
                     </div>
                 </div>
 

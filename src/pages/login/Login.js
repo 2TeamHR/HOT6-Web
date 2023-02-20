@@ -22,13 +22,13 @@ const Login = () => {
       }} />
       <div className="container">
         <br />
-        <p><h1 style={{ "font-size": "xx-large" }}><b>5DO 로그인</b></h1></p>
+        <h1 style={{ "fontSize": "xx-large" }}><b>5DO 로그인</b></h1>
         <form>
           <input type="text" placeholder="사번을 입력하세요." id="username" name="username" />
           <input type="password" placeholder="비밀번호를 입력하세요." id="password" name="password" />
           <input type="checkbox" id="remember" name="remember" />
-          <label htmlFor="remember" style={{ "display": "inline-block", "font-size": "100%" }}>사번 저장</label>
-          <input type="submit" style={{ "font-size": "large" }} defaultValue="로그인" className="btn_submit" value="로그인" />
+          <label htmlFor="remember" style={{ "display": "inline-block", "fontSize": "100%" }}>사번 저장</label>
+          <input type="submit" style={{ "fontSize": "large" }} className="btn_submit" value="로그인" />
         </form>
         <p><span>비밀번호를 잊으셨나요? <a href="/findpassword">비밀번호 찾기</a></span></p>
         <p>COPYRIGHTⓒ 2023 5DO ALL RIGHTS RESERVED.</p>
