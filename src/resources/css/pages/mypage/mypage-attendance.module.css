@@ -1,30 +1,21 @@
-main {
-    margin-top: 100px;
-}
-
-.title {
-    font-size: 25px;
-    font-weight: bold;
-    margin-bottom: 30px;
-}
 
 /* attendance box */
-.attendance-check-main-box1{
+.attendanceCheckMainBox1{
     width: 35%;
 }
 
-.attendance-check-main-box2{
+.attendanceCheckMainBox2{
     width: 60%;
 }
 
-.attendance-check-box{
+.attendanceCheckBox{
     padding-top: 15px;
     border: 1px solid #c3c3c3;
     border-radius: 20px;
     height: 130px;
 }
 
-.work-btn {
+.workBtn {
     width: 100px;
     height: 25px;
     margin: 10px;
