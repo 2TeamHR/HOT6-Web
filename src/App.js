@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main'
-import MypageMain from './pages/mypage/mypage_main';
 import MypageAttendance from './pages/mypage/mypage_attendance';
 import MypageManagement from './pages/mypage/mypage_management';
 import MypageManagementUpdate from './pages/mypage/mypage_management_update';
@@ -32,6 +31,8 @@ import SeveranceN from './pages/salary/Salary_SeveranceN'
 import SeveranceY from './pages/salary/Salary_SeveranceY'
 import ScheduleMain from "./pages/schedule/ScheduleMain";
 import EsMain from './pages/es/EsMain';
+import MypageMain from './pages/mypage/mypage_main';
+import OrganiCertification from './pages/HRM/Organization_Certification';
 
 function App() {
   return (
@@ -43,23 +44,8 @@ function App() {
           <Route path="/ChangePassword" element={<ChangePassword />} />
           <Route path="/" element={ <Layout /> } >
             <Route index element={ <Main />} />
-            <Route path="/mypageMain" element={ <MyPageMain />} />
-            <Route path="/salaryCheck" element={ <SalaryCheck />} />
-            <Route path="/allCheckN" element={ <AllCheckN />} />
-            <Route path="/allCheckY" element={ <AllCheckY />} />
-            <Route path="/severanceN" element={ <SeveranceN />} />
-            <Route path="/severanceY" element={ <SeveranceY />} />
-            <Route path='CertificationForm' element={<CertificationForm />}/>
-            <Route path="/board/notice" element={<Notice />} />
-            <Route path="/board/community" element={<Community />} />
-            <Route path="/board/notice" element={<Notice />} />
-            <Route path="/messsage/message" element={<Message />} />
-            <Route path="/messsage/MessageSent" element={<MessageSent />} />
-            <Route path="/messsage/MessageTrash" element={<MessageTrash />} />
-            <Route path="/messsage/receivedMessage" element={<ReceivedMessage />} />
             <Route path="/attendence/AttendanceManage" element={<AttendanceManage />} />
             <Route path="/schedule/main" element={<ScheduleMain />} />
-            <Route path="/es/main" element={<EsMain />} />
 
             {/* mypage */}
             <Route path="/mypage/main" element={ <MypageMain />} />
@@ -75,10 +61,32 @@ function App() {
             <Route path="/annual/management" element={<AnnualManagement />}/>
             <Route path="/annual/management/detailed" element={<AnnualManagementDetailed />}/>
 
-            {/* HRM */}
-            <Route path="/organization/create" element={<OrganizationCreate />}/>
-            <Route path="/organization/chart" element={<OrganizationChart />}/>
+            {/* es */}
+            <Route path="/es/main" element={<EsMain />} />
+            <Route path='/es/certificationFrom' element={<CertificationForm />}/>
 
+            {/* HRM */}
+            <Route path="/organization/chart" element={<OrganizationChart />}/>
+            <Route path="/organization/create" element={<OrganizationCreate />}/>
+            <Route path="/organization/certification" element={<OrganiCertification />} />
+
+            {/* money */}
+            <Route path="/salary/check" element={ <SalaryCheck />} />
+            <Route path="/salary/checkN" element={ <AllCheckN />} />
+            <Route path="/salary/checkY" element={ <AllCheckY />} />
+            <Route path="/salary/severanceN" element={ <SeveranceN />} />
+            <Route path="/salary/severanceY" element={ <SeveranceY />} />
+
+            {/* board */}
+            <Route path="/board/notice" element={<Notice />} />
+            <Route path="/board/community" element={<Community />} />
+            <Route path="/board/notice" element={<Notice />} />
+
+            {/* message */}
+            <Route path="/messsage/message" element={<Message />} />
+            <Route path="/messsage/MessageSent" element={<MessageSent />} />
+            <Route path="/messsage/MessageTrash" element={<MessageTrash />} />
+            <Route path="/messsage/receivedMessage" element={<ReceivedMessage />} />
           </Route>
         </Routes>
 

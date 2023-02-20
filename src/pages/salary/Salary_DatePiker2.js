@@ -50,9 +50,9 @@ function SelectDatePiker2() {
     console.log(paymentStatus.value);
     
     if (paymentStatus.value === 'Y') {
-      navigate('/allcheckY');
+      navigate('/salary/checkY');
     } else {
-      navigate('/allcheckN');
+      navigate('/salary/checkN');
     }
   }
 

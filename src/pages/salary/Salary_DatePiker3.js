@@ -48,9 +48,9 @@ function SelectDatePiker3() {
     console.log(paymentStatus.value);
     
     if (paymentStatus.value === 'Y') {
-      navigate('/severanceY');
+      navigate('/salary/severanceY');
     } else {
-      navigate('/severanceN');
+      navigate('/salary/severanceN');
     }
   }
 

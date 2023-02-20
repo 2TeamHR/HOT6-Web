@@ -2,15 +2,16 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 
 const columns = [
-    { field: 'id', headerName: '퇴사번호', width: 70 },
-    { field: 'team', headerName: '조직', width: 100 },
-    { field: 'rank', headerName: '직급', width: 100 },
-    { field: 'name', headerName: '이름', width: 100 },
-    { field: 'salary', headerName: '기본급', width: 100 },
-    { field: 'bonus', headerName: '상여금', width: 100 },
-    { field: 'tax', headerName: '공제액', width: 100 },
-    { field: 'totalSalary', headerName: '총 지급액', width: 100 },
-    { field: 'paymentsDate', headerName: '지급일', width: 100 }
+    { field: 'id', headerName: '퇴직번호', width: 100 },
+    { field: 'team', headerName: '조직', width: 150 },
+    { field: 'rank', headerName: '직급', width: 150 },
+    { field: 'name', headerName: '이름', width: 150 },
+    { field: 'salary', headerName: '기본급', width: 150 },
+    { field: 'bonus', headerName: '상여금', width: 150 },
+    { field: 'tax', headerName: '공제액', width: 150 },
+    { field: 'totalSalary', headerName: '총 지급액', width: 150 },
+    { field: 'paymentDate', headerName: '지급일', width: 150 },
+    { field: 'paymentStatus', headerName: '지급여부', width: 100 },
     
 ];
 
