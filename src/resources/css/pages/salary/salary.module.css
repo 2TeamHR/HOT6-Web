@@ -1,3 +1,8 @@
 checkTitle {
     margin: 1px;
 }
+
+.salaryButton {
+
+    display: inline-block;
+}
