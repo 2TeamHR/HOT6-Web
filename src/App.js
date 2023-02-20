@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main'
-import MypageAttendance from './pages/mypage/mypage_attendance';
-import MypageManagement from './pages/mypage/mypage_management';
-import MypageManagementUpdate from './pages/mypage/mypage_management_update';
-import MypageAttendanceHistory from './pages/mypage/mypage_attendance_history';
-import MypageAnnualHistory from './pages/mypage/mypage_annual-history';
+import MypageAttendance from './pages/mypage/Mypage_attendance';
+import MypageManagement from './pages/mypage/Mypage_management';
+import MypageManagementUpdate from './pages/mypage/Mypage_management_update';
+import MypageAttendanceHistory from './pages/mypage/Mypage_attendance_history';
+import MypageAnnualHistory from './pages/mypage/Mypage_annual_history';
 import AnnualHistory from './pages/attendance_management/annual_history';
 import AnnualPayment from './pages/attendance_management/annual-payment';
 import AnnualManagement from './pages/attendance_management/annual-mangement';
@@ -35,7 +35,7 @@ import LeaveForm from './pages/es/LeaveForm';
 import RetireForm from './pages/es/RetireForm';
 import SalaryForm from './pages/es/SalaryForm';
 import CertificationForm from './pages/es/CertificationForm';
-import MypageMain from './pages/mypage/mypage_main';
+import MypageMain from './pages/mypage/Mypage_main';
 import OrganiCertification from './pages/HRM/Organization_Certification';
 
 function App() {
