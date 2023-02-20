@@ -1,30 +1,15 @@
 import React, { useState } from 'react';
 import salaryStyle from '../../resources/css/pages/salary/salary.module.css';
-import {useFormControl} from "@mui/material";
-import FormHelperText from '@mui/material/FormHelperText';
 import SalaryDataTable2N from './SalaryDataTable2N';
 import SelectDatePiker3 from './Salary_DatePiker3';
 
 function SeveranceN(){
     
-    let age;
 
     function handleChange() {}
 
     const [startDate, setStartDate] = useState(new Date());
-    function MyFormHelperText() {
-        const { focused } = useFormControl() || {};
-
-        const helperText = React.useMemo(() => {
-            if (focused) {
-                return '';
-            }
-
-            return '';
-        }, [focused]);
-
-        return <FormHelperText>{helperText}</FormHelperText>;
-    }
+ 
 
     return (
         <>

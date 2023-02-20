@@ -7,24 +7,7 @@ import SelectDatePiker3 from './Salary_DatePiker3';
 
 function SeveranceY(){
     
-    let age;
-
-    function handleChange() {}
-
     const [startDate, setStartDate] = useState(new Date());
-    function MyFormHelperText() {
-        const { focused } = useFormControl() || {};
-
-        const helperText = React.useMemo(() => {
-            if (focused) {
-                return '';
-            }
-
-            return '';
-        }, [focused]);
-
-        return <FormHelperText>{helperText}</FormHelperText>;
-    }
 
     return (
         <>
