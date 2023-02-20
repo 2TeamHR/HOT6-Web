@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import mpahStyle from '../resources/css/pages/mypage/mypage-attendance-history.module.css';
+import tableStyle from '../resources/css/components/tableComponent.module.css';
 
 export class TsbDepartment extends Component{
 
@@ -86,7 +86,7 @@ export class SearchBtn extends Component{
     render(){
 
         return(
-            <div className={`float-left ${mpahStyle.searchBtn}`}>
+            <div className={`float-left ml-3 ${tableStyle.searchBtn}`}>
                 <button>조회</button>
             </div>
         );

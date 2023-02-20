@@ -1,0 +1,23 @@
+
+/* search */
+.searchBtn button {
+    width: 130px;
+    height: 35px;
+    border: 0px;
+    background-color: #5EDCB3;
+    border-radius: 15px;
+    color: white;
+}
+
+.boxStyle { 
+    padding: 20px 10px 20px 10px;
+    border-radius: 4px;
+    box-shadow: 1px 1px 3px 1px #d8d8d8;
+}
+
+.searchBox {
+    display: flex;
+    align-items: baseline;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

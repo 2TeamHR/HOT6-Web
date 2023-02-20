@@ -1,0 +1,56 @@
+[
+    {
+      "id": "number",
+      "numeric": false,
+      "disablePadding": true,
+      "label": "No"
+    },
+    {
+      "id": "department",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "부서"
+    },
+    {
+      "id": "team",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "팀"
+    },
+    {
+      "id": "rank",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "직급"
+    },
+    {
+      "id": "name",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "성명"
+    },
+    {
+      "id": "annualCategory",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "휴가구분"
+    },
+    {
+      "id": "generation",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "발생"
+    },
+    {
+      "id": "use",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "사용"
+    },
+     {
+      "id": "leftover",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "잔여"
+    }
+  ]

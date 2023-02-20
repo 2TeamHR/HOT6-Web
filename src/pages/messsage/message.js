@@ -1,7 +1,7 @@
 
 import React from 'react';
 import messageStyle from '../../resources/css/pages/message/message.module.css'
-import BootstrapLink from '../../components/bootstrap';
+// import BootstrapLink from '../../components/bootstrap';
 import Sidebar from '../../components/Sidebar';
 import {Link} from "react-router-dom";
 
@@ -9,16 +9,13 @@ function Message() {
 
         return (
         <>
-    <BootstrapLink />
+    {/* <BootstrapLink /> */}
 <body>
 <Sidebar />
 
 
     {/* // <!--========== CONTENTS ==========--> */}
         <main>
-
-
-
             <div className={messageStyle.main}>
                 <div className={messageStyle.module}>
                     <div className={messageStyle.module2}>

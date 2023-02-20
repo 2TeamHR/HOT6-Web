@@ -1,18 +1,17 @@
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
-import {TsbDepartment, TsbEmployee, PayState, Term, EmployState, SearchBtn, LeaveState} from '../../components/TableSearchBox';
 import tableStyle from '../../resources/css/components/tableComponent.module.css';
+import {TsbDepartment, TsbEmployee, PayState, Term, EmployState, SearchBtn} from '../../components/TableSearchBox';
 import {EnhancedTable} from '../../components/tableComponent';
-import { getAnnualHistoryTableData } from '../../api/tableAPI';
+import { getAnnualPaymentTableData } from '../../api/tableAPI';
 
-function annualHistory(props) {
-
+function AnnualPayment(){
 
     return(
         <main className={mainTitleStyle.main}>
-            <div className="main">
+            <div>
 
                 <div className={mainTitleStyle.title}>
-                    <p>연차 내역</p>
+                    <p>연차 결제 리스트</p>
                 </div>
 
                 <div className={tableStyle.boxStyle}>
@@ -20,7 +19,6 @@ function annualHistory(props) {
                         <TsbDepartment/>
                         <TsbEmployee/>
                         <PayState/>
-                        <LeaveState/>
                         <SearchBtn/>
                     </div>
                     <div className={tableStyle.searchBox}>
@@ -28,10 +26,10 @@ function annualHistory(props) {
                         <EmployState/>
                     </div>
                 </div>
-                <EnhancedTable tabledata={ getAnnualHistoryTableData() }/>
+                <EnhancedTable tabledata={ getAnnualPaymentTableData() }/>
             </div>
         </main>
     );
 }
 
-export default annualHistory;
+export default AnnualPayment;

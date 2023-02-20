@@ -1,6 +1,7 @@
 import mpahStyle from '../../resources/css/pages/mypage/mypage-annual-history.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
-import Pagination from '../../components/Pagination';
+import {EnhancedTable} from '../../components/tableComponent';
+import { getMypageAnnualHistoryTableData } from '../../api/tableAPI';
 
 function MypageAnnualHistory() {
 
@@ -45,23 +46,7 @@ function MypageAnnualHistory() {
                 {/* <!-- check box --> */}
             </div>
 
-            <div class="mt-5 table-margin">
-                <table class="table">
-                    <thead>
-                    <tr class="text-center">
-                        <th scope="col">No</th>
-                        <th scope="col">휴가종류</th>
-                        <th scope="col">시작일</th>
-                        <th scope="col">종료일</th>
-                    </tr>
-                    </thead>
-                    <tbody class="text-center">
-                    </tbody>
-                </table>
-                <div className='text-center'>
-                    <Pagination/>
-                </div>
-            </div>
+            <EnhancedTable tabledata={ getMypageAnnualHistoryTableData() }/>
 
          </main>
     );

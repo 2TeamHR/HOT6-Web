@@ -1,0 +1,44 @@
+[
+    {
+      "id": "number",
+      "numeric": false,
+      "disablePadding": true,
+      "label": "No"
+    },
+    {
+      "id": "date",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "일자"
+    },
+    {
+      "id": "workCategory",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "근태유형"
+    },
+    {
+      "id": "startTime",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "출근시간"
+    },
+    {
+      "id": "endTime",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "퇴근시간"
+    },
+    {
+      "id": "allWorkTime",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "총 근무 시간"
+    },
+    {
+      "id": "reason",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "사유"
+    }
+  ]
