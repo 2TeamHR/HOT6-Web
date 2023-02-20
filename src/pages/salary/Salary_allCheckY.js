@@ -1,38 +1,10 @@
-import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import salaryStyle from '../../resources/css/pages/salary/salary.module.css';
 import SelectDatePiker2 from './Salary_DatePiker2';
-import attendenceManage from '../../resources/css/pages/attendence/attendence.module.css'
-import DatePicker from "react-datepicker";
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import {useFormControl} from "@mui/material";
-import FormHelperText from '@mui/material/FormHelperText';
-import FormControl from '@mui/material/FormControl';
 import SalaryDataTableY from './SalaryDataTableY';
 
 function AllCheckY(){
     
-    let age;
-
-    function handleChange() {}
-
-    const [startDate, setStartDate] = useState(new Date());
-    function MyFormHelperText() {
-        const { focused } = useFormControl() || {};
-
-        const helperText = React.useMemo(() => {
-            if (focused) {
-                return '';
-            }
-
-            return '';
-        }, [focused]);
-
-        return <FormHelperText>{helperText}</FormHelperText>;
-    }
 
     return (
         <>
