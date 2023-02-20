@@ -1,5 +1,3 @@
-import Calendar from '@toast-ui/calendar';
-
 
 function ScheduleMain() {
 
