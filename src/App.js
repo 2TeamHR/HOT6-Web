@@ -19,6 +19,8 @@ import AllCheckN from './pages/salary/Salary_allCheckN';
 import AllCheckY from './pages/salary/Salary_allCheckY';
 import SeveranceN from './pages/salary/Salary_SeveranceN'
 import SeveranceY from './pages/salary/Salary_SeveranceY'
+import ScheduleMain from "./pages/schedule/ScheduleMain";
+import EsMain from './pages/es/EsMain';
 
 function App() {
   return (
@@ -45,6 +47,8 @@ function App() {
             <Route path="/messsage/MessageTrash" element={<MessageTrash />} />
             <Route path="/messsage/receivedMessage" element={<ReceivedMessage />} />
             <Route path="/attendence/AttendanceManage" element={<AttendanceManage />} />
+            <Route path="/schedule/main" element={<ScheduleMain />} />
+            <Route path="/es/main" element={<EsMain />} />
           </Route>
 
 
