@@ -13,8 +13,8 @@ function MypageManagement (){
                 </div>
 
                 <div className={mpManagement.infoBtn}>
-                    <button onClick="location.href='password-update.html'">비밀번호변경</button>
-                    <button onClick="location.href='mypage-management-update.html'">수정</button>
+                    <button>비밀번호변경</button>
+                    <button>수정</button>
                     <button>인쇄</button>
                 </div>
 
