@@ -37,6 +37,7 @@ import SalaryForm from './pages/es/SalaryForm';
 import CertificationForm from './pages/es/CertificationForm';
 import MypageMain from './pages/mypage/Mypage_main';
 import OrganiCertification from './pages/HRM/Organization_Certification';
+import AttendanceSelectTime from "./pages/attendence/AttendanceSelectTime";
 
 function App() {
   return (
@@ -49,6 +50,8 @@ function App() {
           <Route path="/" element={ <Layout /> } >
             <Route index element={ <Main />} />
             <Route path="/attendence/AttendanceManage" element={<AttendanceManage />} />
+            <Route path="/attendence/AttendanceSelectTime" element={<AttendanceSelectTime />} />
+
             <Route path="/schedule/main" element={<ScheduleMain />} />
 
             {/* 전자결재 */}

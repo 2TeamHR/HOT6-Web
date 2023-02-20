@@ -11,8 +11,8 @@ function ReceivedMessage(){
     return (
     <>
         
-        <BootstrapLink/>
-            <body>
+
+
            
             <Sidebar/>
 
@@ -91,7 +91,7 @@ function ReceivedMessage(){
             </div>
         </div>
         </main>
-    </body>
+
 
     </>
     );

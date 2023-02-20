@@ -1,3 +1,21 @@
+/*타이틀*/
+.title{
+    position: absolute;
+    left: 150px;
+    top:100px;
+}
+
+/*이름,사원명 근무일자 타이틀*/
+
+.packageTitles {
+    position: relative;
+    left: 100px;
+    bottom:20px
+
+}
+
+
+/*부서이름*/
 .employeeDepart {
     float: left;
     margin-left: 100px;
@@ -6,14 +24,14 @@
 
 }
 
-
+/*사원명*/
 .employeeName {
     position: absolute;
     margin-left: 400px;
     margin-top: 50px;
 }
 
-
+/*근무일자*/
 .employeeCalender {
     position: relative;
     right: 300px;
@@ -22,37 +40,75 @@
 
 }
 
+/*일자 달력 왼쪽*/
 .employeeCalender2 {
     position: absolute;
     /*margin-left: 100px;*/
-    right: 320px;
+    right: 280px;
+
 }
 
+/*일자 달력 보더라인*/
+.employeeCalender2First {
+
+    border: 1px solid #aaaaaa;
+
+}
+
+/*일자 달력 클릭 했을 시*/
+.employeeCalender2First:focus {
+
+    outline: 2px solid #0d6efd;
+
+}
+
+
+/*일자 달력 오른쪽*/
 .employeeCalender3 {
     position: absolute;
     /*margin-left: 300px;*/
-    right: 85px;
+    right: 35px;
+    top: 95px;
+    border-color: #aaaaaa;
 
 }
 
+/*테이블*/
 .employeeCalender4 {
     position: absolute;
     /*margin-left: 300px;*/
     right: 670px;
-    top: 400px;
+    top: 380px;
     width: 50%;
 
 }
 
-.employeeCalender5 {
-    position: absolute;
-    left: 200px;
-    margin-left: 750px;
-    top: 205px;
-    left: 170px;
+.employeeCalender5Button {
+    color: black;
+
+    font-weight: bold;
 }
 
 
-#dName {
-    margin-top: 100px;
+/*조회버튼*/
+.employeeCalender5 {
+    position: absolute;
+    left: 250px;
+    margin-left: 650px;
+    top: 223px;
+
+}
+/*조회 글자*/
+
+
+.inputText {
+    margin-top: 5px;
+    width: 200px;
+    height:40px;
+}
+
+/*물결글자*/
+.text1 {
+    position: absolute;
+    left: 15px;
 }
