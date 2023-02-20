@@ -1,0 +1,26 @@
+[
+    {
+      "id": "name",
+      "numeric": false,
+      "disablePadding": true,
+      "label": "test1"
+    },
+    {
+      "id": "calories",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "test1"
+    },
+    {
+      "id": "fat",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "test1"
+    },
+    {
+      "id": "carbs",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "test1"
+    }
+  ]

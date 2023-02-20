@@ -1,18 +1,18 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main'
-import MypageMain from './pages/mypage/mypage_main';
-import MypageAttendance from './pages/mypage/mypage_attendance';
-import MypageManagement from './pages/mypage/mypage_management';
-import MypageManagementUpdate from './pages/mypage/mypage_management_update';
-import MypageAttendanceHistory from './pages/mypage/mypage_attendance_history';
-import MypageAnnualHistory from './pages/mypage/mypage_annual-history';
-import AnnualHistory from './pages/attendance_management/annual_history';
-import AnnualPayment from './pages/attendance_management/annual-payment';
-import AnnualManagement from './pages/attendance_management/annual-mangement';
-import AnnualManagementDetailed from './pages/attendance_management/annual-management-detailed';
-import OrganizationCreate from './pages/HRM/organization-create';
-import OrganizationChart from './pages/HRM/organization-chart';
+import MypageMain from './pages/mypage/Mypage_main';
+import MypageAttendance from './pages/mypage/Mypage_attendance';
+import MypageManagement from './pages/mypage/Mypage_management';
+import MypageManagementUpdate from './pages/mypage/Mypage_management_update';
+import MypageAttendanceHistory from './pages/mypage/Mypage_attendance_history';
+import MypageAnnualHistory from './pages/mypage/Mypage_annual_history';
+import AnnualHistory from './pages/attendance_management/Annual_history';
+import AnnualPayment from './pages/attendance_management/Annual-payment';
+import AnnualManagement from './pages/attendance_management/Annual-management';
+import AnnualManagementDetailed from './pages/attendance_management/Annual-management-detailed';
+import OrganizationCreate from './pages/HRM/Organization_create';
+import OrganizationChart from './pages/HRM/Organization_chart';
 import Layout from './layouts/Layout';
 import Login from '../src/pages/login/Login';
 import FindPassword from '../src/pages/login/FindPassword';
@@ -43,7 +43,6 @@ function App() {
           <Route path="/ChangePassword" element={<ChangePassword />} />
           <Route path="/" element={ <Layout /> } >
             <Route index element={ <Main />} />
-            <Route path="/mypageMain" element={ <MyPageMain />} />
             <Route path="/salaryCheck" element={ <SalaryCheck />} />
             <Route path="/allCheckN" element={ <AllCheckN />} />
             <Route path="/allCheckY" element={ <AllCheckY />} />
