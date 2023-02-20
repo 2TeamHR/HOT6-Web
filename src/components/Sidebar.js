@@ -20,8 +20,6 @@ function Sidebar() {
 
                         {/* <!-- nav 마이페이지 --> */}
                         <div className={sidebarStyle.navItems}>
-                            <h3 className={`${sidebarStyle.h3} ${sidebarStyle.navSubtitle}`}></h3>
-
                             <div className={sidebarStyle.navDropdown}>
                                 <div href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
                                     <i className={`bx bx-home ${sidebarStyle.navIcon}`}></i>
@@ -34,7 +32,7 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             마이페이지
                                         </div>
-                                            <Link to="/myPageMain" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>메인</Link>
+                                            <Link to="/myPage/main" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>나의 인사 카드</Link>
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +54,7 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             조직도
                                         </div>
-                                            <Link to="/" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>재직자명단</Link>
+                                            <Link to="/organization/chart" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>재직자명단</Link>
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
@@ -69,7 +67,7 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             인사팀 기능
                                         </div>
-                                            <Link to="/" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>신규 사원 등록</Link>
+                                            <Link to="/organization/create" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>신규 사원 등록</Link>
                                             <Link to="/" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>인사 이동 명단</Link>
                                             <Link to="/" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직자 명단</Link>
                                             <Link to="/" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>상여금 명단</Link>
@@ -100,9 +98,9 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             휴가관리
                                         </div>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>연차 결재 리스트</a>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>연차 내역</a>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>연차 관리</a>
+                                            <Link to="/annual/payment" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>연차 결재 리스트</Link>
+                                            <Link to="/annual/history" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>연차 내역</Link>
+                                            <Link to="/annual/management" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>연차 관리</Link>
                                     </div>
                                 </div>
                             </div>
