@@ -30,7 +30,7 @@ import SeveranceN from './pages/salary/Salary_SeveranceN'
 import SeveranceY from './pages/salary/Salary_SeveranceY'
 import ScheduleMain from "./pages/schedule/ScheduleMain";
 import EsMain from './pages/es/EsMain';
-import EsDraft from './pages/es/EsDraft';
+import EsDraftMenu from './pages/es/EsDraftMenu';
 import LeaveForm from './pages/es/LeaveForm';
 import RetireForm from './pages/es/RetireForm';
 import SalaryForm from './pages/es/SalaryForm';
@@ -38,6 +38,9 @@ import CertificationForm from './pages/es/CertificationForm';
 import MypageMain from './pages/mypage/Mypage_main';
 import OrganiCertification from './pages/HRM/Organization_Certification';
 import AttendanceSelectTime from "./pages/attendence/AttendanceSelectTime";
+import EsWaitInbox from "./pages/es/EsWaitInbox";
+import EsPrograssInbox from './pages/es/EsPrograssInbox';
+import EsCompleteInbox from './pages/es/EsCompleteInbox';
 
 function App() {
   return (
@@ -56,11 +59,16 @@ function App() {
 
             {/* 전자결재 */}
             <Route path="/es/main" element={<EsMain />} />
-            <Route path='/es/draft' element={<EsDraft />}/>
+            <Route path='/es/draftMenu' element={<EsDraftMenu />}/>
             <Route path='/es/leaveForm' element={<LeaveForm />}/>
             <Route path='/es/retireForm' element={<RetireForm />}/>
             <Route path='/es/salaryForm' element={<SalaryForm />}/>
             <Route path='/es/certificationFrom' element={<CertificationForm />}/>
+            <Route path='/es/wait' element={<EsWaitInbox />}/>
+            <Route path='/es/prograss' element={<EsPrograssInbox />}/>
+            <Route path='/es/complete' element={<EsCompleteInbox />}/>
+
+
 
             {/* 마이페이지 */}
             <Route path="/mypage/main" element={ <MypageMain />} />

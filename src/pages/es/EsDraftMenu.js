@@ -2,10 +2,10 @@ import { Card, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 
 
-function EsDraft() {
+function EsDraftMenu() {
     return (
         <>
-            <h4>전자결재 양식</h4>
+            <h4>전자결재 기안</h4>
 
             <Grid container>
                 <Grid item>
@@ -40,4 +40,4 @@ function EsDraft() {
     )
 }
 
-export default EsDraft;
+export default EsDraftMenu;

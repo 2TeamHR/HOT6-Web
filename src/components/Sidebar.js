@@ -127,17 +127,16 @@ function Sidebar() {
                                             기안함
                                         </div>
                                         <Link to="/es/draft" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>기안하기</Link>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 진행함</a>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 요청함</a>
+                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>전자결재 기안함</a>
+                                            
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             결재 수신함
                                         </div>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 내역</a>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 요청</a>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>대리 결재</a>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>수신 참조</a>
+                                        <Link to="/es/wait" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 대기 문서함</Link>
+                                        <Link to="/es/prograss" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 진행 문서함</Link>
+                                        <Link to="/es/complete" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 완료 문서함</Link>                                        
                                     </div>
                                 </div>
                             </div>
