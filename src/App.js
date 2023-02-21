@@ -10,8 +10,6 @@ import AnnualHistory from './pages/attendance_management/Annual_history';
 import AnnualPayment from './pages/attendance_management/Annual_payment';
 import AnnualManagement from './pages/attendance_management/Annual_management';
 import AnnualManagementDetailed from './pages/attendance_management/Annual_management_detailed';
-import OrganizationCreate from './pages/hrm/Organization_create';
-import OrganizationChart from './pages/hrm/Organization_chart';
 import Layout from './layouts/Layout';
 import Login from '../src/pages/login/Login';
 import FindPassword from '../src/pages/login/FindPassword';
@@ -79,8 +77,7 @@ function App() {
             <Route path="/annual/management/detailed" element={<AnnualManagementDetailed />}/>
 
             {/* 인사 */}
-            <Route path="/organization/chart" element={<OrganizationChart />}/>
-            <Route path="/organization/create" element={<OrganizationCreate />}/>
+            <Route path="/organization/certification" element={<OrganiCertificate />} />
             <Route path="/organization/certification" element={<OrganiCertificate />} />
 
             {/* 급여 */}

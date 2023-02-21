@@ -5,7 +5,7 @@ import {EnhancedTable} from '../../components/tableComponent';
 import { getOrganizationChartTableData } from '../../api/tableAPI';
 // import { SelectBar } from '../../components/SelectBar';
 
-function OrganizationChart() {
+function OrganizationRetireeChart() {
 
 
     return (
@@ -13,7 +13,7 @@ function OrganizationChart() {
             <div>
 
                 <div className={mainTitleStyle.title}>
-                    <p>조직도</p>
+                    <p>퇴직자 명단</p>
                 </div>
 
                 <div className={tableStyle.boxStyle}>
@@ -44,4 +44,4 @@ function OrganizationChart() {
     );
 }
 
-export default OrganizationChart;
+export default OrganizationRetireeChart;
