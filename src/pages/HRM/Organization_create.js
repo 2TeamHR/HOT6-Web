@@ -1,5 +1,9 @@
-import organizagtionCreateStyle from '../../resources/css/pages/HRM/organization-create.module.css';
+import mpManagement from '../../resources/css/pages/mypage/mypage-management.module.css';
+import profileStyle from '../../resources/css/components/profile.module.css';
+import sampleImg from '../../resources/image/hong.jpeg';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
+import Paper from '@mui/material/Paper';
+import TextField from '@mui/material/TextField';
 
 function OrganizationCreate() {
 
