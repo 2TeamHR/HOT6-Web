@@ -1,4 +1,4 @@
-import Sidebar from '../../components/Sidebar';
+
 import React, {useState} from "react";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -11,14 +11,15 @@ import {useFormControl} from "@mui/material";
 import attendenceManage from '../../resources/css/pages/attendence/attendence.module.css'
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
-import DataTable from "./TestTable";
-import BasicButtons from "./ButtonStyle";
+import BasicButtons from "./Components/ButtonStyle";
+import AttendanceTimeTable from "./Components/AttendanceTimeTable";
 
 
 
 
 
 function AttendanceSelectTime() {
+
     let age;
 
     function handleChange() {}
@@ -66,11 +67,11 @@ function AttendanceSelectTime() {
                                 onChange={handleChange}
                             >
                                 <MenuItem value="">
-                                    <em>부서 선택</em>
+                                    <em>None</em>
                                 </MenuItem>
-                                <MenuItem value={10}>인사팀</MenuItem>
-                                <MenuItem value={20}>경영지원팀</MenuItem>
-                                <MenuItem value={30}>총무팀</MenuItem>
+                                <MenuItem value={10}>Ten</MenuItem>
+                                <MenuItem value={20}>Twenty</MenuItem>
+                                <MenuItem value={30}>Thirty</MenuItem>
                             </Select>
                         </FormControl>
                     </div>
@@ -117,7 +118,7 @@ function AttendanceSelectTime() {
 
 
                 <div className={attendenceManage.employeeCalender4}>
-                    <DataTable/>
+                    <AttendanceTimeTable/>
                 </div>
 
                 <div className={attendenceManage.employeeCalender5}>

@@ -43,14 +43,21 @@ main {
 }
 
 
+
+
 .buttonOptionalSelect{
-    margin-left: 25px;
+    margin-left: 28px;
 }
 
 
 /* 휴지통쪽 버튼 클릭 상자 */
 .buttonOptionalSelect2{
-    margin-left: 32px;
+    margin-left: 30px;
+}
+
+/* 휴지통쪽 버튼 클릭 상자 */
+.buttonOptionalSelect3{
+    margin-left: 28px;
 }
 
 
