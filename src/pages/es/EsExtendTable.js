@@ -1,5 +1,6 @@
   import {
 
+    Button,
     Container,
     Grid,
     Step,
@@ -60,7 +61,7 @@
           <TableCell align="center">{row.esRank}</TableCell>
           <TableCell align="center">{row.esDrafterName}</TableCell>
           <TableCell align="center">{row.esDate}</TableCell>
-          <TableCell align="center">{row.esState}</TableCell>
+          <TableCell align="center"><Button>{row.esState}</Button></TableCell>
           <TableCell align="center">
             <IconButton
               aria-label="expand row"

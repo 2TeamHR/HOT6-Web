@@ -64,7 +64,7 @@ function App() {
             <Route path='/es/leaveForm' element={<LeaveForm />}/>
             <Route path='/es/retireForm' element={<RetireForm />}/>
             <Route path='/es/salaryForm' element={<SalaryForm />}/>
-            <Route path='/es/certificationFrom' element={<CertificationForm />}/>
+            <Route path='/es/certificationForm' element={<CertificationForm />}/>
             <Route path='/es/draftInbox' element={<EsDraftInbox />}/>
             <Route path='/es/wait' element={<EsWaitInbox />}/>
             <Route path='/es/prograss' element={<EsPrograssInbox />}/>
