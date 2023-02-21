@@ -38,6 +38,8 @@ function RetireForm() {
             <li><label>기안일시</label><input type="date" name="" id="" /></li>
             <li><label>제목</label><input type="text" /></li>
             <li><label>내용</label><input type="text" name="" id="" /></li>
+            <li><label>퇴직예정일</label><input type="date" name="" id="" /></li>
+            <li><label>첨부파일</label><input type="file" name="" id="" /></li>
           </ul>
           <Button>신청하기</Button><Button>취소하기</Button>
         </Grid>

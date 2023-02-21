@@ -2,8 +2,13 @@ import * as React from 'react';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
+import dayjs from 'dayjs';
 import { styled } from '@mui/material/styles';
 import { Button, Container, Grid, TextField } from '@mui/material';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -17,6 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 function LeaveForm() {
+  const [value, setValue] = React.useState(dayjs('2022-04-07'));
   return (
     <>
       <Grid container direction="row">
@@ -48,14 +54,37 @@ function LeaveForm() {
               <option value="4">생리휴가</option>
               <option value="5">가족돌봄휴가</option>
             </select></li>
-            <li><label htmlFor="">휴가시작</label><input type="date" /></li>
-            <li><label htmlFor="">휴가종료</label><input type="date" /></li>
+            <li><label htmlFor="">휴가시작</label>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  disableFuture
+                  openTo="day"
+                  views={['year', 'month', 'day']}
+                  value={value}
+                  onChange={(newValue) => {
+                    setValue(newValue);
+                  }}
+                  renderInput={(params) => <TextField size="small" {...params} />}
+                />
+              </LocalizationProvider></li>
+            <li><label htmlFor="">휴가종료</label><LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  disableFuture
+                  openTo="day"
+                  views={['year', 'month', 'day']}
+                  value={value}
+                  onChange={(newValue) => {
+                    setValue(newValue);
+                  }}
+                  renderInput={(params) => <TextField size="small" {...params} />}
+                />
+              </LocalizationProvider></li>
             <li><label htmlFor="">첨부파일</label><input type="file" /></li>
           </ul>
           <Button>신청하기</Button><Button>취소하기</Button>
         </Grid>
         <Grid item xs={4}>
-        <TextField id="standard-basic" label="결재자 검색" variant="standard" />
+          <TextField id="standard-basic" label="결재자 검색" variant="standard" />
         </Grid>
       </Grid>
     </>

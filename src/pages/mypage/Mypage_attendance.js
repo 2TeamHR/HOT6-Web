@@ -1,5 +1,6 @@
 import mpAttendanceStyle from '../../resources/css/pages/mypage/mypage-attendance.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
+import CalenderComponent from '../../components/CalendarComponent';
 
 function MypageAttendance() {
 
@@ -92,9 +93,7 @@ function MypageAttendance() {
                 {/* <!-- check box -->
 
                 <!-- calender --> */}
-                <div className="calender">
-                    달력!
-                </div>
+                <CalenderComponent/>
                 {/* <!-- calender --> */}
             </div>
         </main>

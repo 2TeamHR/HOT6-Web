@@ -1,6 +1,6 @@
-import CertificationTable from "./Organization_CertificationTable";
+import CertificateTable from "./Organization_CertificateTable";
 
-function OrganiCertification() {
+function OrganiCertificate() {
 
     return (
         <>
@@ -11,10 +11,10 @@ function OrganiCertification() {
         </div>
 
         <div className="pt-5 pl-5">
-            <CertificationTable />
+            <CertificateTable />
         </div>
         </>
     );
 }
 
-export default OrganiCertification;
+export default OrganiCertificate;

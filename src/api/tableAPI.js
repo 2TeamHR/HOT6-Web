@@ -2,7 +2,8 @@ import annualHistoryTableData from '../resources/data/annual_history_table_data.
 import annualManagementTableData from '../resources/data/annual_management_table_data.json';
 import annualPaymentTableData from '../resources/data/annual_payment_table_data.json';
 import mypageAnnualHistoryTableData from '../resources/data/annual_history_table_data.json';
-import mypageAttendanceHistoryTableDate from '../resources/data/mypage_attendance_history_table_data.json';
+import mypageAttendanceHistoryTableData from '../resources/data/mypage_attendance_history_table_data.json';
+import organizationChartTableData from '../resources/data/organization_chart_table_data.json';
 
 export function getAnnualHistoryTableData() {
 
@@ -26,5 +27,10 @@ export function getMypageAnnualHistoryTableData() {
 
 export function getMypageAttendanceHistoryTableData() {
 
-    return mypageAttendanceHistoryTableDate;
+    return mypageAttendanceHistoryTableData;
+}
+
+export function getOrganizationChartTableData() {
+
+    return organizationChartTableData;
 }

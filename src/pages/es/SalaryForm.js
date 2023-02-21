@@ -3,7 +3,7 @@ import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
-import { Button, Container, Grid, TextField } from '@mui/material';
+import { Button,  Grid, TextField } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -37,6 +37,8 @@ function SalaryForm() {
             <li><label>기안일시</label><input type="date" name="" id="" /></li>
             <li><label>제목</label><input type="text" /></li>
             <li><label>내용</label><input type="text" name="" id="" /></li>
+            <li><label>급여정정 날짜</label><input type="date" name="" id="" /></li>
+            <li><label>첨부파일</label><input type="file" name="" id="" /></li>
           </ul>
           <Button>신청하기</Button><Button>취소하기</Button>
         </Grid>

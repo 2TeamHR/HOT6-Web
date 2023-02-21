@@ -12,9 +12,6 @@ function MessageTrash(){
     <>
         
 
-
-            <Sidebar/>
-
     {/* // <!--========== CONTENTS ==========--> */}
         <main>
             <div className={messageStyle.main}>

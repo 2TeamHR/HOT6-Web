@@ -24,7 +24,7 @@ const rows = [
     { id: 6, team: '무슨팀', rank: '사원', name: '노재영', salary: 150000, bonus: 50000, tax: 20000, totalSalary: 180000 },
 ];
 
-export default function SalaryDataTable2Y() {
+export default function SalarySeveranceTableN() {
     return (
         <div className="pl-5" style={{ height: 400, width: '90%' }}>
             <DataGrid 
@@ -33,8 +33,18 @@ export default function SalaryDataTable2Y() {
                 columns={columns}
                 pageSize={5}
                 rowsPerPageOptions={[5]}
-                // checkboxSelection
+                checkboxSelection
             />
+
+            <button 
+                type="submit" 
+                className="mt-3" 
+                style={{float:"right"}}
+                // onCLick={onClickHandler}
+            >
+                지급하기
+            </button>
         </div>
+        
     );
 }

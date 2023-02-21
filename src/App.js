@@ -10,8 +10,6 @@ import AnnualHistory from './pages/attendance_management/Annual_history';
 import AnnualPayment from './pages/attendance_management/Annual_payment';
 import AnnualManagement from './pages/attendance_management/Annual_management';
 import AnnualManagementDetailed from './pages/attendance_management/Annual_management_detailed';
-import OrganizationCreate from './pages/HRM/Organization_create';
-import OrganizationChart from './pages/HRM/Organization_chart';
 import Layout from './layouts/Layout';
 import Login from '../src/pages/login/Login';
 import FindPassword from '../src/pages/login/FindPassword';
@@ -30,14 +28,20 @@ import SeveranceN from './pages/salary/Salary_SeveranceN'
 import SeveranceY from './pages/salary/Salary_SeveranceY'
 import ScheduleMain from "./pages/schedule/ScheduleMain";
 import EsMain from './pages/es/EsMain';
-import EsDraft from './pages/es/EsDraft';
+import EsDraftMenu from './pages/es/EsDraftMenu';
 import LeaveForm from './pages/es/LeaveForm';
 import RetireForm from './pages/es/RetireForm';
 import SalaryForm from './pages/es/SalaryForm';
 import CertificationForm from './pages/es/CertificationForm';
 import MypageMain from './pages/mypage/Mypage_main';
-import OrganiCertification from './pages/HRM/Organization_Certification';
 import AttendanceSelectTime from "./pages/attendence/AttendanceSelectTime";
+import EsWaitInbox from "./pages/es/EsWaitInbox";
+import EsPrograssInbox from './pages/es/EsPrograssInbox';
+import EsCompleteInbox from './pages/es/EsCompleteInbox';
+import SalaryBonus from './pages/salary/Salary_bonus';
+import BonusInsert from './pages/salary/Salary_BonusInsert';
+import OrganiCertificate from './pages/hrm/Organization_Certificate';
+import EsDraftInbox from './pages/es/EsDraftInbox';
 
 function App() {
   return (
@@ -56,11 +60,17 @@ function App() {
 
             {/* 전자결재 */}
             <Route path="/es/main" element={<EsMain />} />
-            <Route path='/es/draft' element={<EsDraft />}/>
+            <Route path='/es/draftMenu' element={<EsDraftMenu />}/>
             <Route path='/es/leaveForm' element={<LeaveForm />}/>
             <Route path='/es/retireForm' element={<RetireForm />}/>
             <Route path='/es/salaryForm' element={<SalaryForm />}/>
             <Route path='/es/certificationFrom' element={<CertificationForm />}/>
+            <Route path='/es/draftInbox' element={<EsDraftInbox />}/>
+            <Route path='/es/wait' element={<EsWaitInbox />}/>
+            <Route path='/es/prograss' element={<EsPrograssInbox />}/>
+            <Route path='/es/complete' element={<EsCompleteInbox />}/>
+
+
 
             {/* 마이페이지 */}
             <Route path="/mypage/main" element={ <MypageMain />} />
@@ -77,9 +87,7 @@ function App() {
             <Route path="/annual/management/detailed" element={<AnnualManagementDetailed />}/>
 
             {/* 인사 */}
-            <Route path="/organization/chart" element={<OrganizationChart />}/>
-            <Route path="/organization/create" element={<OrganizationCreate />}/>
-            <Route path="/organization/certification" element={<OrganiCertification />} />
+            <Route path="/organization/certification" element={<OrganiCertificate />} />
 
             {/* 급여 */}
             <Route path="/salary/check" element={ <SalaryCheck />} />
@@ -87,6 +95,8 @@ function App() {
             <Route path="/salary/checkY" element={ <AllCheckY />} />
             <Route path="/salary/severanceN" element={ <SeveranceN />} />
             <Route path="/salary/severanceY" element={ <SeveranceY />} />
+            <Route path="/salary/bonus" element={ <SalaryBonus />} />
+            <Route path="/salary/bonus/insert" element={ <BonusInsert />} />
 
             {/* 게시판 */}
             <Route path="/board/notice" element={<Notice />} />
