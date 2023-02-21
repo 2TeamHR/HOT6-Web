@@ -69,8 +69,6 @@ function Sidebar() {
                                         </div>
                                             <Link to="/organization/create" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>신규 사원 등록</Link>
                                             <Link to="/" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>인사 이동 명단</Link>
-                                            <Link to="/" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직자 명단</Link>
-                                            <Link to="/" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>상여금 명단</Link>
                                     </div>
                                 </div>
                             </div>

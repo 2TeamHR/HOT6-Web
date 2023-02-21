@@ -5,12 +5,7 @@ import BonusDatePicker from './Salary_BonusDatePiker';
 
 function SalaryBonus(){
     
-
-    function handleChange() {}
-
-    const [startDate, setStartDate] = useState(new Date());
  
-
     return (
         <>
         <div className={`ml-5 ${salaryStyle.checkTitle}`}>

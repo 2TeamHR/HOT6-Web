@@ -33,7 +33,10 @@ function BonusDatePicker() {
   }
 
 
-  function handleClick() {
+  function seachHandler() {
+
+  }
+  function insertHandler() {
 
     navigate("/salary/bonus/insert")
   }
@@ -61,8 +64,8 @@ function BonusDatePicker() {
         </select>
         <span className="ml-2">월</span>
       </label>
-      <button className='btn btn-primary ml-3' onClick={handleClick}>조회하기</button>
-      <button className='btn btn-primary ml-3' onClick={handleClick}>명단 등록하기</button>
+      <button className='btn btn-primary ml-3' onClick={seachHandler}>조회하기</button>
+      <button className='btn btn-primary ml-3' onClick={insertHandler}>명단 등록하기</button>
     </div>
   );
 }

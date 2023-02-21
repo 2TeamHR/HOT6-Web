@@ -36,11 +36,10 @@ import RetireForm from './pages/es/RetireForm';
 import SalaryForm from './pages/es/SalaryForm';
 import CertificationForm from './pages/es/CertificationForm';
 import MypageMain from './pages/mypage/Mypage_main';
-import OrganiCertification from './pages/hrm/Organization_Certification';
 import AttendanceSelectTime from "./pages/attendence/AttendanceSelectTime";
-import MypageUpdate from './pages/mypage/Mypage_update';
 import SalaryBonus from './pages/salary/Salary_bonus';
 import BonusInsert from './pages/salary/Salary_BonusInsert';
+import OrganiCertificate from './pages/hrm/Organization_Certificate';
 
 function App() {
   return (
@@ -72,7 +71,6 @@ function App() {
             <Route path="/mypage/management/update" element={<MypageManagementUpdate />}/>
             <Route path="/mypage/attendance/history" element={<MypageAttendanceHistory />}/>
             <Route path="/mypage/annual/history" element={<MypageAnnualHistory />}/>
-            <Route path="/mypage/update" element={<MypageUpdate />} />
 
            {/* 근태관리 */}
             <Route path="/annual/history" element={<AnnualHistory />}/>
@@ -83,7 +81,7 @@ function App() {
             {/* 인사 */}
             <Route path="/organization/chart" element={<OrganizationChart />}/>
             <Route path="/organization/create" element={<OrganizationCreate />}/>
-            <Route path="/organization/certification" element={<OrganiCertification />} />
+            <Route path="/organization/certification" element={<OrganiCertificate />} />
 
             {/* 급여 */}
             <Route path="/salary/check" element={ <SalaryCheck />} />

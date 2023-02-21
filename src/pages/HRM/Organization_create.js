@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import organizagtionCreateStyle from '../../resources/css/pages/HRM/organization-create.module.css';
+import organizagtionCreateStyle from '../../resources/css/pages/hrm/organization-create.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
 
 function OrganizationCreate() { 
