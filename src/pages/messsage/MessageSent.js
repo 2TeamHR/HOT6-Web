@@ -10,11 +10,7 @@ function MessageSent(){
 
     return (
     <>
-        
 
-
-           
-            <Sidebar/>
 
     {/* // <!--========== CONTENTS ==========--> */}
         <main>

@@ -182,19 +182,17 @@ function Sidebar() {
                         <div className={sidebarStyle.navItems}>
 
                             <div className={sidebarStyle.navDropdown}>
-                                <a href="/board/notice" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
                                     <i className={`bx bx-message-edit ${sidebarStyle.navIcon}`}></i>
                                     <span className={sidebarStyle.navName}>게시판</span>
                                     <i className={`bx bx-chevron-down ${sidebarStyle.navIcon} ${sidebarStyle.navDropdownIcon}`}></i>
-                                </a>
                                 <div className={sidebarStyle.navDropdownCollapse}>
                                     {/* <!-- 중분류 --> */}
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             게시판
                                         </div>
-                                            <a href="/board/notice" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>공지사항</a>
-                                            <a href="/board/community" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>커뮤니티</a>
+                                            <Link to="/board/notice" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>공지사항</Link>
+                                            <Link to="/board/community" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>커뮤니티</Link>
                                     </div>
                                     
                                 </div>
@@ -237,10 +235,10 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             메세지
                                         </div>
-                                            <a href="/messsage/message" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>메세지 보내기</a>
-                                            <a href="/messsage/receivedMessage" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>받은 메세지</a>
-                                            <a href="/messsage/MessageSent" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>보낸 메세지</a>
-                                            <a href="/messsage/MessageTrash" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>휴지통</a>
+                                            <Link to="/messsage/message" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>메세지 보내기</Link>
+                                            <Link to="/messsage/receivedMessage" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>받은 메세지</Link>
+                                            <Link to="/messsage/MessageSent" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>보낸 메세지</Link>
+                                            <Link to="/messsage/MessageTrash" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>휴지통</Link>
                                     </div>
                                 </div>
                             </div>

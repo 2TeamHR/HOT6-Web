@@ -43,7 +43,6 @@ function AttendanceSelectTime() {
         <>
 
 
-            <Sidebar />
             <main>
 
                 <div className={attendenceManage.packageTitles}>
