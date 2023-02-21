@@ -11,7 +11,9 @@ import AnnualPayment from './pages/attendance_management/Annual_payment';
 import AnnualManagement from './pages/attendance_management/Annual_management';
 import AnnualManagementDetailed from './pages/attendance_management/Annual_management_detailed';
 import OrganizationCreate from './pages/HRM/Organization_create';
+import OrganizationDetailed from './pages/HRM/Organization_detailed';
 import OrganizationChart from './pages/HRM/Organization_chart';
+import OrganizationRetireeChart from './pages/HRM/Organization_retiree_chart';
 import Layout from './layouts/Layout';
 import Login from '../src/pages/login/Login';
 import FindPassword from '../src/pages/login/FindPassword';
@@ -78,7 +80,9 @@ function App() {
 
             {/* 인사 */}
             <Route path="/organization/chart" element={<OrganizationChart />}/>
+            <Route path="/organization/retiree/chart" element={<OrganizationRetireeChart />}/>
             <Route path="/organization/create" element={<OrganizationCreate />}/>
+            <Route path="/organization/detailed" element={<OrganizationDetailed />}/>
             <Route path="/organization/certification" element={<OrganiCertification />} />
 
             {/* 급여 */}

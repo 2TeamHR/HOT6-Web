@@ -1,6 +1,10 @@
 import mypageStyle from '../../resources/css/pages/mypage/mypage.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
+import profileStyle from '../../resources/css/components/profile.module.css';
 import { Link } from 'react-router-dom';
+import sampleImg from '../../resources/image/hong.jpeg';
+import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
 
 function MypageMain() {
 
@@ -13,10 +17,10 @@ function MypageMain() {
         <>
             <main className={mainTitleStyle.main}>
             <div className={mainTitleStyle.mainClass}>
-                <div className={mypageStyle.module}>
+                <Paper elevation="3" className={mypageStyle.module}>
                     <p className={mypageStyle.moduleTitle}>나의 정보</p>
-                    <div className={mypageStyle.profileImage}>
-                        <img className="center" src="" width="150px"/>
+                    <div className={profileStyle.profile}>
+                        <img className={profileStyle.profileImg} alt="profile_img" src={sampleImg} />
                     </div>
                     <div className="text-center mt-4 mb-4">
                         <span className="fs-4 fw-bold">홍길동</span>
@@ -30,11 +34,11 @@ function MypageMain() {
                         <span>5DO001</span>
                     </div>
                     <div className={`${mypageStyle.infoUpdate} text-center mt-3`}>
-                        <button onClick={mypageManagementHref}>개인정보 변경</button>
+                        <Button variant="contained" onClick={mypageManagementHref}>개인정보 변경</Button>
                     </div>
-                </div>
+                </Paper>
 
-                <div className={mypageStyle.module} style={{width: "205%"}}>
+                <Paper elevation="3" className={mypageStyle.module} style={{width: "205%"}}>
                     <p className={mypageStyle.moduleTitle}>나의 2023년도 휴가 현황</p>
                     <p className={mypageStyle.vacationPlus}>+ 휴가신청</p>
                     <div className={`text-center ${mypageStyle.myVacation}`}>
@@ -52,9 +56,9 @@ function MypageMain() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Paper>
 
-                <div className={mypageStyle.module}>
+                <Paper elevation="3" className={mypageStyle.module}>
                     <p className={mypageStyle.moduleTitle}>근태관리</p>
                     <div className="text-lg-start ml-3 text-center time">
                         <p className="alert-light fs-5">2023년 3월 19일(목요일) 14:30:32</p>
@@ -85,13 +89,13 @@ function MypageMain() {
                     <div className={mypageStyle.seeMore}>
                         <p><Link to="/mypage/attendance">더보기 +</Link></p>
                     </div>
-                </div>
+                </Paper>
             </div>
 
             <div className={mainTitleStyle.mainClass}>
 
-                <div className={mypageStyle.module}>
-                    <p className={`${mypageStyle.moduleTitle} fs-1 mt-5`}>쪽지함</p>
+                <Paper elevation="3" className={mypageStyle.module}>
+                    <p className={mypageStyle.moduleTitle}>나의 메세지함</p>
                     <div className={mypageStyle.noteCount}>
                         <span>5</span>
                         <span>건</span>
@@ -112,12 +116,12 @@ function MypageMain() {
                         <span>이순신사원</span>
                     </div>
                     <div className={mypageStyle.seeMore}>
-                    <p><Link to="/mypage/attendance">더보기 +</Link></p>
+                      <p><Link to="/messsage/receivedMessage" >더보기 +</Link></p>
                     </div>
-                </div>
+                </Paper>
 
-                <div className={mypageStyle.module}>
-                    <p className={mypageStyle.moduleTitle}>연차 이력</p>
+                <Paper elevation="3" className={mypageStyle.module}>
+                    <p className={mypageStyle.moduleTitle}>나의 휴가 이력</p>
                     <div className={`ml-2 mr-2 ${mypageStyle.yearHistory}`}>
                         <div className="ml-5 mr-5 pb-3">
                             <span className="fw-300">2022년도</span>
@@ -128,16 +132,16 @@ function MypageMain() {
                             <span className={`fw-300 float-right ${mypageStyle.workDay}`}>18개 사용</span>
                         </div>
                         <div className="ml-5 mr-5 pd-3">
-                            <span className="fw-300">202년도</span>
+                            <span className="fw-300">2020년도</span>
                             <span className={`fw-300 float-right ${mypageStyle.workDay}`}>16개 사용</span>
                         </div>
                     </div>
                     <div className={mypageStyle.seeMore}>
-                        <p>더보기 +</p>
+                        <p><Link to="/messsage/receivedMessage">더보기 +</Link></p>
                     </div>
-                </div>
+                </Paper>
 
-                <div className={mypageStyle.module}>
+                <Paper elevation="3" className={mypageStyle.module}>
                     <p className={mypageStyle.moduleTitle}>나의 근태</p>
                     <div className={mypageStyle.workMonth}>
                         <span>1</span>
@@ -158,11 +162,11 @@ function MypageMain() {
                         </div>
                     </div>
                     <div className={mypageStyle.seeMore}>
-                        <p>더보기 +</p>
+                        <p><Link to="/mypage/attendance/history">더보기 +</Link></p>
                     </div>
-                </div>
+                </Paper>
 
-                <div className={mypageStyle.module}>
+                <Paper elevation="3" className={mypageStyle.module}>
                     <p className={mypageStyle.moduleTitle}>주 근무 시간</p>
                     <div className={mypageStyle.weekTime}>
                         <span className={mypageStyle.weekMyTime}>40</span>
@@ -170,7 +174,7 @@ function MypageMain() {
                         <span>52</span>
                         <span>시간</span>
                     </div>
-                </div>
+                </Paper>
 
             </div>
         </main>
