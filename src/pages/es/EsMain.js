@@ -22,9 +22,9 @@ function EsMain() {
       <Container>
         <Grid container direction="row" rowSpacing={4} columnSpacing={8} alignItems={"center"} >
           <Grid item xs="auto">
-            <Card sx={{ minWidth: 250 }}>
+            <Card sx={{ minWidth: 240 }}>
               <CardContent>
-                <Typography variant="" textAlign="center">지연된 결재 요청</Typography>
+                <Typography variant="subtitle1" textAlign="center" sx={{fontWeight:'bold'}}>지연된 결재 요청</Typography>
               </CardContent>
               <CardActions>
                 <Button>1건</Button>
@@ -32,9 +32,9 @@ function EsMain() {
             </Card>
           </Grid>
           <Grid item xs="auto">
-            <Card sx={{ minWidth: 250 }}>
+            <Card sx={{ minWidth: 240 }}>
               <CardContent>
-                <Typography variant="subtitle2" textAlign="center">확인하지 않은 결재 요청</Typography>
+                <Typography variant="subtitle1" textAlign="center" sx={{fontWeight:'bold'}}>확인하지 않은 결재 요청</Typography>
               </CardContent>
               <CardActions>
                 <Button>1건</Button>
@@ -42,19 +42,19 @@ function EsMain() {
             </Card>
           </Grid>
           <Grid item xs="auto">
-            <Card sx={{ minWidth: 250 }}>
+            <Card sx={{ minWidth: 240 }}>
               <CardContent>
-                <Typography variant="subtitle2" textAlign="center">수신참조 결재</Typography>
+                <Typography variant="subtitle1" textAlign="center" sx={{fontWeight:'bold'}}>수신참조 결재</Typography>
               </CardContent>
-              <CardActions>
+              <CardActions item>
                 <Button>1건</Button>
               </CardActions>
             </Card>
           </Grid>
           <Grid item xs="auto">
-            <Card sx={{ minWidth: 250 }}>
+            <Card sx={{ minWidth: 240 }}>
               <CardContent>
-                <Typography variant="subtitle2" textAlign="center">총 결재 내역</Typography>
+                <Typography variant="subtitle1" textAlign="center" sx={{fontWeight:'bold'}}>총 결재 내역</Typography>
               </CardContent>
               <CardActions>
                 <Button>1건</Button>
@@ -62,25 +62,25 @@ function EsMain() {
             </Card>
           </Grid>
           <Grid item xs="12">
-            <Paper elevation={3}>
+            <Paper elevation={5}>
               <h5>결재 기안 문서</h5>
               <EsTable></EsTable>
             </Paper>
           </Grid>
           <Grid item xs="12">
-            <Paper elevation={3}>
+            <Paper elevation={5}>
               <h5>결재 대기 문서</h5>
               <EsTable></EsTable>
             </Paper>
           </Grid>
           <Grid item xs="12">
-            <Paper elevation={3}>
+            <Paper elevation={5}>
               <h5>결재 진행 문서</h5>
               <EsTable></EsTable>
             </Paper>
           </Grid>
           <Grid item xs="12">
-            <Paper elevation={3}>
+            <Paper elevation={5}>
               <h5>결재 완료 문서</h5>
               <EsTable></EsTable>
             </Paper>

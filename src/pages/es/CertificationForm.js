@@ -3,7 +3,7 @@ import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
-import { Button, Container, Grid, TextField } from '@mui/material';
+import { Button, Grid, TextField } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -14,11 +14,6 @@ const Item = styled(Paper)(({ theme }) => ({
   width: 200,
   height: 100
 }));
-
-
-
-
-
 
 
 function CertificationForm() {
