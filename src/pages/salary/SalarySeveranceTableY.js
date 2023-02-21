@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import PayMentButton from './Salary_PayMentButton';
 
 const columns = [
     { field: 'id', headerName: '퇴직번호', width: 100 },
@@ -25,7 +24,7 @@ const rows = [
     { id: 6, team: '무슨팀', rank: '사원', name: '노재영', salary: 150000, bonus: 50000, tax: 20000, totalSalary: 180000 },
 ];
 
-export default function SalaryDataTable2N() {
+export default function SalarySeveranceTableY() {
     return (
         <div className="pl-5" style={{ height: 400, width: '90%' }}>
             <DataGrid 
@@ -34,10 +33,8 @@ export default function SalaryDataTable2N() {
                 columns={columns}
                 pageSize={5}
                 rowsPerPageOptions={[5]}
-                checkboxSelection
+                // checkboxSelection
             />
-        <PayMentButton style={{}} />
         </div>
-        
     );
 }

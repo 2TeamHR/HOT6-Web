@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import PayMentButton from './Salary_PayMentButton';
 
 const columns = [
     { field: 'id', headerName: '사번', width: 100 },
@@ -36,7 +35,14 @@ export default function SalaryDataTableN() {
                 rowsPerPageOptions={[5]}
                 checkboxSelection
             />
-            <PayMentButton style={{}} />
+            <button 
+                type="submit" 
+                className="mt-3" 
+                style={{float:"right"}}
+                // onCLick={onClickHandler}
+            >
+                지급하기
+            </button>
         </div>
     );
 }

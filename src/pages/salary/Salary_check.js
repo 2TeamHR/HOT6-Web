@@ -30,7 +30,7 @@ function SalaryCheck() {
         </div>
 
         <div className="pt-5 pr-5 mr-5 text-center">
-            <Link to="/sign" className="btn btn-primary mr-3">정정신청</Link>
+            <Link to="/es/draft" className="btn btn-primary mr-3">정정신청</Link>
             <button className="btn btn-primary ml-3" onClick={onClickHandler}>인쇄</button>
         </div>
     </>

@@ -10,10 +10,8 @@ import AnnualHistory from './pages/attendance_management/Annual_history';
 import AnnualPayment from './pages/attendance_management/Annual_payment';
 import AnnualManagement from './pages/attendance_management/Annual_management';
 import AnnualManagementDetailed from './pages/attendance_management/Annual_management_detailed';
-import OrganizationCreate from './pages/HRM/Organization_create';
-import OrganizationDetailed from './pages/HRM/Organization_detailed';
-import OrganizationChart from './pages/HRM/Organization_chart';
-import OrganizationRetireeChart from './pages/HRM/Organization_retiree_chart';
+import OrganizationCreate from './pages/hrm/Organization_create';
+import OrganizationChart from './pages/hrm/Organization_chart';
 import Layout from './layouts/Layout';
 import Login from '../src/pages/login/Login';
 import FindPassword from '../src/pages/login/FindPassword';
@@ -38,8 +36,10 @@ import RetireForm from './pages/es/RetireForm';
 import SalaryForm from './pages/es/SalaryForm';
 import CertificationForm from './pages/es/CertificationForm';
 import MypageMain from './pages/mypage/Mypage_main';
-import OrganiCertification from './pages/HRM/Organization_Certification';
 import AttendanceSelectTime from "./pages/attendence/AttendanceSelectTime";
+import SalaryBonus from './pages/salary/Salary_bonus';
+import BonusInsert from './pages/salary/Salary_BonusInsert';
+import OrganiCertificate from './pages/hrm/Organization_Certificate';
 
 function App() {
   return (
@@ -82,6 +82,7 @@ function App() {
             <Route path="/organization/chart" element={<OrganizationChart />}/>
             <Route path="/organization/retiree/chart" element={<OrganizationRetireeChart />}/>
             <Route path="/organization/create" element={<OrganizationCreate />}/>
+            <Route path="/organization/certification" element={<OrganiCertificate />} />
             <Route path="/organization/detailed" element={<OrganizationDetailed />}/>
             <Route path="/organization/certification" element={<OrganiCertification />} />
 
@@ -91,6 +92,8 @@ function App() {
             <Route path="/salary/checkY" element={ <AllCheckY />} />
             <Route path="/salary/severanceN" element={ <SeveranceN />} />
             <Route path="/salary/severanceY" element={ <SeveranceY />} />
+            <Route path="/salary/bonus" element={ <SalaryBonus />} />
+            <Route path="/salary/bonus/insert" element={ <BonusInsert />} />
 
             {/* 게시판 */}
             <Route path="/board/notice" element={<Notice />} />
