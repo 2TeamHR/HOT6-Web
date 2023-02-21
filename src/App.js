@@ -88,7 +88,6 @@ function App() {
 
             {/* 인사 */}
             <Route path="/organization/certification" element={<OrganiCertificate />} />
-            <Route path="/organization/certification" element={<OrganiCertificate />} />
 
             {/* 급여 */}
             <Route path="/salary/check" element={ <SalaryCheck />} />
