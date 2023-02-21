@@ -41,6 +41,7 @@ import EsCompleteInbox from './pages/es/EsCompleteInbox';
 import SalaryBonus from './pages/salary/Salary_bonus';
 import BonusInsert from './pages/salary/Salary_BonusInsert';
 import OrganiCertificate from './pages/hrm/Organization_Certificate';
+import EsDraftInbox from './pages/es/EsDraftInbox';
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
             <Route path='/es/retireForm' element={<RetireForm />}/>
             <Route path='/es/salaryForm' element={<SalaryForm />}/>
             <Route path='/es/certificationFrom' element={<CertificationForm />}/>
+            <Route path='/es/draftInbox' element={<EsDraftInbox />}/>
             <Route path='/es/wait' element={<EsWaitInbox />}/>
             <Route path='/es/prograss' element={<EsPrograssInbox />}/>
             <Route path='/es/complete' element={<EsCompleteInbox />}/>
