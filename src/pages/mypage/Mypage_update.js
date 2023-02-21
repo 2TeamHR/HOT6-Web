@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import organizagtionCreateStyle from '../../resources/css/pages/HRM/organization-create.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
 
-function OrganizationCreate() { 
+function MypageUpdate() {
 
     const navigate = useNavigate();
 
@@ -15,8 +15,8 @@ function OrganizationCreate() {
                 </div>
  
                 <div className={organizagtionCreateStyle.infoBtn}>
-                    <button className="ml-2 mr-2">등록하기</button>
-                    <button className="ml-2 mr-2" onClick={ () => { navigate(-1)}}>이전 페이지로</button>
+                    <button className="ml-2 mr-2">수정</button>
+                    <button className="ml-2 mr-2" onClick={() => { navigate(-1)}}>이전 페이지로</button>
                 </div>
 
                 <div className="container mt-5">
@@ -68,4 +68,4 @@ function OrganizationCreate() {
     );
 }
 
-export default OrganizationCreate;
+export default MypageUpdate;

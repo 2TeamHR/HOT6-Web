@@ -1,6 +1,4 @@
-import BootstrapLink from '../../components/bootstrap';
 import Sidebar from '../../components/Sidebar';
-import {Link} from "react-router-dom";
 import React, {useState} from "react";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -13,7 +11,6 @@ import {useFormControl} from "@mui/material";
 import attendenceManage from '../../resources/css/pages/attendence/attendence.module.css'
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
-import * as PropTypes from "prop-types";
 import DataTable from "./TestTable";
 import BasicButtons from "./ButtonStyle";
 
@@ -22,7 +19,6 @@ import BasicButtons from "./ButtonStyle";
 
 
 function AttendanceSelectTime() {
-
     let age;
 
     function handleChange() {}
@@ -71,11 +67,11 @@ function AttendanceSelectTime() {
                                 onChange={handleChange}
                             >
                                 <MenuItem value="">
-                                    <em>None</em>
+                                    <em>부서 선택</em>
                                 </MenuItem>
-                                <MenuItem value={10}>Ten</MenuItem>
-                                <MenuItem value={20}>Twenty</MenuItem>
-                                <MenuItem value={30}>Thirty</MenuItem>
+                                <MenuItem value={10}>인사팀</MenuItem>
+                                <MenuItem value={20}>경영지원팀</MenuItem>
+                                <MenuItem value={30}>총무팀</MenuItem>
                             </Select>
                         </FormControl>
                     </div>

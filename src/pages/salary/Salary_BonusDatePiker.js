@@ -17,16 +17,11 @@ const months = [
   { label: '12', value: '12' },
 ];
 
-const statues = [
-  { label: '지급대기', value: 'N'},
-  { label: '지급완료', value: 'Y'},
-];
 
 
-function SelectDatePiker3() {
+function BonusDatePicker() {
   const [year, setYear] = useState('2023');
   const [month, setMonth] = useState('02');
-  const [status, setStatus] = useState('N');
   const navigate = useNavigate();
 
   function handleYearChange(e) {
@@ -37,21 +32,10 @@ function SelectDatePiker3() {
     setMonth(e.target.value);
   }
 
-  function handleStatusChange(e) {
-    setStatus(e.target.value);
-  }
 
   function handleClick() {
 
-    const paymentStatus = statues.find(statu => statu.value === status);
-
-    console.log(paymentStatus.value);
-    
-    if (paymentStatus.value === 'Y') {
-      navigate('/salary/severanceY');
-    } else {
-      navigate('/salary/severanceN');
-    }
+    navigate("/salary/bonus/insert")
   }
 
   return (
@@ -77,18 +61,10 @@ function SelectDatePiker3() {
         </select>
         <span className="ml-2">월</span>
       </label>
-      <label className="ml-3">
-        <select value={status} onChange={handleStatusChange} style={{width:100}}>
-            {statues.map((status) => (
-              <option key={status.value} value={status.value}>
-                {status.label}
-              </option>
-            ))}
-        </select>
-      </label>
       <button className='btn btn-primary ml-3' onClick={handleClick}>조회하기</button>
+      <button className='btn btn-primary ml-3' onClick={handleClick}>명단 등록하기</button>
     </div>
   );
 }
 
-export default SelectDatePiker3;
+export default BonusDatePicker;

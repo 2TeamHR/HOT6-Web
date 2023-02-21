@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import salaryStyle from '../../resources/css/pages/salary/salary.module.css';
-import SelectDatePiker2 from './Salary_DatePiker2';
+import SelectDatePiker2 from './Salary_SalaryDatePiker';
 import SalaryDataTableN from './SalaryDataTableN';
 
 function AllCheckN(){
