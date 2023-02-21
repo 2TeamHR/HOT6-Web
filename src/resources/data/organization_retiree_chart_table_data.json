@@ -1,0 +1,44 @@
+[
+    {
+      "id": "number",
+      "numeric": false,
+      "disablePadding": true,
+      "label": "No"
+    },
+    {
+      "id": "department",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "부서"
+    },
+    {
+      "id": "team",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "팀"
+    },
+    {
+      "id": "rank",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "직급"
+    },
+    {
+      "id": "name",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "성명"
+    },
+    {
+      "id": "departureDate",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "퇴사일"
+    },
+    {
+      "id": "severancePayYn",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "퇴직금 지급 여부"
+    }
+  ]

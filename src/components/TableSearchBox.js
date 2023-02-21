@@ -37,7 +37,7 @@ export class PayState extends Component{
 
         return(
             <div className="float-left mr-5">
-                <span className="mr-2">결제 상태</span>
+                <span className="mr-2">결재 상태</span>
                 <select>
                     <option>전체</option>
                     <option>완료</option>
@@ -57,7 +57,7 @@ export class Term extends Component{
             <div className="float-left mr-4">
                 <span className="mr-2">기간</span>
                 <input type="date"/>
-                <span>~</span>
+                <span> ~ </span>
                 <input type="date"/>
             </div>
         );

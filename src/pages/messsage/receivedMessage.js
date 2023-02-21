@@ -13,9 +13,6 @@ function ReceivedMessage(){
         
 
 
-           
-            <Sidebar/>
-
     {/* // <!--========== CONTENTS ==========--> */}
         <main>
             <div className={messageStyle.main}>

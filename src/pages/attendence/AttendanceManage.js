@@ -47,7 +47,6 @@ function AttendanceManage() {
         <>
 
 
-            <Sidebar />
                 <main>
 
             <div className={attendenceManage.packageTitles}>
