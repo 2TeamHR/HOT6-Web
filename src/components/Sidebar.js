@@ -126,8 +126,8 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             기안함
                                         </div>
-                                        <Link to="/es/draft" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>기안하기</Link>
-                                            <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>전자결재 기안함</a>
+                                        <Link to="/es/draftMenu" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>기안하기</Link>
+                                        <Link to="/es/draftInbox" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 기안함</Link>
                                             
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>

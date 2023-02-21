@@ -41,6 +41,7 @@ import AttendanceSelectTime from "./pages/attendence/AttendanceSelectTime";
 import EsWaitInbox from "./pages/es/EsWaitInbox";
 import EsPrograssInbox from './pages/es/EsPrograssInbox';
 import EsCompleteInbox from './pages/es/EsCompleteInbox';
+import EsDraftInbox from './pages/es/EsDraftInbox';
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
             <Route path='/es/retireForm' element={<RetireForm />}/>
             <Route path='/es/salaryForm' element={<SalaryForm />}/>
             <Route path='/es/certificationFrom' element={<CertificationForm />}/>
+            <Route path='/es/draftInbox' element={<EsDraftInbox />}/>
             <Route path='/es/wait' element={<EsWaitInbox />}/>
             <Route path='/es/prograss' element={<EsPrograssInbox />}/>
             <Route path='/es/complete' element={<EsCompleteInbox />}/>
