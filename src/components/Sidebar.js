@@ -204,11 +204,9 @@ function Sidebar() {
                         <div className={sidebarStyle.navItems}>
 
                             <div className={sidebarStyle.navDropdown}>
-                                <div className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
                                     <i className={`bx bx-calendar-check ${sidebarStyle.navIcon}`}></i>
                                     <span className={sidebarStyle.navName}>캘린더</span>
                                     <i className={`bx bx-chevron-down ${sidebarStyle.navIcon} ${sidebarStyle.navDropdownIcon}`}></i>
-                                </div>
                                 <div className={sidebarStyle.navDropdownCollapse}>
                                     {/* <!-- 중분류 --> */}
                                     <div className={sidebarStyle.navDropdownContent}>

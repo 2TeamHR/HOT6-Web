@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import MyCalendarStyle from '../../resources/css/pages/calendar/MyCalendar.module.css';
 
 class MyCalendar extends Component {
     render() {
