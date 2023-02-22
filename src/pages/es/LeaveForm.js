@@ -27,6 +27,7 @@ function LeaveForm() {
     <>
       <Grid container direction="row">
         <Grid item xs={8}>
+        <Paper elevation={5}>
           <h2>휴가 신청서</h2>
           <ul style={{ listStyle: "none" }}>
             <li>
@@ -81,10 +82,18 @@ function LeaveForm() {
               </LocalizationProvider></li>
             <li><label htmlFor="">첨부파일</label><input type="file" /></li>
           </ul>
-          <Button>신청하기</Button><Button>취소하기</Button>
+          <Button>신청하기</Button><Button>취소하기</Button></Paper>
         </Grid>
         <Grid item xs={4}>
-          <TextField id="standard-basic" label="결재자 검색" variant="standard" />
+        <Paper sx={{width:150}} elevation={5}>
+            <TextField id="standard-basic" label="결재자 검색" variant="standard" />
+            
+            <Paper sx={{height:400}}>
+
+            </Paper>
+            
+            </Paper>
+        
         </Grid>
       </Grid>
     </>

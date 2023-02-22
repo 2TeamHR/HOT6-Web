@@ -20,6 +20,7 @@ function SalaryForm() {
     <>
       <Grid container direction="row">
         <Grid item xs={8}>
+        <Paper elevation={5} >
           <h2>급여정정 신청서</h2>
           <ul style={{ listStyle: "none" }}>
             <li><label>결재선</label> <div>
@@ -40,10 +41,18 @@ function SalaryForm() {
             <li><label>급여정정 날짜</label><input type="date" name="" id="" /></li>
             <li><label>첨부파일</label><input type="file" name="" id="" /></li>
           </ul>
-          <Button>신청하기</Button><Button>취소하기</Button>
+          <Button>신청하기</Button><Button>취소하기</Button></Paper>
         </Grid>
         <Grid item xs={4}>
-        <TextField id="standard-basic" label="결재자 검색" variant="standard" />
+        <Paper sx={{width:150}} elevation={5}>
+            <TextField id="standard-basic" label="결재자 검색" variant="standard" />
+            
+            <Paper sx={{height:400}}>
+
+            </Paper>
+            
+            </Paper>
+        
         </Grid>
       </Grid>
     </>

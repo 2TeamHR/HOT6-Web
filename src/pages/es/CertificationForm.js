@@ -3,7 +3,8 @@ import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
-import { Button,  Grid, TextField } from '@mui/material';
+import { Button,  Grid, List, TextField } from '@mui/material';
+import { height } from '@mui/system';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -26,6 +27,7 @@ function CertificationForm() {
     <>
       <Grid container direction="row">
         <Grid item xs={8}>
+          <Paper elevation={5} >
           <h2>증명서 신청서</h2>
 
           <ul style={{ listStyle: "none" }}>
@@ -46,9 +48,18 @@ function CertificationForm() {
             <li><label>내용</label><input type="text" name="" id="" /></li>
           </ul>
           <Button>신청하기</Button><Button>취소하기</Button>
+          </Paper>
         </Grid>
         <Grid item xs={4}>
-        <TextField id="standard-basic" label="결재자 검색" variant="standard" />
+          <Paper sx={{width:150}} elevation={5}>
+            <TextField id="standard-basic" label="결재자 검색" variant="standard" />
+            
+            <Paper sx={{height:400}}>
+
+            </Paper>
+            
+            </Paper>
+        
         </Grid>
       </Grid>
     </>
