@@ -1,6 +1,7 @@
 import React from 'react';
 import messageStyle from '../../resources/css/pages/message/message.module.css'
 import messageStyle2 from '../../resources/css/pages/message/receivedMessage.module.css'
+
 import {Link} from "react-router-dom";
 
 
@@ -9,6 +10,9 @@ function MessageTrash(){
     return (
     <>
         
+
+
+      
 
     {/* // <!--========== CONTENTS ==========--> */}
         <main>
@@ -49,7 +53,7 @@ function MessageTrash(){
                         <div className={messageStyle2.function}>
 
                             
-                        <div className={`${messageStyle2.buttonOptionalSelect2}`}>
+                        <div className={`${messageStyle2.buttonOptionalSelect3}`}>
                             <div className={messageStyle2.buttonTaskWrap} >
                                 <input type="checkbox" id="selection_all" className={messageStyle2.buttonCheckboxBlind} />
                             </div>

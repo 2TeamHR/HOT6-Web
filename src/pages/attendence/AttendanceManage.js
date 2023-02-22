@@ -1,3 +1,4 @@
+
 import React, {useState} from "react";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -10,9 +11,8 @@ import {useFormControl} from "@mui/material";
 import attendenceManage from '../../resources/css/pages/attendence/attendence.module.css'
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
-import * as PropTypes from "prop-types";
-import DataTable from "./TestTable";
-import BasicButtons from "./ButtonStyle";
+import BasicButtons from "./Components/ButtonStyle";
+import AttendanceManageTable from "./Components/AttendanceManageTable";
 
 
 
@@ -44,6 +44,7 @@ function AttendanceManage() {
         <>
 
 
+    
                 <main>
 
             <div className={attendenceManage.packageTitles}>
@@ -120,7 +121,7 @@ function AttendanceManage() {
 
 
                 <div className={attendenceManage.employeeCalender4}>
-                <DataTable/>
+                <AttendanceManageTable/>
                 </div>
 
                     <div className={attendenceManage.employeeCalender5}>
