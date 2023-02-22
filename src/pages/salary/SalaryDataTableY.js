@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import tableStyle from '../../resources/css/pages/salary/salaryTable.module.css';
 
 const columns = [
     { field: 'id', headerName: '사번', width: 100 },

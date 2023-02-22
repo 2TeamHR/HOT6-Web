@@ -1,17 +1,12 @@
 
 import React from 'react';
 import messageStyle from '../../resources/css/pages/message/message.module.css'
-
-
 import {Link} from "react-router-dom";
-
 
 function Message() {
 
         return (
         <>
-
-
 
 
     {/* // <!--========== CONTENTS ==========--> */}

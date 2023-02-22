@@ -1,7 +1,7 @@
 import mainStyle from '../resources/css/components/main.module.css';
 import React, { useState } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import { Link } from 'react-router-dom';
+import MyCalendar from './calendar/MyCalendar';
 
 
 function Main() {
@@ -15,9 +15,8 @@ function Main() {
             {/* 캘린더 */}
             <div className={mainStyle.mainClass}>
 
-                <Calendar 
-                    onChange={onChange} value={value} 
-                    className="mx-auto w-full text-sm border-b"/>
+                <MyCalendar />
+       
             </div>
 
             <div className={mainStyle.mainClass}>
@@ -29,24 +28,31 @@ function Main() {
                     <div className={mainStyle.myVacation}>
                         <div>
                             <div className={mainStyle.noticeTitle}>
-                                <b>업무가 서툰 신입사원에게 추천하는 직장생활 안내서! </b>
+                                <Link to="board/notice">
+                                        <img src="" alt="첨부파일" />
+                                    <p><b>업무가 서툰 신입사원에게 추천하는 직장생활 안내서!</b></p>
+                                </Link>
                             </div>
                         </div>
-                        <div className="">
-                            <img src="" alt="첨부파일"></img>
+                        <div className="mt-3">
+                            <div className={`${ mainStyle.noticeDate} fw-bold pl-1 `}>2022.02.17</div>
                         </div>
                     </div>
-                    <div className="mt-3">
-                        <div className={`${ mainStyle.noticeDate} fw-bold pl-1 `}>2022.02.17</div>
-                    </div>
+
+                    <Link to="board/notice">
                     <div className="mt-4">
                         <div className={mainStyle.noticeList}>사내 공지 소식입니다.</div>
                         <div className={`${ mainStyle.noticeDate} float-end mr-3 `}>2022.02.17</div>
                     </div>
+                    </Link>
+
+                    <Link to="board/notice">
                     <div className="mt-4">
                         <div className={mainStyle.noticeList}>사내 공지 소식입니다.</div>
                         <div className={`${ mainStyle.noticeDate} float-end mr-3 `}>2022.02.17</div>
                     </div>
+                    </Link>
+                    
                 </div>
 
                 <div className={mainStyle.module} style={{width: "30%"}}>
