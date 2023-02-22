@@ -1,12 +1,10 @@
   import {
 
-    Button,
     Container,
     Grid,
     Step,
     StepLabel,
     Stepper,
-
     TablePagination,
     Typography,
   } from "@mui/material";
@@ -23,6 +21,8 @@
   import Paper from "@mui/material/Paper";
   import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
   import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import EsModal from "./EsModal";
+
 
  function createData(
     esNo,
@@ -50,6 +50,20 @@
   function Row(props) {
     const { row } = props;
     const [open, setOpen] = React.useState(false);
+
+    
+    const [openDi, setOpenDi] = React.useState(false);
+
+    const handleClickOpen = () => {
+      setOpenDi(true);
+    };
+  
+    const handleClose = () => {
+      setOpenDi(false);
+    };
+  
+
+
   
     return (
       <React.Fragment>
@@ -61,7 +75,7 @@
           <TableCell align="center">{row.esRank}</TableCell>
           <TableCell align="center">{row.esDrafterName}</TableCell>
           <TableCell align="center">{row.esDate}</TableCell>
-          <TableCell align="center"><Button variant="contained">{row.esState}</Button></TableCell>
+          <TableCell align="center"><EsModal/></TableCell>
           <TableCell align="center">
             <IconButton
               aria-label="expand row"
@@ -72,8 +86,6 @@
             </IconButton>
           </TableCell>
         </TableRow>
-  
-  
   
         <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -90,6 +102,10 @@
           </TableCell>
         </TableRow>
       </React.Fragment>
+
+
+
+     
     );
   }
   
@@ -251,6 +267,7 @@
       setRowsPerPage(+event.target.value);
       setPage(0);
     };
+
 
 
     return (

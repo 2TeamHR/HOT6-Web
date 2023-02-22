@@ -3,7 +3,7 @@ import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
-import { Button,  Grid, TextField } from '@mui/material';
+import { Button, Grid, TextField } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -22,9 +22,7 @@ function RetireForm() {
         <Grid item xs={8}>
         <Paper elevation={5} >
           <h2>퇴직 신청서</h2>
-
-          <ul style={{ listStyle: "none" }}>
-            <li><label>결재선</label> <div>
+            <label>결재선</label> <div>
               <Stack
                 direction="row"
                 divider={<Divider orientation="vertical" flexItem />}
@@ -34,28 +32,32 @@ function RetireForm() {
                 <Item>중간결재자</Item>
                 <Item>최종결재자</Item>
               </Stack>
-            </div></li>
-            <li><label>기안문서번호</label><input type="text" /></li>
-            <li><label>기안일시</label><input type="date" name="" id="" /></li>
-            <li><label>제목</label><input type="text" /></li>
-            <li><label>내용</label><input type="text" name="" id="" /></li>
-            <li><label>퇴직예정일</label><input type="date" name="" id="" /></li>
-            <li><label>첨부파일</label><input type="file" name="" id="" /></li>
-          </ul>
-          <Button>신청하기</Button><Button>취소하기</Button></Paper>
-        </Grid>
-        <Grid item xs={4}>
-        <Paper sx={{width:150}} elevation={5}>
-            <TextField id="standard-basic" label="결재자 검색" variant="standard" />
-            
-            <Paper sx={{height:400}}>
+            </div>
 
-            </Paper>
-            
-            </Paper>
-        
-        </Grid>
-      </Grid>
+            <Grid container columns={6}>
+            <Grid item xs={3}><label>기안문서번호</label></Grid><Grid item xs={3}><input type="text" /></Grid>
+            <Grid item xs={3}><label>기안일시</label></Grid><Grid item xs={3}><input type="date" name="" id="" /></Grid>
+            <Grid item xs={3}><label>제목</label></Grid><Grid item xs={3}><input type="text" /></Grid>
+            <Grid item xs={3}><label>내용</label></Grid><Grid item xs={3}><input type="text" name="" id="" /></Grid>
+            <Grid item xs={3}><label>퇴직예정일</label></Grid><Grid item xs={3}><input type="date" name="" id="" /></Grid>
+            <Grid item xs={3}><label>첨부파일</label></Grid><Grid item xs={3}><input type="file" name="" id="" /></Grid>
+            </Grid>
+          <Button>신청하기</Button><Button>취소하기</Button></Paper >
+        </Grid >
+
+
+    <Grid item xs={4}>
+      <Paper sx={{ width: 150 }} elevation={5}>
+        <TextField id="standard-basic" label="결재자 검색" variant="standard" />
+
+        <Paper sx={{ height: 400 }}>
+
+        </Paper>
+
+      </Paper>
+
+    </Grid>
+      </Grid >
     </>
   );
 }

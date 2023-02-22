@@ -3,8 +3,8 @@ import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
-import { Button,  Grid, List, TextField } from '@mui/material';
-import { height } from '@mui/system';
+import { Button,  Grid, TextField } from '@mui/material';
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -17,11 +17,6 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 
-
-
-
-
-
 function CertificationForm() {
   return (
     <>
@@ -30,8 +25,8 @@ function CertificationForm() {
           <Paper elevation={5} >
           <h2>증명서 신청서</h2>
 
-          <ul style={{ listStyle: "none" }}>
-            <li><label>결재선</label> <div>
+          <label>결재선</label> 
+          <div>
               <Stack
                 direction="row"
                 divider={<Divider orientation="vertical" flexItem />}
@@ -41,25 +36,22 @@ function CertificationForm() {
                 <Item>중간결재자</Item>
                 <Item>최종결재자</Item>
               </Stack>
-            </div></li>
-            <li><label>기안문서번호</label><input type="text" /></li>
-            <li><label>기안일시</label><input type="date" name="" id="" /></li>
-            <li><label>제목</label><input type="text" /></li>
-            <li><label>내용</label><input type="text" name="" id="" /></li>
-          </ul>
+            </div>
+            <Grid container columns={6}>
+            <Grid item xs={3}><label>기안문서번호</label></Grid><Grid item xs={3}><input type="text" /></Grid>
+            <Grid item xs={3}><label>기안일시</label></Grid><Grid item xs={3}><input type="date" name="" id="" /></Grid>
+            <Grid item xs={3}><label>제목</label></Grid><Grid item xs={3}><input type="text" /></Grid>
+            <Grid item xs={3}><label>내용</label></Grid><Grid item xs={3}><input type="text" name="" id="" /></Grid>
+        </Grid>
           <Button>신청하기</Button><Button>취소하기</Button>
           </Paper>
         </Grid>
         <Grid item xs={4}>
           <Paper sx={{width:150}} elevation={5}>
             <TextField id="standard-basic" label="결재자 검색" variant="standard" />
-            
             <Paper sx={{height:400}}>
-
-            </Paper>
-            
-            </Paper>
-        
+            </Paper>            
+            </Paper>        
         </Grid>
       </Grid>
     </>

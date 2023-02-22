@@ -42,6 +42,7 @@ import EsPrograssInbox from './pages/es/EsPrograssInbox';
 import EsCompleteInbox from './pages/es/EsCompleteInbox';
 import EsDraftInbox from './pages/es/EsDraftInbox';
 
+
 function App() {
   return (
       <BrowserRouter>
@@ -68,6 +69,7 @@ function App() {
             <Route path='/es/wait' element={<EsWaitInbox />}/>
             <Route path='/es/prograss' element={<EsPrograssInbox />}/>
             <Route path='/es/complete' element={<EsCompleteInbox />}/>
+
 
 
 
