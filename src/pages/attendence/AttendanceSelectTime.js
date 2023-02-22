@@ -1,4 +1,3 @@
-import Sidebar from '../../components/Sidebar';
 import React, {useState} from "react";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
