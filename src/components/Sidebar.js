@@ -33,7 +33,7 @@ function Sidebar() {
                                             마이페이지
                                         </div>
                                             <Link to="/mypage/main" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>나의 인사 카드</Link>
-                                            <Link to="/mypage/update" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>개인 정보 관리</Link>
+                                            <Link to="/mypage/mypage/management" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>개인 정보 관리</Link>
                                     </div>
                                 </div>
                             </div>
