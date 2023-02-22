@@ -61,7 +61,7 @@
           <TableCell align="center">{row.esRank}</TableCell>
           <TableCell align="center">{row.esDrafterName}</TableCell>
           <TableCell align="center">{row.esDate}</TableCell>
-          <TableCell align="center"><Button>{row.esState}</Button></TableCell>
+          <TableCell align="center"><Button variant="contained">{row.esState}</Button></TableCell>
           <TableCell align="center">
             <IconButton
               aria-label="expand row"

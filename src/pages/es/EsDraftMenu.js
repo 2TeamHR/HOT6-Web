@@ -1,40 +1,41 @@
-import { Card, Grid } from "@mui/material";
+import { Card, Container, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 
 function EsDraftMenu() {
     return (
         <>
-            <h4>전자결재 기안</h4>
+            <Container>
+                <h4>전자결재 기안</h4>
 
-            <Grid container>
-                <Grid item>
-                    <Link to="/es/leaveForm" style={{ textDecoration: "none" }}>
-                        <Card sx={{ width: 200, height: 100 }}>휴가 신청</Card>
-                    </Link>
+                <Grid container spacing={3}>
+                    <Grid item>
+                        <Link to="/es/leaveForm" style={{ textDecoration: "none" }}>
+                            <Card sx={{ width: 200, height: 100 }}><Typography textAlign="center">휴가 신청</Typography></Card>
+                        </Link>
+                    </Grid>
+                    <Grid item>
+                        <Link to="/es/salaryForm" style={{ textDecoration: "none" }}>
+                            <Card sx={{ width: 200, height: 100 }} ><Typography textAlign="center">급여정정 신청</Typography></Card>
+                        </Link>
+                    </Grid>
+                    <Grid item>
+                        <Link to="/es/retireForm" style={{ textDecoration: "none" }}>
+                            <Card sx={{ width: 200, height: 100 }} ><Typography textAlign="center">퇴직 신청</Typography></Card>
+                        </Link>
+                    </Grid>
+                    <Grid item>
+                        <Link to="/es/certificationForm" style={{ textDecoration: "none" }}>
+                            <Card sx={{ width: 200, height: 100 }} ><Typography textAlign="center">증명서 신청</Typography></Card>
+                        </Link>
+                    </Grid>
                 </Grid>
-                <Grid item>
-                    <Link to="/es/salaryForm" style={{ textDecoration: "none" }}>
-                        <Card sx={{ width: 200, height: 100 }}>급여정정 신청</Card>
-                    </Link>
-                </Grid>
-                <Grid item>
-                    <Link to="/es/retireForm" style={{ textDecoration: "none" }}>
-                        <Card sx={{ width: 200, height: 100 }}>퇴직 신청</Card>
-                    </Link>
-                </Grid>
-                <Grid item>
-                    <Link to="/es/certificationForm" style={{ textDecoration: "none" }}>
-                        <Card sx={{ width: 200, height: 100 }}>증명서 신청</Card>
-                    </Link>
-                </Grid>
-            </Grid>
 
 
 
 
 
-
+            </Container>
 
         </>
     )

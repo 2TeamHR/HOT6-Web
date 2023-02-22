@@ -10,8 +10,8 @@ import AnnualHistory from './pages/attendance_management/Annual_history';
 import AnnualPayment from './pages/attendance_management/Annual_payment';
 import AnnualManagement from './pages/attendance_management/Annual_management';
 import AnnualManagementDetailed from './pages/attendance_management/Annual_management_detailed';
-import OrganizationCreate from './pages/HRM/Organization_create';
-import OrganizationChart from './pages/HRM/Organization_chart';
+import OrganizationCreate from './pages/hrm/Organization_create';
+import OrganizationChart from './pages/hrm/Organization_chart';
 import Layout from './layouts/Layout';
 import Login from '../src/pages/login/Login';
 import FindPassword from '../src/pages/login/FindPassword';
@@ -28,7 +28,6 @@ import AllCheckN from './pages/salary/Salary_allCheckN';
 import AllCheckY from './pages/salary/Salary_allCheckY';
 import SeveranceN from './pages/salary/Salary_SeveranceN'
 import SeveranceY from './pages/salary/Salary_SeveranceY'
-import ScheduleMain from "./pages/schedule/ScheduleMain";
 import EsMain from './pages/es/EsMain';
 import EsDraftMenu from './pages/es/EsDraftMenu';
 import LeaveForm from './pages/es/LeaveForm';
@@ -36,7 +35,7 @@ import RetireForm from './pages/es/RetireForm';
 import SalaryForm from './pages/es/SalaryForm';
 import CertificationForm from './pages/es/CertificationForm';
 import MypageMain from './pages/mypage/Mypage_main';
-import OrganiCertification from './pages/HRM/Organization_Certification';
+import OrganiCertification from './pages/hrm/Organization_Certification';
 import AttendanceSelectTime from "./pages/attendence/AttendanceSelectTime";
 import EsWaitInbox from "./pages/es/EsWaitInbox";
 import EsPrograssInbox from './pages/es/EsPrograssInbox';
@@ -56,7 +55,7 @@ function App() {
             <Route path="/attendence/AttendanceManage" element={<AttendanceManage />} />
             <Route path="/attendence/AttendanceSelectTime" element={<AttendanceSelectTime />} />
 
-            <Route path="/schedule/main" element={<ScheduleMain />} />
+        
 
             {/* 전자결재 */}
             <Route path="/es/main" element={<EsMain />} />
