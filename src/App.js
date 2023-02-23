@@ -42,6 +42,7 @@ import BonusInsert from './pages/salary/Salary_BonusInsert';
 import OrganiCertificate from './pages/hrm/Organization_Certificate';
 import EsDraftInbox from './pages/es/EsDraftInbox';
 import MyCalendar from './pages/calendar/MyCalendar';
+import Specification from './pages/salary/Salary_Specification';
 
 function App() {
   return (
@@ -90,6 +91,7 @@ function App() {
 
             {/* 급여 */}
             <Route path="/salary/check" element={ <SalaryCheck />} />
+            <Route path="/salary/specification" element={ <Specification />} />
             <Route path="/salary/checkN" element={ <AllCheckN />} />
             <Route path="/salary/checkY" element={ <AllCheckY />} />
             <Route path="/salary/severanceN" element={ <SeveranceN />} />

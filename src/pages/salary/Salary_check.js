@@ -6,14 +6,23 @@ import SalaryTable from './Salary_Table';
 import { Link } from 'react-router-dom';
 import BasicTable from './Salary_BasicTable';
 import TaxTable from './Salary_TaxTable';
-
+import SpecificationModal from './Salary_Specification';
+import { useState } from 'react';
 
 function SalaryCheck() {
 
-    const onClickHandler = () => {
+    const [showModal, setShowModal] = useState(false);
 
-        alert("해당 내용은 준비중입니다.");
+    function handleButtonClick() {
+        setShowModal(true);
     }
+
+    function handleCloseModal() {
+        setShowModal(false);
+    }
+
+    console.log(showModal);
+
 
     return (
     <>
@@ -33,9 +42,10 @@ function SalaryCheck() {
             <SalaryTable />
         </div>
 
-        <div className="pt-5 pr-5 mr-5 text-center">
+        <div className="pt-5 text-center">
             <Link to="/es/salaryForm" className="btn btn-primary mr-3">정정신청</Link>
-            <button className="btn btn-primary ml-3" onClick={onClickHandler}>인쇄</button>
+            <button className="btn btn-primary ml-3" onClick={handleButtonClick}>급여 명세서</button>
+            {showModal && <SpecificationModal onClose={handleCloseModal}/>}
         </div>
     </>
     );

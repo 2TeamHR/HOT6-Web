@@ -166,6 +166,7 @@ function Sidebar() {
                                             급여
                                         </div>
                                             <Link to="/salary/check" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>내 급여 조회</Link>
+                                            <Link to="/salary/specification" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>급여 명세서</Link>
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
