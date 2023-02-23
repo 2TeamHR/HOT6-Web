@@ -3,8 +3,9 @@ import salarytableStyle from '../../resources/css/pages/salary/salaryTable.modul
 import "react-datepicker/dist/react-datepicker.css";
 import SelectDatePiker from './SalaryDatePiker';
 import SalaryTable from './Salary_Table';
-import SalaryTable2 from './Salary_Table2';
 import { Link } from 'react-router-dom';
+import BasicTable from './Salary_BasicTable';
+import TaxTable from './Salary_TaxTable';
 
 
 function SalaryCheck() {
@@ -25,8 +26,11 @@ function SalaryCheck() {
             </div>
         </div>
         <div className= {`pt-5 ${salarytableStyle.tableStyle}`}>
+            <BasicTable />
+            <TaxTable />
+        </div>
+        <div className={`mt-5 ${salarytableStyle.tableStyle}`} >
             <SalaryTable />
-            <SalaryTable2 />
         </div>
 
         <div className="pt-5 pr-5 mr-5 text-center">

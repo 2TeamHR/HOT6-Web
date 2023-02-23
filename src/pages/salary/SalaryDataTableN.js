@@ -8,6 +8,7 @@ const columns = [
     { field: 'name', headerName: '이름', width: 150 },
     { field: 'salary', headerName: '기본급', width: 150 },
     { field: 'bonus', headerName: '상여금', width: 150 },
+    { field: 'meal', headerName: '식대', width: 150 },
     { field: 'tax', headerName: '공제액', width: 150 },
     { field: 'totalSalary', headerName: '총 지급액', width: 150 },
     { field: 'paymentDate', headerName: '지급일', width: 150 },
@@ -16,7 +17,7 @@ const columns = [
 ];
 
 const rows = [
-    { id: 1, team: '인사팀', rank: '성명', name: '이', salary: 150000, bonus: 50000, tax: 20000, totalSalary: 180000, paymentDate: '2023-02-18', paymentStatus: 'N' },
+    { id: 1, team: '인사팀', rank: '성명', name: '이', salary: '2,000,000', bonus: '50,000', meal: '100,000', tax: '368,500', totalSalary: '1,731,500', paymentDate: '2023-02-18', paymentStatus: 'N' },
     { id: 2, team: '무슨팀', rank: '성명', name: '이', salary: 150000, bonus: 50000, tax: 20000, totalSalary: 180000, paymentDate: '2023-02-18', paymentStatus: 'N' },
     { id: 3, team: '무슨팀', rank: '성명', name: '이', salary: 150000, bonus: 50000, tax: 20000, totalSalary: 180000, paymentDate: '2023-02-18', paymentStatus: 'N' },
     { id: 4, team: '무슨팀', rank: '성명', name: '이', salary: 150000, bonus: 50000, tax: 20000, totalSalary: 180000, paymentDate: '2023-02-18', paymentStatus: 'N' },
