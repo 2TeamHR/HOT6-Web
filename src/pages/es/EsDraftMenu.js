@@ -29,6 +29,21 @@ function EsDraftMenu() {
                             <Card sx={{ width: 200, height: 100 }} ><Typography textAlign="center">증명서 신청</Typography></Card>
                         </Link>
                     </Grid>
+                    <Grid item>
+                        <Link to="/es/" style={{ textDecoration: "none" }}>
+                            <Card sx={{ width: 200, height: 100 }} ><Typography textAlign="center">예비군 훈련</Typography></Card>
+                        </Link>
+                    </Grid>
+                    <Grid item>
+                        <Link to="/es/" style={{ textDecoration: "none" }}>
+                            <Card sx={{ width: 200, height: 100 }} ><Typography textAlign="center">휴직 신청</Typography></Card>
+                        </Link>
+                    </Grid>
+                    <Grid item>
+                        <Link to="/es/" style={{ textDecoration: "none" }}>
+                            <Card sx={{ width: 200, height: 100 }} ><Typography textAlign="center">복직 신청</Typography></Card>
+                        </Link>
+                    </Grid>
                 </Grid>
 
 

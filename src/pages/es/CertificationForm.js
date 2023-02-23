@@ -2,7 +2,7 @@ import * as React from 'react';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
-import { styled } from '@mui/material/styles';
+import { createTheme, styled, ThemeProvider } from '@mui/material/styles';
 import { Button,  Grid, TextField } from '@mui/material';
 
 
@@ -16,10 +16,19 @@ const Item = styled(Paper)(({ theme }) => ({
   height: 100
 }));
 
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+      'Spoqa Han Sans Neo',
+    ].join(',')
+  },
+});
 
 function CertificationForm() {
   return (
     <>
+    <ThemeProvider theme={theme}>
+
       <Grid container direction="row">
         <Grid item xs={8}>
           <Paper elevation={5} >
@@ -53,7 +62,7 @@ function CertificationForm() {
             </Paper>            
             </Paper>        
         </Grid>
-      </Grid>
+      </Grid></ThemeProvider>
     </>
   );
 }
