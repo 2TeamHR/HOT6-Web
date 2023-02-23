@@ -39,13 +39,16 @@ function MypageManagementUpdate (){
                                 <span className='float-right fw-blod'>홍길동</span>
                             </div>
                             <div className={mpManagement.infoModule}>
-                                <TextField margin="normal" size="small" className={`h-25 ${mpManagement.managementInput}`} id="outlined-basic" label="휴대전화" variant="outlined" />
+                                <i className={`bx bx-phone mr-3`}></i>
+                                <TextField size="small" className={mpManagement.managementInput} id="outlined-basic" label="휴대전화" variant="outlined" />
                             </div>
                             <div className={mpManagement.infoModule}>
-                                <TextField margin="normal" size="small" className={mpManagement.managementInput} id="outlined-basic" label="이메일" variant="outlined" />
+                                <i className={`bx bx-envelope mr-3`}></i>
+                                <TextField size="small" className={mpManagement.managementInput} id="outlined-basic" label="이메일" variant="outlined" />
                             </div>
                             <div className={mpManagement.infoModule}>
-                                <TextField margin="normal" size="small" className={mpManagement.managementInput} id="outlined-basic" label="주소" variant="outlined" />
+                                <i className={`bx bx-home mr-3`}></i>
+                                <TextField size="small" className={mpManagement.managementInput} id="outlined-basic" label="주소" variant="outlined" />
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-calendar-alt mr-3`}></i>
