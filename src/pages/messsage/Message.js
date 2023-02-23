@@ -1,10 +1,7 @@
 
 import React from 'react';
 import messageStyle from '../../resources/css/pages/message/message.module.css'
-import BootstrapLink from '../../components/bootstrap';
-import Sidebar from '../../components/Sidebar';
 import {Link} from "react-router-dom";
-import attendenceManage from "../../resources/css/pages/attendence/attendence.module.css";
 
 function Message() {
 

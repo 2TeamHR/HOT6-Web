@@ -17,16 +17,15 @@ import ChangePassword from '../src/pages/login/ChangePassword';
 import SalaryCheck from './pages/salary/Salary_check';
 import Community from './pages/board/Community';
 import Notice from './pages/board/Notice';
-import Message from "./pages/messsage/message";
+import Message from "./pages/messsage/Message";
 import MessageSent from "./pages/messsage/MessageSent";
 import MessageTrash from "./pages/messsage/MessageTrash";
-import ReceivedMessage from "./pages/messsage/receivedMessage";
+import ReceivedMessage from "./pages/messsage/ReceivedMessage";
 import AttendanceManage from "./pages/attendence/AttendanceManage";
 import AllCheckN from './pages/salary/Salary_allCheckN';
 import AllCheckY from './pages/salary/Salary_allCheckY';
 import SeveranceN from './pages/salary/Salary_SeveranceN'
 import SeveranceY from './pages/salary/Salary_SeveranceY'
-import ScheduleMain from "./pages/schedule/ScheduleMain";
 import EsMain from './pages/es/EsMain';
 import EsDraftMenu from './pages/es/EsDraftMenu';
 import LeaveForm from './pages/es/LeaveForm';
@@ -42,6 +41,7 @@ import SalaryBonus from './pages/salary/Salary_bonus';
 import BonusInsert from './pages/salary/Salary_BonusInsert';
 import OrganiCertificate from './pages/hrm/Organization_Certificate';
 import EsDraftInbox from './pages/es/EsDraftInbox';
+import MyCalendar from './pages/calendar/MyCalendar';
 
 function App() {
   return (
@@ -56,7 +56,6 @@ function App() {
             <Route path="/attendence/AttendanceManage" element={<AttendanceManage />} />
             <Route path="/attendence/AttendanceSelectTime" element={<AttendanceSelectTime />} />
 
-            <Route path="/schedule/main" element={<ScheduleMain />} />
 
             {/* 전자결재 */}
             <Route path="/es/main" element={<EsMain />} />
@@ -101,7 +100,9 @@ function App() {
             {/* 게시판 */}
             <Route path="/board/notice" element={<Notice />} />
             <Route path="/board/community" element={<Community />} />
-            <Route path="/board/notice" element={<Notice />} />
+
+            {/* 캘린더 */}
+            <Route path="/calendar" element={<MyCalendar />} />
 
             {/* 메세지 */}
             <Route path="/messsage/message" element={<Message />} />
