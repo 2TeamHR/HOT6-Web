@@ -157,11 +157,35 @@ function OrganizationCreate (){
                                             <em></em>
                                         </MenuItem>
                                         <MenuItem value={10}>사장</MenuItem>
-                                        <MenuItem value={20}>임원</MenuItem>
+                                        <MenuItem value={10}>이사</MenuItem>
                                         <MenuItem value={30}>부장</MenuItem>
-                                        <MenuItem value={30}>팀장</MenuItem>
-                                        <MenuItem value={30}>대리</MenuItem>
+                                        <MenuItem value={10}>차장</MenuItem>
+                                        <MenuItem value={10}>과장</MenuItem>
+                                        <MenuItem value={10}>대리</MenuItem>
+                                        <MenuItem value={10}>주임</MenuItem>
                                         <MenuItem value={30}>사원</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </div>
+                                <div className={organizationCreateStyle.infoModule}>
+                                    <i className={`bx bx-buildings mr-3`}></i>
+                                    <span>고용형태</span>
+                                    <FormControl className={organizationCreateStyle.managementInput}>
+                                        <InputLabel id="demo-simple-select-helper-label">고용형태</InputLabel>
+                                        <Select
+                                        labelId="demo-simple-select-helper-label"
+                                        id="demo-simple-select-helper"
+                                        value={rank}
+                                        label="Rank"
+                                        onChange={handleChange2}
+                                        >
+                                        <MenuItem value="">
+                                            <em></em>
+                                        </MenuItem>
+                                        <MenuItem value={10}></MenuItem>
+                                        <MenuItem value={10}>임원</MenuItem>
+                                        <MenuItem value={30}>정규직</MenuItem>
+                                        <MenuItem value={10}>계약직</MenuItem>
                                         </Select>
                                     </FormControl>
                                 </div>
