@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import salaryStyle from '../../resources/css/pages/salary/salary.module.css';
 import SelectDatePiker2 from './Salary_SalaryDatePiker';
 import SalaryDataTableY from './SalaryDataTableY';
