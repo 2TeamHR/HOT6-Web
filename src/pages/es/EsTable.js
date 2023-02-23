@@ -135,9 +135,7 @@ import {
     return (
       <>
        
-        <Container>
-          
-          <Button variant="outlined">자세히 보기</Button>
+        
             <Grid item xs={12}>
                 <Table aria-label="collapsible table" sx={{margin:0}}>      
                   <TableHead>
@@ -160,7 +158,7 @@ import {
                 </Table>
       
             </Grid>
-          </Container>
+          
       </>
     );
   }

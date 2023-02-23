@@ -10,6 +10,8 @@ import AnnualHistory from './pages/attendance_management/Annual_history';
 import AnnualPayment from './pages/attendance_management/Annual_payment';
 import AnnualManagement from './pages/attendance_management/Annual_management';
 import AnnualManagementDetailed from './pages/attendance_management/Annual_management_detailed';
+import OrganizationCreate from './pages/hrm/Organization_create';
+import OrganizationChart from './pages/hrm/Organization_chart';
 import Layout from './layouts/Layout';
 import Login from '../src/pages/login/Login';
 import FindPassword from '../src/pages/login/FindPassword';
@@ -33,6 +35,7 @@ import RetireForm from './pages/es/RetireForm';
 import SalaryForm from './pages/es/SalaryForm';
 import CertificationForm from './pages/es/CertificationForm';
 import MypageMain from './pages/mypage/Mypage_main';
+import OrganiCertification from './pages/hrm/Organization_Certification';
 import AttendanceSelectTime from "./pages/attendence/AttendanceSelectTime";
 import EsWaitInbox from "./pages/es/EsWaitInbox";
 import EsPrograssInbox from './pages/es/EsPrograssInbox';
@@ -42,6 +45,7 @@ import BonusInsert from './pages/salary/Salary_BonusInsert';
 import OrganiCertificate from './pages/hrm/Organization_Certificate';
 import EsDraftInbox from './pages/es/EsDraftInbox';
 import MyCalendar from './pages/calendar/MyCalendar';
+
 
 function App() {
   return (
@@ -56,6 +60,7 @@ function App() {
             <Route path="/attendence/AttendanceManage" element={<AttendanceManage />} />
             <Route path="/attendence/AttendanceSelectTime" element={<AttendanceSelectTime />} />
 
+        
 
             {/* 전자결재 */}
             <Route path="/es/main" element={<EsMain />} />
@@ -63,11 +68,12 @@ function App() {
             <Route path='/es/leaveForm' element={<LeaveForm />}/>
             <Route path='/es/retireForm' element={<RetireForm />}/>
             <Route path='/es/salaryForm' element={<SalaryForm />}/>
-            <Route path='/es/certificationFrom' element={<CertificationForm />}/>
+            <Route path='/es/certificationForm' element={<CertificationForm />}/>
             <Route path='/es/draftInbox' element={<EsDraftInbox />}/>
             <Route path='/es/wait' element={<EsWaitInbox />}/>
             <Route path='/es/prograss' element={<EsPrograssInbox />}/>
             <Route path='/es/complete' element={<EsCompleteInbox />}/>
+
 
 
 

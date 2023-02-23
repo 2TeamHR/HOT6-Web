@@ -2,7 +2,7 @@ import sidebarStyle from '../resources/css/components/sidebar.module.css';
 import { Link } from 'react-router-dom';
 
 function Sidebar() {
-    
+
 
     return (
         <>  
@@ -75,7 +75,7 @@ function Sidebar() {
                                 </div>
                             </div>
                         </div>
-                       
+
                         {/* <!-- nav 근태 --> */}
                         <div className={sidebarStyle.navItems}>
 
@@ -136,7 +136,7 @@ function Sidebar() {
                                         </div>
                                         <Link to="/es/draftMenu" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>기안하기</Link>
                                         <Link to="/es/draftInbox" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 기안함</Link>
-                                            
+
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
@@ -195,7 +195,7 @@ function Sidebar() {
                                             <Link to="/board/notice" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>공지사항</Link>
                                             <Link to="/board/community" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>커뮤니티</Link>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -246,7 +246,7 @@ function Sidebar() {
                         </div>
                     </div>
                 </div>
-                
+
                 <a href="#!" className={`${sidebarStyle.navLink} ${sidebarStyle.navLogout}`}>
                     <i className={`bx bx-log-out ${sidebarStyle.navIcon}`}></i>
                     <span className={sidebarStyle.navName}>로그아웃</span>
@@ -260,3 +260,5 @@ function Sidebar() {
 
 
 export default Sidebar;
+
+
