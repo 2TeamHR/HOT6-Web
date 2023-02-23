@@ -38,7 +38,7 @@
 
 .managementInput {
     float: right;
-    width: 95%;
+    width: 85%;
 }
 
 .profileMain {
@@ -78,6 +78,6 @@
 }
 
 .infoModule {
-    margin: 3% 10% 3% 5%;
+    margin: 2% 10% 2% 5%;
     font-size: 20px;
 }

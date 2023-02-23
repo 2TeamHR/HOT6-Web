@@ -40,6 +40,9 @@ import EsCompleteInbox from './pages/es/EsCompleteInbox';
 import SalaryBonus from './pages/salary/Salary_bonus';
 import BonusInsert from './pages/salary/Salary_BonusInsert';
 import OrganiCertificate from './pages/hrm/Organization_Certificate';
+import OrganizationCreate from './pages/hrm/Organization_create';
+import Organizationchart from './pages/hrm/Organization_chart';
+import OrganizationRetireeChart from './pages/hrm/Organization_retiree_chart';
 import EsDraftInbox from './pages/es/EsDraftInbox';
 import MyCalendar from './pages/calendar/MyCalendar';
 
@@ -87,6 +90,9 @@ function App() {
 
             {/* 인사 */}
             <Route path="/organization/certification" element={<OrganiCertificate />} />
+            <Route path="/organization/creacte" element={<OrganizationCreate />} />
+            <Route path="/organization/chart" element={<Organizationchart />} />
+            <Route path="/organization/retireeChart" element={<OrganizationRetireeChart />} />
 
             {/* 급여 */}
             <Route path="/salary/check" element={ <SalaryCheck />} />
