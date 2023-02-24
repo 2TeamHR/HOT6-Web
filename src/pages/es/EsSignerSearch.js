@@ -1,4 +1,4 @@
-import { Avatar, Checkbox, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, TextField } from "@mui/material";
+import { Avatar, Button, Checkbox, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, TextField } from "@mui/material";
 import React from "react";
 
 function EsSignerSearch() {
@@ -33,29 +33,24 @@ function EsSignerSearch() {
       <TextField id="standard-basic" label="결재자 검색" variant="standard" />
 
       <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {[0, 1, 2, 3].map((value) => {
-        const labelId = `checkbox-list-secondary-label-${value}`;
+      {sampleSigner.map((no) => {
+        const labelId = `checkbox-list-secondary-label-${no}`;
         return (
           <ListItem
-            key={value}
+            key={no}
             secondaryAction={
-              <Checkbox
-                edge="end"
-                onChange={handleToggle(value)}
-                checked={checked.indexOf(value) !== -1}
-                inputProps={{ 'aria-labelledby': labelId }}
-              />
+              <Button variant="contained">+</Button>
             }
             disablePadding
           >
             <ListItemButton>
               <ListItemAvatar>
                 <Avatar
-                  alt={`Avatar n°${value + 1}`}
-                  src={`/static/images/avatar/${value + 1}.jpg`}
+                  alt={`Avatar n°${no + 1}`}s
+                  src={`/static/images/avatar/${no + 1}.jpg`}
                 />
               </ListItemAvatar>
-              <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+              <ListItemText id={labelId} primary={no.name} />
             </ListItemButton>
           </ListItem>
         );

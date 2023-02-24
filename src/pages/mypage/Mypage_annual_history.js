@@ -30,7 +30,7 @@ function MypageAnnualHistory() {
                         <p>현재 특별 연차</p>
                         <p className="fs-3">0</p>
                     </div>
-                    <div className="text-success">
+                    <div className="text-success">3
                         <p>총 연차</p>
                         <p className="fs-3">0</p>
                     </div>
