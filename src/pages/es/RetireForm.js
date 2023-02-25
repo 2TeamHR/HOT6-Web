@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import { Button, Grid, TextField } from '@mui/material';
+import EsSignerSearch from './EsSignerSearch';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -47,14 +48,11 @@ function RetireForm() {
 
 
     <Grid item xs={4}>
-      <Paper sx={{ width: 150 }} elevation={5}>
-        <TextField id="standard-basic" label="결재자 검색" variant="standard" />
-
-        <Paper sx={{ height: 400 }}>
-
-        </Paper>
-
-      </Paper>
+    <Paper sx={{ maxWidth: 200 }} elevation={5}>
+            <EsSignerSearch></EsSignerSearch>
+            {/* <TextField id="standard-basic" label="결재자 검색" variant="standard" />
+            <Paper sx={{ height: 400 }}> */}
+            </Paper>
 
     </Grid>
       </Grid >

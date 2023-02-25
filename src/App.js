@@ -45,6 +45,9 @@ import SalaryBonus from './pages/salary/Salary_bonus';
 import BonusInsert from './pages/salary/Salary_BonusInsert';
 import EsDraftInbox from './pages/es/EsDraftInbox';
 import MyCalendar from './pages/calendar/MyCalendar';
+import DutyForm from './pages/es/DutyForm';
+import LOAForm from './pages/es/LOAForm';
+import ReinstatmentForm from './pages/es/ReinstatementForm';
 
 
 function App() {
@@ -66,11 +69,18 @@ function App() {
             <Route path='/es/leaveForm' element={<LeaveForm />}/>
             <Route path='/es/retireForm' element={<RetireForm />}/>
             <Route path='/es/salaryForm' element={<SalaryForm />}/>
+            <Route path='/es/dutyForm' element={<DutyForm />}/>
+            <Route path='/es/loaForm' element={<LOAForm />}/>
+            <Route path='/es/reinstatementForm' element={<ReinstatmentForm />}/>
             <Route path='/es/certificationForm' element={<CertificationForm />}/>
             <Route path='/es/draftInbox' element={<EsDraftInbox />}/>
             <Route path='/es/wait' element={<EsWaitInbox />}/>
             <Route path='/es/prograss' element={<EsPrograssInbox />}/>
             <Route path='/es/complete' element={<EsCompleteInbox />}/>
+
+
+
+
 
             {/* 마이페이지 */}
             <Route path="/mypage/main" element={ <MypageMain />} />
