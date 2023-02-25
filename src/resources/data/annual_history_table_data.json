@@ -9,54 +9,18 @@
       "id": "department",
       "numeric": true,
       "disablePadding": false,
-      "label": "부서"
+      "label": "휴가구분"
     },
     {
       "id": "team",
       "numeric": true,
       "disablePadding": false,
-      "label": "팀"
+      "label": "지급날짜"
     },
     {
       "id": "rank",
       "numeric": true,
       "disablePadding": false,
-      "label": "직급"
-    },
-    {
-      "id": "name",
-      "numeric": true,
-      "disablePadding": false,
-      "label": "성명"
-    },
-    {
-      "id": "employmentType",
-      "numeric": true,
-      "disablePadding": false,
-      "label": "고용형태"
-    },
-    {
-      "id": "workState",
-      "numeric": true,
-      "disablePadding": false,
-      "label": "재직구분"
-    },
-    {
-      "id": "annualCategory",
-      "numeric": true,
-      "disablePadding": false,
-      "label": "휴가구분"
-    },
-    {
-      "id": "annualState",
-      "numeric": true,
-      "disablePadding": false,
-      "label": "휴가상태"
-    },
-    {
-      "id": "date",
-      "numeric": true,
-      "disablePadding": false,
-      "label": "날짜"
+      "label": "지급일"
     }
   ]

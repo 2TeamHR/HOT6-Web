@@ -1,14 +1,32 @@
 
 /* 연차 이력 박스 */
 .annualMainBox{
-    align-items: center;
-    height: 13%;
-    border: 1px solid #c3c3c3;
-    border-radius: 15px;
+    width: 50%;
+}
+
+.annualMainBoxTitle {
+    border-bottom: 1px solid #dddddd;
 }
 
 .annualMainBox p {
     font-size: 20px;
     margin-top: 1rem;
     text-align: center;
+}
+
+.annualSelectBox {
+    margin: 1% 0px 1% 0px;
+}
+
+.annualSelectBox select {
+    width: 150px;
+    height: 40px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+    border: 1px solid #b5b5b5;
+}
+
+.annualTableMargin {
+    margin-top: 5%;
 }
