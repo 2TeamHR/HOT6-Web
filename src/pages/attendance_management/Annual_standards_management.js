@@ -22,12 +22,12 @@ function AnnualStandardsManagement() {
                 </div>
 
                 <Button className={asmStyle.sorBtn} onClick={handleShow}>
-                    사유신청
+                    기준등록
                 </Button>
 
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
-                    <Modal.Title>사유신청서</Modal.Title>
+                    <Modal.Title>휴가 기준 등록</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                     <div className="text-center">
