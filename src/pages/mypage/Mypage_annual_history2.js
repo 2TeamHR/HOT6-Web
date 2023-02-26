@@ -56,7 +56,7 @@ function MypageAnnualHistory() {
                 </Paper>
                 {/* <!-- check box --> */}
                 <div className={mpahStyle.annualSelectBox}>
-                    <span className='float-left fs-4 fw-bold'>휴가 발생 내역</span>
+                    <span className='float-left fs-4 fw-bold'>휴가 사용 내역</span>
                     <select className='float-right'>
                         <option>발생 내역</option>
                         <option>사용 내역</option>

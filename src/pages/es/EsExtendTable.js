@@ -5,7 +5,6 @@
     Step,
     StepLabel,
     Stepper,
-
     TablePagination,
     Typography,
   } from "@mui/material";
@@ -22,6 +21,8 @@
   import Paper from "@mui/material/Paper";
   import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
   import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import EsModal from "./EsModal";
+
 
  function createData(
     esNo,
@@ -49,6 +50,20 @@
   function Row(props) {
     const { row } = props;
     const [open, setOpen] = React.useState(false);
+
+    
+    const [openDi, setOpenDi] = React.useState(false);
+
+    const handleClickOpen = () => {
+      setOpenDi(true);
+    };
+  
+    const handleClose = () => {
+      setOpenDi(false);
+    };
+  
+
+
   
     return (
       <React.Fragment>
@@ -60,7 +75,7 @@
           <TableCell align="center">{row.esRank}</TableCell>
           <TableCell align="center">{row.esDrafterName}</TableCell>
           <TableCell align="center">{row.esDate}</TableCell>
-          <TableCell align="center">{row.esState}</TableCell>
+          <TableCell align="center"><EsModal/></TableCell>
           <TableCell align="center">
             <IconButton
               aria-label="expand row"
@@ -72,23 +87,28 @@
           </TableCell>
         </TableRow>
   
-  
-  
         <TableRow>
-          <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+          <TableCell style={{ paddingBottom: 0, paddingTop: 0, borderBottom: 0 }} colSpan={6}>
             <Collapse in={open} timeout="auto" unmountOnExit>
-              <Box sx={{ margin: 1 }}>
+              <Box sx={{ margin: 1, }}>
                 <Typography variant="h6" gutterBottom component="div">
                   전자결재 미리보기
                 </Typography>
   
-                <HorizontalLabelPositionBelowStepper></HorizontalLabelPositionBelowStepper>
-                <Table size="small" aria-label="purchases"></Table>
+                <HorizontalLabelPositionBelowStepper>
+                </HorizontalLabelPositionBelowStepper>
+
+
+                
               </Box>
             </Collapse>
           </TableCell>
         </TableRow>
       </React.Fragment>
+
+
+
+     
     );
   }
   
@@ -250,6 +270,7 @@
       setRowsPerPage(+event.target.value);
       setPage(0);
     };
+
 
 
     return (
