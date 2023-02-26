@@ -9,18 +9,24 @@
       "id": "department",
       "numeric": true,
       "disablePadding": false,
-      "label": "휴가구분"
+      "label": "휴가명"
     },
     {
       "id": "team",
       "numeric": true,
       "disablePadding": false,
-      "label": "지급날짜"
+      "label": "일수"
     },
     {
       "id": "rank",
       "numeric": true,
       "disablePadding": false,
-      "label": "지급일"
+      "label": "유급 / 무급"
+    },
+    {
+      "id": "name",
+      "numeric": true,
+      "disablePadding": false,
+      "label": "삭제"
     }
   ]

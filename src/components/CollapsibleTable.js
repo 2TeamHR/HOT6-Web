@@ -9,11 +9,10 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import annualPaymentTableDate from '../resources/data/annual_payment_table_data.json';
+import CollapsibleTableStyle from'../resources/css/components/collapsibleTable.module.css';
 
 function createData(name, calories, fat, carbs, protein, price) {
   return {
@@ -25,12 +24,12 @@ function createData(name, calories, fat, carbs, protein, price) {
     price,
     history: [
       {
-        date: '2020-01-05',
+        date: '2023-01-05',
         customerId: '11091700',
         amount: 3,
       },
       {
-        date: '2020-01-02',
+        date: '2023-01-02',
         customerId: 'Anonymous',
         amount: 1,
       },
@@ -48,10 +47,13 @@ function Row(props) {
         <TableCell component="th" scope="row">
           {row.name}
         </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
+        <TableCell align="center">{row.calories}</TableCell>
+        <TableCell align="center">{row.fat}</TableCell>
+        <TableCell align="center">{row.carbs}</TableCell>
+        <TableCell align="center">{row.protein}</TableCell>
+        <TableCell align="center">{row.protein}</TableCell>
+        <TableCell align="center">{row.protein}</TableCell>
+        <TableCell align="center">{row.protein}</TableCell>
         <TableCell>
           <IconButton
             className='float-right'
@@ -67,33 +69,20 @@ function Row(props) {
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
-                History
-              </Typography>
-              <Table size="small" aria-label="purchases">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">
-                        {historyRow.date}
-                      </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+              <div className={CollapsibleTableStyle.payContent}>
+                <span className='mr-3'>제목</span>
+                <span>제목입니다.</span>
+              </div>
+              <div className={CollapsibleTableStyle.payContent}>
+                <span className='mr-3'>내용</span>
+                <p>휴가 결제 내용입니다</p>
+              </div>
+              <div className={CollapsibleTableStyle.payContent}>
+                <span className='mr-3'>기간</span>
+                <span>시작일 날짜 출력</span>
+                <span> ~ </span>
+                
+              </div>
             </Box>
           </Collapse>
         </TableCell>
@@ -121,11 +110,8 @@ Row.propTypes = {
 };
 
 const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 3.99),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 4.99),
-  createData('Eclair', 262, 16.0, 24, 6.0, 3.79),
-  createData('Cupcake', 305, 3.7, 67, 4.3, 2.5),
-  createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
+  createData(1,'경영관리부','영업1팀','대리','홍길동','기본연차','2023-01-01',<button>증빙성류보기</button>),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 4.99, 123, 123, 123),
 ];
 
 export function CollapsibleTable() {
@@ -134,12 +120,15 @@ export function CollapsibleTable() {
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-            <TableCell />
+            <TableCell>No</TableCell>
+            <TableCell align="center">부서</TableCell>
+            <TableCell align="center">팀</TableCell>
+            <TableCell align="center">직급</TableCell>
+            <TableCell align="center">성명</TableCell>
+            <TableCell align="center">휴가구분</TableCell>
+            <TableCell align="center">결제완료날짜</TableCell>
+            <TableCell align="center">증빙서류</TableCell>
+            <TableCell className="float-right">자세히보기</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

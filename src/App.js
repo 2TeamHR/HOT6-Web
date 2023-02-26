@@ -6,7 +6,7 @@ import MypageManagement from './pages/mypage/Mypage_management';
 import MypageManagementUpdate from './pages/mypage/Mypage_management_update';
 import MypageAttendanceHistory from './pages/mypage/Mypage_attendance_history';
 import MypageAnnualHistory from './pages/mypage/Mypage_annual_history';
-import AnnualHistory from './pages/attendance_management/Annual_history';
+import AnnualStandardsManagement from './pages/attendance_management/Annual_standards_management';
 import AnnualPayment from './pages/attendance_management/Annual_payment';
 import AnnualManagement from './pages/attendance_management/Annual_management';
 import AnnualManagementDetailed from './pages/attendance_management/Annual_management_detailed';
@@ -81,7 +81,7 @@ function App() {
             <Route path="/mypage/annual/history" element={<MypageAnnualHistory />}/>
 
            {/* 근태관리 */}
-            <Route path="/annual/history" element={<AnnualHistory />}/>
+            <Route path="/annual/standardsManagement" element={<AnnualStandardsManagement />}/>
             <Route path="/annual/payment" element={<AnnualPayment />}/>
             <Route path="/annual/management" element={<AnnualManagement />}/>
             <Route path="/annual/management/detailed" element={<AnnualManagementDetailed />}/>

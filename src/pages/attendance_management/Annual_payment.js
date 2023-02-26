@@ -1,6 +1,6 @@
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
 import tableStyle from '../../resources/css/components/tableComponent.module.css';
-import {TsbDepartment, TsbEmployee, PayState, Term, EmployState, SearchBtn} from '../../components/TableSearchBox';
+import {TsbDepartment, TsbEmployee, Term, SearchBtn} from '../../components/TableSearchBox';
 import {CollapsibleTable} from '../../components/CollapsibleTable';
 
 
@@ -22,7 +22,7 @@ function AnnualPayment(){
                         <SearchBtn/>
                     </div>
                 </div>
-                <CollapsibleTable/>
+                <CollapsibleTable className="mt-5"/>
             </div>
         </main>
     );

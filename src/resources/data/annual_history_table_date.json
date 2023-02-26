@@ -48,15 +48,15 @@
       "label": "휴가구분"
     },
     {
-      "id": "payState",
+      "id": "annualState",
       "numeric": true,
       "disablePadding": false,
-      "label": "결재상태"
+      "label": "휴가상태"
     },
     {
-      "id": "documentDate",
+      "id": "date",
       "numeric": true,
       "disablePadding": false,
-      "label": "문서날짜"
+      "label": "날짜"
     }
   ]
