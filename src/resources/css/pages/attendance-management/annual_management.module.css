@@ -1,0 +1,26 @@
+.annualStandardTable {
+    margin-top: 50px;
+}
+
+.annualStandardTableHead {
+    background-color: #4c4c4c;
+    color: white;
+}
+
+.annualStandardTableHead th {
+    border: 1px solid #d9d9d9;
+}
+
+.annualStandardTableSubHead {
+    background-color: #e3e3e3;
+}
+
+.annualStandardTableSubHead th {
+    border: 1px solid #d9d9d9;
+    text-align: center;
+}
+
+.annualStandardTablebody td {
+    border: 1px solid #d9d9d9;
+    text-align: center;
+}
