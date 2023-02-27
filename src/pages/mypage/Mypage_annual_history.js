@@ -54,6 +54,27 @@ function MypageAnnualHistory() {
                         </div>
                     </div>
                 </Paper>
+                    <div>
+                        <p>현재 잔여 연차</p>
+                        <p className="fs-3">0</p>
+                    </div>
+                    <div>
+                        <p>현재 특별 연차</p>
+                        <p className="fs-3">0</p>
+                    </div>
+                    <div className="text-success">3
+                        <p>총 연차</p>
+                        <p className="fs-3">0</p>
+                    </div>
+                    <div className="text-success">
+                        <p>사용 연차</p>
+                        <p className="fs-3">0</p>
+                    </div>
+                    <div className="text-success">
+                        <p>잔여 연차</p>
+                        <p className="fs-3">0</p>
+                    </div>
+                </div>
                 {/* <!-- check box --> */}
                 <div className={mpahStyle.annualSelectBox}>
                     <span className='float-left fs-4 fw-bold'>휴가 발생 내역</span>
