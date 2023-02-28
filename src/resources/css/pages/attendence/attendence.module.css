@@ -112,3 +112,57 @@
     position: absolute;
     left: 15px;
 }
+
+
+/*모달 버튼*/
+.modalButton {
+    margin-left: 10px;
+
+}
+
+/*모달 버튼 누른 후 부서명*/
+.dName {
+    margin-left: 30px;
+    border: 1px solid #aaaaaa;
+    border-radius: 10px;
+}
+
+.dDate {
+    margin-left: 45px;
+    border: 1px solid #aaaaaa;
+    border-radius: 10px;
+
+}
+
+.dMember {
+    margin-left: 45px;
+    border: 1px solid #aaaaaa;
+    border-radius: 10px;
+
+}
+
+.dStatus {
+    margin-left: 45px;
+    border: 1px solid #aaaaaa;
+    border-radius: 10px;
+    width: 45%
+}
+
+.dbutton2 {
+    margin-left: 95px;
+    margin-top: 30px;
+    width: 45%
+}
+
+.dbutton3 {
+    margin-left: 70px;
+    margin-top: 70px;
+
+}
+
+.dbutton4 {
+    position: absolute;
+    left: 270px;
+    bottom: 53px;
+
+}

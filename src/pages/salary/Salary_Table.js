@@ -6,17 +6,12 @@ function SalaryTable() {
     <Table className="mr-5" striped style={{width:"400px"}}>
         <thead>
             <tr>
-            <th colSpan={2} className="text-center">근태내역(시간)</th>
+            <th colSpan={2} className="text-center">실 지급액(원)</th>
             </tr>
         </thead>
         <tbody className="text-center">
             <tr>
-                <td>기본근로시간</td>
-                <td>180</td>
-            </tr>
-            <tr>
-                <td>연장근무시간</td>
-                <td>20</td>
+                <td>1,768,160</td>
             </tr>
           
         </tbody>

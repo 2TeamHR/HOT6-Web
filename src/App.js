@@ -20,7 +20,11 @@ import FindPassword from '../src/pages/login/FindPassword';
 import ChangePassword from '../src/pages/login/ChangePassword';
 import SalaryCheck from './pages/salary/Salary_check';
 import Community from './pages/board/Community';
+import CommunityWrite from './pages/board/CommunityWrite';
+import CommunityDetail from './pages/board/CommunityDetail';
 import Notice from './pages/board/Notice';
+import NoticeWrite from './pages/board/NoticeWrite';
+import NoticeDetail from './pages/board/NoticeDetail';
 import Message from "./pages/messsage/Message";
 import MessageSent from "./pages/messsage/MessageSent";
 import MessageTrash from "./pages/messsage/MessageTrash";
@@ -45,6 +49,7 @@ import SalaryBonus from './pages/salary/Salary_bonus';
 import BonusInsert from './pages/salary/Salary_BonusInsert';
 import EsDraftInbox from './pages/es/EsDraftInbox';
 import MyCalendar from './pages/calendar/MyCalendar';
+import Specification from './pages/salary/Salary_Specification';
 
 
 function App() {
@@ -95,6 +100,7 @@ function App() {
 
             {/* 급여 */}
             <Route path="/salary/check" element={ <SalaryCheck />} />
+            <Route path="/salary/specification" element={ <Specification />} />
             <Route path="/salary/checkN" element={ <AllCheckN />} />
             <Route path="/salary/checkY" element={ <AllCheckY />} />
             <Route path="/salary/severanceN" element={ <SeveranceN />} />
@@ -104,10 +110,14 @@ function App() {
 
             {/* 게시판 */}
             <Route path="/board/notice" element={<Notice />} />
+            <Route path="/board/notice/write" element={<NoticeWrite />} />
+            <Route path="/board/notice/detail" element={<NoticeDetail />} />
             <Route path="/board/community" element={<Community />} />
 
             {/* 캘린더 */}
             <Route path="/calendar" element={<MyCalendar />} />
+            <Route path="/board/community/write" element={<CommunityWrite />} />
+            <Route path="/board/community/detail" element={<CommunityDetail/>} />
 
             {/* 메세지 */}
             <Route path="/messsage/message" element={<Message />} />
