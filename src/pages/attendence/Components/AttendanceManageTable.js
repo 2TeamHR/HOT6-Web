@@ -3,10 +3,8 @@ import { DataGrid } from '@mui/x-data-grid';
 import { randomCreatedDate, randomUpdatedDate } from '@mui/x-data-grid-generator';
 import dayjs from "dayjs";
 import {Button, Stack} from "@mui/material";
-import EditIcon from '@mui/icons-material/Edit';
 import AttendanceModal from "./AttendanceModal";
-import {useState} from "react";
-import {Modal} from "../../hrm/Organization_CertificateTable";
+
 
 
 
@@ -120,7 +118,7 @@ export default function AttendanceManageTable() {
 
 
     return (
-        <div style={{ height: 600, width: '160%' }}>
+        <div style={{ height: 600, width: '145%' }}>
             <DataGrid
                 rows={rows}
                 columns={columns}
