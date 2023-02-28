@@ -243,7 +243,7 @@ img {
 
 /* Rotate icon arrow */
 .navDropdown:hover .navDropdownIcon {
-  transform: rotate(180deg);
+  transform: rotate(200deg);
 }
 
 /*===== Show menu =====*/
@@ -279,7 +279,8 @@ img {
     padding: .55rem .75rem;
   }
   .headerToggle {
-    display: none;
+    display: block;
+    float:left;
   }
   .headerLogo {
     display: block;
@@ -329,6 +330,8 @@ img {
   .nav:hover .navDropdownIcon {
     opacity: 1;
   }
+
+
 }
 
 .navDropdownContentTitle {

@@ -1,9 +1,9 @@
 import Table from 'react-bootstrap/Table';
 
-function SalaryTable2(){
+function BasicTable(){
 
     return(
-    <Table striped style={{width:500}}>
+    <Table striped style={{width:500}} className="mr-5">
         <thead className="mt-5">
             <tr>
             <th colSpan={2} className="text-center">급여내역(원)</th>
@@ -13,19 +13,19 @@ function SalaryTable2(){
         <tbody className="text-center">
             <tr>
                 <td>기본급</td>
-                <td>1,800,000</td>
+                <td>2,000,000</td>
             </tr>
             <tr>
                 <td>상여금</td>
                 <td>50,000</td>
             </tr>
             <tr>
-                <td>공제액</td>
-                <td>185,000</td>
+                <td>식대</td>
+                <td>100,000</td>
             </tr>
             <tr>
-                <td>실지급액</td>
-                <td>1,665,000</td>
+                <td>세전 총액</td>
+                <td>2,150,000</td>
             </tr>
         </tbody>
     </Table>
@@ -33,4 +33,4 @@ function SalaryTable2(){
     );
 }
 
-export default SalaryTable2;
+export default BasicTable;

@@ -2,7 +2,7 @@ import sidebarStyle from '../resources/css/components/sidebar.module.css';
 import { Link } from 'react-router-dom';
 
 function Sidebar() {
-    
+
 
     return (
         <>  
@@ -33,7 +33,7 @@ function Sidebar() {
                                             마이페이지
                                         </div>
                                             <Link to="/mypage/main" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>나의 인사 카드</Link>
-                                            <Link to="/mypage/update" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>개인 정보 관리</Link>
+                                            <Link to="/mypage/management" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>개인 정보 관리</Link>
                                     </div>
                                 </div>
                             </div>
@@ -67,15 +67,15 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             인사팀 기능
                                         </div>
-                                            <Link to="/organization/create" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>신규 사원 등록</Link>
+                                            <Link to="/organization/creacte" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>신규 사원 등록</Link>
                                             <Link to="/" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>인사 이동 명단</Link>
-                                            <Link to="/" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직자 명단</Link>
+                                            <Link to="/organization/retireeChart" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직자 명단</Link>
                                             <Link to="/" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>상여금 명단</Link>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                       
+
                         {/* <!-- nav 근태 --> */}
                         <div className={sidebarStyle.navItems}>
 
@@ -97,7 +97,7 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             연차
                                         </div>
-                                            <Link to="/annual/payment" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>나의 연차이력</Link>
+                                            <Link to="mypage/annual/history" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>나의 연차이력</Link>
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
@@ -106,7 +106,7 @@ function Sidebar() {
                                             <Link to="/attendence/AttendanceManage" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>근태 이력 조회</Link>
                                             <Link to="/attendence/AttendanceSelectTime" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>근무 시간 이력</Link>
                                             <Link to="/annual/payment" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>연차 결재 리스트</Link>
-                                            <Link to="/annual/history" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>연차 내역</Link>
+                                            <Link to="/annual/standardsManagement" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>연차 기준 관리</Link>
                                             <Link to="/annual/management" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>연차 관리</Link>
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@ function Sidebar() {
                          <div className={sidebarStyle.navItems}>
 
                             <div className={sidebarStyle.navDropdown}>
-                                <div href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
+                                <div className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
                                     <i className={`bx bx-edit ${sidebarStyle.navIcon}`}></i>
                                     <span className={sidebarStyle.navName}>전자결재</span>
                                     <i className={`bx bx-chevron-down ${sidebarStyle.navIcon} ${sidebarStyle.navDropdownIcon}`}></i>
@@ -136,7 +136,7 @@ function Sidebar() {
                                         </div>
                                         <Link to="/es/draftMenu" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>기안하기</Link>
                                         <Link to="/es/draftInbox" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 기안함</Link>
-                                            
+
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
@@ -154,11 +154,11 @@ function Sidebar() {
                         <div className={sidebarStyle.navItems}>
 
                             <div className={sidebarStyle.navDropdown}>
-                                <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
+                                <div className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
                                     <i className={`bx bx-money ${sidebarStyle.navIcon}`}></i>
                                     <span className={sidebarStyle.navName}>급여</span>
                                     <i className={`bx bx-chevron-down ${sidebarStyle.navIcon} ${sidebarStyle.navDropdownIcon}`}></i>
-                                </a>
+                                </div>
                                 <div className={sidebarStyle.navDropdownCollapse}>
                                     {/* <!-- 중분류 --> */}
                                     <div className={sidebarStyle.navDropdownContent}>
@@ -166,6 +166,7 @@ function Sidebar() {
                                             급여
                                         </div>
                                             <Link to="/salary/check" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>내 급여 조회</Link>
+                                            <Link to="/salary/specification" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>급여 명세서</Link>
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
@@ -183,9 +184,11 @@ function Sidebar() {
                         <div className={sidebarStyle.navItems}>
 
                             <div className={sidebarStyle.navDropdown}>
+                                <div className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
                                     <i className={`bx bx-message-edit ${sidebarStyle.navIcon}`}></i>
                                     <span className={sidebarStyle.navName}>게시판</span>
                                     <i className={`bx bx-chevron-down ${sidebarStyle.navIcon} ${sidebarStyle.navDropdownIcon}`}></i>
+                                </div>
                                 <div className={sidebarStyle.navDropdownCollapse}>
                                     {/* <!-- 중분류 --> */}
                                     <div className={sidebarStyle.navDropdownContent}>
@@ -195,7 +198,7 @@ function Sidebar() {
                                             <Link to="/board/notice" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>공지사항</Link>
                                             <Link to="/board/community" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>커뮤니티</Link>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -204,18 +207,18 @@ function Sidebar() {
                         <div className={sidebarStyle.navItems}>
 
                             <div className={sidebarStyle.navDropdown}>
-                                <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>
+                            <div className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>   
                                     <i className={`bx bx-calendar-check ${sidebarStyle.navIcon}`}></i>
                                     <span className={sidebarStyle.navName}>캘린더</span>
                                     <i className={`bx bx-chevron-down ${sidebarStyle.navIcon} ${sidebarStyle.navDropdownIcon}`}></i>
-                                </a>
+                            </div>  
                                 <div className={sidebarStyle.navDropdownCollapse}>
                                     {/* <!-- 중분류 --> */}
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             캘린더
                                         </div>
-                                            <Link to="schedule/main" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>일정관리</Link>
+                                            <Link to="/calendar" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>일정관리</Link>
                                     </div>
                                 </div>
                             </div>
@@ -246,7 +249,7 @@ function Sidebar() {
                         </div>
                     </div>
                 </div>
-                
+
                 <a href="#!" className={`${sidebarStyle.navLink} ${sidebarStyle.navLogout}`}>
                     <i className={`bx bx-log-out ${sidebarStyle.navIcon}`}></i>
                     <span className={sidebarStyle.navName}>로그아웃</span>
@@ -260,3 +263,5 @@ function Sidebar() {
 
 
 export default Sidebar;
+
+

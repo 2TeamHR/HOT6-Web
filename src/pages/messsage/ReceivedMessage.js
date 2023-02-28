@@ -1,7 +1,6 @@
 import React from 'react';
 import messageStyle from '../../resources/css/pages/message/message.module.css'
 import messageStyle2 from '../../resources/css/pages/message/receivedMessage.module.css'
-
 import {Link} from "react-router-dom";
 
 
@@ -11,9 +10,6 @@ function ReceivedMessage(){
     <>
         
 
-
-           
-    
 
     {/* // <!--========== CONTENTS ==========--> */}
         <main>

@@ -24,21 +24,7 @@ function OrganizationChart() {
                         <SearchBtn/>
                     </div>
                 </div>
-                <EnhancedTable tabledata={ getOrganizationChartTableData() }/>
-                
-
-                {/* <SelectBar/> */}
-
-                {/* <div className="d-flex m-auto justify-content-center">
-                    <div className="d-flex">
-                        <select className="">
-                            <option>퇴직여부</option>
-                            <option>재직중</option>
-                            <option>퇴직</option>
-                        </select>
-                    </div>
-                </div> */}
-                    
+                <EnhancedTable tabledata={ getOrganizationChartTableData() }/>            
             </div>
         </main>
     );

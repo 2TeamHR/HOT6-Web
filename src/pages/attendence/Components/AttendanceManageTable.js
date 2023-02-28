@@ -2,8 +2,18 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { randomCreatedDate, randomUpdatedDate } from '@mui/x-data-grid-generator';
 import dayjs from "dayjs";
+import {Button, Stack} from "@mui/material";
+import EditIcon from '@mui/icons-material/Edit';
+import AttendanceModal from "./AttendanceModal";
+import {useState} from "react";
+import {Modal} from "../../hrm/Organization_CertificateTable";
+
+
+
 
 const columns = [
+
+
     { field: 'id', headerName: 'NO', width: 70, align: 'center', headerAlign: 'center' },
 
     { field: 'status', headerName: '상태', width: 130, align: 'center', justifyContent:'center', headerAlign: 'center' },
@@ -31,7 +41,29 @@ const columns = [
 
     { field: 'endTime', headerName: '퇴근시간' , width: 130,align: 'center', headerAlign: 'center' },
 
-    { field: 'note', headerName: '비고', width: 130 , align: 'center', headerAlign: 'center'}
+    { field: 'note',
+        headerName: '수정',
+        width: 130 ,
+        align: 'center',
+        headerAlign: 'center',
+        sortable: false,
+        renderCell: ()=> (
+
+            <Stack spacing={1} sx={{ width: 1, py:1}}>
+                    <React.Fragment>
+                        {/*<Button variant="outlined"*/}
+                        {/*        size="small"*/}
+                        {/*        startIcon={<EditIcon />}*/}
+                        {/*        onClick={editEventHandler}*/}
+                        {/*>*/}
+                        {/*    Edit*/}
+                        {/*</Button>*/}
+                        <AttendanceModal></AttendanceModal>
+                    </React.Fragment>
+            </Stack>
+
+        ),
+    }
     // {
     //     field: 'age',
     //     headerName: 'Age',
@@ -62,11 +94,31 @@ const rows = [
         startTime: '08:10',
         originEndTime:'18:00',
         endTime:'08:10',
-        note:'비고'
+        note:'수정'
+    },
+
+    { id: 2,
+        status: '정상출근',
+        department:'개발부',
+        level: 'Jon',
+        name: '홍길동',
+        date: randomCreatedDate(),
+        originStartTime: '09:00',
+        startTime: '08:10',
+        originEndTime:'18:00',
+        endTime:'08:10',
+        note:'수정'
     }
 ];
 
+const editEventHandler = () => {
+
+
+}
+
 export default function AttendanceManageTable() {
+
+
     return (
         <div style={{ height: 600, width: '160%' }}>
             <DataGrid
@@ -79,3 +131,5 @@ export default function AttendanceManageTable() {
         </div>
     );
 }
+
+

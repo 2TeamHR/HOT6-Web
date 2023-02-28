@@ -1,0 +1,35 @@
+/* 모달 버튼 */
+.sorBtn{
+    float: right;
+    width: 7%;
+    height: 30px;
+    border: 0px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #a6a6a6;
+    background-color: #5e79dc;
+    color: white;
+}
+
+/* 모달창 */
+.modalInputTitle{
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #a6a6a6;
+}
+
+.modalInputContent{
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #a6a6a6;
+}
+
+.modalSelect{
+    width: 100%;
+}
+
+.modelInfo{
+    font-size: small;
+    font-weight: 800;
+}
