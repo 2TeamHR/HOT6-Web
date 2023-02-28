@@ -97,8 +97,8 @@ function App() {
             {/* 급여 */}
             <Route path="/salary/check" element={ <SalaryCheck />} />
             <Route path="/salary/specification" element={ <Specification />} />
-            <Route path="/salary/checkN" element={ <AllCheckN />} />
-            <Route path="/salary/checkY" element={ <AllCheckY />} />
+            <Route path="/salary/check/N" element={ <AllCheckN />} />
+            <Route path="/salary/check/Y" element={ <AllCheckY />} />
             <Route path="/salary/severanceN" element={ <SeveranceN />} />
             <Route path="/salary/severanceY" element={ <SeveranceY />} />
             <Route path="/salary/bonus" element={ <SalaryBonus />} />
