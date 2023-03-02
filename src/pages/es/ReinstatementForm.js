@@ -26,24 +26,24 @@ function ReinstatmentForm() {
   const [value, setValue] = React.useState(dayjs('2022-04-07'));
   return (
     <>
-    <Container>
-      <Grid container direction="row" spacing={3}>
-        <Grid item xs={8}>
-          <Paper elevation={5}>
-            <h2>복직 신청서</h2>
-                <label>결재선</label>
-                <div>
-                  <Stack
-                    direction="row"
-                    divider={<Divider orientation="vertical" flexItem />}
-                    spacing={2}
-                  >
-                    <Item>기안자</Item>
-                    <Item>중간결재자</Item>
-                    <Item>최종결재자</Item>
-                  </Stack>
-                </div>
-              
+      <Container>
+        <Grid container direction="row" spacing={3}>
+          <Grid item xs={8}>
+            <Paper elevation={5}>
+              <h2>복직 신청서</h2>
+              <label>결재선</label>
+              <div>
+                <Stack
+                  direction="row"
+                  divider={<Divider orientation="vertical" flexItem />}
+                  spacing={2}
+                >
+                  <Item>기안자</Item>
+                  <Item>중간결재자</Item>
+                  <Item>최종결재자</Item>
+                </Stack>
+              </div>
+
               <Grid container columns={6}>
                 <Grid item xs={3}><label>기안문서번호</label></Grid>
                 <Grid item xs={3}><input type="text" /></Grid>
@@ -70,18 +70,18 @@ function ReinstatmentForm() {
                 <Grid item xs={3}><input type="file" /></Grid>
                 <Grid item xs={3}></Grid>
               </Grid>
-            <Button>신청하기</Button><Button>취소하기</Button></Paper>
-        </Grid>
+              <Button>신청하기</Button><Button>취소하기</Button></Paper>
+          </Grid>
 
-        <Grid item xs={4}>
-        <Paper sx={{ maxWidth: 200 }} elevation={5}>
-            <EsSignerSearch></EsSignerSearch>
-            {/* <TextField id="standard-basic" label="결재자 검색" variant="standard" />
+          <Grid item xs={4}>
+            <Paper sx={{ maxWidth: 200 }} elevation={5}>
+              <EsSignerSearch></EsSignerSearch>
+              {/* <TextField id="standard-basic" label="결재자 검색" variant="standard" />
             <Paper sx={{ height: 400 }}> */}
             </Paper>
-          
+
+          </Grid>
         </Grid>
-      </Grid>
       </Container>
     </>
   );

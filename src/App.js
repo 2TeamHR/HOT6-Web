@@ -20,7 +20,11 @@ import FindPassword from '../src/pages/login/FindPassword';
 import ChangePassword from '../src/pages/login/ChangePassword';
 import SalaryCheck from './pages/salary/Salary_check';
 import Community from './pages/board/Community';
+import CommunityWrite from './pages/board/CommunityWrite';
+import CommunityDetail from './pages/board/CommunityDetail';
 import Notice from './pages/board/Notice';
+import NoticeWrite from './pages/board/NoticeWrite';
+import NoticeDetail from './pages/board/NoticeDetail';
 import Message from "./pages/messsage/Message";
 import MessageSent from "./pages/messsage/MessageSent";
 import MessageTrash from "./pages/messsage/MessageTrash";
@@ -116,10 +120,14 @@ function App() {
 
             {/* 게시판 */}
             <Route path="/board/notice" element={<Notice />} />
+            <Route path="/board/notice/write" element={<NoticeWrite />} />
+            <Route path="/board/notice/detail" element={<NoticeDetail />} />
             <Route path="/board/community" element={<Community />} />
 
             {/* 캘린더 */}
             <Route path="/calendar" element={<MyCalendar />} />
+            <Route path="/board/community/write" element={<CommunityWrite />} />
+            <Route path="/board/community/detail" element={<CommunityDetail/>} />
 
             {/* 메세지 */}
             <Route path="/messsage/message" element={<Message />} />
