@@ -1,12 +1,32 @@
 import asmStyle from '../../resources/css/pages/attendance-management/annual_standards_management.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
-import {EnhancedTable} from '../../components/tableComponent';
-import { getAnnualStandardsManagementTableData } from '../../api/tableAPI';
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Table from 'react-bootstrap/Table';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+
+import {
+    callLeaveCategoryListAPI
+} from '../../apis/LeaveAPICalls';
+
 
 function AnnualStandardsManagement() {
+
+    const dispatch = useDispatch();
+    const product  = useSelector(state => state.productReducer);  
+
+    useEffect(
+        () => {
+            dispatch(callLeaveCategoryListAPI(	// 상품 상세 정보 조회
+            ));
+        }
+        ,[]
+    );
+
+    console.log('11111111111111', product);
 
     const [show, setShow] = useState(false);
 
@@ -53,7 +73,26 @@ function AnnualStandardsManagement() {
                     </Button>
                     </Modal.Footer>
                 </Modal>
-                <EnhancedTable tabledata={ getAnnualStandardsManagementTableData() }/>
+                <Table>
+                    <thead>
+                        <tr className="text-center">
+                            <th>No</th>
+                            <th>휴가명</th>
+                            <th>일수</th>
+                            <th>유급 / 무급</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {product.map((category, index) => (
+                            <tr key={category.leaveCategoryCode} className="text-center">
+                                <td>{index + 1}</td>
+                                <td>{category.leaveCategoryName}</td>
+                                <td>{category.leaveCategoryDateCount}</td>
+                                <td>{category.leavePayState === 8 ? '유급' : '무급'}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
             </div>
         </main>
     );
