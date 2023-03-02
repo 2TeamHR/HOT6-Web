@@ -19,10 +19,10 @@ function Main() {
        
             </div>
 
-            <div className={mainStyle.mainClass}>
-
+            <div className={`${mainStyle.mainClass} container`}>
+                
                 {/* 공지사항 */}
-                <div className={mainStyle.module} style={{width: "100%"}}>
+                <div className={mainStyle.module} style={{width: "100%", height:400}}>
                     <p className={`${mainStyle.notice} mt-3 ms-3`}>공지사항</p>
                     <p className={mainStyle.vacationPlus}>+ 더보기</p>
                     <div className={mainStyle.myVacation}>
@@ -55,14 +55,14 @@ function Main() {
                     
                 </div>
 
-                <div className={mainStyle.module} style={{width: "30%"}}>
+                <div className={mainStyle.module} style={{width: "30%", height:400}}>
                     <p className={`${mainStyle.mainApproval} fs-2 mt-5 text-center`}>승인된 결재</p>
                     <div className={mainStyle.noteCount}>
                         <span>5</span>
                         <span>건</span>
                     </div>
                 </div>
-                <div className={mainStyle.module} style={{width: "30%"}}>
+                <div className={mainStyle.module} style={{width: "30%", height:400}}>
                     <p className={`${mainStyle.mainApproval} fs-2 mt-5 text-center`}>반려된 결재</p>
                     <div className={mainStyle.noteCount}>
                         <span>5</span>

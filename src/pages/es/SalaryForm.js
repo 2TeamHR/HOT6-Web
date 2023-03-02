@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import { Button, Grid, TextField } from '@mui/material';
+import EsSignerSearch from './EsSignerSearch';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -43,16 +44,15 @@ function SalaryForm() {
               <Grid item xs={3}><label>급여정정 날짜</label></Grid><Grid item xs={3}><input type="date" name="" id="" /></Grid>
               <Grid item xs={3}><label>첨부파일</label></Grid><Grid item xs={3}><input type="file" name="" id="" /></Grid>
             </Grid>
-
             <Button>신청하기</Button><Button>취소하기</Button></Paper>
         </Grid>
 
 
         <Grid item xs={4}>
-          <Paper sx={{ width: 150 }} elevation={5}>
-            <TextField id="standard-basic" label="결재자 검색" variant="standard" />
-            <Paper sx={{ height: 400 }}>
-            </Paper>
+          <Paper sx={{ maxWidth: 200 }} elevation={5}>
+            <EsSignerSearch></EsSignerSearch>
+            {/* <TextField id="standard-basic" label="결재자 검색" variant="standard" />
+            <Paper sx={{ height: 400 }}> */}
           </Paper>
         </Grid>
       </Grid>

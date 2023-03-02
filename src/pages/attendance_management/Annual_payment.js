@@ -1,8 +1,8 @@
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
 import tableStyle from '../../resources/css/components/tableComponent.module.css';
-import {TsbDepartment, TsbEmployee, PayState, Term, EmployState, SearchBtn} from '../../components/TableSearchBox';
-import {EnhancedTable} from '../../components/tableComponent';
-import { getAnnualPaymentTableData } from '../../api/tableAPI';
+import {TsbDepartment, TsbEmployee, Term, SearchBtn} from '../../components/TableSearchBox';
+import {CollapsibleTable} from '../../components/CollapsibleTable';
+
 
 function AnnualPayment(){
 
@@ -11,22 +11,18 @@ function AnnualPayment(){
             <div>
 
                 <div className={mainTitleStyle.title}>
-                    <p>연차 결제 리스트</p>
+                    <p>휴가 결제 완료 리스트</p>
                 </div>
 
                 <div className={tableStyle.boxStyle}>
                     <div className={tableStyle.searchBox}>
                         <TsbDepartment/>
                         <TsbEmployee/>
-                        <PayState/>
+                        <Term/>
                         <SearchBtn/>
                     </div>
-                    <div className={tableStyle.searchBox}>
-                        <Term/>
-                        <EmployState/>
-                    </div>
                 </div>
-                <EnhancedTable tabledata={ getAnnualPaymentTableData() }/>
+                <CollapsibleTable className="mt-5"/>
             </div>
         </main>
     );

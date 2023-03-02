@@ -1,0 +1,9 @@
+.payContent {
+    font-size: 20px;
+    margin: 10px 0px 10px 0px;
+}
+
+.payContent input {
+    border: 1px solid #9d9d9d;
+    border-radius: 10px;
+}
