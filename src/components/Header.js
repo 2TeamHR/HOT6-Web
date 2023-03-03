@@ -8,16 +8,9 @@ function Header() {
         <header className={sidebarStyle.header}>
             <div className={sidebarStyle.headerContainer}>
 
-                <a href="#!" className={`${sidebarStyle.a} ${sidebarStyle.headerLogo}`}></a>
-
-
                 <div className={sidebarStyle.headerSearch}>
                     <input type="search" placeholder="Search" className={sidebarStyle.headerInput}/>
                     <i className={`bx bx-search ${sidebarStyle.headerIcon}`}></i>
-                </div>
-
-                <div className={sidebarStyle.headerToggle}>
-                    <i className={`bx bx-menu`} id="header-toggle"></i>
                 </div>
 
             </div>
