@@ -118,7 +118,7 @@ export default function AttendanceManageTable() {
 
 
     return (
-        <div style={{ height: 600, width: '145%' }}>
+        <div style={{ height: 600, width: '165%' }}>
             <DataGrid
                 rows={rows}
                 columns={columns}
