@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
+import { useDispatch } from 'react-redux';
 
 const columns = [
     { field: 'id', headerName: '사번', width: 100 },
@@ -25,7 +26,9 @@ const rows = [
     { id: 6, team: '무슨팀', rank: '성명', name: '이', salary: 150000, bonus: 50000, tax: 20000, totalSalary: 180000, paymentDate: '2023-02-18', paymentStatus: 'N' },
 ];
 
-export default function SalaryDataTableN() {
+export default function SalaryDataTableN({ salary : {salaryCode, memberCode, bonusCode, taxCode, basicSalary, bonusSalary, mealSalary, totalTax, totalSalary, paymentDate, paymentYn}}) {
+
+
     return (
         <div className="pl-5" style={{ height: 400, width: '90%' }}>
             <DataGrid

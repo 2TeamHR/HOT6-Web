@@ -7,9 +7,27 @@ import { Link } from 'react-router-dom';
 import BasicTable from './Salary_BasicTable';
 import TaxTable from './Salary_TaxTable';
 import SpecificationModal from './Salary_Specification';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { callGetMySalaryAPI } from '../../apis/SalaryAPICalls';
 
 function SalaryCheck() {
+
+    const dispatch = useDispatch();
+    const salary = useSelector(state => state.salaryReducer);
+    const tax = useSelector(state => state.taxReducer);
+    const salaryList = salary.data;
+    const taxList = tax.data;
+
+    // useEffect(
+    //     () => {
+    //         dispatch(callGetMySalaryAPI(
+             
+    //         )); // 내 급여 조회
+    //     }, []
+    // );
+
+    console.log('salary', salary);
 
     const [showModal, setShowModal] = useState(false);
 
@@ -35,8 +53,12 @@ function SalaryCheck() {
             </div>
         </div>
         <div className= {`pt-5 ${salarytableStyle.tableStyle}`}>
-            <BasicTable />
-            <TaxTable />
+            {
+                Array.isArray(salaryList) && salaryList.map((salary) => (<BasicTable key={ salary.salayCode } salary= { salary } />))
+            }
+            {
+                Array.isArray(taxList) && salaryList.map((tax) => (<TaxTable key= { tax.taxCode } tax = { tax } />))
+            }
         </div>
         <div className={`mt-5 ${salarytableStyle.tableStyle}`} >
             <SalaryTable />

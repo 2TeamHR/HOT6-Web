@@ -1,26 +1,30 @@
 import { createActions, handleActions } from 'redux-actions';
 
-const initialState = [
-    {
-        
-    }
-]
+/* 초기값 */
+const initialState = [];
 
-export const GET_SALARY = 'salarycheck/GET_SALARY';
+/* 액션 */
+export const GET_SALARY = 'salary/GET_SALARY';
+export const GET_PAYMENT_SALARY = 'salary/check/GET_PAYMENT_SALARY'
  
 const actions = createActions({
-    [GET_SALARY]: () => {}
-})
+    [GET_SALARY]: () => {},
+    [GET_PAYMENT_SALARY]: () => {},
+});
 
+/* 리듀서 */
 const salaryReducer = handleActions(
     {
         [GET_SALARY]: (state, { payload }) => {
-            console.log(`payload : `, payload);
 
             return payload;
-        }
+        },
+        [GET_PAYMENT_SALARY]: (state, { payload}) => {
+            
+            return payload;
+        },
     },
     initialState
 );
 
-export default salaryReducer;
+export default salaryReducer; 
