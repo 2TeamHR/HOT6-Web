@@ -85,7 +85,7 @@ function Login() {
 
                 <div >
                     <div>
-                        <h1 style={{ textAlign: 'center', marginTop: '0px' }}><b>HOT6 로그인</b></h1>
+                        <h1 style={{ textAlign: 'center', marginTop: '0px' }}><b>The Tech Titan 로그인</b></h1>
 
                         <input
                             type="text"
@@ -116,7 +116,7 @@ function Login() {
 
                     </div>
                     <p><span style={{ display: 'block', textAlign: 'center', marginTop: '20px' }}>비밀번호를 잊으셨나요? <Link to="/findpassword">비밀번호 찾기</Link></span></p>
-                    <p style={{ display: 'block', textAlign: 'center', marginTop: '20px' }}>COPYRIGHTⓒ 2023 HOT6 ALL RIGHTS RESERVED.</p>
+                    <p style={{ display: 'block', textAlign: 'center', marginTop: '20px' }}>COPYRIGHTⓒ 2023 The Tech Titan ALL RIGHTS RESERVED.</p>
                 </div>
             </div>
         </>
