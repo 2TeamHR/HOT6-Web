@@ -16,11 +16,13 @@
 }
 
 .annualStandardTableSubHead th {
+    font-size: small;
     border: 1px solid #d9d9d9;
     text-align: center;
 }
 
 .annualStandardTablebody td {
+    font-size: small;
     border: 1px solid #d9d9d9;
     text-align: center;
 }

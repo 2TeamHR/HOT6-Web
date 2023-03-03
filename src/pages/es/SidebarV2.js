@@ -26,53 +26,53 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 const drawerWidth = 240;
 
 const sidebarCategoryName = [
-    { sidebarCategoryId: 1, menuSubName: "마이페이지", },
-    { sidebarCategoryId: 2, menuSubName: "인사" },
-    { sidebarCategoryId: 3, menuSubName: "근태" },
-    { sidebarCategoryId: 4, menuSubName: "전자결재" },
-    { sidebarCategoryId: 5, menuSubName: "급여" },
-    { sidebarCategoryId: 6, menuSubName: "게시판" },
-    { sidebarCategoryId: 7, menuSubName: "캘린더" },
-    { sidebarCategoryId: 8, menuSubName: "메세지" }
+    { sidebarCategoryId: 1, menuPrimaryName: "마이페이지", },
+    { sidebarCategoryId: 2, menuPrimaryName: "인사" },
+    { sidebarCategoryId: 3, menuPrimaryName: "근태" },
+    { sidebarCategoryId: 4, menuPrimaryName: "전자결재" },
+    { sidebarCategoryId: 5, menuPrimaryName: "급여" },
+    { sidebarCategoryId: 6, menuPrimaryName: "게시판" },
+    { sidebarCategoryId: 7, menuPrimaryName: "캘린더" },
+    { sidebarCategoryId: 8, menuPrimaryName: "메세지" }
 ];
 
 const sidebarListNameLink = [
     // { sidebarCategoryId: , menuMidName: "", menuSubName: "", menuLink: "" }
-    { sidebarCategoryId: 1, menuMidName: "마이페이지", menuSubName: "나의 인사 카드", menuLink: "/myPage/main" },
+    { sidebarCategoryId: 1, menuSecondaryName: "마이페이지", menuSubName: "나의 인사 카드", menuLink: "/myPage/main" },
 
-    { sidebarCategoryId: 2, menuMidName: "조직도", menuSubName: "재직자명단", menuLink: "/organization/chart" },
-    { sidebarCategoryId: 2, menuMidName: "증명서", menuSubName: "신청 현황", menuLink: "/organization/certification" },
-    { sidebarCategoryId: 2, menuMidName: "인사팀 관리", menuSubName: "신규 사원 등록", menuLink: "/organization/create" },
-    { sidebarCategoryId: 2, menuMidName: "인사팀 관리", menuSubName: "인사 이동 명단", menuLink: "/" },
-    { sidebarCategoryId: 2, menuMidName: "인사팀 관리", menuSubName: "퇴직자 명단", menuLink: "/" },
-    { sidebarCategoryId: 2, menuMidName: "인사팀 관리", menuSubName: "상여금 명단", menuLink: "/" },
+    { sidebarCategoryId: 2, menuSecondaryName: "조직도", menuSubName: "재직자명단", menuLink: "/organization/chart" },
+    { sidebarCategoryId: 2, menuSecondaryName: "증명서", menuSubName: "신청 현황", menuLink: "/organization/certification" },
+    { sidebarCategoryId: 2, menuSecondaryName: "인사팀 관리", menuSubName: "신규 사원 등록", menuLink: "/organization/create" },
+    { sidebarCategoryId: 2, menuSecondaryName: "인사팀 관리", menuSubName: "인사 이동 명단", menuLink: "/" },
+    { sidebarCategoryId: 2, menuSecondaryName: "인사팀 관리", menuSubName: "퇴직자 명단", menuLink: "/" },
+    { sidebarCategoryId: 2, menuSecondaryName: "인사팀 관리", menuSubName: "상여금 명단", menuLink: "/" },
 
-    { sidebarCategoryId: 3, menuMidName: "근태관리", menuSubName: "근태 조회 및 관리", menuLink: "/attendence/AttendanceManage" },
-    { sidebarCategoryId: 3, menuMidName: "근태관리", menuSubName: "근무 시간 이력", menuLink: "/attendence/AttendanceSelectTime" },
-    { sidebarCategoryId: 3, menuMidName: "휴가관리", menuSubName: "연차 결재 리스트", menuLink: "/annual/payment" },
-    { sidebarCategoryId: 3, menuMidName: "휴가관리", menuSubName: "연차 내역", menuLink: "/annual/history" },
-    { sidebarCategoryId: 3, menuMidName: "휴가관리", menuSubName: "연차 관리", menuLink: "/annual/management" },
+    { sidebarCategoryId: 3, menuSecondaryName: "근태관리", menuSubName: "근태 조회 및 관리", menuLink: "/attendence/AttendanceManage" },
+    { sidebarCategoryId: 3, menuSecondaryName: "근태관리", menuSubName: "근무 시간 이력", menuLink: "/attendence/AttendanceSelectTime" },
+    { sidebarCategoryId: 3, menuSecondaryName: "휴가관리", menuSubName: "연차 결재 리스트", menuLink: "/annual/payment" },
+    { sidebarCategoryId: 3, menuSecondaryName: "휴가관리", menuSubName: "연차 내역", menuLink: "/annual/history" },
+    { sidebarCategoryId: 3, menuSecondaryName: "휴가관리", menuSubName: "연차 관리", menuLink: "/annual/management" },
 
-    { sidebarCategoryId: 4, menuMidName: "전자결재", menuSubName: "메인", menuLink: "/es/main" },
-    { sidebarCategoryId: 4, menuMidName: "기안함", menuSubName: "기안하기", menuLink: "/es/draftMenu" },
-    { sidebarCategoryId: 4, menuMidName: "기안함", menuSubName: "결재 기안함", menuLink: "/es/draftInbox" },
-    { sidebarCategoryId: 4, menuMidName: "결재 수신함", menuSubName: "결재 대기 문서함", menuLink: "/es/wait" },
-    { sidebarCategoryId: 4, menuMidName: "결재 수신함", menuSubName: "결재 진행 문서함", menuLink: "/es/prograss" },
-    { sidebarCategoryId: 4, menuMidName: "결재 수신함", menuSubName: "결재 완료 문서함", menuLink: "/es/complete" },
+    { sidebarCategoryId: 4, menuSecondaryName: "전자결재", menuSubName: "메인", menuLink: "/es/main" },
+    { sidebarCategoryId: 4, menuSecondaryName: "기안함", menuSubName: "기안하기", menuLink: "/es/draftMenu" },
+    { sidebarCategoryId: 4, menuSecondaryName: "기안함", menuSubName: "결재 기안함", menuLink: "/es/draftInbox" },
+    { sidebarCategoryId: 4, menuSecondaryName: "결재 수신함", menuSubName: "결재 대기 문서함", menuLink: "/es/wait" },
+    { sidebarCategoryId: 4, menuSecondaryName: "결재 수신함", menuSubName: "결재 진행 문서함", menuLink: "/es/prograss" },
+    { sidebarCategoryId: 4, menuSecondaryName: "결재 수신함", menuSubName: "결재 완료 문서함", menuLink: "/es/complete" },
 
-    { sidebarCategoryId: 5, menuMidName: "급여", menuSubName: "급여조회", menuLink: "/salary/check" },
-    { sidebarCategoryId: 5, menuMidName: "인사팀 관리", menuSubName: "급여 지급 현황", menuLink: "/salary/checkN" },
-    { sidebarCategoryId: 5, menuMidName: "인사팀 관리", menuSubName: "퇴직금 지급 현황", menuLink: "/salary/severanceN" },
+    { sidebarCategoryId: 5, menuSecondaryName: "급여", menuSubName: "급여조회", menuLink: "/salary/check" },
+    { sidebarCategoryId: 5, menuSecondaryName: "인사팀 관리", menuSubName: "급여 지급 현황", menuLink: "/salary/checkN" },
+    { sidebarCategoryId: 5, menuSecondaryName: "인사팀 관리", menuSubName: "퇴직금 지급 현황", menuLink: "/salary/severanceN" },
 
-    { sidebarCategoryId: 6, menuMidName: "게시판", menuSubName: "공지사항", menuLink: "/board/notice" },
-    { sidebarCategoryId: 6, menuMidName: "게시판", menuSubName: "커뮤니티", menuLink: "/board/community" },
+    { sidebarCategoryId: 6, menuSecondaryName: "게시판", menuSubName: "공지사항", menuLink: "/board/notice" },
+    { sidebarCategoryId: 6, menuSecondaryName: "게시판", menuSubName: "커뮤니티", menuLink: "/board/community" },
 
-    { sidebarCategoryId: 7, menuMidName: "캘린더", menuSubName: "일정관리", menuLink: "/" },
+    { sidebarCategoryId: 7, menuSecondaryName: "캘린더", menuSubName: "일정관리", menuLink: "/" },
 
-    { sidebarCategoryId: 8, menuMidName: "메세지", menuSubName: "메세지 보내기", menuLink: "/messsage/message" },
-    { sidebarCategoryId: 8, menuMidName: "메세지", menuSubName: "받은 메세지", menuLink: "/messsage/receivedMessage" },
-    { sidebarCategoryId: 8, menuMidName: "메세지", menuSubName: "보낸 메세지", menuLink: "/messsage/MessageSent" },
-    { sidebarCategoryId: 8, menuMidName: "메세지", menuSubName: "휴지통", menuLink: "/messsage/MessageTrash" }
+    { sidebarCategoryId: 8, menuSecondaryName: "메세지", menuSubName: "메세지 보내기", menuLink: "/messsage/message" },
+    { sidebarCategoryId: 8, menuSecondaryName: "메세지", menuSubName: "받은 메세지", menuLink: "/messsage/receivedMessage" },
+    { sidebarCategoryId: 8, menuSecondaryName: "메세지", menuSubName: "보낸 메세지", menuLink: "/messsage/MessageSent" },
+    { sidebarCategoryId: 8, menuSecondaryName: "메세지", menuSubName: "휴지통", menuLink: "/messsage/MessageTrash" }
 ];
 
 
