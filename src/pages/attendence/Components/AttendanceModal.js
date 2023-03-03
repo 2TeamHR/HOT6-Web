@@ -80,15 +80,15 @@ export default function AttendanceModal() {
                     </Typography>
 
                     {/*증빙서류 확인 버튼*/}
-                    <Typography>
+
                     <div className={attendanceManage.dbutton2}>
                     <BasicButtons2/>
                     </div>
-                    </Typography>
+
 
 
                     {/*저장 버튼*/}
-                    <Typography>
+
                         <div className={attendanceManage.dbutton3}>
                             <BasicButtons3/>
                         </div>
@@ -96,7 +96,7 @@ export default function AttendanceModal() {
                         <div className={attendanceManage.dbutton4}>
                             <BasicButtons4/>
                         </div>
-                    </Typography>
+
 
 
 

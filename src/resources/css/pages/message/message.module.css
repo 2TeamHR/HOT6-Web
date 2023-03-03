@@ -92,6 +92,8 @@ main {
 
 }
 
+
+
 /* 파일업로드 */
 .fileUpload input{
 
@@ -123,4 +125,17 @@ main {
 
 Link {
  color: black;
+}
+
+
+
+.selectName {
+ 
+    position: relative;
+    left: 80px;
+    width: 50%;
+    
+    background-color: #aaaaaa;
+    border-color: #aaaaaa;
+  
 }
