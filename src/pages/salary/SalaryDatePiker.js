@@ -28,8 +28,15 @@ function SelectDatePiker() {
     setMonth(e.target.value);
   }
 
+  function handleSearch() {
+    const dateString = `${year}-${month}`;
+
+    console.log(dateString);
+  }
+
   return (
     <div>
+    <form>
       <label className='mt-5 pl-3'>
         
         <select value={year} onChange={handleYearChange}
@@ -55,7 +62,8 @@ function SelectDatePiker() {
         </select>
         <span className="ml-2">월</span>
       </label>
-      <button className='btn btn-primary ml-3'>조회하기</button>
+      <button className='btn btn-primary ml-3' onClick={handleSearch}>조회하기</button>
+    </form>
     </div>
   );
 }

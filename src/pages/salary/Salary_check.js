@@ -61,7 +61,9 @@ function SalaryCheck() {
             }
         </div>
         <div className={`mt-5 ${salarytableStyle.tableStyle}`} >
-            <SalaryTable />
+            {
+                Array.isArray(salaryList) && salaryList.map((salary) => (<SalaryTable key={ salary.salaryCode } salary= { salary } />))
+            }
         </div>
 
         <div className="pt-5 text-center">

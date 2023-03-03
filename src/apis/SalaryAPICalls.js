@@ -2,7 +2,7 @@ import { GET_PAYMENT_SALARY } from '../modules/SalaryModule.js'
 
 export const callGetPaymentSalaryAPI = ({paymentsYn}) => {
 
-    const requestURL = `http://localhost:8888/api/v1/salary/check/${paymentsYn}`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/salary/check/${paymentsYn}`;
 
     console.log('requst', requestURL);
     
