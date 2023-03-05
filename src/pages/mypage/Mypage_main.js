@@ -137,7 +137,7 @@ function MypageMain() {
                         </div>
                     </div>
                     <div className={mypageStyle.seeMore}>
-                        <p><Link to="/messsage/receivedMessage">더보기 +</Link></p>
+                        <p><Link to="/mypage/annual/history">더보기 +</Link></p>
                     </div>
                 </Paper>
 

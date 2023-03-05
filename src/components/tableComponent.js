@@ -21,7 +21,7 @@ import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
-import { MypageAttendanceHistoryModal } from '../components/ModalGroup';
+// import { MypageAttendanceHistoryModal } from '../components/ModalGroup';
 
 function createData(name, calories, fat, carbs, protein) {
   
@@ -34,21 +34,7 @@ function createData(name, calories, fat, carbs, protein) {
   };
 }
 
-const rows = [
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Donut', 452, 25.0, 51, 4.9),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-  createData('Honeycomb', 408, 3.2, 87, 6.5),
-  createData('Ice cream sandwich', 237, 9.0, 37, <MypageAttendanceHistoryModal/>)
-  // createData('Jelly Bean', 375, 0.0, 94, 0.0),
-  // createData('KitKat', 518, 26.0, 65, 7.0),
-  // createData('Lollipop', 392, 0.2, 98, 0.0),
-  // createData('Marshmallow', 318, 0, 81, 2.0),
-  // createData('Nougat', 360, 19.0, 9, 37.0),
-  // createData('Oreo', 437, 18.0, 63, 4.0),
-];
+let rows = [];
 
 function descendingComparator(a, b, orderBy) {
   
@@ -91,6 +77,8 @@ export function EnhancedTableHead(props) {
   /* json  */
   headCells = props.tabledata.tabledata;
 
+  console.log('rows', rows);
+
   const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
     props;
   const createSortHandler = (property) => (event) => {
@@ -101,15 +89,6 @@ export function EnhancedTableHead(props) {
     <TableHead>
       <TableRow>
         <TableCell padding="checkbox">
-          <Checkbox
-            color="primary"
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{
-              'aria-label': 'select all desserts',
-            }}
-          />
         </TableCell>
         {headCells.map((headCell) => (
           <TableCell
@@ -202,6 +181,24 @@ EnhancedTableToolbar.propTypes = {
 };
 
 export function EnhancedTable(tabledata) {
+
+  console.log('111111111', tabledata.tabledata2);
+  
+  if(tabledata.tabledata2.length !== 0){
+    console.log("1111111111", Object.values(tabledata.tabledata2[0]));
+
+    for (let i = 0; i < tabledata.tabledata2.length; i++) {
+
+      rows.push(
+        createData(
+          i+1,
+          Object.values(tabledata.tabledata2[i])[1],
+          Object.values(tabledata.tabledata2[i])[2],
+          Object.values(tabledata.tabledata2[i])[3]
+        )
+      );
+    }
+  }
 
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
@@ -301,23 +298,7 @@ export function EnhancedTable(tabledata) {
                       key={row.name}
                       selected={isItemSelected}
                     >
-                      <TableCell padding="checkbox">
-                        <Checkbox
-                          color="primary"
-                          checked={isItemSelected}
-                          inputProps={{
-                            'aria-labelledby': labelId,
-                          }}
-                        />
-                      </TableCell>
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        padding="none"
-                      >
-                        {row.name}
-                      </TableCell>
+                      <TableCell align="right">{row.name}</TableCell>
                       <TableCell align="right">{row.calories}</TableCell>
                       <TableCell align="right">{row.fat}</TableCell>
                       <TableCell align="right">{row.carbs}</TableCell>

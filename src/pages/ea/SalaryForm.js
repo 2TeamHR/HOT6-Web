@@ -44,22 +44,16 @@ function SalaryForm() {
               <Grid item xs={3}><label>급여정정 날짜</label></Grid><Grid item xs={3}><input type="date" name="" id="" /></Grid>
               <Grid item xs={3}><label>첨부파일</label></Grid><Grid item xs={3}><input type="file" name="" id="" /></Grid>
             </Grid>
-
             <Button>신청하기</Button><Button>취소하기</Button></Paper>
         </Grid>
 
 
         <Grid item xs={4}>
-
-
-
-
           <Paper sx={{ maxWidth: 200 }} elevation={5}>
             <EsSignerSearch></EsSignerSearch>
             {/* <TextField id="standard-basic" label="결재자 검색" variant="standard" />
             <Paper sx={{ height: 400 }}> */}
-            </Paper>
-          
+          </Paper>
         </Grid>
       </Grid>
     </>

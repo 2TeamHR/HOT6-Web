@@ -6,7 +6,7 @@ import MypageManagement from './pages/mypage/Mypage_management';
 import MypageManagementUpdate from './pages/mypage/Mypage_management_update';
 import MypageAttendanceHistory from './pages/mypage/Mypage_attendance_history';
 import MypageAnnualHistory from './pages/mypage/Mypage_annual_history';
-import AnnualHistory from './pages/attendance_management/Annual_history';
+import AnnualStandardsManagement from './pages/attendance_management/Annual_standards_management';
 import AnnualPayment from './pages/attendance_management/Annual_payment';
 import AnnualManagement from './pages/attendance_management/Annual_management';
 import AnnualManagementDetailed from './pages/attendance_management/Annual_management_detailed';
@@ -20,7 +20,11 @@ import FindPassword from '../src/pages/login/FindPassword';
 import ChangePassword from '../src/pages/login/ChangePassword';
 import SalaryCheck from './pages/salary/Salary_check';
 import Community from './pages/board/Community';
+import CommunityWrite from './pages/board/CommunityWrite';
+import CommunityDetail from './pages/board/CommunityDetail';
 import Notice from './pages/board/Notice';
+import NoticeWrite from './pages/board/NoticeWrite';
+import NoticeDetail from './pages/board/NoticeDetail';
 import Message from "./pages/messsage/Message";
 import MessageSent from "./pages/messsage/MessageSent";
 import MessageTrash from "./pages/messsage/MessageTrash";
@@ -45,6 +49,7 @@ import SalaryBonus from './pages/salary/Salary_bonus';
 import BonusInsert from './pages/salary/Salary_BonusInsert';
 import EsDraftInbox from './pages/es/EsDraftInbox';
 import MyCalendar from './pages/calendar/MyCalendar';
+import Specification from './pages/salary/Salary_Specification';
 import DutyForm from './pages/es/DutyForm';
 import LOAForm from './pages/es/LOAForm';
 import ReinstatmentForm from './pages/es/ReinstatementForm';
@@ -91,7 +96,7 @@ function App() {
             <Route path="/mypage/annual/history" element={<MypageAnnualHistory />}/>
 
            {/* 근태관리 */}
-            <Route path="/annual/history" element={<AnnualHistory />}/>
+            <Route path="/annual/standardsManagement" element={<AnnualStandardsManagement />}/>
             <Route path="/annual/payment" element={<AnnualPayment />}/>
             <Route path="/annual/management" element={<AnnualManagement />}/>
             <Route path="/annual/management/detailed" element={<AnnualManagementDetailed />}/>
@@ -105,6 +110,7 @@ function App() {
 
             {/* 급여 */}
             <Route path="/salary/check" element={ <SalaryCheck />} />
+            <Route path="/salary/specification" element={ <Specification />} />
             <Route path="/salary/checkN" element={ <AllCheckN />} />
             <Route path="/salary/checkY" element={ <AllCheckY />} />
             <Route path="/salary/severanceN" element={ <SeveranceN />} />
@@ -114,10 +120,14 @@ function App() {
 
             {/* 게시판 */}
             <Route path="/board/notice" element={<Notice />} />
+            <Route path="/board/notice/write" element={<NoticeWrite />} />
+            <Route path="/board/notice/detail" element={<NoticeDetail />} />
             <Route path="/board/community" element={<Community />} />
 
             {/* 캘린더 */}
             <Route path="/calendar" element={<MyCalendar />} />
+            <Route path="/board/community/write" element={<CommunityWrite />} />
+            <Route path="/board/community/detail" element={<CommunityDetail/>} />
 
             {/* 메세지 */}
             <Route path="/messsage/message" element={<Message />} />
