@@ -8,8 +8,8 @@ function Layout() {
     return (
         <>
             <Header />
-            <Sidebar />
-            {/* <SidebarV2 /> */}
+            {/* <Sidebar /> */}
+            <SidebarV2 />
             <Outlet />
         </>
     );
