@@ -5,7 +5,7 @@ export const callLeaveCategoryListAPI = () => {
     
 
     
-    let    requestURL = `http://localhost:8888/api/v1/annual/standardsManagement`;
+    let    requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/annual/standardsManagement`;
    
 
     console.log('request', requestURL);

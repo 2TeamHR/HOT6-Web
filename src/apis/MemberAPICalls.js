@@ -5,6 +5,7 @@ import {
     , POST_REGISTER
 } from '../modules/MemberModule';
 
+/* 개인정보조회 API */
 export const callGetMemberAPI = ({memberCode}) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/members/${memberCode}`;
 
@@ -29,6 +30,7 @@ export const callGetMemberAPI = ({memberCode}) => {
     };
 }
 
+/* 로그인 API */
 export const callLoginAPI = ({form}) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/auth/login`;
 

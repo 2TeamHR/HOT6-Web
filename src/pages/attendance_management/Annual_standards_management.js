@@ -16,7 +16,7 @@ import {
 function AnnualStandardsManagement() {
 
     const dispatch = useDispatch();
-    const product  = useSelector(state => state.productReducer);  
+    const leave = useSelector(state => state.productReducer);  
 
     useEffect(
         () => {
@@ -25,8 +25,6 @@ function AnnualStandardsManagement() {
         }
         ,[]
     );
-
-    console.log('11111111111111', product);
 
     const [show, setShow] = useState(false);
 
@@ -53,8 +51,8 @@ function AnnualStandardsManagement() {
                     <div className="text-center">
                         <p className="text-left mt-4 mb-1">휴가명</p>
                         <input className={asmStyle.modalInputTitle}/>
-                        <p className="text-left mt-4 mb-1">기준일</p>
-                        <input className={asmStyle.modalInputContent} type="date"/>
+                        <p className="text-left mt-4 mb-1">기준일수</p>
+                        <input className={asmStyle.modalInputTitle}/>
                         <p className="text-left mt-4 mb-1">급여 유무</p>
                         <select className={asmStyle.modalSelect}>
                             <option>유급</option>
@@ -83,7 +81,7 @@ function AnnualStandardsManagement() {
                         </tr>
                     </thead>
                     <tbody>
-                        {product.map((category, index) => (
+                        {leave.map((category, index) => (
                             <tr key={category.leaveCategoryCode} className="text-center">
                                 <td>{index + 1}</td>
                                 <td>{category.leaveCategoryName}</td>
