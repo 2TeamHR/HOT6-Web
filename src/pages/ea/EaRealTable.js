@@ -54,82 +54,13 @@ import {
     );
   }
   
-  // Row.propTypes = {
-  //   row: PropTypes.shape({
-  //     calories: PropTypes.number.isRequired,
-  //     carbs: PropTypes.number.isRequired,
-  //     fat: PropTypes.number.isRequired,
-  //     history: PropTypes.arrayOf(
-  //       PropTypes.shape({
-  //         amount: PropTypes.number.isRequired,
-  //         customerId: PropTypes.string.isRequired,
-  //         date: PropTypes.string.isRequired,
-  //       })
-  //     ).isRequired,
-  //     name: PropTypes.string.isRequired,
-  //     price: PropTypes.number.isRequired,
-  //     protein: PropTypes.number.isRequired,
-  //   }).isRequired,
-  // };
   
-  const rows = [
-    createData(
-      "2023-01-001",
-      "휴가신청",
-      "휴가신청합니다",
-      "개발팀",
-      "사원",
-      "박준영",
-      "2023-01-01",
-      "결재진행중"
-    ),
-    createData(
-      "2023-01-002",
-      "휴가신청",
-      "휴가신청합니다",
-      "개발팀",
-      "사원",
-      "이상목",
-      "2023-01-02",
-      "결재진행중"
-    ),
-    createData(
-      "2023-01-003",
-      "휴가신청",
-      "휴가신청합니다",
-      "개발팀",
-      "사원",
-      "서도원",
-      "2023-01-03",
-      "결재진행중"
-    ),
-    createData(
-      "2023-01-004",
-      "휴가신청",
-      "휴가신청합니다",
-      "개발팀",
-      "사원",
-      "노재영",
-      "2023-01-04",
-      "결재진행중"
-    ),
-    createData(
-      "2023-01-005",
-      "휴가신청",
-      "휴가신청합니다",
-      "개발팀",
-      "사원",
-      "유호상",
-      "2023-01-05",
-      "결재진행중"
-    )
-
-  ];
+  const rows = [];
 
 
   
   
-  function EaTable() {
+  function EaRealTable() {
 
   
     return (
@@ -163,5 +94,5 @@ import {
     );
   }
   
-  export default EaTable;
+  export default EaRealTable;
   

@@ -34,25 +34,25 @@ import AllCheckN from './pages/salary/Salary_allCheckN';
 import AllCheckY from './pages/salary/Salary_allCheckY';
 import SeveranceN from './pages/salary/Salary_SeveranceN'
 import SeveranceY from './pages/salary/Salary_SeveranceY'
-import EsMain from './pages/es/EsMain';
-import EsDraftMenu from './pages/es/EsDraftMenu';
-import LeaveForm from './pages/es/LeaveForm';
-import RetireForm from './pages/es/RetireForm';
-import SalaryForm from './pages/es/SalaryForm';
-import CertificationForm from './pages/es/CertificationForm';
+import EaMain from './pages/ea/EaMain';
+import EaDraftMenu from './pages/ea/EaDraftMenu';
+import LeaveForm from './pages/ea/LeaveForm';
+import RetireForm from './pages/ea/RetireForm';
+import SalaryForm from './pages/ea/SalaryForm';
+import CertificationForm from './pages/ea/CertificationForm';
 import MypageMain from './pages/mypage/Mypage_main';
 import AttendanceSelectTime from "./pages/attendence/AttendanceSelectTime";
-import EsWaitInbox from "./pages/es/EsWaitInbox";
-import EsPrograssInbox from './pages/es/EsPrograssInbox';
-import EsCompleteInbox from './pages/es/EsCompleteInbox';
+import EaWaitInbox from "./pages/ea/EaWaitInbox";
+import EaPrograssInbox from './pages/ea/EaPrograssInbox';
+import EaCompleteInbox from './pages/ea/EaCompleteInbox';
 import SalaryBonus from './pages/salary/Salary_bonus';
 import BonusInsert from './pages/salary/Salary_BonusInsert';
-import EsDraftInbox from './pages/es/EsDraftInbox';
+import EaDraftInbox from './pages/ea/EaDraftInbox';
 import MyCalendar from './pages/calendar/MyCalendar';
 import Specification from './pages/salary/Salary_Specification';
-import DutyForm from './pages/es/DutyForm';
-import LOAForm from './pages/es/LOAForm';
-import ReinstatmentForm from './pages/es/ReinstatementForm';
+import DutyForm from './pages/ea/DutyForm';
+import LOAForm from './pages/ea/LOAForm';
+import ReinstatmentForm from './pages/ea/ReinstatementForm';
 
 
 function App() {
@@ -69,19 +69,19 @@ function App() {
             <Route path="/attendence/AttendanceSelectTime" element={<AttendanceSelectTime />} />
 
             {/* 전자결재 */}
-            <Route path="/es/main" element={<EsMain />} />
-            <Route path='/es/draftMenu' element={<EsDraftMenu />}/>
-            <Route path='/es/leaveForm' element={<LeaveForm />}/>
-            <Route path='/es/retireForm' element={<RetireForm />}/>
-            <Route path='/es/salaryForm' element={<SalaryForm />}/>
-            <Route path='/es/dutyForm' element={<DutyForm />}/>
-            <Route path='/es/loaForm' element={<LOAForm />}/>
-            <Route path='/es/reinstatementForm' element={<ReinstatmentForm />}/>
-            <Route path='/es/certificationForm' element={<CertificationForm />}/>
-            <Route path='/es/draftInbox' element={<EsDraftInbox />}/>
-            <Route path='/es/wait' element={<EsWaitInbox />}/>
-            <Route path='/es/prograss' element={<EsPrograssInbox />}/>
-            <Route path='/es/complete' element={<EsCompleteInbox />}/>
+            <Route path="/ea/main" element={<EaMain />} />
+            <Route path='/ea/draftMenu' element={<EaDraftMenu />}/>
+            <Route path='/ea/leaveForm' element={<LeaveForm />}/>
+            <Route path='/ea/retireForm' element={<RetireForm />}/>
+            <Route path='/ea/salaryForm' element={<SalaryForm />}/>
+            <Route path='/ea/dutyForm' element={<DutyForm />}/>
+            <Route path='/ea/loaForm' element={<LOAForm />}/>
+            <Route path='/ea/reinstatementForm' element={<ReinstatmentForm />}/>
+            <Route path='/ea/certificationForm' element={<CertificationForm />}/>
+            <Route path='/ea/draftInbox' element={<EaDraftInbox />}/>
+            <Route path='/ea/wait' element={<EaWaitInbox />}/>
+            <Route path='/ea/prograss' element={<EaPrograssInbox />}/>
+            <Route path='/ea/complete' element={<EaCompleteInbox />}/>
 
 
 

@@ -21,7 +21,7 @@
   import Paper from "@mui/material/Paper";
   import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
   import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import EsModal from "./EsModal";
+import EaModal from "./EaModal";
 
 
  function createData(
@@ -75,7 +75,7 @@ import EsModal from "./EsModal";
           <TableCell align="center">{row.esRank}</TableCell>
           <TableCell align="center">{row.esDrafterName}</TableCell>
           <TableCell align="center">{row.esDate}</TableCell>
-          <TableCell align="center"><EsModal/></TableCell>
+          <TableCell align="center"><EaModal/></TableCell>
           <TableCell align="center">
             <IconButton
               aria-label="expand row"
@@ -256,7 +256,7 @@ import EsModal from "./EsModal";
   }
 
 
-  function EsExtendTable() {
+  function EaExtendTable() {
 
 
     const [page, setPage] = React.useState(0);
@@ -316,4 +316,4 @@ import EsModal from "./EsModal";
     );
   }
   
-export default EsExtendTable;
+export default EaExtendTable;

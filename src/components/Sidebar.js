@@ -128,23 +128,23 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             전자결재
                                         </div>
-                                        <Link to="/es/main" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>메인</Link>
+                                        <Link to="/ea/main" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>메인</Link>
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             기안함
                                         </div>
-                                        <Link to="/es/draftMenu" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>기안하기</Link>
-                                        <Link to="/es/draftInbox" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 기안함</Link>
+                                        <Link to="/ea/draftMenu" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>기안하기</Link>
+                                        <Link to="/ea/draftInbox" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 기안함</Link>
 
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             결재 수신함
                                         </div>
-                                        <Link to="/es/wait" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 대기 문서함</Link>
-                                        <Link to="/es/prograss" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 진행 문서함</Link>
-                                        <Link to="/es/complete" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 완료 문서함</Link>                                        
+                                        <Link to="/ea/wait" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 대기 문서함</Link>
+                                        <Link to="/ea/prograss" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 진행 문서함</Link>
+                                        <Link to="/ea/complete" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 완료 문서함</Link>                                        
                                     </div>
                                 </div>
                             </div>

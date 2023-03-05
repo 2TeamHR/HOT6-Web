@@ -8,7 +8,7 @@ import { Button, Container, Grid, TextField } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import EsSignerSearch from './EsSignerSearch';
+import EaSignerSearch from './EaSignerSearch';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -75,7 +75,7 @@ function ReinstatmentForm() {
 
           <Grid item xs={4}>
             <Paper sx={{ maxWidth: 200 }} elevation={5}>
-              <EsSignerSearch></EsSignerSearch>
+              <EaSignerSearch></EaSignerSearch>
               {/* <TextField id="standard-basic" label="결재자 검색" variant="standard" />
             <Paper sx={{ height: 400 }}> */}
             </Paper>

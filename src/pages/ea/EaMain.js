@@ -10,12 +10,13 @@ import {
 } from "@mui/material";
 import * as React from "react";
 import Paper from "@mui/material/Paper";
-import EsTable from "./EsTable";
+import EaTable from "./EaTable";
+import EaRealTable from "./EaRealTable";
 
 
 
 
-function EsMain() {
+function EaMain() {
 
 
   return (
@@ -66,10 +67,19 @@ function EsMain() {
           <Grid item xs="12">
             <Paper elevation={5}>
               <Grid item container justifyContent="space-between">
+                <h4>실제 데이터 테이블</h4>
+                <Button>더보기</Button></Grid>
+              <Divider />
+              <EaRealTable></EaRealTable>
+            </Paper>
+          </Grid>
+          <Grid item xs="12">
+            <Paper elevation={5}>
+              <Grid item container justifyContent="space-between">
                 <h4>결재 기안 문서</h4>
                 <Button>더보기</Button></Grid>
               <Divider />
-              <EsTable></EsTable>
+              <EaTable></EaTable>
             </Paper>
           </Grid>
           <Grid item xs="12">
@@ -78,7 +88,7 @@ function EsMain() {
                 <h4>결재 대기 문서</h4>
                 <Button>더보기</Button></Grid>
               <Divider />
-              <EsTable></EsTable>
+              <EaTable></EaTable>
             </Paper>
           </Grid>
           <Grid item xs="12">
@@ -87,7 +97,7 @@ function EsMain() {
                 <h4>결재 진행 문서</h4>
                 <Button>더보기</Button></Grid>
               <Divider />
-              <EsTable></EsTable>
+              <EaTable></EaTable>
             </Paper>
           </Grid>
           <Grid item xs="12">
@@ -96,7 +106,7 @@ function EsMain() {
                 <h4>결재 완료 문서</h4>
                 <Button>더보기</Button></Grid>
               <Divider />
-              <EsTable></EsTable>
+              <EaTable></EaTable>
             </Paper>
           </Grid>
         </Grid>
@@ -105,4 +115,4 @@ function EsMain() {
   );
 }
 
-export default EsMain;
+export default EaMain;

@@ -1,8 +1,8 @@
 import { Button, Container } from "@mui/material";
-import EsExtendTable from "./EsExtendTable";
+import EaExtendTable from "./EaExtendTable";
 
 
-function EsWaitInbox() {
+function EaWaitInbox() {
 
     return (
         <>
@@ -12,10 +12,10 @@ function EsWaitInbox() {
                     <option value="">이름</option>
                     <option value="">사원번호</option>
                 </select><input type="text" /><Button variant="outlined">검색</Button>
-                <EsExtendTable></EsExtendTable>
+                <EaExtendTable></EaExtendTable>
             </Container>
         </>
     );
 }
 
-export default EsWaitInbox;
+export default EaWaitInbox;
