@@ -124,6 +124,13 @@ img {
   cursor: pointer;
 }
 
+.headerRight {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
 /*========== NAV ==========*/
 .nav {
   position: fixed;

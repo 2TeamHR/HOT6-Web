@@ -17,7 +17,7 @@ function MypageMain() {
         <>
             <main className={mainTitleStyle.main}>
             <div className={mainTitleStyle.mainClass}>
-                <Paper elevation="3" className={mypageStyle.module}>
+                <Paper elevation={3} className={mypageStyle.module}>
                     <p className={mypageStyle.moduleTitle}>나의 정보</p>
                     <div className={profileStyle.profile}>
                         <img className={profileStyle.profileImg} alt="profile_img" src={sampleImg} />
@@ -38,7 +38,7 @@ function MypageMain() {
                     </div>
                 </Paper>
 
-                <Paper elevation="3" className={mypageStyle.module} style={{width: "205%"}}>
+                <Paper elevation={3} className={mypageStyle.module} style={{width: "205%"}}>
                     <p className={mypageStyle.moduleTitle}>나의 2023년도 휴가 현황</p>
                     <p className={mypageStyle.vacationPlus}>+ 휴가신청</p>
                     <div className={`text-center ${mypageStyle.myVacation}`}>
@@ -58,7 +58,7 @@ function MypageMain() {
                     </div>
                 </Paper>
 
-                <Paper elevation="3" className={mypageStyle.module}>
+                <Paper elevation={3} className={mypageStyle.module}>
                     <p className={mypageStyle.moduleTitle}>근태관리</p>
                     <div className="text-lg-start ml-3 text-center time">
                         <p className="alert-light fs-5">2023년 3월 19일(목요일) 14:30:32</p>
@@ -94,7 +94,7 @@ function MypageMain() {
 
             <div className={mainTitleStyle.mainClass}>
 
-                <Paper elevation="3" className={mypageStyle.module}>
+                <Paper elevation={3} className={mypageStyle.module}>
                     <p className={mypageStyle.moduleTitle}>나의 메세지함</p>
                     <div className={mypageStyle.noteCount}>
                         <span>5</span>
@@ -120,7 +120,7 @@ function MypageMain() {
                     </div>
                 </Paper>
 
-                <Paper elevation="3" className={mypageStyle.module}>
+                <Paper elevation={3} className={mypageStyle.module}>
                     <p className={mypageStyle.moduleTitle}>나의 휴가 이력</p>
                     <div className={`ml-2 mr-2 ${mypageStyle.yearHistory}`}>
                         <div className="ml-5 mr-5 pb-3">
@@ -141,7 +141,7 @@ function MypageMain() {
                     </div>
                 </Paper>
 
-                <Paper elevation="3" className={mypageStyle.module}>
+                <Paper elevation={3} className={mypageStyle.module}>
                     <p className={mypageStyle.moduleTitle}>나의 근태</p>
                     <div className={mypageStyle.workMonth}>
                         <span>1</span>
@@ -166,7 +166,7 @@ function MypageMain() {
                     </div>
                 </Paper>
 
-                <Paper elevation="3" className={mypageStyle.module}>
+                <Paper elevation={3} className={mypageStyle.module}>
                     <p className={mypageStyle.moduleTitle}>주 근무 시간</p>
                     <div className={mypageStyle.weekTime}>
                         <span className={mypageStyle.weekMyTime}>40</span>
