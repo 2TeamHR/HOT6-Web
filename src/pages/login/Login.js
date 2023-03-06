@@ -8,9 +8,7 @@ import {
 } from '../../apis/MemberAPICalls'
 import { POST_LOGIN } from '../../modules/MemberModule';
 
-
 import { Button, Container, Paper } from '@mui/material'
-
 
 
 function Login() {
@@ -68,16 +66,31 @@ function Login() {
             form: form
         }));
     }
-    //      return (
-    //          <div></div>
-    //      )
-    // };
 
-
-    //      export default Login;
-    // ===================================================================================================
+    // const onEnterkeyHandler = (e) => {
+    //     if (e.key == 'Enter') {
+    //         console.log('Enter key', form);
     //
+    //         navigate(`/login?value=${form}`, { replace: false });
+    //
+    //         dispatch(callLoginAPI({
+    //             form: form
+    //         }));
+    //     }
+    // }
 
+    const handleSubmit = (event) => {
+        event.preventDefault(); // 기본 이벤트 방지
+
+        // 아이디와 비밀번호를 사용하여 로그인하는 로직
+        dispatch(callLoginAPI({ form }));
+    };
+
+    const handleKeyDown = (event) => {
+        if (event.key === "Enter") {
+            handleSubmit(event);
+        }
+    };
 
     return (
         <>
@@ -93,6 +106,7 @@ function Login() {
                             placeholder="사번을 입력하세요."
                             autoComplete='off'
                             onChange={onChangeHandler}
+                            autoFocus="autofocus"
                             style={{ width: '100%', padding: '12px 20px', margin: '8px 0', display: 'inline-block', border: '1px solid #ccc', borderRadius: '4px', boxSizing: 'border-box' }}
                         />
 
@@ -102,6 +116,7 @@ function Login() {
                             placeholder="비밀번호를 입력하세요."
                             autoComplete='off'
                             onChange={onChangeHandler}
+                            onKeyDown={handleKeyDown}
                             style={{ width: '100%', padding: '12px 20px', margin: '8px 0', display: 'inline-block', border: '1px solid #ccc', borderRadius: '4px', boxSizing: 'border-box' }}
                         />
 
