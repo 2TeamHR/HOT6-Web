@@ -1,6 +1,6 @@
 import Table from 'react-bootstrap/Table';
 
-function TaxTable({tax : {incomTax, healthTax, nationalTax }}){
+function TaxTable({salary : {incomTax, healthTax, nationalTax }}){
 
     return(
     <Table striped style={{width:500}}>
@@ -25,7 +25,7 @@ function TaxTable({tax : {incomTax, healthTax, nationalTax }}){
             </tr>
             <tr>
                 <td>총 공제액</td>
-                <td>381,840</td>
+                <td>{ incomTax } + {healthTax} + {nationalTax} </td>
             </tr>
         </tbody>
     </Table>

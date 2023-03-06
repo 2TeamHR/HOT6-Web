@@ -57,7 +57,7 @@ function SalaryCheck() {
                 Array.isArray(salaryList) && salaryList.map((salary) => (<BasicTable key={ salary.salayCode } salary= { salary } />))
             }
             {
-                Array.isArray(taxList) && salaryList.map((tax) => (<TaxTable key= { tax.taxCode } tax = { tax } />))
+                Array.isArray(taxList) && salaryList.map((tax) => (<TaxTable key= { salary.salaryCode } tax = { tax } />))
             }
         </div>
         <div className={`mt-5 ${salarytableStyle.tableStyle}`} >

@@ -4,7 +4,7 @@ import { createActions, handleActions } from 'redux-actions';
 const initialState = [];
 
 /* 액션 */
-export const GET_SALARY = 'salary/GET_SALARY';
+export const GET_SALARY = 'salary/check/GET_SALARY';
 export const GET_PAYMENT_SALARY = 'salary/check/GET_PAYMENT_SALARY'
  
 const actions = createActions({

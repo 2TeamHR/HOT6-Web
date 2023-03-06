@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { useDispatch } from 'react-redux';
 
 const columns = [
     { field: 'id', headerName: '사번', width: 100 },

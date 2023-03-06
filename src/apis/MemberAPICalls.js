@@ -2,11 +2,11 @@
 import {
     GET_MEMBER
     , POST_LOGIN
-    , POST_REGISTER
+
 } from '../modules/MemberModule';
 
 export const callGetMemberAPI = ({memberCode}) => {
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/members/${memberCode}`;
+     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/members/${memberCode}`;
 
     return async (dispatch, getState) => {
 
