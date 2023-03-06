@@ -19,15 +19,11 @@
     border: 1px solid #a6a6a6;
 }
 
-.modalInputContent{
+.modalSelect{
     width: 100%;
     height: 30px;
     border-radius: 5px;
     border: 1px solid #a6a6a6;
-}
-
-.modalSelect{
-    width: 100%;
 }
 
 .modelInfo{

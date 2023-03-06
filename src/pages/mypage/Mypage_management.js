@@ -4,7 +4,38 @@ import profileStyle from '../../resources/css/components/profile.module.css';
 import sampleImg from '../../resources/image/hong.jpeg';
 import Paper from '@mui/material/Paper';
 
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { decodeJwt } from '../../utils/tokenUtils';
+
+import { callGetMemberAPI } from '../../apis/MemberAPICalls';
+
 function MypageManagement (){
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const member = useSelector(state => state.memberReducer);  
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));   
+    const memberDetail = member.data;
+
+    const onClickBackHandler = () => {
+        
+        navigate(-1);
+    }
+
+    useEffect(
+        () => {    
+            console.log('token', token.sub);
+            if(token !== null) {
+                dispatch(callGetMemberAPI({
+                    memberCode: token.sub
+                }));          
+            }
+
+        }
+        ,[]
+    );
 
     const mypageManagementUpdateHref = () => {
         document.location.href = "/mypage/management/update"
@@ -14,6 +45,11 @@ function MypageManagement (){
         document.location.href = "/findpassword"
     }
 
+    const memberBirth = memberDetail.memberBirth ? new Date(memberDetail.memberBirth) : null;
+    const formattedMemberBirthe = memberBirth ? memberBirth.toISOString().slice(0, 10) : '';
+
+    const joinDate = memberDetail.memberBirth ? new Date(memberDetail.joinDate) : null;
+    const formattedJoinDate = joinDate ? joinDate.toISOString().slice(0, 10) : '';
     
     return(
         <main className={mainTitleStyle.main}>
@@ -34,7 +70,7 @@ function MypageManagement (){
                         <div className={mpManagement.infoBtn}>
                             <button onClick={findPasswordHref}>비밀번호변경</button>
                             <button onClick={mypageManagementUpdateHref}>수정</button>
-                            <button>인쇄</button>
+                            <button onClick={onClickBackHandler}>메인가기</button>
                         </div>
                     </Paper>
                     <div className={mpManagement.profileMain2}>
@@ -45,32 +81,32 @@ function MypageManagement (){
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-user mr-3`}></i>
                                 <span>이름</span>
-                                <span className='float-right fw-blod'>홍길동</span>
+                                <span className='float-right fw-blod'>{memberDetail.memberName || ''}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-phone mr-3`}></i>
                                 <span>휴대전화</span>
-                                <span className='float-right fw-blod'>010-1234-4444</span>
+                                <span className='float-right fw-blod'>{memberDetail.memberPhone || ''}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-envelope mr-3`}></i>
                                 <span>이메일</span>
-                                <span className='float-right fw-blod'>asd1234@5DO.com</span>
+                                <span className='float-right fw-blod'>{memberDetail.memberEmail || ''}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-home mr-3`}></i>
                                 <span>주소</span>
-                                <span className='float-right fw-blod'>서울시 마포구 아현동 123-34</span>
+                                <span className='float-right fw-blod'>{memberDetail.memberAddress || ''}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-calendar-alt mr-3`}></i>
                                 <span>생년월일</span>
-                                <span className='float-right fw-blod'>1993-01-01</span>
+                                <span className='float-right fw-blod'>{formattedMemberBirthe}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-male-female mr-3`}></i>
                                 <span>성별</span>
-                                <span className='float-right fw-blod'>남</span>
+                                <span className='float-right fw-blod'> {memberDetail.memberGender === 'F' ? '여자' : memberDetail.memberGender === 'M' ? '남자' : ''}</span>
                             </div>
                         </Paper>
                         <Paper elevation={3} className={`mt-3 ${mpManagement.profileInfoBox}`}>
@@ -80,32 +116,27 @@ function MypageManagement (){
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-buildings mr-3`}></i>
                                 <span>사번</span>
-                                <span className='float-right fw-blod'>5DO001</span>
-                            </div>
-                            <div className={mpManagement.infoModule}>
-                                <i className={`bx bx-buildings mr-3`}></i>
-                                <span>소속부서</span>
-                                <span className='float-right fw-blod'>경영관리부</span>
+                                <span className='float-right fw-blod'>{memberDetail.memberCode || ''}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-buildings mr-3`}></i>
                                 <span>소속팀</span>
-                                <span className='float-right fw-blod'>인사팀</span>
+                                <span className='float-right fw-blod'>{memberDetail.teamName || ''}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-buildings mr-3`}></i>
                                 <span>직급</span>
-                                <span className='float-right fw-blod'>팀장</span>
+                                <span className='float-right fw-blod'>{memberDetail.rankName || ''}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-buildings mr-3`}></i>
                                 <span>내선번호</span>
-                                <span className='float-right fw-blod'>712</span>
+                                <span className='float-right fw-blod'>{memberDetail.inlinePhone || ''}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-buildings mr-3`}></i>
                                 <span>입사일</span>
-                                <span className='float-right fw-blod'>2019-10-24</span>
+                                <span className='float-right fw-blod'>{formattedJoinDate}</span>
                             </div>
                         </Paper>
                     </div>
