@@ -7,9 +7,11 @@ import Table from 'react-bootstrap/Table';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import {
-    callLeaveCategoryListAPI
+    callLeaveCategoryListAPI,
+    callLeaveRegistAPI
 } from '../../apis/LeaveAPICalls';
 
 
@@ -18,13 +20,49 @@ function AnnualStandardsManagement() {
     const dispatch = useDispatch();
     const leave = useSelector(state => state.productReducer);  
 
+    const navigate = useNavigate();
+
+    const [form, setForm] = useState({
+        leaveCategoryName: '',
+        leaveCategoryDateCount: 0,
+        leavePayState: 0,
+    });
+
     useEffect(
         () => {
-            dispatch(callLeaveCategoryListAPI(	// 상품 상세 정보 조회
-            ));
+            dispatch(callLeaveCategoryListAPI());
         }
         ,[]
     );
+
+    const onChangeHandler = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const onClickLeaveRegistrationHandler = () => {
+
+        console.log('[LeaveRegistration] onClickLeaveRegistrationHandler');
+
+        const formData = new FormData();
+
+        
+        formData.append("leaveCategoryName", form.leaveCategoryName);
+        formData.append("leaveCategoryDateCount", form.leaveCategoryDateCount);
+        formData.append("leavePayState", form.leavePayState);
+
+        console.log('-------', formData);
+
+        dispatch(callLeaveRegistAPI({
+            form: formData
+        }));        
+        
+        alert('휴가 기준페이지로 이동합니다.');
+        navigate('/annual/standardsManagement', { replace: true});
+        window.location.reload();
+    }
 
     const [show, setShow] = useState(false);
 
@@ -50,20 +88,30 @@ function AnnualStandardsManagement() {
                     <Modal.Body>
                     <div className="text-center">
                         <p className="text-left mt-4 mb-1">휴가명</p>
-                        <input className={asmStyle.modalInputTitle}/>
+                        <input 
+                            name='leaveCategoryName'
+                            onChange={ onChangeHandler } 
+                            className={asmStyle.modalInputTitle}
+                        />
                         <p className="text-left mt-4 mb-1">기준일수</p>
-                        <input className={asmStyle.modalInputTitle}/>
+                        <input 
+                            name='leaveCategoryDateCount'
+                            onChange={ onChangeHandler } 
+                            className={asmStyle.modalInputTitle}
+                        />
                         <p className="text-left mt-4 mb-1">급여 유무</p>
-                        <select className={asmStyle.modalSelect}>
-                            <option>유급</option>
-                            <option>무급</option>
-                        </select>
-                        <p className={`mt-5 ${asmStyle.modelInfo}`}>법정 휴가 가이드</p>
-                        <p className={`mt-5 ${asmStyle.modelInfo}`}>기본 연차 가이드</p>
+                        <div className='float-left'>
+                            <label className='mr-3'><input type="radio" name="leavePayState" value="8" onChange={ onChangeHandler }/>유급</label>
+                            <label><input type="radio" name="leavePayState" value="1" onChange={ onChangeHandler }/>무급</label>
+                        </div>
+                        <div className='w-100'>
+                            <p className={`mt-5 ${asmStyle.modelInfo}`}>법정 휴가 가이드</p>
+                            <p className={`mt-5 ${asmStyle.modelInfo}`}>기본 연차 가이드</p>
+                        </div>
                     </div>
                     </Modal.Body>
                     <Modal.Footer>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={onClickLeaveRegistrationHandler}>
                         생성
                     </Button>
                     <Button variant="secondary" onClick={handleClose}>

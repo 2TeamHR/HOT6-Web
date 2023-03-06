@@ -32,6 +32,7 @@ function MypageManagement (){
                     memberCode: token.sub
                 }));          
             }
+
         }
         ,[]
     );
@@ -44,6 +45,11 @@ function MypageManagement (){
         document.location.href = "/findpassword"
     }
 
+    const memberBirth = memberDetail.memberBirth ? new Date(memberDetail.memberBirth) : null;
+    const formattedMemberBirthe = memberBirth ? memberBirth.toISOString().slice(0, 10) : '';
+
+    const joinDate = memberDetail.memberBirth ? new Date(memberDetail.joinDate) : null;
+    const formattedJoinDate = joinDate ? joinDate.toISOString().slice(0, 10) : '';
     
     return(
         <main className={mainTitleStyle.main}>
@@ -95,7 +101,7 @@ function MypageManagement (){
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-calendar-alt mr-3`}></i>
                                 <span>생년월일</span>
-                                <span className='float-right fw-blod'>{memberDetail.memberBirth || ''}</span>
+                                <span className='float-right fw-blod'>{formattedMemberBirthe}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-male-female mr-3`}></i>
@@ -115,12 +121,12 @@ function MypageManagement (){
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-buildings mr-3`}></i>
                                 <span>소속팀</span>
-                                <span className='float-right fw-blod'>{memberDetail.teamCode || ''}</span>
+                                <span className='float-right fw-blod'>{memberDetail.teamName || ''}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-buildings mr-3`}></i>
                                 <span>직급</span>
-                                <span className='float-right fw-blod'>{memberDetail.rankCode || ''}</span>
+                                <span className='float-right fw-blod'>{memberDetail.rankName || ''}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-buildings mr-3`}></i>
@@ -130,7 +136,7 @@ function MypageManagement (){
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-buildings mr-3`}></i>
                                 <span>입사일</span>
-                                <span className='float-right fw-blod'>{memberDetail.joinDate || ''}</span>
+                                <span className='float-right fw-blod'>{formattedJoinDate}</span>
                             </div>
                         </Paper>
                     </div>

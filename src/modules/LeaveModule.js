@@ -4,12 +4,12 @@ import { createActions, handleActions } from 'redux-actions';
 const initialState = [];
 
 /* 액션 */
-export const GET_ANNUAL           = 'annual/GET_ANNUAL';
+export const GET_ANNUAL             = 'annual/GET_ANNUAL';
 export const GET_PRODUCTS           = 'product/GET_PRODUCTS';
 export const GET_PRODUCTS_MEAL      = 'product/GET_PRODUCTS_MEAL';
 export const GET_PRODUCTS_DESSERT   = 'product/GET_PRODUCTS_DESSERT';
 export const GET_PRODUCTS_BEVERAGE  = 'product/GET_PRODUCTS_BEVERAGE';
-export const POST_PRODUCT           = 'product/POST_PRODUCT';
+export const POST_ANNUAL             = 'annual/POST_ANNUAL';
 export const PUT_PRODUCT            = 'product/PUT_PRODUCT';
 
 const actions = createActions({
@@ -18,12 +18,12 @@ const actions = createActions({
     [GET_PRODUCTS_MEAL]: () => {},
     [GET_PRODUCTS_DESSERT]: () => {},
     [GET_PRODUCTS_BEVERAGE]: () => {},
-    [POST_PRODUCT]: () => {},
+    [POST_ANNUAL]: () => {},
     [PUT_PRODUCT]: () => {}
 });
 
 /* 리듀서 */
-const productReducer = handleActions(
+const leaveReducer = handleActions(
     {
         [GET_ANNUAL]: (state, { payload }) => {
             
@@ -45,7 +45,7 @@ const productReducer = handleActions(
             
             return payload;
         },
-        [POST_PRODUCT]: (state, { payload }) => {
+        [POST_ANNUAL]: (state, { payload }) => {
 
             return payload;
         },
@@ -57,4 +57,4 @@ const productReducer = handleActions(
     initialState
 );
 
-export default productReducer;
+export default leaveReducer;
