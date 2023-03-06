@@ -8,6 +8,7 @@ import ModalGroupStyle from '../resources/css/components/modal-group.module.css'
 export function MypageAttendanceHistoryModal() {
   const [show, setShow] = useState(false);
 
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
