@@ -1,6 +1,7 @@
 import{     
     GET_ANNUAL, 
-    POST_ANNUAL
+    POST_ANNUAL,
+    Delete_ANNUAL
     } from '../modules/LeaveModule.js';
 
 export const callLeaveCategoryListAPI = () => {
@@ -51,4 +52,23 @@ export const callLeaveRegistAPI = ({form}) => {
         dispatch({ type: POST_ANNUAL,  payload: result });
         
     };    
+}
+
+export const callLeaveDeleteAPI = ({leaveCategoryCode}) => {
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/annual/standardsManagement/${leaveCategoryCode}`;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "Delete",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*"
+            }
+        })
+        .then(response => response.json());
+
+        dispatch({ type: Delete_ANNUAL,  payload: result.data });        
+    };
 }

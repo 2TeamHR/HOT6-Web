@@ -60,11 +60,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* 레이아웃 사이에 넣기 */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/findpassword" element={<FindPassword />} />
-          <Route path="/ChangePassword" element={<ChangePassword />} />
+          <Route index element={<Login />} />
+          {/* <Route path="/findpassword" element={<FindPassword />} />
+          <Route path="/ChangePassword" element={<ChangePassword />} /> */}
           <Route path="/" element={ <Layout /> } >
-            <Route index element={ <Main />} />
+            <Route path='/main' element={ <Main />} />
             <Route path="/attendence/AttendanceManage" element={<AttendanceManage />} />
             <Route path="/attendence/AttendanceSelectTime" element={<AttendanceSelectTime />} />
 
@@ -83,10 +83,6 @@ function App() {
             <Route path='/es/prograss' element={<EsPrograssInbox />}/>
             <Route path='/es/complete' element={<EsCompleteInbox />}/>
 
-
-
-
-
             {/* 마이페이지 */}
             <Route path="/mypage/main" element={ <MypageMain />} />
             <Route path="/mypage/attendance" element={<MypageAttendance />}/>
@@ -103,7 +99,6 @@ function App() {
 
             {/* 인사 */}
             <Route path="/organization/certification" element={<OrganiCertificate />} />
-
             <Route path="/organization/chart" element={<OrganizationChart />} />
             <Route path="/organization/creacte" element={<OrganizationCreate />} />
             <Route path="/organization/retireeChart" element={<OrganizationRetireeChart />} />
