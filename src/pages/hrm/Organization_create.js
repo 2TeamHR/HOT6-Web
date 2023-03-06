@@ -13,9 +13,20 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import {useEffect, useRef, useState} from "react";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {callRegisterAPI} from "../../apis/MemberAPICalls";
 
 
 function OrganizationCreate (){
+
+    const dispatch = useDispatch();
+
+    const [image, setImage] = useState(null);
+    const [imageUrl, setImageUrl] = useState();
+    const imageInput = useRef();
+    const navigate = useNavigate();
 
     const [value, setValue] = React.useState(new Date());
     const [department, setDepartment] = React.useState('');
@@ -28,6 +39,58 @@ function OrganizationCreate (){
         setRank(event.target.value);
       };
 
+    useEffect(() => {
+
+            /* 이미지 업로드시 미리보기 세팅 */
+            if(image){
+                const fileReader = new FileReader();
+                fileReader.onload = (e) => {
+                    const { result } = e.target;
+                    if( result ){
+                        setImageUrl(result);
+                    }
+                }
+                fileReader.readAsDataURL(image);
+            }
+        }, [image]);
+
+
+    const onChangeImageUpload = (e) => {
+
+        const image = e.target.files[0];
+
+        setImage(image);
+    };
+
+    const onClickImageUpload = () => {
+        imageInput.current.click();
+    }
+
+    const onClickMemberRegistrationHandler = () => {
+
+        console.log('[MemberRegistration] onClickMemberRegistrationHandler');
+
+        const formData = new FormData();
+
+        // formData.append("productName", form.productName);
+        // formData.append("productPrice", form.productPrice);
+        // formData.append("productOrderable", form.productOrderable);
+        // formData.append("categoryCode", form.categoryCode);
+        // formData.append("productStock", form.productStock);
+        // formData.append("productDescription", form.productDescription);
+
+        if(image){
+            formData.append("memberImage", image);
+        }
+
+        dispatch(callRegisterAPI({	// 직원 정보 조회
+            form: formData
+        }));
+
+        alert('재직자명단으로 이동합니다.');
+        navigate('/organization/chart', { replace: true});
+        window.location.reload();
+    }
 
     return(
         <main className={mainTitleStyle.main}>
@@ -42,12 +105,26 @@ function OrganizationCreate (){
                         <div className={mpManagement.infoTitle}>
                             <p>프로필 관리</p>
                         </div>
-                        <div className={mpManagement.mpmProfile}>
-                            <img className={profileStyle.mpmProfileImg} alt="profile_img" src={sampleImg} />
-                        </div>
-                        <div className={mpManagement.infoBtn}>
-                            <button>완료</button>
-                            <button>취소</button>
+                        <div>
+                            <div className={mpManagement.mpmProfile}>
+                                { imageUrl &&
+                                    // <img className={profileStyle.mpmProfileImg} src={ imageUrl } alt="preview" />
+                                    <img className={profileStyle.mpmProfileImg} src={sampleImg} alt="profile_img" />
+                                }
+                                <input
+                                    style={ { display: 'none' }}
+                                    type="file"
+                                    name='memberImage'
+                                    accept='image/jpg,image/png,image/jpeg,image/gif'
+                                    onChange={ onChangeImageUpload }
+                                    ref={ imageInput }
+                                />
+                            </div>
+                            <div className={mpManagement.infoBtn}>
+                                <button onClick={onClickMemberRegistrationHandler}>완료</button>
+                                <button onClick={() => navigate(-1)}>취소</button>
+                                <button onClick={ onClickImageUpload }>이미지 업로드</button>
+                            </div>
                         </div>
                     </Paper>
                     <div className={mpManagement.profileMain2}>
@@ -116,27 +193,6 @@ function OrganizationCreate (){
                                 </div>
                                 <div className={organizationCreateStyle.infoModule}>
                                     <i className={`bx bx-buildings mr-3`}></i>
-                                    <span>소속부서</span>
-                                    <FormControl className={organizationCreateStyle.managementInput}>
-                                        <InputLabel id="demo-simple-select-helper-label">소속부서</InputLabel>
-                                        <Select
-                                        labelId="demo-simple-select-helper-label"
-                                        id="demo-simple-select-helper"
-                                        value={department}
-                                        label="Department"
-                                        onChange={handleChange}
-                                        >
-                                        <MenuItem value="">
-                                            <em></em>
-                                        </MenuItem>
-                                        <MenuItem value={10}>경영관리부</MenuItem>
-                                        <MenuItem value={20}>영업부</MenuItem>
-                                        <MenuItem value={30}>마케팅부</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                </div>
-                                <div className={organizationCreateStyle.infoModule}>
-                                    <i className={`bx bx-buildings mr-3`}></i>
                                     <span>소속팀</span>
                                     <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="소속팀" variant="outlined" />
                                 </div>
@@ -163,28 +219,6 @@ function OrganizationCreate (){
                                         <MenuItem value={10}>대리</MenuItem>
                                         <MenuItem value={10}>주임</MenuItem>
                                         <MenuItem value={30}>사원</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                </div>
-                                <div className={organizationCreateStyle.infoModule}>
-                                    <i className={`bx bx-buildings mr-3`}></i>
-                                    <span>고용형태</span>
-                                    <FormControl className={organizationCreateStyle.managementInput}>
-                                        <InputLabel id="demo-simple-select-helper-label">고용형태</InputLabel>
-                                        <Select
-                                        labelId="demo-simple-select-helper-label"
-                                        id="demo-simple-select-helper"
-                                        value={rank}
-                                        label="Rank"
-                                        onChange={handleChange2}
-                                        >
-                                        <MenuItem value="">
-                                            <em></em>
-                                        </MenuItem>
-                                        <MenuItem value={10}></MenuItem>
-                                        <MenuItem value={10}>임원</MenuItem>
-                                        <MenuItem value={30}>정규직</MenuItem>
-                                        <MenuItem value={10}>계약직</MenuItem>
                                         </Select>
                                     </FormControl>
                                 </div>
