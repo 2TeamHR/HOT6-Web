@@ -5,20 +5,20 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
 
-import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import {
     callLeaveCategoryListAPI,
-    callLeaveRegistAPI
+    callLeaveRegistAPI,
+    callLeaveDeleteAPI
 } from '../../apis/LeaveAPICalls';
-
 
 function AnnualStandardsManagement() {
 
     const dispatch = useDispatch();
-    const leave = useSelector(state => state.productReducer);  
+    const leave = useSelector(state => state.leaveReducer);  
 
     const navigate = useNavigate();
 
@@ -27,6 +27,8 @@ function AnnualStandardsManagement() {
         leaveCategoryDateCount: 0,
         leavePayState: 0,
     });
+
+    console.log('form', );
 
     useEffect(
         () => {
@@ -42,18 +44,16 @@ function AnnualStandardsManagement() {
         });
     };
 
+    /* 휴가 기준 등록 핸들러 */
     const onClickLeaveRegistrationHandler = () => {
 
         console.log('[LeaveRegistration] onClickLeaveRegistrationHandler');
 
         const formData = new FormData();
 
-        
         formData.append("leaveCategoryName", form.leaveCategoryName);
         formData.append("leaveCategoryDateCount", form.leaveCategoryDateCount);
         formData.append("leavePayState", form.leavePayState);
-
-        console.log('-------', formData);
 
         dispatch(callLeaveRegistAPI({
             form: formData
@@ -63,6 +63,24 @@ function AnnualStandardsManagement() {
         navigate('/annual/standardsManagement', { replace: true});
         window.location.reload();
     }
+
+    /* 휴가 기준 삭제 핸들러 */
+    const onDeleteHandler = (leaveCategoryCode) => {
+        
+        const categoryCodeNumber = leaveCategoryCode.substring(2);
+        console.log(categoryCodeNumber);
+        if (categoryCodeNumber >= 1 && categoryCodeNumber <= 7) {
+            alert("삭제할 수 없는 기준입니다.");
+            return;
+        }
+    
+        if (window.confirm('정말로 삭제하시겠습니까?')) {
+            dispatch(callLeaveDeleteAPI({ leaveCategoryCode }));
+        }
+        navigate('/annual/standardsManagement', { replace: true});
+        window.location.reload();
+    };
+    
 
     const [show, setShow] = useState(false);
 
@@ -101,8 +119,10 @@ function AnnualStandardsManagement() {
                         />
                         <p className="text-left mt-4 mb-1">급여 유무</p>
                         <div className='float-left'>
-                            <label className='mr-3'><input type="radio" name="leavePayState" value="8" onChange={ onChangeHandler }/>유급</label>
-                            <label><input type="radio" name="leavePayState" value="1" onChange={ onChangeHandler }/>무급</label>
+                            <label className='mr-3'>
+                                <input type="radio" name="leavePayState" value="8" onChange={ onChangeHandler }/>유급</label>
+                            <label>
+                                <input type="radio" name="leavePayState" value="1" onChange={ onChangeHandler }/>무급</label>
                         </div>
                         <div className='w-100'>
                             <p className={`mt-5 ${asmStyle.modelInfo}`}>법정 휴가 가이드</p>
@@ -126,15 +146,21 @@ function AnnualStandardsManagement() {
                             <th>휴가명</th>
                             <th>일수</th>
                             <th>유급 / 무급</th>
+                            <th>삭제</th>
                         </tr>
                     </thead>
                     <tbody>
                         {leave.map((category, index) => (
                             <tr key={category.leaveCategoryCode} className="text-center">
-                                <td>{index + 1}</td>
-                                <td>{category.leaveCategoryName}</td>
-                                <td>{category.leaveCategoryDateCount}</td>
-                                <td>{category.leavePayState === 8 ? '유급' : '무급'}</td>
+                                <td className='align-middle'>{index + 1}</td>
+                                <td className='align-middle'>{category.leaveCategoryName}</td>
+                                <td className='align-middle'>{category.leaveCategoryDateCount}</td>
+                                <td className='align-middle'>{category.leavePayState === 8 ? '유급' : '무급'}</td>
+                                <td className='align-middle'>
+                                    <Button className={asmStyle.deleteBtn} onClick={() => onDeleteHandler(category.leaveCategoryCode)}>
+                                        삭제
+                                    </Button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>

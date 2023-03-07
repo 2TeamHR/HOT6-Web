@@ -55,17 +55,16 @@ import LOAForm from './pages/es/LOAForm';
 import ReinstatmentForm from './pages/es/ReinstatementForm';
 import SeveranceInsert from './pages/salary/Salary_SeveranceInsert';
 
-
 function App() {
   return (
       <BrowserRouter>
         <Routes>
           {/* 레이아웃 사이에 넣기 */}
-          <Route path="/login" element={<Login />} />
+          <Route index element={<Login />} />
           <Route path="/findpassword" element={<FindPassword />} />
           <Route path="/ChangePassword" element={<ChangePassword />} />
           <Route path="/" element={ <Layout /> } >
-            <Route index element={ <Main />} />
+            <Route path='/main' element={ <Main />} />
             <Route path="/attendence/AttendanceManage" element={<AttendanceManage />} />
             <Route path="/attendence/AttendanceSelectTime" element={<AttendanceSelectTime />} />
 
@@ -84,10 +83,6 @@ function App() {
             <Route path='/es/prograss' element={<EsPrograssInbox />}/>
             <Route path='/es/complete' element={<EsCompleteInbox />}/>
 
-
-
-
-
             {/* 마이페이지 */}
             <Route path="/mypage/main" element={ <MypageMain />} />
             <Route path="/mypage/attendance" element={<MypageAttendance />}/>
@@ -96,7 +91,7 @@ function App() {
             <Route path="/mypage/attendance/history" element={<MypageAttendanceHistory />}/>
             <Route path="/mypage/annual/history" element={<MypageAnnualHistory />}/>
 
-           {/* 근태관리 */}
+            {/* 근태관리 */}
             <Route path="/annual/standardsManagement" element={<AnnualStandardsManagement />}/>
             <Route path="/annual/payment" element={<AnnualPayment />}/>
             <Route path="/annual/management" element={<AnnualManagement />}/>
@@ -104,7 +99,6 @@ function App() {
 
             {/* 인사 */}
             <Route path="/organization/certification" element={<OrganiCertificate />} />
-
             <Route path="/organization/chart" element={<OrganizationChart />} />
             <Route path="/organization/creacte" element={<OrganizationCreate />} />
             <Route path="/organization/retireeChart" element={<OrganizationRetireeChart />} />

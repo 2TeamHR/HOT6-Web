@@ -35,33 +35,6 @@
     margin-top: 50px;
 }
 
-.chart {
-    position: relative;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    transition: 0.3s;
-    background:lightgray;
-    display:inline-block;
-  }
-  
-.chart:after{ /* 가상선택자는 도넛 모양을 만들기 위함이다.*/
-    content:'';
-    background: #fff;  /* 백그라운드 컬러로 중앙가리기 */
-    position: absolute;
-    top:50%; left:50%;
-    width:200px; height:200px; /* 도넛의 너비 설정 */
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-.chartBar{
-    width: inherit;
-    height: inherit;
-    border-radius: 50%;
-    background: conic-gradient(#43B2CA 50deg, #dfdfdf 50deg); /* 차트 설정 */
-  }
-
 /* 근태 관리 */
 .todayWorkTime {
     margin: 80px 0px 40px 0px;
@@ -126,7 +99,6 @@
     font-size: small;
     font-weight: bolder;
 }
-
 
 /* 주 근무 시간 */
 .weekMyTime {
