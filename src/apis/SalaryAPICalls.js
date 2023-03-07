@@ -1,4 +1,4 @@
-import { GET_PAYMENT_SALARY, GET_SALARY } from '../modules/SalaryModule.js'
+import { GET_PAYMENT_SALARY, GET_SALARY, GET_SEVERANCE_SALARY } from '../modules/SalaryModule.js'
 
 export const callGetMySalaryAPI = ({year}, {month}) => {
 
@@ -49,6 +49,31 @@ export const callGetPaymentSalaryAPI = ({paymentsYn}) => {
         if(result.status === 200) {
             console.log('[SalaryAPICalls] callGetPaymentSalaryAPI RESULT : ', result);
             dispatch({ type: GET_PAYMENT_SALARY, payload: result.data });
+        }
+
+    };
+}
+
+export const callGetRetireePaymentAPI = ({paymentYn}) => {
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/salary/severance/${paymentYn}`;
+
+    console.log('requst', requestURL);
+    
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+            }
+        })
+        .then(response => response.json());
+
+        if(result.status === 200) {
+            console.log('[SalaryAPICalls] callGetPaymentSalaryAPI RESULT : ', result);
+            dispatch({ type: GET_SEVERANCE_SALARY, payload: result.data });
         }
 
     };

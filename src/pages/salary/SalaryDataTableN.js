@@ -27,7 +27,6 @@ const rows = [
 
 export default function SalaryDataTableN({ salary : {salaryCode, memberCode, bonusCode, taxCode, basicSalary, bonusSalary, mealSalary, totalTax, totalSalary, paymentDate, paymentYn}}) {
 
-
     return (
         <div className="pl-5" style={{ height: 400, width: '90%' }}>
             <DataGrid
@@ -46,6 +45,7 @@ export default function SalaryDataTableN({ salary : {salaryCode, memberCode, bon
             >
                 지급하기
             </button>
+            
         </div>
     );
 }

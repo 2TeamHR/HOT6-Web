@@ -54,6 +54,11 @@ function SeveraceDatePiker() {
     }
   }
 
+  function handleClick2() {
+
+      navigate('/salary/severance/insert');
+  }
+
   return (
     <div>
       <label className='mt-5 pl-3'>
@@ -87,6 +92,7 @@ function SeveraceDatePiker() {
         </select>
       </label>
       <button className='btn btn-primary ml-3' onClick={handleClick}>조회하기</button>
+      <button className='btn btn-primary ml-3' onClick={handleClick2}>추가하기</button>
     </div>
   );
 }

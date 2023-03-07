@@ -56,6 +56,11 @@ function SelectDatePiker2() {
     }
   }
 
+  function handleClick2() {
+
+    navigate('/salary/check/insert');
+  }
+
 
   return (
     <div>
@@ -90,6 +95,7 @@ function SelectDatePiker2() {
         </select>
       </label>
       <button className='btn btn-primary ml-3' onClick={handleClick}>조회하기</button>
+      <button className='btn btn-primary ml-3' onClick={handleClick2}>추가하기</button>
     </div>
   );
 }
