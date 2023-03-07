@@ -2,6 +2,7 @@
 import {
     GET_MEMBER
     , POST_LOGIN
+    , POST_REGISTER
 
 } from '../modules/MemberModule';
 
