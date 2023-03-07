@@ -7,46 +7,80 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import React from 'react';
 import { PieChart } from "react-minimal-pie-chart";
+import moment from 'moment';
 
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { decodeJwt } from '../../utils/tokenUtils';
 
 import { callGetMyLeaveInfoAPI } from '../../apis/LeaveAPICalls';
+import { callGetMemberAPI } from '../../apis/MemberAPICalls';
 
 function MypageMain() {
 
-    const mypageManagementHref = () => {
-        document.location.href = "/mypage/management"
-    }
-
-    useEffect(
-        () => {
-            dispatch(callGetMyLeaveInfoAPI({
-                memberCode: token.sub
-            }));
-        },[]
-        
-    );
-
+    const [date, setDate] = useState(new Date());
+    const [startTimeStamp, setStartTimeStamp] = useState('');
+    const [endTimeStamp, setEndTimeStamp] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch(); 
-    const token = decodeJwt(window.localStorage.getItem("accessToken"));  
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));
+    const member = useSelector(state => state.memberReducer);  
     const myLeaveInfo = useSelector(state => state.leaveReducer); 
-    console.log("=======>>>>>",myLeaveInfo.data);
-    console.log('token', token.sub);
-    console.log('=============', myLeaveInfo.data);
-    let myLeaveAll = [];
-    let myLeaveLeftover = [];
+
+
+
+    /* 임시로 리액트 에러 수정 */
+    let myLeaveAll = 1;
+    let myLeaveLeftover = 1;
+
     if(myLeaveInfo.data !== undefined){
         myLeaveAll =  myLeaveInfo.data[0].leavePaymentCount;
         myLeaveLeftover = myLeaveInfo.data[0].leaveLeftoverCount;
     }
-    
 
+    useEffect(
+        () => {
+            const timerID = setInterval(() => tick(), 1000);
+            return () => {
+                clearInterval(timerID);
+            };
+        }
+    );
 
- 
+    useEffect(() => {
+            dispatch(callGetMyLeaveInfoAPI({
+                memberCode: token.sub
+            }));
+        },[]
+    );
+
+    useEffect(() => {
+            if(token !== null) {
+                dispatch(callGetMemberAPI({
+                    memberCode: token.sub
+                }));          
+            }
+        },[]
+    );
+
+    function tick() {
+        setDate(new Date());
+    }
+
+    /* 개인정보 수정 페이지로 이동 */
+    const mypageManagementHref = () => {
+        document.location.href = "/mypage/management"
+    }
+
+    const onClickStartTimeHandler = () => {
+        setStartTimeStamp(moment(date).format('HH:mm:ss'));
+    }
+
+    const onClickEndTimeHandler = () => {
+        setEndTimeStamp(moment(date).format('HH:mm:ss'));
+    }
+
     return (
         <>
             <main className={mainTitleStyle.main}>
@@ -69,15 +103,15 @@ function MypageMain() {
                     </Paper>
 
                     <Paper elevation={3} className={mypageStyle.module} style={{width: "205%"}}>
-                        <p className={mypageStyle.moduleTitle}>나의 2023년도 휴가 현황</p>
+                        <p className={mypageStyle.moduleTitle}>나의 {new Date().getFullYear()}년도 휴가 현황</p>
                         <p className={mypageStyle.vacationPlus}>+ 휴가신청</p>
                         <div className={`text-center ${mypageStyle.myVacation}`}>
                             <div>
                             <PieChart
                                 data={[
                                 {
-                                    value: myLeaveLeftover,
-                                    color: "#43B2CA",
+                                    value: myLeaveAll - myLeaveLeftover,
+                                    color: "#FFA07A",
                                     name: "name1",
                                 },
                                 ]}
@@ -112,30 +146,30 @@ function MypageMain() {
                     <Paper elevation={3} className={mypageStyle.module}>
                         <p className={mypageStyle.moduleTitle}>근태관리</p>
                         <div className="text-lg-start ml-3 text-center time">
-                            <p className="alert-light fs-5">2023년 3월 19일(목요일) 14:30:32</p>
+                            <p className="alert-light fs-5 fw-bold text-dark">{date.toLocaleString()}</p>
                         </div>
                         <div className={mypageStyle.todayWorkTime}>
-                            <p className="fw-bold fs-5 text-center">오늘 군무 시간</p>
+                            <p className="fw-bold fs-5 text-center">오늘 근무 시간</p>
                             <div className="text-center">
-                                <span className="fs-1 fw-bolder">5</span>
+                                <span className="fs-1 fw-bolder"></span>
                                 <span className="fs-3 fw-bold">시간</span>
-                                <span className="fs-1 fw-bolder">30</span>
+                                <span className="fs-1 fw-bolder"></span>
                                 <span className="fs-3 fw-bold">분</span>
                             </div>
                         </div>
                         <div>
                             <div className="ml-5 mr-5">
                                 <span className="fw-300">출근 시간</span>
-                                <span className="fw-300 float-right">08:45:19</span>
+                                <span className="fw-300 float-right">{startTimeStamp.toLocaleString()}</span>
                             </div>
                             <div className="ml-5 mr-5 pb-3 border-bottom">
                                 <span className="fw-300">퇴근 시간</span>
-                                <span className="fw-300 float-right">미등록</span>
+                                <span className="fw-300 float-right">{endTimeStamp.toLocaleString()}</span>
                             </div>
                         </div>
                         <div className="text-center">
-                            <button className={mypageStyle.workBtn}>출근하기</button>
-                            <button className={mypageStyle.workBtn}>퇴근하기</button>
+                            <button className={mypageStyle.workBtn} onClick={onClickStartTimeHandler}>출근하기</button>
+                            <button className={mypageStyle.workBtn} onClick={onClickEndTimeHandler}>퇴근하기</button>
                         </div>
                         <div className={mypageStyle.seeMore}>
                             <p><Link to="/mypage/attendance">더보기 +</Link></p>

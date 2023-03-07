@@ -28,6 +28,8 @@ function AnnualStandardsManagement() {
         leavePayState: 0,
     });
 
+    console.log('form', );
+
     useEffect(
         () => {
             dispatch(callLeaveCategoryListAPI());
@@ -49,12 +51,9 @@ function AnnualStandardsManagement() {
 
         const formData = new FormData();
 
-        
         formData.append("leaveCategoryName", form.leaveCategoryName);
         formData.append("leaveCategoryDateCount", form.leaveCategoryDateCount);
         formData.append("leavePayState", form.leavePayState);
-
-        console.log('-------', formData);
 
         dispatch(callLeaveRegistAPI({
             form: formData
@@ -120,8 +119,10 @@ function AnnualStandardsManagement() {
                         />
                         <p className="text-left mt-4 mb-1">급여 유무</p>
                         <div className='float-left'>
-                            <label className='mr-3'><input type="radio" name="leavePayState" value="8" onChange={ onChangeHandler }/>유급</label>
-                            <label><input type="radio" name="leavePayState" value="1" onChange={ onChangeHandler }/>무급</label>
+                            <label className='mr-3'>
+                                <input type="radio" name="leavePayState" value="8" onChange={ onChangeHandler }/>유급</label>
+                            <label>
+                                <input type="radio" name="leavePayState" value="1" onChange={ onChangeHandler }/>무급</label>
                         </div>
                         <div className='w-100'>
                             <p className={`mt-5 ${asmStyle.modelInfo}`}>법정 휴가 가이드</p>

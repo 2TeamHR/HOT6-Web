@@ -52,6 +52,7 @@ function Login() {
             ...form,
             [e.target.name]: e.target.value
         });
+
     };
 
     const onClickRegisterHandler = () => {
