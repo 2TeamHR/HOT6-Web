@@ -62,7 +62,6 @@ export const callLoginAPI = ({form}) => {
     };
 }
 
-
 export const callLogoutAPI = () => {
 
     return async (dispatch, getState) => {

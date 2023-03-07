@@ -5,8 +5,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
 
-import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import {
@@ -15,11 +15,10 @@ import {
     callLeaveDeleteAPI
 } from '../../apis/LeaveAPICalls';
 
-
 function AnnualStandardsManagement() {
 
     const dispatch = useDispatch();
-    const leave = useSelector(state => state.productReducer);  
+    const leave = useSelector(state => state.leaveReducer);  
 
     const navigate = useNavigate();
 

@@ -6,12 +6,14 @@ const initialState = [];
 /* 액션 */
 export const GET_ANNUAL             = 'annual/GET_ANNUAL';
 export const POST_ANNUAL            = 'annual/POST_ANNUAL';
-export const Delete_ANNUAL             = 'annual/Delete_ANNUAL';
+export const DELETE_ANNUAL          = 'annual/DELETE_ANNUAL';
+export const GET_MYLEAVEINFO          = 'annual/GET_MYLEAVEINFO';
 
 const actions = createActions({
     [GET_ANNUAL]: () => {},
     [POST_ANNUAL]: () => {},
-    [Delete_ANNUAL]: () => {}
+    [DELETE_ANNUAL]: () => {},
+    [GET_MYLEAVEINFO]: () => {},
 });
 
 /* 리듀서 */
@@ -25,10 +27,14 @@ const leaveReducer = handleActions(
 
             return payload;
         },
-        [Delete_ANNUAL]: (state, { payload }) => {
+        [DELETE_ANNUAL]: (state, { payload }) => {
 
             return payload;
-        }        
+        },       
+        [GET_MYLEAVEINFO]: (state, { payload }) => {
+
+            return payload;
+        },       
     },
     initialState
 );
