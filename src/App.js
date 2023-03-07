@@ -54,15 +54,14 @@ import DutyForm from './pages/es/DutyForm';
 import LOAForm from './pages/es/LOAForm';
 import ReinstatmentForm from './pages/es/ReinstatementForm';
 
-
 function App() {
   return (
       <BrowserRouter>
         <Routes>
           {/* 레이아웃 사이에 넣기 */}
           <Route index element={<Login />} />
-          {/* <Route path="/findpassword" element={<FindPassword />} />
-          <Route path="/ChangePassword" element={<ChangePassword />} /> */}
+          <Route path="/findpassword" element={<FindPassword />} />
+          <Route path="/ChangePassword" element={<ChangePassword />} />
           <Route path="/" element={ <Layout /> } >
             <Route path='/main' element={ <Main />} />
             <Route path="/attendence/AttendanceManage" element={<AttendanceManage />} />
