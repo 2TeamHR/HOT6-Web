@@ -27,17 +27,22 @@ function OrganizationCreate (){
     const [imageUrl, setImageUrl] = useState();
     const imageInput = useRef();
     const navigate = useNavigate();
+    const [date, setDate] = React.useState(new Date());
 
-    const [value, setValue] = React.useState(new Date());
-    const [department, setDepartment] = React.useState('');
-    const handleChange = (event) => {
-        setDepartment(event.target.value);
-      };
+    const [form, setForm] = useState({
+        memberName: '이상목',
+        memberPhone: '',
+        memberEmail: '',
+        memberAddress: '',
+        memberBirth: date, 
+        memberGender: '',
+        memberMarried: '',
+        teamCode: '',
+        rankCode: '',
+        inlinePhone: ''
+    });
 
-    const [rank, setRank] = React.useState('');
-    const handleChange2 = (event) => {
-        setRank(event.target.value);
-      };
+    console.log("form : " + form.memberName);
 
     useEffect(() => {
 
@@ -52,8 +57,8 @@ function OrganizationCreate (){
                 }
                 fileReader.readAsDataURL(image);
             }
-        }, [image]);
-
+        }, [image]
+    );
 
     const onChangeImageUpload = (e) => {
 
@@ -64,7 +69,23 @@ function OrganizationCreate (){
 
     const onClickImageUpload = () => {
         imageInput.current.click();
-    }
+    };
+
+    const onChangeHandler = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        });
+        console.log("name : ", e.target.name);
+        console.log("value : ", e.target.value);
+    };
+
+    const onDateChangeHandler = (date) =>{
+        setForm({
+            ...form,
+            memberBirth: date
+        });
+    };
 
     const onClickMemberRegistrationHandler = () => {
 
@@ -72,12 +93,16 @@ function OrganizationCreate (){
 
         const formData = new FormData();
 
-        // formData.append("productName", form.productName);
-        // formData.append("productPrice", form.productPrice);
-        // formData.append("productOrderable", form.productOrderable);
-        // formData.append("categoryCode", form.categoryCode);
-        // formData.append("productStock", form.productStock);
-        // formData.append("productDescription", form.productDescription);
+        formData.append("memberName", form.memberName);
+        formData.append("memberPhone", form.memberPhone);
+        formData.append("memberEmail", form.memberEmail);
+        formData.append("memberAddress", form.memberAddress);
+        formData.append("memberBirth", form.memberBirth);
+        formData.append("memberGender", form.memberGender);
+        formData.append("memberMarried", form.memberMarried);
+        formData.append("teamCode", form.teamCode);
+        formData.append("rankCode", form.rankCode);
+        formData.append("inlinePhone", form.inlinePhone);
 
         if(image){
             formData.append("memberImage", image);
@@ -87,9 +112,11 @@ function OrganizationCreate (){
             form: formData
         }));
 
-        alert('재직자명단으로 이동합니다.');
-        navigate('/organization/chart', { replace: true});
-        window.location.reload();
+        console.log(form);
+
+        // alert('재직자명단으로 이동합니다.');
+        // navigate('/organization/chart', { replace: true});
+        // window.location.reload();
     }
 
     return(
@@ -97,7 +124,7 @@ function OrganizationCreate (){
             <div>
 
                 <div className={mainTitleStyle.title}>
-                    <p>개인정보관리</p>
+                    <p>신규사원등록</p>
                 </div>
 
                 <div className='d-flex ml-5 mr-5'>
@@ -108,8 +135,8 @@ function OrganizationCreate (){
                         <div>
                             <div className={mpManagement.mpmProfile}>
                                 { imageUrl &&
-                                    // <img className={profileStyle.mpmProfileImg} src={ imageUrl } alt="preview" />
-                                    <img className={profileStyle.mpmProfileImg} src={sampleImg} alt="profile_img" />
+                                    <img className={profileStyle.mpmProfileImg} src={ imageUrl } alt="preview" />
+                                    // <img className={profileStyle.mpmProfileImg} src={sampleImg} alt="profile_img" />
                                 }
                                 <input
                                     style={ { display: 'none' }}
@@ -131,27 +158,31 @@ function OrganizationCreate (){
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <Paper elevation={3} className={mpManagement.profileInfoBox}>
                                 <div className={mpManagement.infoTitle}>
-                                    <p>개인정보</p>
+                                    <p>신규사원정보</p>
                                 </div>
                                 <div className={organizationCreateStyle.infoModule}>
                                     <i className={`bx bx-user mr-3`}></i>
                                     <span>이름</span>
-                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="이름" variant="outlined" />
+                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="이름" variant="outlined"
+                                                name="memberName" onChange={ onChangeHandler } />
                                 </div>
                                 <div className={organizationCreateStyle.infoModule}>
                                     <i className={`bx bx-phone mr-3`}></i>
                                     <span>휴대전화</span>
-                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="휴대전화" variant="outlined" />
+                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="휴대전화" variant="outlined"
+                                                name="memberPhone" onChange={ onChangeHandler } />
                                 </div>
                                 <div className={organizationCreateStyle.infoModule}>
                                     <i className={`bx bx-envelope mr-3`}></i>
                                     <span>이메일</span>
-                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="이메일" variant="outlined" />
+                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="이메일" variant="outlined"
+                                                name="memberEmail" onChange={ onChangeHandler } />
                                 </div>
                                 <div className={organizationCreateStyle.infoModule}>
                                     <i className={`bx bx-home mr-3`}></i>
                                     <span>주소</span>
-                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="주소" variant="outlined" />
+                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="주소" variant="outlined"
+                                                name="memberAddress" onChange={ onChangeHandler } />
                                 </div>
                                 <div className={organizationCreateStyle.infoModule}>
                                     <i className={`bx bx-calendar-alt mr-3`}></i>
@@ -162,23 +193,33 @@ function OrganizationCreate (){
                                         label="생년월일"
                                         openTo="year"
                                         views={['year', 'month', 'day']}
-                                        value={value}
-                                        onChange={(newValue) => {
-                                            setValue(newValue);
-                                        }}
+                                        value={form.memberBirth}
+                                        onChange={ onDateChangeHandler }
                                         renderInput={(params) => <TextField {...params} />}
                                     />
                                 </div>
                                 <div className={organizationCreateStyle.infoModule}>
                                     <i className={`bx bx-male-female mr-3`}></i>
                                     <span>성별</span>
-                                    <label className={organizationCreateStyle.radioBtn}>
+                                    <label className={organizationCreateStyle.radioBtn} >
                                     남성
-                                        <input type="radio" className="ml-2"/>
+                                        <input type="radio" className="ml-2" name="memberGender" value="M" onChange={onChangeHandler}/>
                                     </label>
-                                    <label className={organizationCreateStyle.radioBtn}>
+                                    <label className={organizationCreateStyle.radioBtn} >
                                     여성
-                                        <input type="radio" className="ml-2"/>
+                                        <input type="radio" className="ml-2" name="memberGender" value="F" onChange={onChangeHandler}/>
+                                    </label>
+                                </div>
+                                <div className={organizationCreateStyle.infoModule}>
+                                    <i className={`bx bx-male-female mr-3`}></i>
+                                    <span>결혼여부</span>
+                                    <label className={organizationCreateStyle.radioBtn}>
+                                    기혼
+                                        <input type="radio" className="ml-2" name="memberMarried" value="Y" onChange={onChangeHandler}/>
+                                    </label>
+                                    <label className={organizationCreateStyle.radioBtn} >
+                                    미혼
+                                        <input type="radio" className="ml-2" name="memberMarried" value="N" onChange={onChangeHandler}/>
                                     </label>
                                 </div>
                             </Paper>
@@ -188,13 +229,28 @@ function OrganizationCreate (){
                                 </div>
                                 <div className={organizationCreateStyle.infoModule}>
                                     <i className={`bx bx-buildings mr-3`}></i>
-                                    <span>사번</span>
-                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="사번 - 중복체크 비동기로 넣기" variant="outlined" />
-                                </div>
-                                <div className={organizationCreateStyle.infoModule}>
-                                    <i className={`bx bx-buildings mr-3`}></i>
                                     <span>소속팀</span>
-                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="소속팀" variant="outlined" />
+                                    <FormControl className={organizationCreateStyle.managementInput}>
+                                        <InputLabel id="demo-simple-select-helper-label">소속팀</InputLabel>
+                                        <Select
+                                        labelId="demo-simple-select-helper-label"
+                                        id="demo-simple-select-helper"
+                                        label="Team"
+                                        name="teamCode"
+                                        onChange={onChangeHandler}
+                                        >
+                                        <MenuItem value="">
+                                            <em></em>
+                                        </MenuItem>
+                                        <MenuItem value={1}>인사팀</MenuItem>
+                                        <MenuItem value={2}>총무팀</MenuItem>
+                                        <MenuItem value={3}>회계팀</MenuItem>
+                                        <MenuItem value={4}>영업팀</MenuItem>
+                                        <MenuItem value={5}>마케팅팀</MenuItem>
+                                        <MenuItem value={6}>개발1팀</MenuItem>
+                                        <MenuItem value={7}>개발2팀</MenuItem>
+                                        </Select>
+                                    </FormControl>
                                 </div>
                                 <div className={organizationCreateStyle.infoModule}>
                                     <i className={`bx bx-buildings mr-3`}></i>
@@ -204,44 +260,29 @@ function OrganizationCreate (){
                                         <Select
                                         labelId="demo-simple-select-helper-label"
                                         id="demo-simple-select-helper"
-                                        value={rank}
                                         label="Rank"
-                                        onChange={handleChange2}
+                                        name="rankCode"
+                                        onChange={onChangeHandler}
                                         >
                                         <MenuItem value="">
                                             <em></em>
                                         </MenuItem>
-                                        <MenuItem value={10}>사장</MenuItem>
-                                        <MenuItem value={10}>이사</MenuItem>
-                                        <MenuItem value={30}>부장</MenuItem>
-                                        <MenuItem value={10}>차장</MenuItem>
-                                        <MenuItem value={10}>과장</MenuItem>
-                                        <MenuItem value={10}>대리</MenuItem>
-                                        <MenuItem value={10}>주임</MenuItem>
-                                        <MenuItem value={30}>사원</MenuItem>
+                                        <MenuItem value={1}>사장</MenuItem>
+                                        <MenuItem value={2}>이사</MenuItem>
+                                        <MenuItem value={3}>부장</MenuItem>
+                                        <MenuItem value={4}>차장</MenuItem>
+                                        <MenuItem value={5}>과장</MenuItem>
+                                        <MenuItem value={6}>대리</MenuItem>
+                                        <MenuItem value={7}>주임</MenuItem>
+                                        <MenuItem value={8}>사원</MenuItem>
                                         </Select>
                                     </FormControl>
                                 </div>
                                 <div className={organizationCreateStyle.infoModule}>
                                     <i className={`bx bx-buildings mr-3`}></i>
                                     <span>내선번호</span>
-                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="내선번호" variant="outlined" />
-                                </div>
-                                <div className={organizationCreateStyle.infoModule}>
-                                    <i className={`bx bx-buildings mr-3`}></i>
-                                    <span>입사일</span>
-                                    <DatePicker
-                                        className={organizationCreateStyle.datePicker}
-                                        disableFuture
-                                        label="입사일"
-                                        openTo="year"
-                                        views={['year', 'month', 'day']}
-                                        value={value}
-                                        onChange={(newValue) => {
-                                            setValue(newValue);
-                                        }}
-                                        renderInput={(params) => <TextField {...params} />}
-                                    />
+                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="내선번호" variant="outlined"
+                                                name="inlinePhone" onChange={ onChangeHandler } />
                                 </div>
                             </Paper>
                         </LocalizationProvider>

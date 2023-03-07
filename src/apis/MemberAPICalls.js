@@ -80,22 +80,16 @@ export const callRegisterAPI = ({form}) => {
         const result = await fetch(requestURL, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
-                "Accept": "*/*"
+                "Accept": "*/*",
+                "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
             },
-            body: JSON.stringify({
-                memberId: form.memberId,
-                memberPassword: form.memberPassword,
-                memberName: form.memberName,
-                memberEmail: form.memberEmail
-            })
+            body: form
+            
         })
             .then(response => response.json());
 
         console.log('[MemberAPICalls] callRegisterAPI RESULT : ', result);
 
-        if(result.status === 201){
-            dispatch({ type: POST_REGISTER,  payload: result });
-        }
+        dispatch({ type: POST_REGISTER,  payload: result });
     };
 }

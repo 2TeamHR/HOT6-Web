@@ -90,7 +90,7 @@ function App() {
             <Route path="/mypage/attendance/history" element={<MypageAttendanceHistory />}/>
             <Route path="/mypage/annual/history" element={<MypageAnnualHistory />}/>
 
-           {/* 근태관리 */}
+            {/* 근태관리 */}
             <Route path="/annual/standardsManagement" element={<AnnualStandardsManagement />}/>
             <Route path="/annual/payment" element={<AnnualPayment />}/>
             <Route path="/annual/management" element={<AnnualManagement />}/>
