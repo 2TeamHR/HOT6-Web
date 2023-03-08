@@ -37,7 +37,7 @@ function Header() {
 
         return (
             <div>
-                <button className="btn-primary ml-3 rounded-1" onClick={onClickLoginHandler}>로그인</button>
+                {/* <button className="btn-primary ml-3 rounded-1" onClick={onClickLoginHandler}>로그인</button> */}
             </div>
         );
     }
