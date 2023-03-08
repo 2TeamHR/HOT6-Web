@@ -52,7 +52,6 @@ function Login() {
             ...form,
             [e.target.name]: e.target.value
         });
-
     };
 
     const onClickRegisterHandler = () => {
@@ -64,7 +63,7 @@ function Login() {
         dispatch(callLoginAPI({	// 로그인
             form: form
         }));
-        navigate("/main", { replace: true })
+        navigate("/main", {replace : true})
     }
 
     // const onEnterkeyHandler = (e) => {
@@ -116,7 +115,7 @@ function Login() {
                             placeholder="비밀번호를 입력하세요."
                             autoComplete='off'
                             onChange={onChangeHandler}
-                            onKeyDown={handleKeyDown}
+                            // onKeyDown={handleKeyDown}
                             style={{ width: '100%', padding: '12px 20px', margin: '8px 0', display: 'inline-block', border: '1px solid #ccc', borderRadius: '4px', boxSizing: 'border-box' }}
                         />
 
@@ -124,6 +123,7 @@ function Login() {
                         <label htmlFor="remember" style={{ "display": "inline-block", "fontSize": "100%" }}>사번 저장</label>
                         <Button
                             onClick={onClickLoginHandler}
+                            onKeyPress={handleKeyDown}
                             style={{ backgroundColor: '#498cef', color: 'white', padding: '14px 20px', margin: '8px 0', border: 'none', borderRadius: '4px', cursor: 'pointer', width: '100%' }}
                         >
                             로그인

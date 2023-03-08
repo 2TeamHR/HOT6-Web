@@ -13,6 +13,11 @@ main {
     font-size: 15px;
 }
 
+td {
+
+    text-overflow: ellipsis;
+}
+
 
 
 .table {
@@ -20,8 +25,9 @@ main {
     margin-top: 1px;
     margin-left: 10px;
 
-    border-top: 1px solid #aaaaaa;
+    /* border-top: 1px solid #aaaaaa; */
     border-bottom: 1px solid #aaaaaa;
+    table-layout: fixed;
 }
 
 .table2 {
@@ -46,7 +52,7 @@ main {
 
 
 .buttonOptionalSelect{
-    margin-left: 28px;
+    margin-left: 52px;
 }
 
 

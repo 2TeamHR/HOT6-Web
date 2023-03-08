@@ -19,17 +19,17 @@ main {
 /* 큰박스 */
 .module{
     width: 70%;
-    height: auto;
+    height: 700px;
     margin: 10px 100px 10px 10px;
     border: 1px solid #aaaaaa;
     border-radius: 10px;
-    overflow: hidden;
-    position: relative;
+    /* overflow: hidden;
+    position: relative; */
 }
 /* 작은박스 */
 .module2{
-    width: 20%;
-    height: 100%;
+    width: 15%;
+    height: 700px;
     position:absolute;
     border-right: 1px solid #aaaaaa;
     border-radius: 10px;
