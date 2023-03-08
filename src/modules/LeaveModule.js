@@ -4,57 +4,39 @@ import { createActions, handleActions } from 'redux-actions';
 const initialState = [];
 
 /* 액션 */
-export const GET_ANNUAL           = 'annual/GET_ANNUAL';
-export const GET_PRODUCTS           = 'product/GET_PRODUCTS';
-export const GET_PRODUCTS_MEAL      = 'product/GET_PRODUCTS_MEAL';
-export const GET_PRODUCTS_DESSERT   = 'product/GET_PRODUCTS_DESSERT';
-export const GET_PRODUCTS_BEVERAGE  = 'product/GET_PRODUCTS_BEVERAGE';
-export const POST_PRODUCT           = 'product/POST_PRODUCT';
-export const PUT_PRODUCT            = 'product/PUT_PRODUCT';
+export const GET_ANNUAL             = 'annual/GET_ANNUAL';
+export const POST_ANNUAL            = 'annual/POST_ANNUAL';
+export const DELETE_ANNUAL          = 'annual/DELETE_ANNUAL';
+export const GET_MYLEAVEINFO          = 'annual/GET_MYLEAVEINFO';
 
 const actions = createActions({
     [GET_ANNUAL]: () => {},
-    [GET_PRODUCTS]: () => {},
-    [GET_PRODUCTS_MEAL]: () => {},
-    [GET_PRODUCTS_DESSERT]: () => {},
-    [GET_PRODUCTS_BEVERAGE]: () => {},
-    [POST_PRODUCT]: () => {},
-    [PUT_PRODUCT]: () => {}
+    [POST_ANNUAL]: () => {},
+    [DELETE_ANNUAL]: () => {},
+    [GET_MYLEAVEINFO]: () => {},
 });
 
 /* 리듀서 */
-const productReducer = handleActions(
+const leaveReducer = handleActions(
     {
         [GET_ANNUAL]: (state, { payload }) => {
             
             return payload;
         },
-        [GET_PRODUCTS]: (state, { payload }) => {
-            
-            return payload;
-        },
-        [GET_PRODUCTS_MEAL]: (state, { payload }) => {
-            
-            return payload;
-        },
-        [GET_PRODUCTS_DESSERT]: (state, { payload }) => {
-            
-            return payload;
-        },
-        [GET_PRODUCTS_BEVERAGE]: (state, { payload }) => {
-            
-            return payload;
-        },
-        [POST_PRODUCT]: (state, { payload }) => {
+        [POST_ANNUAL]: (state, { payload }) => {
 
             return payload;
         },
-        [PUT_PRODUCT]: (state, { payload }) => {
+        [DELETE_ANNUAL]: (state, { payload }) => {
 
             return payload;
-        }        
+        },       
+        [GET_MYLEAVEINFO]: (state, { payload }) => {
+
+            return payload;
+        },       
     },
     initialState
 );
 
-export default productReducer;
+export default leaveReducer;

@@ -18,18 +18,17 @@ const actions = createActions({
 const memberReducer = handleActions(
     {
         [GET_MEMBER]: (state, { payload }) => {
-            
+
             return payload;
         },
         [POST_LOGIN]: (state, { payload }) => {
-            
+
             return payload;
         },
         [POST_REGISTER]: (state, { payload }) => {
-            
-            return payload;
-        },
 
+            return payload;
+        }
     },
     initialState
 );
