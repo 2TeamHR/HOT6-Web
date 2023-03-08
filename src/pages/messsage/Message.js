@@ -4,6 +4,10 @@ import messageStyle from '../../resources/css/pages/message/message.module.css'
 import {Link, useNavigate} from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import {callGetMessageListAPI, callRegistMessageListAPI} from "../../apis/MessageAPICalls";
+import {useDispatch, useSelector} from "react-redux";
+
+
 
 function Message() {
 
@@ -16,17 +20,20 @@ function Message() {
             messageTitle: '',
             messageContent: ''
         })
+        const dispatch = useDispatch();
+        const messageReducer = useSelector(state => state.messageReducer);
 
 
         useEffect(() =>{
-        if(memberName) {
-            axios.get(`http://localhost:8888/api/v1/message/search/${memberName}`)
-            .then(response => {
-             const membersData = response.data.data.map(member =>({ name:member.memberName, email:member.memberEmail}));   
-            setMembers(membersData);
-            }).catch(error =>console.log(error))
-            }    
-        }, [memberName]);
+
+            if(memberName){
+                dispatch(callGetMessageListAPI({ memberName}))
+                    .then((membersData)=>{
+                        setMembers(membersData);
+                    })
+                    .catch(error =>console.log(error))
+            }
+        }, [memberName, dispatch])
 
 
         const handlerSearch = (e) => {
@@ -77,21 +84,18 @@ function Message() {
             console.log(recipients);
       
 
-            const payload ={
+            const payloadMessage ={
                 messageTitle: form.messageTitle,
                 messageContent: form.messageContent,
                 recipients: recipients,
             }
+            console.log(payloadMessage);
 
-            axios.post('http://localhost:8888/api/v1/message', payload, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                    }).then(response => {
-                    console.log(response.data);
-                    }).catch(error => {
-                    console.log(error);
-                    });
+            dispatch(callRegistMessageListAPI({
+                    payload:payloadMessage
+            }))
+
+
             };
 
 
@@ -210,17 +214,17 @@ function Message() {
 
                       
 
-                        <div className={messageStyle.selectBox}>        
+                        <div className={messageStyle.selectBox}>
                             {members.map((member,index) => (
                                 <div key={index} className={messageStyle.selectName}>
                                     <b>{member.name} {member.email}</b>
                                     <button onClick ={() =>
                                         handleSelectRecipient(member)
-                                        }> 선택 </button> 
+                                        }> 선택 </button>
                                     </div>
-                                 
+
                             ))}
-                        </div>      
+                        </div>
 
 
                              
