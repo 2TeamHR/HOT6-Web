@@ -28,8 +28,7 @@ const memberReducer = handleActions(
         [POST_REGISTER]: (state, { payload }) => {
 
             return payload;
-        },
-
+        }
     },
     initialState
 );
