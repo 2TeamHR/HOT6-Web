@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function NoticeWrite() {
+function BoardNoticeWrite() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [file, setFile] = useState(null);
@@ -68,4 +68,4 @@ function NoticeWrite() {
   );
 }
 
-export default NoticeWrite;
+export default BoardNoticeWrite;

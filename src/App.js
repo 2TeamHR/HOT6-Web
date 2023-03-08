@@ -19,12 +19,12 @@ import Login from '../src/pages/login/Login';
 import FindPassword from '../src/pages/login/FindPassword';
 import ChangePassword from '../src/pages/login/ChangePassword';
 import SalaryCheck from './pages/salary/Salary_check';
-import Community from './pages/board/Community';
-import CommunityWrite from './pages/board/CommunityWrite';
-import CommunityDetail from './pages/board/CommunityDetail';
-import Notice from './pages/board/Notice';
-import NoticeWrite from './pages/board/NoticeWrite';
-import NoticeDetail from './pages/board/NoticeDetail';
+import BoardCommunity from './pages/board/BoardCommunity';
+import BoardCommunityWrite from './pages/board/BoardCommunityWrite';
+import BoardCommunityDetail from './pages/board/BoardCommunityDetail';
+import BoardNotice from './pages/board/BoardNotice';
+import BoardNoticeWrite from './pages/board/BoardNoticeWrite';
+import BoardNoticeDetail from './pages/board/BoardNoticeDetail';
 import Message from "./pages/messsage/Message";
 import MessageSent from "./pages/messsage/MessageSent";
 import MessageTrash from "./pages/messsage/MessageTrash";
@@ -113,15 +113,15 @@ function App() {
             <Route path="/salary/bonus/insert" element={ <BonusInsert />} />
 
             {/* 게시판 */}
-            <Route path="/board/notice" element={<Notice />} />
-            <Route path="/board/notice/write" element={<NoticeWrite />} />
-            <Route path="/board/notice/detail" element={<NoticeDetail />} />
-            <Route path="/board/community" element={<Community />} />
+            <Route path="/board/notice" element={<BoardNotice />} />
+            <Route path="/board/notice/write" element={<BoardNoticeWrite />} />
+            <Route path="/board/notice/detail" element={<BoardNoticeDetail />} />
+            <Route path="/board/community" element={<BoardCommunity />} />
 
             {/* 캘린더 */}
             <Route path="/calendar" element={<MyCalendar />} />
-            <Route path="/board/community/write" element={<CommunityWrite />} />
-            <Route path="/board/community/detail" element={<CommunityDetail/>} />
+            <Route path="/board/community/write" element={<BoardCommunityWrite />} />
+            <Route path="/board/community/detail" element={<BoardCommunityDetail/>} />
 
             {/* 메세지 */}
             <Route path="/messsage/message" element={<Message />} />
