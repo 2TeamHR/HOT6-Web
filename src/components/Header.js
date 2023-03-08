@@ -24,23 +24,23 @@ function Header() {
         //로그아웃
         dispatch(callLogoutAPI());
 
-        alert('로그아웃이 되어 로그인 페이지로 이동합니다.');
+        alert('로그아웃이 되어 메인화면으로 이동합니다.');
         navigate("/", { replace: true })
         window.location.reload();
     }
 
     const onClickLoginHandler = () => {
-        navigate("/");
+        navigate("/login");
     }
 
-    // function BeforeLogin() {
-    //
-    //     return (
-    //         <div>
-    //             <button className="btn-primary ml-3 rounded-1" onClick={onClickLoginHandler}>로그인</button>
-    //         </div>
-    //     );
-    // }
+    function BeforeLogin() {
+
+        return (
+            <div>
+                {/* <button className="btn-primary ml-3 rounded-1" onClick={onClickLoginHandler}>로그인</button> */}
+            </div>
+        );
+    }
 
     function AfterLogin() {
 
@@ -55,24 +55,23 @@ function Header() {
 
 
     return (
-    <>
-        {/* <!--========== HEADER ==========--> */}
-        <header className={sidebarStyle.header}>
-            <div className={sidebarStyle.headerContainer}>
+        <>
+            {/* <!--========== HEADER ==========--> */}
+            <header className={sidebarStyle.header}>
+                <div className={sidebarStyle.headerContainer}>
 
-                <div className={sidebarStyle.headerSearch}>
-                    <input type="search" placeholder="Search" className={sidebarStyle.headerInput}/>
-                    <i className={`bx bx-search ${sidebarStyle.headerIcon}`}></i>
+                    <div className={sidebarStyle.headerSearch}>
+                        <input type="search" placeholder="Search" className={sidebarStyle.headerInput}/>
+                        <i className={`bx bx-search ${sidebarStyle.headerIcon}`}></i>
+                    </div>
+
+                    <div>
+                        { (isLogin == null || isLogin === undefined) ? <BeforeLogin /> : <AfterLogin />}
+                    </div>
+
                 </div>
-
-                <div>
-                    {/*{ (isLogin == null || isLogin === undefined) ? <BeforeLogin /> : <AfterLogin />}*/}
-                    <AfterLogin />
-                </div>
-
-            </div>
-        </header>
-    </>
+            </header>
+        </>
     );
 }
 
