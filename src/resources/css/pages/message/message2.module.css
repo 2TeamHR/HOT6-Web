@@ -1,0 +1,179 @@
+/* 상단 마진 */
+main {
+    margin-top: 90px;
+}
+
+.title{
+    position: absolute;
+    left: 150px;
+    bottom: 900px;
+}
+
+.main {
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    bottom: 50px;
+}
+
+/* 큰박스 */
+.module{
+    width: 70%;
+    height: 700px;
+    margin: 10px 100px 10px 10px;
+    border: 1px solid #aaaaaa;
+    border-radius: 10px;
+    /* overflow: hidden;
+    position: relative; */
+}
+/* 작은박스 */
+.module2{
+    width: 15%;
+    height: 700px;
+    position:absolute;
+    border-right: 1px solid #aaaaaa;
+    border-radius: 10px;
+    
+    
+}
+
+/* 메세지쓰기 버튼 */
+.infoUpdate button {
+    background-color: #43B2CA;
+    width: 50%;
+    height: 40px;
+    border-radius: 10px;
+    border: 0px;
+    color: white;
+    margin-left: 22%;
+
+    text-decoration: none;
+
+}
+
+/* 보내기 버튼 */
+.infoUpdate2 button {
+    position: relative;
+    left: -7px;
+    
+    background-color: #43B2CA;
+    width: 10%;
+    height: 5%;
+    /*border-radius: px;*/
+    border: 0px;
+    color: white;
+
+    
+}
+
+
+
+.module-title{
+    padding: 10px 0px 20px 20px;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.center {
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+
+
+
+/* 메세지 쓰기란 전체 정렬 */
+
+.messageBlank{
+
+    margin-top:  50px ;
+    margin-left: 350px;
+    /* border: 1px solid red; */
+    margin-bottom: 30px;
+
+}
+
+.messageBlank input{
+
+    width: 75%;
+
+}
+
+
+
+/* 파일업로드 */
+.fileUpload input{
+
+    width: 75%;
+    height: 70px;
+}
+
+/* 내용작성란 */
+.writePlace input{
+
+    width: 83%;
+    height: 300px;
+
+}
+
+/* 글자 색 */
+.workDay {
+    color: #43B2CA;
+
+}
+
+/* 주소록 버튼 */
+.messageBlank button{
+    border-color: #aaaaaa;
+    border-style: solid;
+    border-width: 1px;
+    margin-left: 5px;
+}
+
+Link {
+ color: black;
+}
+
+
+/* 받는사람 이름 검색했을때 나오는 창 */
+.selectBox {
+ 
+    position: absolute;
+    top:137px;
+    margin-left: 4px;
+}
+
+.selectBox2 {
+ 
+    /* position: absolute;
+    top:137px;
+    margin-left: 4px; */
+    /* border: 1px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+
+
+.selectName {
+ 
+    position: relative;
+    left: 80px;
+    width: 100%;
+    
+    background-color: #dedada;
+    border-color: #aaaaaa;
+  
+}
+
+/* 받는 사람에서 이름을 선택 후 추가했을때 창 */
+.selectNameAdd {
+ 
+    position: relative;
+    left: 80px;
+    width: 80%;
+    
+    background-color: #ffffff;
+    border-color: #aaaaaa;
+  
+}
