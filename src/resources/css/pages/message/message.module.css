@@ -19,18 +19,21 @@ main {
 /* 큰박스 */
 .module{
     width: 70%;
-    height: 700px;
+    height: auto;
     margin: 10px 100px 10px 10px;
     border: 1px solid #aaaaaa;
     border-radius: 10px;
+    overflow: hidden;
+    position: relative;
 }
 /* 작은박스 */
 .module2{
-    width: 14%;
-    height: 700px;
+    width: 20%;
+    height: 100%;
     position:absolute;
     border-right: 1px solid #aaaaaa;
     border-radius: 10px;
+    
     
 }
 
@@ -50,15 +53,17 @@ main {
 
 /* 보내기 버튼 */
 .infoUpdate2 button {
+    position: relative;
+    left: -7px;
+    
     background-color: #43B2CA;
     width: 10%;
     height: 5%;
     /*border-radius: px;*/
     border: 0px;
     color: white;
-    /* float: left;
-    margin-left: 350;
-    margin-top: 20; */
+
+    
 }
 
 
@@ -83,6 +88,8 @@ main {
 
     margin-top:  50px ;
     margin-left: 350px;
+    /* border: 1px solid red; */
+    margin-bottom: 30px;
 
 }
 
@@ -128,14 +135,45 @@ Link {
 }
 
 
+/* 받는사람 이름 검색했을때 나오는 창 */
+.selectBox {
+ 
+    position: absolute;
+    top:137px;
+    margin-left: 4px;
+}
+
+.selectBox2 {
+ 
+    /* position: absolute;
+    top:137px;
+    margin-left: 4px; */
+    /* border: 1px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+
 
 .selectName {
  
     position: relative;
     left: 80px;
-    width: 50%;
+    width: 100%;
     
-    background-color: #aaaaaa;
+    background-color: #dedada;
+    border-color: #aaaaaa;
+  
+}
+
+/* 받는 사람에서 이름을 선택 후 추가했을때 창 */
+.selectNameAdd {
+ 
+    position: relative;
+    left: 80px;
+    width: 80%;
+    
+    background-color: #ffffff;
     border-color: #aaaaaa;
   
 }
