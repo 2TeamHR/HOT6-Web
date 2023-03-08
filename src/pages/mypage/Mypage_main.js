@@ -28,8 +28,6 @@ function MypageMain() {
     const member = useSelector(state => state.memberReducer);  
     const myLeaveInfo = useSelector(state => state.leaveReducer); 
 
-
-
     /* 임시로 리액트 에러 수정 */
     let myLeaveAll = 1;
     let myLeaveLeftover = 1;
@@ -70,7 +68,7 @@ function MypageMain() {
 
     /* 개인정보 수정 페이지로 이동 */
     const mypageManagementHref = () => {
-        document.location.href = "/mypage/management"
+        navigate("/mypage/management", { replace: true })
     }
 
     const onClickStartTimeHandler = () => {
@@ -110,7 +108,7 @@ function MypageMain() {
                             <PieChart
                                 data={[
                                 {
-                                    value: myLeaveAll - myLeaveLeftover,
+                                    value: myLeaveLeftover,
                                     color: "#FFA07A",
                                     name: "name1",
                                 },
@@ -122,7 +120,7 @@ function MypageMain() {
                                 startAngle={-90}
                                 rounded
                                 animate
-                                label={({ dataEntry }) => dataEntry.value + "일 남음"}
+                                label={({ dataEntry }) => dataEntry.value + "일 사용"}
                                 labelStyle={{
                                 fontSize: "13px",
                                 fill: "#33333",
@@ -132,12 +130,12 @@ function MypageMain() {
                             </div>
                             <div className="mt-5 pt-5">
                                 <div className="ml-5 mr-5 pb-3">
-                                    <span className="fw-300 fs-5 mr-5">사용연차</span>
-                                    <span className={`fw-300 fs-5 float-right ${mypageStyle.workDay}`}>{myLeaveLeftover}일</span>
+                                    <span className="fw-300 fs-3 mr-5">사용연차</span>
+                                    <span className={`fw-300 fs-3 float-right ${mypageStyle.workDay}`}>{myLeaveLeftover}일</span>
                                 </div>
                                 <div className="ml-5 mr-5 pd-3">
-                                    <span className="fw-300 fs-5 mr-5">잔여연차</span>
-                                    <span className={`fw-300 fs-5 float-right ${mypageStyle.workDay}`}>{myLeaveAll - myLeaveLeftover}일</span>
+                                    <span className="fw-300 fs-3 mr-5">잔여연차</span>
+                                    <span className={`fw-300 fs-3 float-right ${mypageStyle.workDay}`}>{myLeaveAll - myLeaveLeftover}일</span>
                                 </div>
                             </div>
                         </div>

@@ -19,37 +19,34 @@ function MypageManagement (){
     const token = decodeJwt(window.localStorage.getItem("accessToken"));   
     const memberDetail = member.data;
 
-    const onClickBackHandler = () => {
-        
-        navigate(-1);
-    }
+    console.log('token', token.sub);
+    console.log('member', member);
 
     useEffect(
-        () => {    
-            console.log('token', token.sub);
-            if(token !== null) {
-                dispatch(callGetMemberAPI({
-                    memberCode: token.sub
-                }));          
+        () => {
+            if (token !== null && (!memberDetail || Object.keys(memberDetail).length === 0)) {
+            dispatch(callGetMemberAPI({ memberCode: token.sub }));
             }
-
-        }
-        ,[]
+        }, [dispatch, memberDetail, token]
     );
+      
+    if (!memberDetail || Object.keys(memberDetail).length === 0) {
+    return <div>Loading...</div>;
+    }
 
     const mypageManagementUpdateHref = () => {
-        document.location.href = "/mypage/management/update"
+        navigate("/mypage/management/update", { replace: true })
     }
 
     const findPasswordHref = () => {
-        document.location.href = "/findpassword"
+        navigate("/findpassword", { replace: true })
     }
 
-    const memberBirth = memberDetail.memberBirth ? new Date(memberDetail.memberBirth) : null;
-    const formattedMemberBirthe = memberBirth ? memberBirth.toISOString().slice(0, 10) : '';
+    // const memberBirth = memberDetail.memberBirth ? new Date(memberDetail.memberBirth) : null;
+    // const formattedMemberBirthe = memberBirth ? memberBirth.toISOString().slice(0, 10) : '';
 
-    const joinDate = memberDetail.memberBirth ? new Date(memberDetail.joinDate) : null;
-    const formattedJoinDate = joinDate ? joinDate.toISOString().slice(0, 10) : '';
+    // const joinDate = memberDetail.memberBirth ? new Date(memberDetail.joinDate) : null;
+    // const formattedJoinDate = joinDate ? joinDate.toISOString().slice(0, 10) : '';
     
     return(
         <main className={mainTitleStyle.main}>
@@ -61,16 +58,13 @@ function MypageManagement (){
 
                 <div className='d-flex ml-5 mr-5'>
                     <Paper elevation={3} className={mpManagement.profileMain}>
-                        <div className={mpManagement.infoTitle}>
-                            <p>프로필 관리</p>
-                        </div>
                         <div className={mpManagement.mpmProfile}>
                             <img className={profileStyle.mpmProfileImg} alt="profile_img" src={sampleImg} />
+                            <button className={profileStyle.mpmProfileImgChangeBtn}>변경</button>
                         </div>
                         <div className={mpManagement.infoBtn}>
                             <button onClick={findPasswordHref}>비밀번호변경</button>
-                            <button onClick={mypageManagementUpdateHref}>수정</button>
-                            <button onClick={onClickBackHandler}>메인가기</button>
+                            <button onClick={mypageManagementUpdateHref}>개인정보수정</button>
                         </div>
                     </Paper>
                     <div className={mpManagement.profileMain2}>
@@ -101,7 +95,7 @@ function MypageManagement (){
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-calendar-alt mr-3`}></i>
                                 <span>생년월일</span>
-                                <span className='float-right fw-blod'>{formattedMemberBirthe}</span>
+                                <span className='float-right fw-blod'>{memberDetail.memberBirth || ''}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-male-female mr-3`}></i>
@@ -136,7 +130,7 @@ function MypageManagement (){
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-buildings mr-3`}></i>
                                 <span>입사일</span>
-                                <span className='float-right fw-blod'>{formattedJoinDate}</span>
+                                <span className='float-right fw-blod'>{memberDetail.joinDate || ''}</span>
                             </div>
                         </Paper>
                     </div>

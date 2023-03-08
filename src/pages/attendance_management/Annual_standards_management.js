@@ -18,17 +18,8 @@ import {
 function AnnualStandardsManagement() {
 
     const dispatch = useDispatch();
-    const leave = useSelector(state => state.leaveReducer);  
-
     const navigate = useNavigate();
-
-    const [form, setForm] = useState({
-        leaveCategoryName: '',
-        leaveCategoryDateCount: 0,
-        leavePayState: 0,
-    });
-
-    console.log('form', );
+    const leave = useSelector(state => state.leaveReducer);  
 
     useEffect(
         () => {
@@ -36,6 +27,12 @@ function AnnualStandardsManagement() {
         }
         ,[]
     );
+
+    const [form, setForm] = useState({
+        leaveCategoryName: '',
+        leaveCategoryDateCount: 0,
+        leavePayState: 0,
+    });
 
     const onChangeHandler = (e) => {
         setForm({

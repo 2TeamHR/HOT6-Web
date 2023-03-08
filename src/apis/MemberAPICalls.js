@@ -1,8 +1,9 @@
 
 import {
-    GET_MEMBER
-    , POST_LOGIN
-    , POST_REGISTER
+    GET_MEMBER,
+    POST_LOGIN,
+    POST_REGISTER,
+    PUT_MYINFO
 } from '../modules/MemberModule';
 
 /* 개인정보조회 API */
@@ -71,7 +72,7 @@ export const callLogoutAPI = () => {
     };
 }
 
-
+/* 사원 등록 API */
 export const callRegisterAPI = ({form}) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/auth/signup`;
 
@@ -92,4 +93,31 @@ export const callRegisterAPI = ({form}) => {
 
         dispatch({ type: POST_REGISTER,  payload: result });
     };
+}
+
+/* 마이페이지 개인정보 수정 */
+export const callMyInfoUpdateAPI = ({form, memberCode}) => {
+    console.log('[MemberAPICalls] callMyInfoUpdateAPI Call');
+    console.log('memberCode', memberCode);
+    console.log('form', form);
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/mypage/management/update/${memberCode}`;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "PUT",
+            headers: {
+                "Accept": "*/*",
+                "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+            },
+            body: form
+        })
+        .then(response => response.json());
+
+        console.log('[MemberAPICalls] callMyInfoUpdateAPI RESULT : ', result);
+
+        dispatch({ type: PUT_MYINFO,  payload: result });
+        
+    };    
 }
