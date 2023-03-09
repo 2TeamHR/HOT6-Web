@@ -6,49 +6,65 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import { padding } from '@mui/system';
+import {useDispatch, useSelector} from "react-redux";
+import { callGetMessageReceiveCountAPI, callGetMessageReceiveListAPI, callGetMessageSentCountAPI, callGetMessageSentListAPI } from '../../apis/MessageAPICalls';
+
+
+
 function ReceivedMessage(){
 
     const [emailSelect, setEmailSelect] = useState('');
     const [count , setCount] = useState('');
     const [count2 , setCount2] = useState('');
     const [count3 , setCount3] = useState('');
+    const dispatch = useDispatch();
+    const messageReducer = useSelector(state => state.messageReducer);
 
     useEffect(()=>{
 
-        axios.get(`http://localhost:8888/api/v1/messageReceived`)
-        .then(response =>{
-            const receivedData = response.data.data.map(receivedEmail=>({
-                name:receivedEmail.memberName, 
-                title:receivedEmail.messageTitle, 
-                date:receivedEmail.messageSendDate}))    
-        setEmailSelect(receivedData);
-        }).catch(error => console.log(error))
+        
+        dispatch(callGetMessageReceiveListAPI())
+            .then((receivedData) => {
+                setEmailSelect(receivedData);
+            }).catch(error => console.log(error))
     
-    }, []);
+        }, []);
 
+        useEffect(() => {
+            axios.get(`http://localhost:8888/api/v1/messageReceivedCount`, {
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+              }
+            })
+            .then(response => {
+              console.log(response.data);
+              setCount(response.data.data);
+            })
+            .catch(error => {
+              console.log("useEffect 쪽 문제");
+              console.error(error);
+            });
+          }, []);
 
-    useEffect(() => {
-        axios.get(`http://localhost:8888/api/v1/messageReceivedCount`)
-          .then(response => {
-            console.log(response.data); // 응답 데이터를 콘솔에 출력
-            setCount(response.data.data);
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      }, []);
-
-
-      useEffect(() => {
-        axios.get(`http://localhost:8888/api/v1/messageSentCount`)
-          .then(response => {
-            console.log(response.data); // 응답 데이터를 콘솔에 출력
-            setCount2(response.data.data);
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      }, []);
+          useEffect(() => {
+            axios.get(`http://localhost:8888/api/v1/messageSentCount`, {
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+              }
+            })
+            .then(response => {
+              console.log(response.data);
+              setCount2(response.data.data);
+            })
+            .catch(error => {
+              console.log("useEffect 쪽 문제");
+              console.error(error);
+            });
+          }, []);
 
 
     return (
