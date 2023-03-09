@@ -37,7 +37,7 @@ function BoardNotice() {
                             <tr key={notice.noticeCode} className="text-center">
                                 <td className='align-middle'>{index + 1}</td>
                                 <td className='align-middle'>{notice.noticeTitle}</td>
-                                <td className='align-middle'>{notice.memberCode}</td>
+                                <td className='align-middle'>{notice.member.memberName}</td>
                                 <td className='align-middle'>{notice.noticeDate}</td>
                                 <td className='align-middle'>{notice.noticeCount}</td>
                             </tr>
