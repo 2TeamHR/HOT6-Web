@@ -22,9 +22,13 @@ function Message() {
         })
         const dispatch = useDispatch();
         const messageReducer = useSelector(state => state.messageReducer);
+        const [count , setCount] = useState('');
+        const [count2 , setCount2] = useState('');
+        const [count3 , setCount3] = useState('');
 
 
-        useEffect(() =>{
+
+    useEffect(() =>{
 
             if(memberName){
                 dispatch(callGetMessageListAPI({ memberName}))
@@ -99,7 +103,46 @@ function Message() {
             };
 
 
-        return (
+
+
+    useEffect(() => {
+        axios.get(`http://localhost:8888/api/v1/messageReceivedCount`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+            }
+        }).then(response => {
+            console.log(response.data); // 응답 데이터를 콘솔에 출력
+            setCount(response.data.data);
+        })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
+
+
+    useEffect(() => {
+        axios.get(`http://localhost:8888/api/v1/messageSentCount`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+            }
+        }).then(response => {
+            console.log(response.data); // 응답 데이터를 콘솔에 출력
+            setCount2(response.data.data);
+        })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
+
+
+
+
+
+    return (
         <>
 
 
@@ -116,11 +159,11 @@ function Message() {
                         <div className="mt-3 pt-3">
                             <div className="ml-4 mr-4 pb-4">
                                 <span className="ml-4 fs-5 mr-3"><Link to="/messsage/receivedMessage" style={{ color: 'black', textDecoration: 'none'}}>받은 메세지</Link></span>
-                                <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>5</span>
+                                <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>{count}</span>
                             </div>
                             <div className="ml-4 mr-4 pb-4">
                                 <span className="ml-4 fs-5 mr-3"><Link to="/messsage/MessageSent" style={{ color: 'black', textDecoration: 'none'}}>보낸 메세지</Link></span>
-                                <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>5</span>
+                                <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>{count2}</span>
                             </div>
                             <div className="ml-4 mr-4 pb-4">
                                 <span className="ml-4 fs-5 mr-3"><Link to="/messsage/MessageTrash" style={{ color: 'black', textDecoration: 'none'}}>휴지통</Link></span>

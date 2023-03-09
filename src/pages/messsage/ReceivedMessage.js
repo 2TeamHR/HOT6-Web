@@ -11,6 +11,9 @@ import { callGetMessageReceiveCountAPI, callGetMessageReceiveListAPI, callGetMes
 
 
 
+
+
+
 function ReceivedMessage(){
 
     const [emailSelect, setEmailSelect] = useState('');
@@ -19,6 +22,7 @@ function ReceivedMessage(){
     const [count3 , setCount3] = useState('');
     const dispatch = useDispatch();
     const messageReducer = useSelector(state => state.messageReducer);
+    const [isSelectAll, setIsSelectAll] = useState(false);
 
     useEffect(()=>{
 
@@ -65,6 +69,20 @@ function ReceivedMessage(){
               console.error(error);
             });
           }, []);
+
+          function selectAll() {
+            const checkboxes = document.querySelectorAll("input[type='checkbox']");
+            for (let i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].checked = !isSelectAll;
+              }
+              
+              setIsSelectAll(!isSelectAll);
+            
+            
+          }
+          
+          
+
 
 
     return (
@@ -113,7 +131,7 @@ function ReceivedMessage(){
                             
                         <div className={messageStyle2.buttonOptionalSelect}>
                             <div className={messageStyle2.buttonTaskWrap} >
-                                <input type="checkbox" id="selection_all" className={messageStyle2.buttonCheckboxBlind} />
+                                <input type="checkbox" id="selection_all" className={messageStyle2.buttonCheckboxBlind} onClick={selectAll} checked={isSelectAll} />
                             </div>
                 
                             <div className={messageStyle2.buttonTaskWrap}>
