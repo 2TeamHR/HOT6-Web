@@ -2,15 +2,14 @@ import { combineReducers } from 'redux';
 import salaryReducer from './SalaryModule';
 import leaveReducer from './LeaveModule';
 import memberReducer from './MemberModule';
-import boardNoticeReducer from './BoardNoticeModule';
-
+import organizationReducer from './OrganizationModule';
 
 const rootReducer = combineReducers({
 
-    salaryReducer,
-    leaveReducer,
-    memberReducer,
-    boardNoticeReducer
+    salaryReducer
+    , leaveReducer
+    , memberReducer
+    , organizationReducer
 
 });
 
