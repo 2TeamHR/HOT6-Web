@@ -24,13 +24,13 @@ function Header() {
         //로그아웃
         dispatch(callLogoutAPI());
 
-        alert('로그아웃이 되어 메인화면으로 이동합니다.');
+        alert('로그아웃이 되어 로그인 페이지로 이동합니다.');
         navigate("/", { replace: true })
         window.location.reload();
     }
 
     const onClickLoginHandler = () => {
-        navigate("/login");
+        navigate("/");
     }
 
     function BeforeLogin() {

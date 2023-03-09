@@ -4,7 +4,7 @@
     width: 150px;
     height: 150px;
     border-radius: 100%;
-    border: 1px solid #aaaaaa;
+    border: 0px;
     overflow: hidden;
 }
 
@@ -14,4 +14,22 @@
     left: 0;
     width: 200px;
     height: 150px;
+}
+
+.mpmProfileImgChangeBtn{
+    width: 100%;
+    height: auto;
+    background-color: #5070ff;
+    border: none;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 12px 24px;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 81%; 
+    right: 0;
+    text-align: center;
 }
