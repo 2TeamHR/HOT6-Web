@@ -77,6 +77,11 @@ export const callRegisterAPI = ({form}) => {
 
     return async (dispatch, getState) => {
 
+        const profileImageDTO = {
+            name: form.get('memberImage').name,
+            type: form.get('memberImage').type
+        };
+        
         const result = await fetch(requestURL, {
             method: "POST",
             headers: {

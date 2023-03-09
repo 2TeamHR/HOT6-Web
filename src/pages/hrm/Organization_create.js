@@ -30,7 +30,7 @@ function OrganizationCreate (){
     const [date, setDate] = React.useState(new Date());
 
     const [form, setForm] = useState({
-        memberName: '이상목',
+        memberName: '',
         memberPhone: '',
         memberEmail: '',
         memberAddress: '',
@@ -42,7 +42,7 @@ function OrganizationCreate (){
         inlinePhone: ''
     });
 
-    console.log("form : " + form.memberName);
+    // console.log("form : " + form.memberName);
 
     useEffect(() => {
 
@@ -76,8 +76,6 @@ function OrganizationCreate (){
             ...form,
             [e.target.name]: e.target.value
         });
-        console.log("name : ", e.target.name);
-        console.log("value : ", e.target.value);
     };
 
     const onDateChangeHandler = (date) =>{
@@ -109,7 +107,7 @@ function OrganizationCreate (){
         }
 
         dispatch(callRegisterAPI({	// 직원 정보 조회
-            form: formData
+            form: formData,
         }));
 
         console.log(form);
@@ -136,7 +134,6 @@ function OrganizationCreate (){
                             <div className={mpManagement.mpmProfile}>
                                 { imageUrl &&
                                     <img className={profileStyle.mpmProfileImg} src={ imageUrl } alt="preview" />
-                                    // <img className={profileStyle.mpmProfileImg} src={sampleImg} alt="profile_img" />
                                 }
                                 <input
                                     style={ { display: 'none' }}
