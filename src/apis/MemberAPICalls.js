@@ -1,4 +1,3 @@
-
 import {
     GET_MEMBER,
     POST_LOGIN,
@@ -63,6 +62,7 @@ export const callLoginAPI = ({form}) => {
     };
 }
 
+/* 로그아웃 API */
 export const callLogoutAPI = () => {
 
     return async (dispatch, getState) => {
