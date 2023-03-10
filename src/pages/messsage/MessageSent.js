@@ -14,8 +14,13 @@ function MessageSent(){
 
     useEffect(()=>{
 
-        axios.get(`http://localhost:8888/api/v1/messageSent`)
-        .then(response =>{
+        axios.get(`http://localhost:8888/api/v1/messageSent`, {
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "*/*",
+              "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+            }
+          }).then(response =>{
             const receivedData = response.data.data.map(receivedEmail=>({
                 name:receivedEmail.messageReceiver, 
                 title:receivedEmail.messageTitle, 
@@ -27,8 +32,13 @@ function MessageSent(){
 
 
     useEffect(() => {
-        axios.get(`http://localhost:8888/api/v1/messageReceivedCount`)
-          .then(response => {
+        axios.get(`http://localhost:8888/api/v1/messageReceivedCount`, {
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "*/*",
+              "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+            }
+          }).then(response => {
             console.log(response.data); // 응답 데이터를 콘솔에 출력
             setCount(response.data.data);
           })
@@ -39,8 +49,13 @@ function MessageSent(){
 
 
       useEffect(() => {
-        axios.get(`http://localhost:8888/api/v1/messageSentCount`)
-          .then(response => {
+        axios.get(`http://localhost:8888/api/v1/messageSentCount`, {
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "*/*",
+              "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+            }
+          }).then(response => {
             console.log(response.data); // 응답 데이터를 콘솔에 출력
             setCount2(response.data.data);
           })

@@ -10,9 +10,9 @@ function Sidebar() {
         <div className={sidebarStyle.nav} id="navbar">
             <nav className={sidebarStyle.navContainer}>
                 <div>
-                    <Link to="/" className={`${sidebarStyle.a} ${sidebarStyle.navLink} ${sidebarStyle.navLogo}`}>
+                    <Link to="/main" className={`${sidebarStyle.a} ${sidebarStyle.navLink} ${sidebarStyle.navLogo}`}>
                         <i className={`bx bxs-disc ${sidebarStyle.navIcon}`}></i>
-                        <span className={sidebarStyle.navLogoName}>5DO</span>
+                        <span className={sidebarStyle.navLogoName}>The Tech Titan</span>
                     </Link>
 
                     {/* <!-- nav var --> */}
