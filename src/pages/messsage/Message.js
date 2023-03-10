@@ -12,7 +12,7 @@ import {useDispatch, useSelector} from "react-redux";
 function Message() {
 
         const navigate = useNavigate();
-        const [memberName, setMemberName] = useState('');
+        const [memberName1, setMemberName1] = useState('');
         const [members, setMembers] = useState([]);
         const [recipients, setRecipients] = useState([])
         const [form,setForm] = useState({
@@ -28,16 +28,25 @@ function Message() {
 
 
 
-    useEffect(() =>{
-
-            if(memberName){
-                dispatch(callGetMessageListAPI({ memberName}))
-                    .then((membersData)=>{
-                        setMembers(membersData);
-                    })
-                    .catch(error =>console.log(error))
-            }
-        }, [memberName, dispatch])
+        useEffect(() =>{
+            if(memberName1) {
+                axios.get(`http://localhost:8888/api/v1/message/search/${memberName1}`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "*/*",
+                        "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+                    }})
+                .then(response => {
+                 const membersData = response.data.data.map(member =>({ name:member.memberName, email:member.memberEmail}));   
+                setMembers(membersData);
+                console.log("결과값");
+                console.log(response);
+                }).catch(error =>{
+                    console.log(error)
+                    console.log("메세지 단 오류 ");
+                })
+                }
+            }, [memberName1]);
 
 
         const handlerSearch = (e) => {
@@ -45,7 +54,7 @@ function Message() {
         
             const { name, value } = e.target;
             if (name === 'searchInput') {
-                setMemberName(value || '');
+                setMemberName1(value || '');
             }
         
             setForm({
@@ -72,10 +81,10 @@ function Message() {
                 const names = recipients.map((r)=>r.name).join(', ');
                 if(names.length > 0){
                     document.getElementById('searchInput').value = names;
-                    setMemberName(names);
+                    setMemberName1(names);
                 } else {
                     document.getElementById('searchInput').value ='';
-                    setMemberName('');
+                    setMemberName1('');
                 }
                 // setRecipients([]);
         }

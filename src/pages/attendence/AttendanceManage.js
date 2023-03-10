@@ -13,22 +13,62 @@ import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import BasicButtons from "./Components/ButtonStyle";
 import AttendanceManageTable from "./Components/AttendanceManageTable";
-
-
+import { useEffect } from "react";
+import axios from 'axios';
 
 
 
 
 function AttendanceManage() {
 
-    let age;
 
-    function handleChange() {}
+    const [teamCode, setTeamCode]= useState('');
 
+    const handleChange = (event) => {
+        setAge(event.target.value);
+        console.log(event.target.value);
+        setForm({
+            ...form,
+            teamCode: event.target.value,
+        });
+    };
+
+    const handleMemberCahnge = (event) => {
+        setMember1(event.target.value);
+        console.log(event.target.value);
+        setForm({
+            ...form,
+            memberName: event.target.value,
+        });
+    }
+
+    const [age, setAge] = useState('');  //부서이름
+    const [member1, setMember1] = useState(''); //사원이름
     const [startDate, setStartDate] = useState(new Date());
     const [startDate2, setStartDate2] = useState(new Date());
+    const [form,setForm] = useState({
+        teamCode:teamCode,
+        memberName:member1,
+        startDate:startDate,
+        startDate2:startDate2
+    })
+
+    const handlerSearch = (e) => {
+        e.preventDefault(); // 기본 동작을 막는다.
+    
+        const { name, value } = e.target;
+
+        setForm({
+            ...form,
+            [name]: value,
+        });
+    };
+
+
+
+
     function MyFormHelperText() {
-        const { focused } = useFormControl() || {};
+        const { focused, ...inputprops } = useFormControl() || {};
 
         const helperText = React.useMemo(() => {
             if (focused) {
@@ -40,6 +80,38 @@ function AttendanceManage() {
 
         return <FormHelperText>{helperText}</FormHelperText>;
     }
+
+
+    const handleSearch = (event) => {
+        event.preventDefault(); // 기본 동작을 막는다.
+    
+        const payload = {
+          memberName: form.memberName,
+          teamCode: form.teamCode,
+          startDate: form.startDate,
+          startDate2: form.startDate2,
+        };
+    
+        axios
+          .post(`http://localhost:8888/api/v1/attendance`, payload, {
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "*/*",
+              Authorization: `Bearer ${window.localStorage.getItem(
+                "accessToken"
+              )}`,
+            },
+          })
+          .then((response) => {
+            console.log(response.data); // 응답 데이터를 콘솔에 출력
+            console.log(payload);
+            console.log("Attendance Manage");
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      };
+
 
     return (
         <>
@@ -63,17 +135,20 @@ function AttendanceManage() {
                         <InputLabel id="demo-select-small">Select</InputLabel>
                         <Select
                             labelId="demo-select-small"
-                            id="demo-select-small"
+                            id="teamCode"
+                            name="teamCode"
                             value={age}
                             label="Age"
                             onChange={handleChange}
                         >
-                            <MenuItem value="">
-                                <em>None</em>
-                            </MenuItem>
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
+                            
+                            <MenuItem value={1}>인사팀</MenuItem>
+                            <MenuItem value={2}>총무팀</MenuItem>
+                            <MenuItem value={3}>회계팀</MenuItem>
+                            <MenuItem value={4}>영업팀</MenuItem>
+                            <MenuItem value={5}>마케팅팀</MenuItem>
+                            <MenuItem value={6}>개발1팀</MenuItem>
+                            <MenuItem value={7}>개발2팀</MenuItem>
                         </Select>
                     </FormControl>
             </div>
@@ -87,7 +162,12 @@ function AttendanceManage() {
                       </span>
                     <Box component="form" noValidate autoComplete="off">
                         <FormControl sx={{ml: 10,minWidth: 100 }}>
-                            <OutlinedInput className={attendenceManage.inputText} placeholder="Please enter text" />
+                            <OutlinedInput id="memberName" 
+                                           name="memberName"
+                                           value={member1} 
+                                           className={attendenceManage.inputText} 
+                                           placeholder="Please enter text" 
+                                           onChange={handleMemberCahnge}/>
                             <MyFormHelperText />
                         </FormControl>
                     </Box>
@@ -102,13 +182,31 @@ function AttendanceManage() {
 
 
                 <div className={attendenceManage.employeeCalender2}>
-                <DatePicker className={attendenceManage.employeeCalender2First} selected={startDate} onChange={date => setStartDate(date)} />
+                <DatePicker className={attendenceManage.employeeCalender2First} 
+                            selected={startDate} 
+                            onChange={date => {
+                                setStartDate(date)
+                                console.log(date);
+                                setForm({
+                                    ...form,
+                                    startDate : date
+                                })
+                            }} />
                 </div>
 
 
 
                     <div className={attendenceManage.employeeCalender3}>
-                 <DatePicker className={attendenceManage.employeeCalender2First} selected={startDate2} onChange={date => setStartDate2(date)} />
+                 <DatePicker className={attendenceManage.employeeCalender2First} 
+                            selected={startDate2} 
+                            onChange={date => {
+                                setStartDate2(date)
+                                console.log(date);
+                                setForm({
+                                    ...form,
+                                    startDate2 : date
+                                })
+                            }} />
                  </div>
 
                 <div className={attendenceManage.text1}>~</div>
@@ -126,7 +224,7 @@ function AttendanceManage() {
                 </div>
 
                     <div className={attendenceManage.employeeCalender5}>
-                        <BasicButtons />
+                        <BasicButtons form={form} onClick={handleSearch}/>
                     </div>
 
 

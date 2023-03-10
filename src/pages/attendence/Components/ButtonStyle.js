@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { purple } from '@mui/material/colors';
+import axios from 'axios';
 
 const BootstrapButton = styled(Button)({
     boxShadow: 'none',
@@ -49,12 +50,42 @@ const ColorButton = styled(Button)(({ theme }) => ({
     },
 }));
 
-export default function BasicButtons() {
-    return (
+    export default function BasicButtons({form, onClick}) {
 
-            <BootstrapButton variant="contained" disableRipple>
-                조 회
-            </BootstrapButton>
+        const onClickMessageHandler=()=> {
+
+            const payload = {
+        
+                memberName:form.memberName, 
+                teamCode:form.teamCode,
+                startDate:form.startDate,
+                startDate2:form.startDate2
+        
+            }
+        
+        
+                axios.post(`http://localhost:8888/api/v1/attendance`,payload, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "*/*",
+                        "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+                    }
+                }).then(response => {
+                    console.log(response.data); // 응답 데이터를 콘솔에 출력
+                    // setCount(response.data.data);
+                    console.log("button Style");
+                })
+                    .catch(error => {
+                        console.error(error);
+                 });
+        
+                };
+
+     return (           
+
+        <Button variant="contained" disableRipple onClick={onClick || onClickMessageHandler}>
+        조 회
+      </Button>
 
     );
 }
