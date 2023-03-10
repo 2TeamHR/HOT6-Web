@@ -2,7 +2,6 @@ import mpManagement from '../../resources/css/pages/mypage/mypage-management.mod
 import organizationCreateStyle from '../../resources/css/pages/hrm/organization-create.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
 import profileStyle from '../../resources/css/components/profile.module.css';
-import sampleImg from '../../resources/image/hong.jpeg';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import * as React from 'react';
