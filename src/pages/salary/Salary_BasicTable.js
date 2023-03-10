@@ -1,6 +1,6 @@
 import Table from 'react-bootstrap/Table';
 
-function BasicTable({ salary : {salaryCode, bonusSalary, basicSalary, mealSalary, beforeSalary} }){
+function BasicTable({ salaryDetail: {basicSalary, bonus, mealSalary, beforeSalary }}){
 
 
     return(
@@ -14,19 +14,19 @@ function BasicTable({ salary : {salaryCode, bonusSalary, basicSalary, mealSalary
         <tbody className="text-center">
             <tr>
                 <td>기본급</td>
-                <td>{basicSalary}</td>
+                <td>{ basicSalary }</td>
             </tr>
             <tr>
                 <td>상여금</td>
-                <td>{bonusSalary}</td>
+                <td>{ bonus.bonusSalary }</td>
             </tr>
             <tr>
                 <td>식대</td>
-                <td>{mealSalary}</td>
+                <td>{ mealSalary }</td>
             </tr>
             <tr>
                 <td>세전 총액</td>
-                <td>{beforeSalary}</td>
+                <td>{ beforeSalary }</td>
             </tr>
         </tbody>
     </Table>

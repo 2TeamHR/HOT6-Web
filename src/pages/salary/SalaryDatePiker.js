@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { callGetMySalaryAPI } from '../../apis/SalaryAPICalls';
+import { useDispatch, useSelector } from 'react-redux';
+import { decodeJwt } from '../../utils/tokenUtils';
 
 const years = Array.from({length: (new Date().getFullYear() - 2007)}, (_, i) => 2008 + i);
 const months = [
@@ -16,9 +19,35 @@ const months = [
   { label: '12', value: '12' },
 ];
 
+
 function SelectDatePiker() {
+
+  const dispatch = useDispatch();
+  const token = decodeJwt(window.localStorage.getItem("accessToken"));
   const [year, setYear] = useState('2023');
   const [month, setMonth] = useState('02');
+  
+  useEffect(
+    () => {    
+        console.log('token', token);
+        if(token !== null) {
+            dispatch(callGetMySalaryAPI({
+                memberCode: token.sub,
+                year: year,
+                month: month
+            }));          
+        }
+    }
+    ,[year, month]
+  );
+
+//   function handleSearch() {
+//     alert(year);
+//     alert(month);
+//     // setYear(parseInt(year, 10));
+//     // setMonth(parseInt(month, 10));
+
+//  }
 
   function handleYearChange(e) {
     setYear(e.target.value);
@@ -28,11 +57,7 @@ function SelectDatePiker() {
     setMonth(e.target.value);
   }
 
-  function handleSearch() {
-    const dateString = `${year}-${month}`;
-
-    console.log(dateString);
-  }
+  
 
   return (
     <div>
@@ -62,7 +87,7 @@ function SelectDatePiker() {
         </select>
         <span className="ml-2">월</span>
       </label>
-      <button className='btn btn-primary ml-3' onClick={handleSearch}>조회하기</button>
+      <button className='btn btn-primary ml-3'>조회하기</button>
     </form>
     </div>
   );

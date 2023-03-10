@@ -1,10 +1,14 @@
 import { GET_PAYMENT_SALARY, GET_SALARY, GET_SEVERANCE_SALARY } from '../modules/SalaryModule.js'
 
-export const callGetMySalaryAPI = ({year}, {month}) => {
+export const callGetMySalaryAPI = ({memberCode, year, month}) => {
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/salary/check/${year}/${month}`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/salary/check/${memberCode}/${year}/${month}`;
 
     console.log(`request`, requestURL);
+    console.log(`memberCode`, memberCode);
+    console.log(`year`, year);
+    console.log(`month`, month);
+
 
     return async(dispatch, getState) => {
 
@@ -14,10 +18,7 @@ export const callGetMySalaryAPI = ({year}, {month}) => {
                 "Content-Type": "application/json",
                 "Accept": "*/*",
             },
-            body: JSON.stringify({
-                year: year.paymentDate,
-                month: month.paymentDate
-            })
+        
         })
         .then(response => response.json());
 

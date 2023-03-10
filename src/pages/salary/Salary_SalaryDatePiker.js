@@ -50,13 +50,13 @@ function SelectDatePiker2() {
     console.log(paymentStatus.value);
     
     if (paymentStatus.value === 'Y') {
-      navigate('/salary/checkY');
+      navigate('/salary/check/Y');
     } else {
-      navigate('/salary/checkN');
+      navigate('/salary/check/N');
     }
   }
 
-  function handleClick2() {
+  function insertHandler() {
 
     navigate('/salary/check/insert');
   }
@@ -95,7 +95,7 @@ function SelectDatePiker2() {
         </select>
       </label>
       <button className='btn btn-primary ml-3' onClick={handleClick}>조회하기</button>
-      <button className='btn btn-primary ml-3' onClick={handleClick2}>추가하기</button>
+      <button className='btn btn-primary ml-3' onClick={insertHandler}>추가하기</button>
     </div>
   );
 }

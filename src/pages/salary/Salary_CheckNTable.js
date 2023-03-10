@@ -1,4 +1,33 @@
-function SeveranceTableN() {
+import modalStyle from "../../resources/css/pages/hrm/organization-modal.module.css";
+
+export function SalaryCheckModal({onClose}) {
+    
+    return (
+      <div className={modalStyle.salaryModal}>
+        <div className="modal-content">
+            <button className={modalStyle.salaryclose} onClick={onClose}>
+                Close
+            </button>
+            <p>급여 지급서</p>
+        </div>
+        <div className="modal-text pt-5">
+            <p>야ㅕ야야</p>
+            <p>안녕하세용</p>
+            <p>내용이에용 ㅋㅋㅋ</p>
+        </div>
+        <button 
+            style={{ position: 'absolute', top: 390, left:215 }}
+            onClick={() => {
+                alert("준비중입니다.");
+            }}
+        >
+            출력하기
+        </button>
+      </div>
+    );
+}
+
+function CheckNTable() {
     
 
     return (
@@ -9,12 +38,12 @@ function SeveranceTableN() {
                         <thead>
                             <tr style={{ "backgroundColor": "#DDDDDD" }}>
                                 <th>구분</th>
-                                <th>퇴직번호</th>
                                 <th>조직</th>
                                 <th>직급</th>
                                 <th>이름</th>
-                                <th>퇴직일</th>
-                                <th>퇴직금액</th>
+                                <th>세후 지급액</th>
+                                <th>지급여부</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -26,7 +55,7 @@ function SeveranceTableN() {
                                 <td>1,680,000</td>
                                 <td>N</td>
                                 <td style={{width:120}}>
-                                    5,000,000
+                                    <button className="btn btn-primary">상세보기</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -49,4 +78,4 @@ function SeveranceTableN() {
     )
 }
 
-export default SeveranceTableN;
+export default CheckNTable;

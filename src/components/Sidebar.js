@@ -173,7 +173,7 @@ function Sidebar() {
                                         </div>
                                             <Link to="/salary/check/N" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>급여 지급 현황 </Link>
                                             <Link to="/salary/bonus" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>상여금 지급 현황</Link>
-                                            <Link to="/salary/severanceN" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직금 지급 현황</Link>
+                                            <Link to="/salary/severance/N" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직금 지급 현황</Link>
                                     </div>
                                 </div>
                             </div>

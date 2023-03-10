@@ -7,10 +7,10 @@ function BonusInsert() {
     const navigate = useNavigate();
 
     return (
-        <main className= {mainTitleStyle.main}>
+        <main className= {salaryBonusInsertStyle.main}>
             <div>
 
-                <div className={mainTitleStyle.title}>
+                <div className={salaryBonusInsertStyle.title}>
                     <p>상여금 명단 추가</p>
                 </div>
  

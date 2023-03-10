@@ -1,6 +1,6 @@
 import Table from 'react-bootstrap/Table';
 
-function SalaryTable({salary : {afterSalary}}) {
+function SalaryTable({salaryDetail : {totalSalary}}) {
 
     return (
     <Table className="mr-5" striped style={{width:"400px"}}>
@@ -11,7 +11,7 @@ function SalaryTable({salary : {afterSalary}}) {
         </thead>
         <tbody className="text-center">
             <tr>
-                <td>{afterSalary}</td>
+                <td>{totalSalary == null ? '' : { totalSalary }}</td>
             </tr>
           
         </tbody>

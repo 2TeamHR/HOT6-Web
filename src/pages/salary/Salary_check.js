@@ -2,32 +2,29 @@ import salaryStyle from '../../resources/css/pages/salary/salary.module.css';
 import salarytableStyle from '../../resources/css/pages/salary/salaryTable.module.css';
 import "react-datepicker/dist/react-datepicker.css";
 import SelectDatePiker from './SalaryDatePiker';
-import SalaryTable from './Salary_Table';
 import { Link } from 'react-router-dom';
 import BasicTable from './Salary_BasicTable';
-import TaxTable from './Salary_TaxTable';
 import SpecificationModal from './Salary_Specification';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { callGetMySalaryAPI } from '../../apis/SalaryAPICalls';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+
 
 function SalaryCheck() {
 
-    const dispatch = useDispatch();
     const salary = useSelector(state => state.salaryReducer);
-    const tax = useSelector(state => state.taxReducer);
-    const salaryList = salary.data;
-    const taxList = tax.data;
 
-    // useEffect(
-    //     () => {
-    //         dispatch(callGetMySalaryAPI(
-             
-    //         )); // 내 급여 조회
-    //     }, []
-    // );
+    let salaryDetail = '';
 
-    console.log('salary', salary);
+    if(salary[0] !== undefined){
+        salaryDetail = salary[0];
+    } else {
+        salaryDetail = {basicSalary: 0, bonus:{
+            bonusSalary: 0
+        }, mealSalary: 0, beforeSalary:0 };
+    }
+     
+
+    // console.log('salary ================', salary); 
 
     const [showModal, setShowModal] = useState(false);
 
@@ -38,8 +35,6 @@ function SalaryCheck() {
     function handleCloseModal() {
         setShowModal(false);
     }
-
-    console.log(showModal);
 
 
     return (
@@ -53,17 +48,20 @@ function SalaryCheck() {
             </div>
         </div>
         <div className= {`pt-5 ${salarytableStyle.tableStyle}`}>
-            {
-                Array.isArray(salaryList) && salaryList.map((salary) => (<BasicTable key={ salary.salayCode } salary= { salary } />))
+        
+             <BasicTable salaryDetail={ salaryDetail } /> 
+                         {/* { 
+                Array.isArray(salaryDetail) && salaryDetail.map((salary) => (<BasicTable salaryDetail={ salaryDetail } />))
             }
-            {
-                Array.isArray(taxList) && salaryList.map((tax) => (<TaxTable key= { salary.salaryCode } tax = { tax } />))
-            }
+            { 
+                Array.isArray(salaryDetail) && salaryDetail.map((salary) => (<TaxTable salaryDetail={ salaryDetail } />))
+            } */}
+            
         </div>
         <div className={`mt-5 ${salarytableStyle.tableStyle}`} >
-            {
-                Array.isArray(salaryList) && salaryList.map((salary) => (<SalaryTable key={ salary.salaryCode } salary= { salary } />))
-            }
+            {/* { 
+                Array.isArray(salaryDetail) && salaryDetail.map((salary) => (<SalaryTable salaryDetail={ salaryDetail } />))
+            } */}
         </div>
 
         <div className="pt-5 text-center">

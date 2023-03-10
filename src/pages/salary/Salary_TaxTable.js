@@ -1,6 +1,9 @@
 import Table from 'react-bootstrap/Table';
 
-function TaxTable({salary : {incomTax, healthTax, nationalTax }}){
+function TaxTable({salaryDetail : {incomTax, healthTax, nationalTax }}){
+
+    console.log(incomTax);
+    const totalTax = incomTax + healthTax + nationalTax;
 
     return(
     <Table striped style={{width:500}}>
@@ -13,19 +16,19 @@ function TaxTable({salary : {incomTax, healthTax, nationalTax }}){
         <tbody className="text-center">
             <tr>
                 <td>소득세</td>
-                <td>{ incomTax }</td>
+                <td>{incomTax == null ? '' : { incomTax }}</td>
             </tr>
             <tr>
                 <td>건강보험</td>
-                <td>{ healthTax }</td>
+                <td>{healthTax == null ? '' : { healthTax }}</td>
             </tr>
             <tr>
                 <td>국민연금</td>
-                <td>{ nationalTax }</td>
+                <td>{healthTax == null ? '' : { nationalTax }}</td>
             </tr>
             <tr>
                 <td>총 공제액</td>
-                <td>{ incomTax } + {healthTax} + {nationalTax} </td>
+                <td>{totalTax == null ? '' : { totalTax }}</td>
             </tr>
         </tbody>
     </Table>

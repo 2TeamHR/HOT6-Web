@@ -54,6 +54,7 @@ import DutyForm from './pages/es/DutyForm';
 import LOAForm from './pages/es/LOAForm';
 import ReinstatmentForm from './pages/es/ReinstatementForm';
 import SeveranceInsert from './pages/salary/Salary_SeveranceInsert';
+import SalaryInsert from './pages/salary/Salary_SalaryInsert';
 
 function App() {
   return (
@@ -108,9 +109,9 @@ function App() {
             <Route path="/salary/specification" element={ <Specification />} />
             <Route path="/salary/check/N" element={ <AllCheckN />} />
             <Route path="/salary/check/Y" element={ <AllCheckY />} />
-            <Route path="/salary/check/insert" element={ <AllCheckY />} />
-            <Route path="/salary/severanceN" element={ <SeveranceN />} />
-            <Route path="/salary/severanceY" element={ <SeveranceY />} />
+            <Route path="/salary/check/insert" element={ <SalaryInsert />} />
+            <Route path="/salary/severance/N" element={ <SeveranceN />} />
+            <Route path="/salary/severance/Y" element={ <SeveranceY />} />
             <Route path="/salary/severance/insert" element={ <SeveranceInsert />} />
             <Route path="/salary/bonus" element={ <SalaryBonus />} />
             <Route path="/salary/bonus/insert" element={ <BonusInsert />} />
