@@ -1,12 +1,11 @@
 import mpManagement from '../../resources/css/pages/mypage/mypage-management.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
 import profileStyle from '../../resources/css/components/profile.module.css';
-import sampleImg from '../../resources/image/hong.jpeg';
 import Paper from '@mui/material/Paper';
 
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { decodeJwt } from '../../utils/tokenUtils';
 
 import { callGetMemberAPI } from '../../apis/MemberAPICalls';
@@ -16,11 +15,14 @@ function MypageManagement (){
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const member = useSelector(state => state.memberReducer);  
-    const token = decodeJwt(window.localStorage.getItem("accessToken"));   
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));
+    const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
     const memberDetail = member.data;
+    // const memberDetail = useSelector((state) => state.memberDetail);
 
     console.log('token', token.sub);
-    console.log('member', memberDetail);
+    console.log('member', member);
+    console.log('memberDetail', memberDetail);
 
     useEffect(
         () => {
@@ -42,6 +44,8 @@ function MypageManagement (){
         navigate("/findpassword", { replace: true })
     }
 
+    // console.log(memberDetail.profileImageList[0].profileImageLocation);
+
     // const memberBirth = memberDetail.memberBirth ? new Date(memberDetail.memberBirth) : null;
     // const formattedMemberBirthe = memberBirth ? memberBirth.toISOString().slice(0, 10) : '';
 
@@ -59,7 +63,9 @@ function MypageManagement (){
                 <div className='d-flex ml-5 mr-5'>
                     <Paper elevation={3} className={mpManagement.profileMain}>
                         <div className={mpManagement.mpmProfile}>
-                            <img className={profileStyle.mpmProfileImg} alt="profile_img" src={sampleImg} />
+                            {memberDetail.profileImageList && memberDetail.profileImageList.length > 0 &&
+                            <img className={profileStyle.mpmProfileImg} alt="profile_img" src={memberDetail.profileImageList[0].profileImageLocation} />
+                            }
                             <button className={profileStyle.mpmProfileImgChangeBtn}>변경</button>
                         </div>
                         <div className={mpManagement.infoBtn}>
