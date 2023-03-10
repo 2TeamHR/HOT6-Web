@@ -28,14 +28,21 @@ function MypageMain() {
     const memberDetail = member.data;
     const myLeaveInfo = useSelector(state => state.leaveReducer); 
 
-    /* 임시로 리액트 에러 수정 */
-    let myLeaveAll = 1;
-    let myLeaveLeftover = 1;
+    useEffect(
+        () => {
+            dispatch(callGetMemberAPI({ 
+                memberCode: token.sub 
+            }));
+        }, []
+    );
 
-    if(myLeaveInfo.data !== undefined){
-        myLeaveAll =  myLeaveInfo.data[0].leavePaymentCount;
-        myLeaveLeftover = myLeaveInfo.data[0].leaveLeftoverCount;
-    }
+    useEffect(
+        () => {
+            dispatch(callGetMyLeaveInfoAPI({
+                memberCode: token.sub
+            }));
+        },[]
+    );
 
     useEffect(
         () => {
@@ -46,21 +53,18 @@ function MypageMain() {
         }
     );
 
-    useEffect(() => {
-            dispatch(callGetMyLeaveInfoAPI({
-                memberCode: token.sub
-            }));
-        },[]
-    );
+    if (!memberDetail || Object.keys(memberDetail).length === 0) {
+        return <div>Loading...</div>;
+    };
 
-    useEffect(() => {
-            if(token !== null) {
-                dispatch(callGetMemberAPI({
-                    memberCode: token.sub
-                }));          
-            }
-        },[]
-    );
+     /* 임시로 리액트 에러 수정 */
+     let myLeaveAll = 1;
+     let myLeaveLeftover = 1;
+ 
+     if(myLeaveInfo.data !== undefined){
+         myLeaveAll =  myLeaveInfo.data[0].leavePaymentCount;
+         myLeaveLeftover = myLeaveInfo.data[0].leaveLeftoverCount;
+     }
 
     function tick() {
         setDate(new Date());
@@ -86,7 +90,8 @@ function MypageMain() {
                     <Paper elevation={3} className={mypageStyle.module}>
                         <p className={mypageStyle.moduleTitle}>나의 정보</p>
                         <div className={profileStyle.profile}>
-                            <img className={profileStyle.mpmProfileImg} alt="profile_img" src={memberDetail.profileImageList[0].profileImageLocation} />
+                        <img className={profileStyle.mpmProfileImg} alt="profile_img" src={memberDetail?.profileImageList?.[0]?.profileImageLocation ?? 'default-profile-image.png'} />
+
                         </div>
                         <div className="text-center mt-4 mb-4">
                             <span className="fs-4 fw-bold">{memberDetail.memberName}</span>
