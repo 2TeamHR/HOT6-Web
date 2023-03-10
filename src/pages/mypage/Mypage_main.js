@@ -89,7 +89,7 @@ function MypageMain() {
                             <img className={profileStyle.profileImg} alt="profile_img" src={sampleImg} />
                         </div>
                         <div className="text-center mt-4 mb-4">
-                            <span className="fs-4 fw-bold"></span>
+                            <span className="fs-4 fw-bold">{member.memberName}</span>
                             <span className="fs-4 fw-bold">님</span>
                         </div>
                         <div className="text-center">
@@ -120,7 +120,7 @@ function MypageMain() {
                                 startAngle={-90}
                                 rounded
                                 animate
-                                label={({ dataEntry }) => dataEntry.value + "일 사용"}
+                                label={({ dataEntry }) => dataEntry.value + "일 남음"}
                                 labelStyle={{
                                 fontSize: "13px",
                                 fill: "#33333",
@@ -131,11 +131,11 @@ function MypageMain() {
                             <div className="mt-5 pt-5">
                                 <div className="ml-5 mr-5 pb-3">
                                     <span className="fw-300 fs-3 mr-5">사용연차</span>
-                                    <span className={`fw-300 fs-3 float-right ${mypageStyle.workDay}`}>{myLeaveLeftover}일</span>
+                                    <span className={`fw-300 fs-3 float-right ${mypageStyle.workDay}`}>{myLeaveAll - myLeaveLeftover}일</span>
                                 </div>
                                 <div className="ml-5 mr-5 pd-3">
                                     <span className="fw-300 fs-3 mr-5">잔여연차</span>
-                                    <span className={`fw-300 fs-3 float-right ${mypageStyle.workDay}`}>{myLeaveAll - myLeaveLeftover}일</span>
+                                    <span className={`fw-300 fs-3 float-right ${mypageStyle.workDay}`}>{myLeaveLeftover}일</span>
                                 </div>
                             </div>
                         </div>
