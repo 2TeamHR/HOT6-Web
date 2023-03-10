@@ -18,7 +18,6 @@ function MypageManagement (){
     const token = decodeJwt(window.localStorage.getItem("accessToken"));
     const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
     const memberDetail = member.data;
-    // const memberDetail = useSelector((state) => state.memberDetail);
 
     console.log('token', token.sub);
     console.log('member', member);
@@ -26,10 +25,8 @@ function MypageManagement (){
 
     useEffect(
         () => {
-            if (token !== null && (!memberDetail || Object.keys(memberDetail).length === 0)) {
             dispatch(callGetMemberAPI({ memberCode: token.sub }));
-            }
-        }, [dispatch, memberDetail, token]
+        }, []
     );
       
     if (!memberDetail || Object.keys(memberDetail).length === 0) {
@@ -44,13 +41,11 @@ function MypageManagement (){
         navigate("/findpassword", { replace: true })
     }
 
-    // console.log(memberDetail.profileImageList[0].profileImageLocation);
+    const memberBirth = memberDetail.memberBirth ? new Date(memberDetail.memberBirth) : null;
+    const formattedMemberBirthe = memberBirth ? memberBirth.toISOString().slice(0, 10) : '';
 
-    // const memberBirth = memberDetail.memberBirth ? new Date(memberDetail.memberBirth) : null;
-    // const formattedMemberBirthe = memberBirth ? memberBirth.toISOString().slice(0, 10) : '';
-
-    // const joinDate = memberDetail.memberBirth ? new Date(memberDetail.joinDate) : null;
-    // const formattedJoinDate = joinDate ? joinDate.toISOString().slice(0, 10) : '';
+    const joinDate = memberDetail.memberBirth ? new Date(memberDetail.joinDate) : null;
+    const formattedJoinDate = joinDate ? joinDate.toISOString().slice(0, 10) : '';
     
     return(
         <main className={mainTitleStyle.main}>

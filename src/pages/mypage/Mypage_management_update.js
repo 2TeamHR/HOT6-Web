@@ -1,7 +1,6 @@
 import mpManagement from '../../resources/css/pages/mypage/mypage-management.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
 import profileStyle from '../../resources/css/components/profile.module.css';
-import sampleImg from '../../resources/image/hong.jpeg';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 
@@ -95,7 +94,7 @@ function MypageManagementUpdate (){
                 <div className='d-flex ml-5 mr-5 mb-5'>
                     <Paper elevation={3} className={mpManagement.profileMain}>
                         <div className={mpManagement.mpmProfile}>
-                            <img className={profileStyle.mpmProfileImg} alt="profile_img" src={sampleImg} />
+                            <img className={profileStyle.mpmProfileImg} alt="profile_img" src={memberDetail.profileImageList[0].profileImageLocation} />
                         </div>
                         <div className={mpManagement.infoBtn}>
                             <button onClick={onClickMyInfoUpdateHandler}>완료</button>

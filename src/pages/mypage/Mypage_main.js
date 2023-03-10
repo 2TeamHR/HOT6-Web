@@ -2,7 +2,6 @@ import mypageStyle from '../../resources/css/pages/mypage/mypage.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
 import profileStyle from '../../resources/css/components/profile.module.css';
 import { Link } from 'react-router-dom';
-import sampleImg from '../../resources/image/hong.jpeg';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import React from 'react';
@@ -26,6 +25,7 @@ function MypageMain() {
     const dispatch = useDispatch(); 
     const token = decodeJwt(window.localStorage.getItem("accessToken"));
     const member = useSelector(state => state.memberReducer);  
+    const memberDetail = member.data;
     const myLeaveInfo = useSelector(state => state.leaveReducer); 
 
     /* 임시로 리액트 에러 수정 */
@@ -86,10 +86,10 @@ function MypageMain() {
                     <Paper elevation={3} className={mypageStyle.module}>
                         <p className={mypageStyle.moduleTitle}>나의 정보</p>
                         <div className={profileStyle.profile}>
-                            <img className={profileStyle.profileImg} alt="profile_img" src={sampleImg} />
+                            <img className={profileStyle.mpmProfileImg} alt="profile_img" src={memberDetail.profileImageList[0].profileImageLocation} />
                         </div>
                         <div className="text-center mt-4 mb-4">
-                            <span className="fs-4 fw-bold">{member.memberName}</span>
+                            <span className="fs-4 fw-bold">{memberDetail.memberName}</span>
                             <span className="fs-4 fw-bold">님</span>
                         </div>
                         <div className="text-center">
