@@ -20,7 +20,7 @@ function MypageManagement (){
     const memberDetail = member.data;
 
     console.log('token', token.sub);
-    console.log('member', member);
+    console.log('member', memberDetail);
 
     useEffect(
         () => {
