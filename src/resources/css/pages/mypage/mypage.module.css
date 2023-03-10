@@ -32,7 +32,6 @@
 .myVacation {
     display: flex;
     justify-content: space-around;
-    margin-top: 50px;
 }
 
 /* 근태 관리 */

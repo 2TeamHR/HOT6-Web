@@ -57,6 +57,7 @@ import SeveranceInsert from './pages/salary/Salary_SeveranceInsert';
 import SalaryInsert from './pages/salary/Salary_SalaryInsert';
 
 function App() {
+
   return (
       <BrowserRouter>
         <Routes>

@@ -1,10 +1,89 @@
 import React from 'react';
-import messageStyle from '../../resources/css/pages/message/message.module.css'
+import messageStyle from '../../resources/css/pages/message/message2.module.css'
 import messageStyle2 from '../../resources/css/pages/message/receivedMessage.module.css'
 import {Link} from "react-router-dom";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import moment from 'moment';
+import { padding } from '@mui/system';
+import {useDispatch, useSelector} from "react-redux";
+import { callGetMessageReceiveCountAPI, callGetMessageReceiveListAPI, callGetMessageSentCountAPI, callGetMessageSentListAPI } from '../../apis/MessageAPICalls';
+
+
+
+
 
 
 function ReceivedMessage(){
+
+    const [emailSelect, setEmailSelect] = useState('');
+    const [count , setCount] = useState('');
+    const [count2 , setCount2] = useState('');
+    const [count3 , setCount3] = useState('');
+    const dispatch = useDispatch();
+    const messageReducer = useSelector(state => state.messageReducer);
+    const [isSelectAll, setIsSelectAll] = useState(false);
+
+    useEffect(()=>{
+
+        
+        dispatch(callGetMessageReceiveListAPI())
+            .then((receivedData) => {
+                setEmailSelect(receivedData);
+            }).catch(error => console.log(error))
+    
+        }, []);
+
+        useEffect(() => {
+            axios.get(`http://localhost:8888/api/v1/messageReceivedCount`, {
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+              }
+            })
+            .then(response => {
+              console.log(response.data);
+              setCount(response.data.data);
+            })
+            .catch(error => {
+              console.log("useEffect 쪽 문제");
+              console.error(error);
+            });
+          }, []);
+
+          useEffect(() => {
+            axios.get(`http://localhost:8888/api/v1/messageSentCount`, {
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+              }
+            })
+            .then(response => {
+              console.log(response.data);
+              setCount2(response.data.data);
+            })
+            .catch(error => {
+              console.log("useEffect 쪽 문제");
+              console.error(error);
+            });
+          }, []);
+
+          function selectAll() {
+            const checkboxes = document.querySelectorAll("input[type='checkbox']");
+            for (let i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].checked = !isSelectAll;
+              }
+              
+              setIsSelectAll(!isSelectAll);
+            
+            
+          }
+          
+          
+
+
 
     return (
     <>
@@ -23,11 +102,11 @@ function ReceivedMessage(){
                         <div className="mt-3 pt-3">
                             <div className="ml-4 mr-4 pb-4">
                                 <span className="ml-4 fs-5 mr-3 font-weight-bold"><Link to="/messsage/receivedMessage" style={{ color: 'black', textDecoration: 'none'}}>받은 메세지</Link></span>
-                                <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>5</span>
+                                <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>{count}</span>
                             </div>
                             <div className="ml-4 mr-4 pb-4">
                                 <span className="ml-4 fs-5 mr-3 " ><Link to="/messsage/MessageSent" style={{ color: 'black', textDecoration: 'none'}}>보낸 메세지</Link></span>
-                                <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>5</span>
+                                <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>{count2}</span>
                             </div>
                             <div className="ml-4 mr-4 pb-4">
                                 <span className="ml-4 fs-5 mr-3"><Link to="/messsage/MessageTrash" style={{ color: 'black', textDecoration: 'none'}}>휴지통</Link></span>
@@ -52,7 +131,7 @@ function ReceivedMessage(){
                             
                         <div className={messageStyle2.buttonOptionalSelect}>
                             <div className={messageStyle2.buttonTaskWrap} >
-                                <input type="checkbox" id="selection_all" className={messageStyle2.buttonCheckboxBlind} />
+                                <input type="checkbox" id="selection_all" className={messageStyle2.buttonCheckboxBlind} onClick={selectAll} checked={isSelectAll} />
                             </div>
                 
                             <div className={messageStyle2.buttonTaskWrap}>
@@ -68,18 +147,30 @@ function ReceivedMessage(){
                         </div>  
 
                         <div className={`${messageStyle2.tableBox}`} >
-                         <table className={messageStyle2.table}>   
+                          {emailSelect.length>0 && emailSelect.map((receivedEmail,index) => (  
+                         <table key={index} className={messageStyle2.table}>   
                             <tbody className={messageStyle2.textCenter}>
                             <tr>
-                                <td ><input type="checkbox"/></td>
-                                <td >인사담당자</td>
-                                <td>메세지 확인 부탁드립니다.</td>
+                                <td><input type="checkbox"/></td>
+                                <td>{receivedEmail.name}</td>
+                                                            
                                 <td></td>
-                                <td>12-22 18:33</td> 
+                                <td colSpan="2" style={{ textAlign: "center", 
+                                                         width:"200px",
+                                                         overflow:'hidden',
+                                                         whiteSpace:'nowrap',
+                                                         textOverflow:'clip'
+
+                                                      }}>{receivedEmail.title}</td>   
+                                <td></td>
+
+                                {/* <td></td> */}
+                                <td colSpan="2">{moment(receivedEmail.date).format('YY-MM-DD hh:mm')}</td> 
                             </tr>
                             </tbody>
-                         </table>   
-                         </div>
+                         </table>
+                         ))}   
+                        </div>
 
                     </div>      
                 </div>
