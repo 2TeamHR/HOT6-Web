@@ -13,8 +13,9 @@ class MyCalendar extends Component {
                 plugins={[dayGridPlugin]}
                 initialView='dayGridMonth'
                 events={[
-                { title: '노재영', date: '2023-02-02' },
-                { title: '최고', date: '2023-02-03' }
+                { title: '노재영', date: '2023-03-02' },
+                { title: '최고', date: '2023-03-03' },
+                { title: '최고', date: '2023-03-03' }
                 ]}
               />
           </div>

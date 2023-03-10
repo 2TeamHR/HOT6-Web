@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
-
+import Paper from '@mui/material/Paper';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -136,6 +136,7 @@ function AnnualStandardsManagement() {
                     </Button>
                     </Modal.Footer>
                 </Modal>
+                
                 <Table>
                     <thead>
                         <tr className="text-center">

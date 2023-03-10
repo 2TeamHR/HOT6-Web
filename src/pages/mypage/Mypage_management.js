@@ -96,7 +96,7 @@ function MypageManagement (){
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-calendar-alt mr-3`}></i>
                                 <span>생년월일</span>
-                                <span className='float-right fw-blod'>{memberDetail.memberBirth || ''}</span>
+                                <span className='float-right fw-blod'>{formattedMemberBirthe}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-male-female mr-3`}></i>
@@ -131,7 +131,7 @@ function MypageManagement (){
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-buildings mr-3`}></i>
                                 <span>입사일</span>
-                                <span className='float-right fw-blod'>{memberDetail.joinDate || ''}</span>
+                                <span className='float-right fw-blod'>{formattedJoinDate}</span>
                             </div>
                         </Paper>
                     </div>
