@@ -1,7 +1,5 @@
 // import CertificateTable from "./Organization_CertificateTable";
 import modalStyle from "../../resources/css/pages/salary/salary-modal.module.css";
-import BasicTable from "./Salary_BasicTable";
-import TaxTable from "./Salary_TaxTable";
 import salarytableStyle from "../../resources/css/pages/salary/salaryTable.module.css"
 
 function SpecificationModal({onClose}) {
@@ -16,8 +14,7 @@ function SpecificationModal({onClose}) {
         </div>
         <div className="modal-text pt-5">
         <div className= {`pt-5 ${salarytableStyle.tableStyle}`}>
-            <BasicTable />
-            <TaxTable />
+            {/* <ModalTable /> */}
         </div>
             
         </div>

@@ -1,6 +1,6 @@
 import salaryStyle from '../../resources/css/pages/salary/salary.module.css';
 import SelectDatePiker2 from './Salary_SalaryDatePiker';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { callGetPaymentSalaryAPI } from '../../apis/SalaryAPICalls';
 import CheckNTable from './Salary_CheckNTable';
@@ -8,7 +8,10 @@ import CheckNTable from './Salary_CheckNTable';
 function AllCheckN(){
 
     const dispatch = useDispatch();
+    const member = useSelector(state => state.salaryReducer);
 
+    let memberInfo = '';
+    console.log('memberInfo ============', memberInfo);
 
     useEffect(
         () => {
@@ -19,7 +22,6 @@ function AllCheckN(){
         , []
     );
     
-
     return (
         <>
         <div className={`ml-5 ${salaryStyle.checkTitle}`}>

@@ -1,4 +1,4 @@
-import { GET_PAYMENT_SALARY, GET_SALARY, GET_SEVERANCE_SALARY } from '../modules/SalaryModule.js'
+import { GET_PAYMENT_SALARY, GET_SALARY, GET_SEVERANCE_SALARY, GET_MEMBERNAME_SALARY } from '../modules/SalaryModule.js'
 
 export const callGetMySalaryAPI = ({memberCode, year, month}) => {
 
@@ -30,9 +30,9 @@ export const callGetMySalaryAPI = ({memberCode, year, month}) => {
 }   
 
 
-export const callGetPaymentSalaryAPI = ({paymentsYn}) => {
+export const callGetPaymentSalaryAPI = ({year, month, paymentsYn}) => {
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/salary/check/${paymentsYn}`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/salary/check/all/${year}/${month}/${paymentsYn}`;
 
     console.log('requst', requestURL);
     
@@ -48,16 +48,16 @@ export const callGetPaymentSalaryAPI = ({paymentsYn}) => {
         .then(response => response.json());
 
         if(result.status === 200) {
-            console.log('[SalaryAPICalls] callGetPaymentSalaryAPI RESULT : ', result);
+            console.log('[GetPaymentSalaryAPICalls] callGetPaymentSalaryAPI RESULT : ', result);
             dispatch({ type: GET_PAYMENT_SALARY, payload: result.data });
         }
 
     };
 }
 
-export const callGetRetireePaymentAPI = ({paymentYn}) => {
+export const callGetMemberNameSalaryAPI = ({memberName}) => {
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/salary/severance/${paymentYn}`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/salary/check/insert/${memberName}`;
 
     console.log('requst', requestURL);
     
@@ -73,7 +73,33 @@ export const callGetRetireePaymentAPI = ({paymentYn}) => {
         .then(response => response.json());
 
         if(result.status === 200) {
-            console.log('[SalaryAPICalls] callGetPaymentSalaryAPI RESULT : ', result);
+            console.log('[GetMemberNameAPICalls] callGetPaymentSalaryAPI RESULT : ', result);
+            dispatch({ type: GET_MEMBERNAME_SALARY, payload: result.data });
+        }
+
+    };
+}
+
+
+export const callGetRetireePaymentAPI = ({paymentYn}) => {
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/salary/severance/${paymentYn}`;
+
+    console.log('request', requestURL);
+    
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+            }
+        })
+        .then(response => response.json());
+
+        if(result.status === 200) {
+            console.log('[GetPaymentsAPICalls] callGetPaymentSalaryAPI RESULT : ', result);
             dispatch({ type: GET_SEVERANCE_SALARY, payload: result.data });
         }
 

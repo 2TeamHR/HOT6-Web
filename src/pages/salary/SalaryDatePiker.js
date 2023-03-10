@@ -26,28 +26,40 @@ function SelectDatePiker() {
   const token = decodeJwt(window.localStorage.getItem("accessToken"));
   const [year, setYear] = useState('2023');
   const [month, setMonth] = useState('02');
-  
-  useEffect(
-    () => {    
+  const [salaryData, setSalaryData] = useState(null);
+  const [changeDate, setChangeDate] = useState('N');
+ 
+  useEffect(() => {    
         console.log('token', token);
         if(token !== null) {
             dispatch(callGetMySalaryAPI({
                 memberCode: token.sub,
                 year: year,
                 month: month
-            }));          
+            })).then((data) => {
+              setSalaryData(data);
+            });          
         }
     }
-    ,[year, month]
+    ,[changeDate]
   );
 
-//   function handleSearch() {
-//     alert(year);
-//     alert(month);
-//     // setYear(parseInt(year, 10));
-//     // setMonth(parseInt(month, 10));
+  function handleSearch(e) {
+    e.preventDefault();
+    setChangeDate("Y");
+    console.log('token', token);
+    if(token !== null) {
+      dispatch(callGetMySalaryAPI({
+        memberCode: token.sub,
+        year: year,
+        month: month
+      })).then((data) => {
+        setSalaryData(data);
+      });          
+    }
+  }
 
-//  }
+ 
 
   function handleYearChange(e) {
     setYear(e.target.value);
@@ -87,7 +99,7 @@ function SelectDatePiker() {
         </select>
         <span className="ml-2">월</span>
       </label>
-      <button className='btn btn-primary ml-3'>조회하기</button>
+      <button className='btn btn-primary ml-3' onClick={handleSearch}>조회하기</button>
     </form>
     </div>
   );

@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { callGetPaymentSalaryAPI } from "../../apis/SalaryAPICalls";
 import modalStyle from "../../resources/css/pages/hrm/organization-modal.module.css";
 
 export function SalaryCheckModal({onClose}) {
@@ -27,8 +30,34 @@ export function SalaryCheckModal({onClose}) {
     );
 }
 
+
 function CheckNTable() {
     
+    const member = useSelector(state => state.salaryReducer);
+
+    console.log('member ===========', member);
+
+    let memberList = '';
+
+    if(member !== undefined){
+        memberList = member;
+
+        console.log('memberList=============', memberList);
+    } else {
+        memberList = {
+            team: {
+                teamName: ''
+            },
+            rank: {
+                rankName: ''
+            },
+            memberName: '',
+            salary: {
+                afterSalary: 0,
+                paymentsYn: ''
+            },
+        };
+    }
 
     return (
         <>
@@ -47,17 +76,20 @@ function CheckNTable() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr style={{ "cursor": "pointer" }}>
-                                <td>1</td>
-                                <td>인사팀</td>
-                                <td>부장</td>
-                                <td>이상목</td>
-                                <td>1,680,000</td>
-                                <td>N</td>
+                            { memberList.length > 0 && memberList.map((memberDetail, index) => (
+                                <tr style={{ "cursor": "pointer" }} key={ memberDetail.salaryCode }>
+                                <td>{ index + 1 }</td>
+                                <td>{memberDetail.team.teamName}</td>
+                                <td>{memberDetail.rank.rankName}</td>
+                                <td>{memberDetail.memberName}</td>
+                                <td>{memberDetail.afterSalary}</td>
+                                <td>{memberDetail.paymentsYn}</td>
                                 <td style={{width:120}}>
                                     <button className="btn btn-primary">상세보기</button>
                                 </td>
-                            </tr>
+                                </tr>
+                            ))
+                            }
                         </tbody>
                     </table>
                 </div>

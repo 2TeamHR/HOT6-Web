@@ -7,6 +7,8 @@ import BasicTable from './Salary_BasicTable';
 import SpecificationModal from './Salary_Specification';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import TaxTable from './Salary_TaxTable';
+import SalaryTable from './Salary_Table';
 
 
 function SalaryCheck() {
@@ -14,13 +16,25 @@ function SalaryCheck() {
     const salary = useSelector(state => state.salaryReducer);
 
     let salaryDetail = '';
+    console.log('salaryDetail ===========', salaryDetail);
+
 
     if(salary[0] !== undefined){
         salaryDetail = salary[0];
     } else {
-        salaryDetail = {basicSalary: 0, bonus:{
-            bonusSalary: 0
-        }, mealSalary: 0, beforeSalary:0 };
+        salaryDetail = {
+            basicSalary: 0, 
+            bonus:{
+                bonusSalary: 0
+            }, 
+            mealSalary: 0,
+            beforeSalary: 0, 
+            incomTax: 0,
+            healthTax: 0,
+            nationalTax: 0,
+            afterTax: 0,
+            afterSalary: 0
+        };
     }
      
 
@@ -49,19 +63,12 @@ function SalaryCheck() {
         </div>
         <div className= {`pt-5 ${salarytableStyle.tableStyle}`}>
         
-             <BasicTable salaryDetail={ salaryDetail } /> 
-                         {/* { 
-                Array.isArray(salaryDetail) && salaryDetail.map((salary) => (<BasicTable salaryDetail={ salaryDetail } />))
-            }
-            { 
-                Array.isArray(salaryDetail) && salaryDetail.map((salary) => (<TaxTable salaryDetail={ salaryDetail } />))
-            } */}
-            
+            <BasicTable salaryDetail={ salaryDetail } /> 
+            <TaxTable salaryDetail={ salaryDetail } />
         </div>
         <div className={`mt-5 ${salarytableStyle.tableStyle}`} >
-            {/* { 
-                Array.isArray(salaryDetail) && salaryDetail.map((salary) => (<SalaryTable salaryDetail={ salaryDetail } />))
-            } */}
+            <SalaryTable salaryDetail={ salaryDetail } />
+
         </div>
 
         <div className="pt-5 text-center">
