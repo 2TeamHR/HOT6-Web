@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function NoticeDetail() {
+function BoardNoticeDetail() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [file, setFile] = useState(null);
@@ -67,4 +67,4 @@ function NoticeDetail() {
   );
 }
 
-export default NoticeDetail;
+export default BoardNoticeDetail;
