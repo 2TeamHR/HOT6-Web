@@ -2,13 +2,16 @@ import React, {useEffect} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
 import {callBoardNoticeListAPI} from "../../apis/BoardNoticeAPICalls";
+import {decodeJwt} from "../../utils/tokenUtils";
+
 
 function BoardNotice() {
 
     const dispatch = useDispatch();
     const boardNotice = useSelector(state => state.boardNoticeReducer);
-
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
+    // const token = decodeJwt(window.localStorage.getItem("accessToken"));
+    console.log('boardNotice: ', boardNotice);
 
     useEffect(
         () => {
@@ -33,6 +36,7 @@ function BoardNotice() {
                         <thead>
                         </thead>
                         <tbody>
+                        {/*{Array.isArray(boardNotice) && boardNotice.map((notice, index) => (*/}
                         {boardNotice.map((notice, index) => (
                             <tr key={notice.noticeCode} className="text-center">
                                 <td className='align-middle'>{index + 1}</td>
