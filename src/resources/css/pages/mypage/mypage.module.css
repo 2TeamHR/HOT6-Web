@@ -6,7 +6,7 @@
 }
 
 .moduleTitle{
-    padding: 10px 0px 20px 20px;
+    padding: 20px 0px 20px 20px;
     font-size: 20px;
     font-weight: bolder;
 }
@@ -36,7 +36,7 @@
 
 /* 근태 관리 */
 .todayWorkTime {
-    margin: 80px 0px 40px 0px;
+    margin: 50px 0px 40px 0px;
 }
 
 .workBtn {
@@ -97,6 +97,7 @@
     color: #43B2CA;
     font-size: small;
     font-weight: bolder;
+    position: relative;
 }
 
 /* 주 근무 시간 */

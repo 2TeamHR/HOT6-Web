@@ -1,0 +1,24 @@
+.profileText {
+    font-size: 13px;
+    text-align: center;
+}
+
+.headerRight {
+    display: flex;
+    justify-content:end;
+    align-items: center;
+    margin-right: 10%;
+  }
+
+.clock-icon {
+  animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

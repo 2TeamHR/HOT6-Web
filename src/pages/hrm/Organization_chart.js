@@ -30,7 +30,7 @@ function OrganizationChart() {
     
     if (!members) {
         return null;
-      }
+    }
 
     const startIndex = (currentPage - 1) * perPage;
     const endIndex = startIndex + perPage;
@@ -50,7 +50,7 @@ function OrganizationChart() {
               <SearchBtn />
             </div>
   
-            <Table>
+            <Table className='mt-5'>
               <thead>
                 <tr className="text-center">
                   <th>No</th>
@@ -74,12 +74,15 @@ function OrganizationChart() {
                 ))}
               </tbody>
             </Table>
-
-            <Pagination 
-                className="mr-auto"
+            
+            <div className="d-flex justify-content-center">
+              <Pagination 
                 count={Math.ceil(members.length / perPage)} 
                 page={currentPage} 
-                onChange={handlePageChange} />
+                onChange={handlePageChange} 
+              />
+          </div>
+
           </div>
         </div>
       </main>

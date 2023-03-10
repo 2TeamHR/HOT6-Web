@@ -1,8 +1,23 @@
 import sidebarStyle from '../resources/css/components/sidebar.module.css';
 import { Link } from 'react-router-dom';
+import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {callLogoutAPI} from "../apis/MemberAPICalls";
 
 function Sidebar() {
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const onClickLogoutHandler = () => {
+        window.localStorage.removeItem('accessToken');
+        //로그아웃
+        dispatch(callLogoutAPI());
+
+        alert('로그아웃이 되어 로그인 페이지로 이동합니다.');
+        navigate("/", { replace: true })
+        window.location.reload();
+    }
 
     return (
         <>  
@@ -91,7 +106,7 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             근태
                                         </div>
-                                            <Link to="/attendence/main" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>나의 근태이력</Link>
+                                            <Link to="/mypage/attendance/history" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>나의 근태이력</Link>
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
@@ -249,10 +264,10 @@ function Sidebar() {
                     </div>
                 </div>
 
-                <a href="#!" className={`${sidebarStyle.navLink} ${sidebarStyle.navLogout}`}>
+                <div className={`${sidebarStyle.navLink} ${sidebarStyle.navLogout}`}>
                     <i className={`bx bx-log-out ${sidebarStyle.navIcon}`}></i>
-                    <span className={sidebarStyle.navName}>로그아웃</span>
-                </a>
+                    <span className={sidebarStyle.navName} onClick={ onClickLogoutHandler }>로그아웃</span>
+                </div>
             </nav>
         </div>
         </>
