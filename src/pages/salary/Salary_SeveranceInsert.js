@@ -2,16 +2,16 @@ import { useNavigate } from 'react-router-dom';
 import salaryBonusInsertStyle from '../../resources/css/pages/salary/salary-insert.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
 
-function BonusInsert() { 
+function SeveranceInsert() {
 
     const navigate = useNavigate();
 
     return (
-        <main className= {salaryBonusInsertStyle.main}>
+        <main className= {mainTitleStyle.main}>
             <div>
 
-                <div className={salaryBonusInsertStyle.title}>
-                    <p>상여금 명단 추가</p>
+                <div className={mainTitleStyle.title}>
+                    <p>퇴직금 명단 추가</p>
                 </div>
  
                 <div className={salaryBonusInsertStyle.infoBtn}>
@@ -22,23 +22,11 @@ function BonusInsert() {
                 <div className="container mt-5">
                     <div className="row main_row">
                         <div className="mb-3">
-                            <p className={salaryBonusInsertStyle.infoHead}>조직</p>
+                            <p className={salaryBonusInsertStyle.infoHead}>퇴직번호</p>
                             <input className={salaryBonusInsertStyle.myInfo}/>
                         </div>
                         <div className="mb-3">
-                            <p className={salaryBonusInsertStyle.infoHead}>직급</p>
-                            <input className={salaryBonusInsertStyle.myInfo}/>
-                        </div>
-                        <div className="mb-3">
-                            <p className={salaryBonusInsertStyle.infoHead}>이름</p>
-                            <input className={salaryBonusInsertStyle.myInfo}/>
-                        </div>
-                        <div className="mb-3">
-                            <p className={salaryBonusInsertStyle.infoHead}>상여구분</p>
-                            <input className={salaryBonusInsertStyle.myInfo}/>
-                        </div>
-                        <div className="mb-3">
-                            <p className={salaryBonusInsertStyle.infoHead}>상여금액</p>
+                            <p className={salaryBonusInsertStyle.infoHead}>퇴직급액</p>
                             <input className={salaryBonusInsertStyle.myInfo}/>
                         </div>
                     
@@ -47,6 +35,8 @@ function BonusInsert() {
             </div>
         </main>
     );
+
+    
 }
 
-export default BonusInsert;
+export default SeveranceInsert;

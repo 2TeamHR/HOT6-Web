@@ -1,7 +1,11 @@
 import mpAttendanceStyle from "../../resources/css/pages/mypage/mypage-attendance.module.css";
 import mainTitleStyle from "../../resources/css/pages/mypage/main-title.module.css";
+import { useState, useEffect } from 'react';
 
 function MypageAttendance() {
+
+  const [date, setDate] = useState(new Date());
+
   return (
     <>
       <main className={mainTitleStyle.main}>
@@ -18,7 +22,7 @@ function MypageAttendance() {
                 className={`d-flex flex-row justify-content-around ${mpAttendanceStyle.attendanceCheckBox}`}
               >
                 <div className="text-center">
-                  <p className="fs-4 mb-0">2023.01.31(화)</p>
+                  <p className="fs-4 mb-0">{date.toLocaleString()}</p>
                   <p className="fs-1 fw-bold">19:40:17</p>
                 </div>
                 <div className="float-right">

@@ -2,7 +2,7 @@ import React from 'react';
 import sidebarStyle from "../../resources/css/components/sidebar.module.css";
 import { Link } from "react-router-dom";
 
-const Community = () => {
+const BoardCommunity = () => {
 
     return (
         <>
@@ -136,4 +136,4 @@ const Community = () => {
     );
 };
 
-export default Community;
+export default BoardCommunity;

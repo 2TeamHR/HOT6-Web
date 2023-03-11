@@ -1,8 +1,23 @@
 import sidebarStyle from '../resources/css/components/sidebar.module.css';
 import { Link } from 'react-router-dom';
+import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {callLogoutAPI} from "../apis/MemberAPICalls";
 
 function Sidebar() {
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const onClickLogoutHandler = () => {
+        window.localStorage.removeItem('accessToken');
+        //로그아웃
+        dispatch(callLogoutAPI());
+
+        alert('로그아웃이 되어 로그인 페이지로 이동합니다.');
+        navigate("/", { replace: true })
+        window.location.reload();
+    }
 
     return (
         <>  
@@ -10,9 +25,9 @@ function Sidebar() {
         <div className={sidebarStyle.nav} id="navbar">
             <nav className={sidebarStyle.navContainer}>
                 <div>
-                    <Link to="/" className={`${sidebarStyle.a} ${sidebarStyle.navLink} ${sidebarStyle.navLogo}`}>
+                    <Link to="/main" className={`${sidebarStyle.a} ${sidebarStyle.navLink} ${sidebarStyle.navLogo}`}>
                         <i className={`bx bxs-disc ${sidebarStyle.navIcon}`}></i>
-                        <span className={sidebarStyle.navLogoName}>5DO</span>
+                        <span className={sidebarStyle.navLogoName}>The Tech Titan</span>
                     </Link>
 
                     {/* <!-- nav var --> */}
@@ -91,7 +106,7 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             근태
                                         </div>
-                                            <Link to="/attendence/main" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>나의 근태이력</Link>
+                                            <Link to="/mypage/attendance/history" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>나의 근태이력</Link>
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
@@ -166,15 +181,14 @@ function Sidebar() {
                                             급여
                                         </div>
                                             <Link to="/salary/check" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>내 급여 조회</Link>
-                                            <Link to="/salary/specification" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>급여 명세서</Link>
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             인사팀 관리
                                         </div>
-                                            <Link to="/salary/checkN" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>급여 지급 현황 </Link>
+                                            <Link to="/salary/check/N" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>급여 지급 현황 </Link>
                                             <Link to="/salary/bonus" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>상여금 지급 현황</Link>
-                                            <Link to="/salary/severanceN" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직금 지급 현황</Link>
+                                            <Link to="/salary/severance/N" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직금 지급 현황</Link>
                                     </div>
                                 </div>
                             </div>
@@ -250,10 +264,10 @@ function Sidebar() {
                     </div>
                 </div>
 
-                <a href="#!" className={`${sidebarStyle.navLink} ${sidebarStyle.navLogout}`}>
+                <div className={`${sidebarStyle.navLink} ${sidebarStyle.navLogout}`}>
                     <i className={`bx bx-log-out ${sidebarStyle.navIcon}`}></i>
-                    <span className={sidebarStyle.navName}>로그아웃</span>
-                </a>
+                    <span className={sidebarStyle.navName} onClick={ onClickLogoutHandler }>로그아웃</span>
+                </div>
             </nav>
         </div>
         </>

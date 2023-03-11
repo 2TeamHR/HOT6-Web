@@ -4,11 +4,15 @@ import messageStyle from '../../resources/css/pages/message/message.module.css'
 import {Link, useNavigate} from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import {callGetMessageListAPI, callRegistMessageListAPI} from "../../apis/MessageAPICalls";
+import {useDispatch, useSelector} from "react-redux";
+
+
 
 function Message() {
 
         const navigate = useNavigate();
-        const [memberName, setMemberName] = useState('');
+        const [memberName1, setMemberName1] = useState('');
         const [members, setMembers] = useState([]);
         const [recipients, setRecipients] = useState([])
         const [form,setForm] = useState({
@@ -16,17 +20,33 @@ function Message() {
             messageTitle: '',
             messageContent: ''
         })
+        const dispatch = useDispatch();
+        const messageReducer = useSelector(state => state.messageReducer);
+        const [count , setCount] = useState('');
+        const [count2 , setCount2] = useState('');
+        const [count3 , setCount3] = useState('');
+
 
 
         useEffect(() =>{
-        if(memberName) {
-            axios.get(`http://localhost:8888/api/v1/message/search/${memberName}`)
-            .then(response => {
-             const membersData = response.data.data.map(member =>({ name:member.memberName, email:member.memberEmail}));   
-            setMembers(membersData);
-            }).catch(error =>console.log(error))
-            }    
-        }, [memberName]);
+            if(memberName1) {
+                axios.get(`http://localhost:8888/api/v1/message/search/${memberName1}`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "*/*",
+                        "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+                    }})
+                .then(response => {
+                 const membersData = response.data.data.map(member =>({ name:member.memberName, email:member.memberEmail}));   
+                setMembers(membersData);
+                console.log("결과값");
+                console.log(response);
+                }).catch(error =>{
+                    console.log(error)
+                    console.log("메세지 단 오류 ");
+                })
+                }
+            }, [memberName1]);
 
 
         const handlerSearch = (e) => {
@@ -34,7 +54,7 @@ function Message() {
         
             const { name, value } = e.target;
             if (name === 'searchInput') {
-                setMemberName(value || '');
+                setMemberName1(value || '');
             }
         
             setForm({
@@ -61,10 +81,10 @@ function Message() {
                 const names = recipients.map((r)=>r.name).join(', ');
                 if(names.length > 0){
                     document.getElementById('searchInput').value = names;
-                    setMemberName(names);
+                    setMemberName1(names);
                 } else {
                     document.getElementById('searchInput').value ='';
-                    setMemberName('');
+                    setMemberName1('');
                 }
                 // setRecipients([]);
         }
@@ -77,25 +97,61 @@ function Message() {
             console.log(recipients);
       
 
-            const payload ={
+            const payloadMessage ={
                 messageTitle: form.messageTitle,
                 messageContent: form.messageContent,
                 recipients: recipients,
             }
+            console.log(payloadMessage);
 
-            axios.post('http://localhost:8888/api/v1/message', payload, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                    }).then(response => {
-                    console.log(response.data);
-                    }).catch(error => {
-                    console.log(error);
-                    });
+            dispatch(callRegistMessageListAPI({
+                    payload:payloadMessage
+            }))
+
+
             };
 
 
-        return (
+
+
+    useEffect(() => {
+        axios.get(`http://localhost:8888/api/v1/messageReceivedCount`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+            }
+        }).then(response => {
+            console.log(response.data); // 응답 데이터를 콘솔에 출력
+            setCount(response.data.data);
+        })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
+
+
+    useEffect(() => {
+        axios.get(`http://localhost:8888/api/v1/messageSentCount`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+            }
+        }).then(response => {
+            console.log(response.data); // 응답 데이터를 콘솔에 출력
+            setCount2(response.data.data);
+        })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
+
+
+
+
+
+    return (
         <>
 
 
@@ -112,11 +168,11 @@ function Message() {
                         <div className="mt-3 pt-3">
                             <div className="ml-4 mr-4 pb-4">
                                 <span className="ml-4 fs-5 mr-3"><Link to="/messsage/receivedMessage" style={{ color: 'black', textDecoration: 'none'}}>받은 메세지</Link></span>
-                                <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>5</span>
+                                <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>{count}</span>
                             </div>
                             <div className="ml-4 mr-4 pb-4">
                                 <span className="ml-4 fs-5 mr-3"><Link to="/messsage/MessageSent" style={{ color: 'black', textDecoration: 'none'}}>보낸 메세지</Link></span>
-                                <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>5</span>
+                                <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>{count2}</span>
                             </div>
                             <div className="ml-4 mr-4 pb-4">
                                 <span className="ml-4 fs-5 mr-3"><Link to="/messsage/MessageTrash" style={{ color: 'black', textDecoration: 'none'}}>휴지통</Link></span>
@@ -210,17 +266,17 @@ function Message() {
 
                       
 
-                        <div className={messageStyle.selectBox}>        
+                        <div className={messageStyle.selectBox}>
                             {members.map((member,index) => (
                                 <div key={index} className={messageStyle.selectName}>
                                     <b>{member.name} {member.email}</b>
                                     <button onClick ={() =>
                                         handleSelectRecipient(member)
-                                        }> 선택 </button> 
+                                        }> 선택 </button>
                                     </div>
-                                 
+
                             ))}
-                        </div>      
+                        </div>
 
 
                              

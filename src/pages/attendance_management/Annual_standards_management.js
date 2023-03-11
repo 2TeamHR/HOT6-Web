@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
-
+import Paper from '@mui/material/Paper';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -18,17 +18,8 @@ import {
 function AnnualStandardsManagement() {
 
     const dispatch = useDispatch();
-    const leave = useSelector(state => state.leaveReducer);  
-
     const navigate = useNavigate();
-
-    const [form, setForm] = useState({
-        leaveCategoryName: '',
-        leaveCategoryDateCount: 0,
-        leavePayState: 0,
-    });
-
-    console.log('form', );
+    const leave = useSelector(state => state.leaveReducer);  
 
     useEffect(
         () => {
@@ -36,6 +27,12 @@ function AnnualStandardsManagement() {
         }
         ,[]
     );
+
+    const [form, setForm] = useState({
+        leaveCategoryName: '',
+        leaveCategoryDateCount: 0,
+        leavePayState: 0,
+    });
 
     const onChangeHandler = (e) => {
         setForm({
@@ -139,6 +136,7 @@ function AnnualStandardsManagement() {
                     </Button>
                     </Modal.Footer>
                 </Modal>
+                
                 <Table>
                     <thead>
                         <tr className="text-center">

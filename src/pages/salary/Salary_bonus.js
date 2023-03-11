@@ -1,5 +1,5 @@
 import salaryStyle from '../../resources/css/pages/salary/salary.module.css';
-import SalaryBonusTable from './SalaryBonusTable';
+import BonusTable from './SalaryBonusTable';
 import BonusDatePicker from './Salary_BonusDatePiker';
 
 function SalaryBonus(){
@@ -17,7 +17,7 @@ function SalaryBonus(){
         </div>
 
         <div className="pt-5 pl-5">
-            <SalaryBonusTable />
+            <BonusTable />
         </div>
         </>
     );

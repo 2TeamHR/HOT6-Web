@@ -1,41 +1,52 @@
-import * as React from 'react';
-import { DataGrid } from '@mui/x-data-grid';
-
-const columns = [
-    { field: 'id', headerName: '구분', width: 100 },
-    { field: 'team', headerName: '조직', width: 150 },
-    { field: 'rank', headerName: '직급', width: 150 },
-    { field: 'name', headerName: '이름', width: 150 },
-    { field: 'bonusType', headerName: '상여구분', width: 150 },
-    { field: 'bonus', headerName: '상여금액', width: 150 },
-    { field: 'paymentDate', headerName: '지급일', width: 150 },
+function BonusTable() {
     
-];
 
-const rows = [
-    { id: 1, team: '인사팀', rank: '부장', name: '이상목', bonusType: "연말 보너스", bonus: 50000, paymentDate: '2023-02-18' },
-];
-
-export default function SalaryBonusTable() {
     return (
-        <div className="pl-5" style={{ height: 400, width: '90%' }}>
-            <DataGrid 
-                className="pl-5"
-                rows={rows}
-                columns={columns}
-                pageSize={5}
-                rowsPerPageOptions={[5]}
-                checkboxSelection
-            />
-            <button 
-                type="submit" 
-                className="mt-3" 
-                style={{float:"right"}}
-                // onCLick={onClickHandler}
-            >
-                지급하기
-            </button>
-        </div>
-        
-    );
+        <>
+            <div className="container-fluid">
+                <div className="table-area">
+                    <table className="table table-hover">
+                        <thead>
+                            <tr style={{ "backgroundColor": "#DDDDDD" }}>
+                                <th>구분</th>
+                                <th>조직</th>
+                                <th>직급</th>
+                                <th>이름</th>
+                                <th>상여구분</th>
+                                <th>금액</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style={{ "cursor": "pointer" }}>
+                                <td>1</td>
+                                <td>인사팀</td>
+                                <td>부장</td>
+                                <td>이상목</td>
+                                <td>이달의 우수사원</td>
+                                <td>50,000</td>
+                                <td style={{width:120}}>
+                                    <button className="btn btn-primary">지급하기</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div align="center">
+                    <form name="search-form" autoComplete="off" style={{ "display": "inline-block" }}>
+                        <select id="searchCondition" name="searchCondition">
+                            <option value="communityTitle">제목</option>
+                            <option value="nickName">작성자</option>
+                        </select>
+                        <input type="search" id="searchValue" name="searchValue" placeholder="검색할 내용을 입력하세요." 
+                        />
+                        <input type="submit" id="searchList" className="btn btn-secondary" value="검색" />
+                    </form>
+                        {/* <button type="submit" className="btn btn-primary float:right">지급하기</button> */}
+                </div>
+            </div>
+        </>
+    )
 }
+
+export default BonusTable;

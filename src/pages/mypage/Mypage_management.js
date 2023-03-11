@@ -1,12 +1,11 @@
 import mpManagement from '../../resources/css/pages/mypage/mypage-management.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
 import profileStyle from '../../resources/css/components/profile.module.css';
-import sampleImg from '../../resources/image/hong.jpeg';
 import Paper from '@mui/material/Paper';
 
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { decodeJwt } from '../../utils/tokenUtils';
 
 import { callGetMemberAPI } from '../../apis/MemberAPICalls';
@@ -16,33 +15,30 @@ function MypageManagement (){
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const member = useSelector(state => state.memberReducer);  
-    const token = decodeJwt(window.localStorage.getItem("accessToken"));   
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));
+    const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
     const memberDetail = member.data;
 
-    const onClickBackHandler = () => {
-        
-        navigate(-1);
-    }
+    console.log('token', token.sub);
+    console.log('member', member);
+    console.log('memberDetail', memberDetail);
 
     useEffect(
-        () => {    
-            console.log('token', token.sub);
-            if(token !== null) {
-                dispatch(callGetMemberAPI({
-                    memberCode: token.sub
-                }));          
-            }
-
-        }
-        ,[]
+        () => {
+            dispatch(callGetMemberAPI({ memberCode: token.sub }));
+        }, []
     );
+      
+    if (!memberDetail || Object.keys(memberDetail).length === 0) {
+    return <div>Loading...</div>;
+    }
 
     const mypageManagementUpdateHref = () => {
-        document.location.href = "/mypage/management/update"
+        navigate("/mypage/management/update", { replace: true })
     }
 
     const findPasswordHref = () => {
-        document.location.href = "/findpassword"
+        navigate("/findpassword", { replace: true })
     }
 
     const memberBirth = memberDetail.memberBirth ? new Date(memberDetail.memberBirth) : null;
@@ -61,16 +57,15 @@ function MypageManagement (){
 
                 <div className='d-flex ml-5 mr-5'>
                     <Paper elevation={3} className={mpManagement.profileMain}>
-                        <div className={mpManagement.infoTitle}>
-                            <p>프로필 관리</p>
-                        </div>
                         <div className={mpManagement.mpmProfile}>
-                            <img className={profileStyle.mpmProfileImg} alt="profile_img" src={sampleImg} />
+                            {memberDetail.profileImageList && memberDetail.profileImageList.length > 0 &&
+                            <img className={profileStyle.mpmProfileImg} alt="profile_img" src={memberDetail.profileImageList[0].profileImageLocation} />
+                            }
+                            <button className={profileStyle.mpmProfileImgChangeBtn}>변경</button>
                         </div>
                         <div className={mpManagement.infoBtn}>
                             <button onClick={findPasswordHref}>비밀번호변경</button>
-                            <button onClick={mypageManagementUpdateHref}>수정</button>
-                            <button onClick={onClickBackHandler}>메인가기</button>
+                            <button onClick={mypageManagementUpdateHref}>개인정보수정</button>
                         </div>
                     </Paper>
                     <div className={mpManagement.profileMain2}>
