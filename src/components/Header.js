@@ -36,10 +36,6 @@ function Header() {
         }, []
     );
 
-    // function tick() {
-    //     setDate(new Date());
-    // }
-
     /* 남은 발표까지 */
     useEffect(() => {
         // 매 초마다 현재 시간을 업데이트
