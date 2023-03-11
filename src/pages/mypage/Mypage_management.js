@@ -16,7 +16,6 @@ function MypageManagement (){
     const dispatch = useDispatch();
     const member = useSelector(state => state.memberReducer);  
     const token = decodeJwt(window.localStorage.getItem("accessToken"));
-    const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
     const memberDetail = member.data;
 
     console.log('token', token.sub);
@@ -37,8 +36,8 @@ function MypageManagement (){
         navigate("/mypage/management/update", { replace: true })
     }
 
-    const findPasswordHref = () => {
-        navigate("/findpassword", { replace: true })
+    const changePasswordHref = () => {
+        navigate("/changepassword", { replace: true })
     }
 
     const memberBirth = memberDetail.memberBirth ? new Date(memberDetail.memberBirth) : null;
@@ -64,7 +63,7 @@ function MypageManagement (){
                             <button className={profileStyle.mpmProfileImgChangeBtn}>변경</button>
                         </div>
                         <div className={mpManagement.infoBtn}>
-                            <button onClick={findPasswordHref}>비밀번호변경</button>
+                            <button onClick={changePasswordHref}>비밀번호변경</button>
                             <button onClick={mypageManagementUpdateHref}>개인정보수정</button>
                         </div>
                     </Paper>
