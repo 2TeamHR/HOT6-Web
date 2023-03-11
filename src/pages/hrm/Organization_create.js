@@ -111,9 +111,9 @@ function OrganizationCreate (){
 
         console.log(form);
 
-        // alert('재직자명단으로 이동합니다.');
-        // navigate('/organization/chart', { replace: true});
-        // window.location.reload();
+        alert('재직자명단으로 이동합니다.');
+        navigate('/organization/chart', { replace: true});
+        window.location.reload();
     }
 
     return(

@@ -2,7 +2,8 @@ import {
     GET_MEMBER,
     POST_LOGIN,
     POST_REGISTER,
-    PUT_MYINFO
+    PUT_MYINFO,
+    PUT_PASSWORD
 } from '../modules/MemberModule';
 
 /* 개인정보조회 API */
@@ -125,4 +126,29 @@ export const callMyInfoUpdateAPI = ({form, memberCode}) => {
         dispatch({ type: PUT_MYINFO,  payload: result });
         
     };    
+}
+
+/* 비빌번호 변경 API */
+export const callChangePasswordAPI = ({form, memberCode}) => {
+    console.log('[MemberAPICalls] callChangePasswordAPI Call');
+    console.log('memberCode', memberCode);
+    console.log('form', form);
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/password/update/${memberCode}`;
+
+    return async (dispatch, getState) => {
+        const result = await fetch(requestURL, {
+            method: "PUT",
+            headers: {
+                "Accept": "*/*",
+                "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+            },
+            body: form
+        })
+        .then(response => response.json());
+
+        console.log('[MemberAPICalls] callChangePasswordAPI RESULT : ', result);
+
+        dispatch({ type: PUT_PASSWORD, payload: result });
+    };
 }
