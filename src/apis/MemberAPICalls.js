@@ -1,5 +1,6 @@
 import {
     GET_MEMBER,
+    GET_SIMPLEMEMBER,
     POST_LOGIN,
     POST_REGISTER,
     PUT_MYINFO
@@ -28,6 +29,32 @@ export const callGetMemberAPI = ({memberCode}) => {
         dispatch({ type: GET_MEMBER,  payload: result });
 
     };
+}
+
+/* 간단한 사원 정보 조회 API */
+export const callGetSimpleMemberAPI = ({memberCode}) => {
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/simpleMember/${memberCode}`;
+
+    return async (dispatch, getState) => {
+
+       const result = await fetch(requestURL, {
+           method: "GET",
+           headers: {
+               "Content-Type": "application/json",
+               "Accept": "*/*",
+               "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+           }
+        })
+           .then(response => response.json());
+
+        console.log('[MemberAPICalls] callGetSimpleMember RESULT : ', result);
+
+        if(result.status === 200){
+            dispatch({ type: GET_SIMPLEMEMBER,  payload: result });
+            console.log('[MemberAPICalls] callGetSimpleMember RESULT : SUCCESS');
+        }
+   };
 }
 
 /* 로그인 API */
