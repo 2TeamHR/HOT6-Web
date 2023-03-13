@@ -2,14 +2,43 @@ import salaryStyle from '../../resources/css/pages/salary/salary.module.css';
 import salarytableStyle from '../../resources/css/pages/salary/salaryTable.module.css';
 import "react-datepicker/dist/react-datepicker.css";
 import SelectDatePiker from './SalaryDatePiker';
-import SalaryTable from './Salary_Table';
 import { Link } from 'react-router-dom';
 import BasicTable from './Salary_BasicTable';
-import TaxTable from './Salary_TaxTable';
 import SpecificationModal from './Salary_Specification';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import TaxTable from './Salary_TaxTable';
+import SalaryTable from './Salary_Table';
+
 
 function SalaryCheck() {
+
+    const salary = useSelector(state => state.salaryReducer);
+
+    let salaryDetail = '';
+    console.log('salaryDetail ===========', salaryDetail);
+
+
+    if(salary[0] !== undefined){
+        salaryDetail = salary[0];
+    } else {
+        salaryDetail = {
+            basicSalary: 0, 
+            bonus:{
+                bonusSalary: 0
+            }, 
+            mealSalary: 0,
+            beforeSalary: 0, 
+            incomTax: 0,
+            healthTax: 0,
+            nationalTax: 0,
+            afterTax: 0,
+            afterSalary: 0
+        };
+    }
+     
+
+    // console.log('salary ================', salary); 
 
     const [showModal, setShowModal] = useState(false);
 
@@ -20,8 +49,6 @@ function SalaryCheck() {
     function handleCloseModal() {
         setShowModal(false);
     }
-
-    console.log(showModal);
 
 
     return (
@@ -35,11 +62,13 @@ function SalaryCheck() {
             </div>
         </div>
         <div className= {`pt-5 ${salarytableStyle.tableStyle}`}>
-            <BasicTable />
-            <TaxTable />
+        
+            <BasicTable salaryDetail={ salaryDetail } /> 
+            <TaxTable salaryDetail={ salaryDetail } />
         </div>
         <div className={`mt-5 ${salarytableStyle.tableStyle}`} >
-            <SalaryTable />
+            <SalaryTable salaryDetail={ salaryDetail } />
+
         </div>
 
         <div className="pt-5 text-center">

@@ -48,10 +48,15 @@ function SeveraceDatePiker() {
     console.log(paymentStatus.value);
     
     if (paymentStatus.value === 'Y') {
-      navigate('/salary/severanceY');
+      navigate('/salary/severance/Y');
     } else {
-      navigate('/salary/severanceN');
+      navigate('/salary/severance/N');
     }
+  }
+
+  function handleClick2() {
+
+      navigate('/salary/severance/insert');
   }
 
   return (
@@ -87,6 +92,7 @@ function SeveraceDatePiker() {
         </select>
       </label>
       <button className='btn btn-primary ml-3' onClick={handleClick}>조회하기</button>
+      <button className='btn btn-primary ml-3' onClick={handleClick2}>추가하기</button>
     </div>
   );
 }

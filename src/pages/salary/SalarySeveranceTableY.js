@@ -1,40 +1,52 @@
-import * as React from 'react';
-import { DataGrid } from '@mui/x-data-grid';
-
-const columns = [
-    { field: 'id', headerName: '퇴직번호', width: 100 },
-    { field: 'team', headerName: '조직', width: 150 },
-    { field: 'rank', headerName: '직급', width: 150 },
-    { field: 'name', headerName: '이름', width: 150 },
-    { field: 'salary', headerName: '기본급', width: 150 },
-    { field: 'bonus', headerName: '상여금', width: 150 },
-    { field: 'tax', headerName: '공제액', width: 150 },
-    { field: 'totalSalary', headerName: '총 지급액', width: 150 },
-    { field: 'paymentDate', headerName: '지급일', width: 150 },
-    { field: 'paymentStatus', headerName: '지급여부', width: 100 },
+function SeveranceTableY() {
     
-];
 
-const rows = [
-    { id: 1, team: '인사팀', rank: '부장', name: '이상목', salary: 150000, bonus: 50000, tax: 20000, totalSalary: 180000, paymentsDate: '2023-02-18' },
-    { id: 2, team: '무슨팀', rank: '팀장', name: '유승제', salary: 150000, bonus: 50000, tax: 20000, totalSalary: 180000 },
-    { id: 3, team: '무슨팀', rank: '과장', name: '서도원', salary: 150000, bonus: 50000, tax: 20000, totalSalary: 180000 },
-    { id: 4, team: '무슨팀', rank: '부장', name: '유호상', salary: 150000, bonus: 50000, tax: 20000, totalSalary: 180000 },
-    { id: 5, team: '무슨팀', rank: '사장', name: '박준영', salary: 150000, bonus: 50000, tax: 20000, totalSalary: 180000 },
-    { id: 6, team: '무슨팀', rank: '사원', name: '노재영', salary: 150000, bonus: 50000, tax: 20000, totalSalary: 180000 },
-];
-
-export default function SalarySeveranceTableY() {
     return (
-        <div className="pl-5" style={{ height: 400, width: '90%' }}>
-            <DataGrid 
-                className="pl-5"
-                rows={rows}
-                columns={columns}
-                pageSize={5}
-                rowsPerPageOptions={[5]}
-                // checkboxSelection
-            />
-        </div>
-    );
+        <>
+            <div className="container-fluid">
+                <div className="table-area">
+                    <table className="table table-hover">
+                        <thead>
+                            <tr style={{ "backgroundColor": "#DDDDDD" }}>
+                                <th>구분</th>
+                                <th>퇴직번호</th>
+                                <th>조직</th>
+                                <th>직급</th>
+                                <th>이름</th>
+                                <th>퇴직일</th>
+                                <th>퇴직금액</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style={{ "cursor": "pointer" }}>
+                                <td>1</td>
+                                <td>인사팀</td>
+                                <td>부장</td>
+                                <td>이상목</td>
+                                <td>1,680,000</td>
+                                <td>N</td>
+                                <td style={{width:120}}>
+                                    <button className="btn btn-primary">상세보기</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div align="center">
+                    <form name="search-form" autoComplete="off" style={{ "display": "inline-block" }}>
+                        <select id="searchCondition" name="searchCondition">
+                            <option value="communityTitle">제목</option>
+                            <option value="nickName">작성자</option>
+                        </select>
+                        <input type="search" id="searchValue" name="searchValue" placeholder="검색할 내용을 입력하세요." 
+                        />
+                        <input type="submit" id="searchList" className="btn btn-secondary" value="검색" />
+                    </form>
+                        {/* <button type="submit" className="btn btn-primary float:right">지급하기</button> */}
+                </div>
+            </div>
+        </>
+    )
 }
+
+export default SeveranceTableY;

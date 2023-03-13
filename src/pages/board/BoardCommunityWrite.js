@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function CommunityDetail() {
+function BoardCommunityWrite() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [file, setFile] = useState(null);
@@ -38,6 +38,7 @@ function CommunityDetail() {
 
         <div className="container">
             <h1 className="mt-5 text-center">커뮤니티 글쓰기</h1>
+            <hr />
 
             <form action="" method="post">
                 <div className="form-group">
@@ -54,11 +55,14 @@ function CommunityDetail() {
 
                 <div>
                     <label htmlFor="file">첨부파일</label>
-                    <input type="file" id="file" onChange={handleFileChange} />
-                </div><br />
+                    <p><input type="file" id="file" onChange={handleFileChange} /></p>
+                </div>
+                <br />
 
                 <div>
-                    <button type="submit" className="btn btn-info me-3" style={{ "backgroundColor": "black", "borderColor": "black" }}>등록하기</button>
+                    <button type="submit" className="btn btn-info me-3"
+                        style={{ "backgroundColor": "black", "borderColor": "black" }}>등록하기
+                    </button>
                     <button type="button" className="btn btn-secondary">목록으로</button>
                 </div>
 
@@ -67,4 +71,4 @@ function CommunityDetail() {
     );
 }
 
-export default CommunityDetail;
+export default BoardCommunityWrite;

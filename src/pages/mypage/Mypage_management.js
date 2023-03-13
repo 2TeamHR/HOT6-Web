@@ -1,12 +1,11 @@
 import mpManagement from '../../resources/css/pages/mypage/mypage-management.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
 import profileStyle from '../../resources/css/components/profile.module.css';
-import sampleImg from '../../resources/image/hong.jpeg';
 import Paper from '@mui/material/Paper';
 
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { decodeJwt } from '../../utils/tokenUtils';
 
 import { callGetMemberAPI } from '../../apis/MemberAPICalls';
@@ -16,18 +15,18 @@ function MypageManagement (){
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const member = useSelector(state => state.memberReducer);  
-    const token = decodeJwt(window.localStorage.getItem("accessToken"));   
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));
+    const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
     const memberDetail = member.data;
 
     console.log('token', token.sub);
     console.log('member', member);
+    console.log('memberDetail', memberDetail);
 
     useEffect(
         () => {
-            if (token !== null && (!memberDetail || Object.keys(memberDetail).length === 0)) {
             dispatch(callGetMemberAPI({ memberCode: token.sub }));
-            }
-        }, [dispatch, memberDetail, token]
+        }, []
     );
       
     if (!memberDetail || Object.keys(memberDetail).length === 0) {
@@ -42,11 +41,11 @@ function MypageManagement (){
         navigate("/findpassword", { replace: true })
     }
 
-    // const memberBirth = memberDetail.memberBirth ? new Date(memberDetail.memberBirth) : null;
-    // const formattedMemberBirthe = memberBirth ? memberBirth.toISOString().slice(0, 10) : '';
+    const memberBirth = memberDetail.memberBirth ? new Date(memberDetail.memberBirth) : null;
+    const formattedMemberBirthe = memberBirth ? memberBirth.toISOString().slice(0, 10) : '';
 
-    // const joinDate = memberDetail.memberBirth ? new Date(memberDetail.joinDate) : null;
-    // const formattedJoinDate = joinDate ? joinDate.toISOString().slice(0, 10) : '';
+    const joinDate = memberDetail.memberBirth ? new Date(memberDetail.joinDate) : null;
+    const formattedJoinDate = joinDate ? joinDate.toISOString().slice(0, 10) : '';
     
     return(
         <main className={mainTitleStyle.main}>
@@ -59,7 +58,9 @@ function MypageManagement (){
                 <div className='d-flex ml-5 mr-5'>
                     <Paper elevation={3} className={mpManagement.profileMain}>
                         <div className={mpManagement.mpmProfile}>
-                            <img className={profileStyle.mpmProfileImg} alt="profile_img" src={sampleImg} />
+                            {memberDetail.profileImageList && memberDetail.profileImageList.length > 0 &&
+                            <img className={profileStyle.mpmProfileImg} alt="profile_img" src={memberDetail.profileImageList[0].profileImageLocation} />
+                            }
                             <button className={profileStyle.mpmProfileImgChangeBtn}>변경</button>
                         </div>
                         <div className={mpManagement.infoBtn}>
@@ -95,7 +96,7 @@ function MypageManagement (){
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-calendar-alt mr-3`}></i>
                                 <span>생년월일</span>
-                                <span className='float-right fw-blod'>{memberDetail.memberBirth || ''}</span>
+                                <span className='float-right fw-blod'>{formattedMemberBirthe}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-male-female mr-3`}></i>
@@ -130,7 +131,7 @@ function MypageManagement (){
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-buildings mr-3`}></i>
                                 <span>입사일</span>
-                                <span className='float-right fw-blod'>{memberDetail.joinDate || ''}</span>
+                                <span className='float-right fw-blod'>{formattedJoinDate}</span>
                             </div>
                         </Paper>
                     </div>
