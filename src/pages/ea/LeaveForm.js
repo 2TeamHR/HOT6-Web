@@ -77,6 +77,7 @@ function LeaveForm() {
                 <Grid item xs={3}><label htmlFor="">휴가종료</label></Grid>
                 <Grid item xs={3}><LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
+                    inputFormat='YYYY/MM/DD'
                     disableFuture
                     openTo="day"
                     views={['year', 'month', 'day']}
