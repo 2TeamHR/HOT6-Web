@@ -7,7 +7,7 @@ import { decodeJwt } from '../utils/tokenUtils';
 import moment from 'moment';
 import { BiTimeFive } from 'react-icons/bi';
 import { 
-    callGetMemberAPI, 
+    callGetSimpleMemberAPI,
     callLogoutAPI
 } from "../apis/MemberAPICalls";
 
@@ -29,7 +29,7 @@ function Header() {
     useEffect(
         () => {
             if (token !== null) {
-                dispatch(callGetMemberAPI({ 
+                dispatch(callGetSimpleMemberAPI({ 
                   memberCode: token.sub 
                 }));
               }
@@ -70,7 +70,7 @@ function Header() {
     useEffect(() => {
         const interval = setInterval(() => {
         setRotation(prev => prev + 30);
-        }, 1000);
+        }, 200);
         return () => clearInterval(interval);
     }, []);
 
@@ -103,16 +103,21 @@ function Header() {
 
                     {memberDetail && (
                         <div className={headerStyle.headerRight}>
-                            <button className="btn-primary mr-5 rounded-1" onClick={ onClickLogoutHandler }>로그아웃</button>
-                            <img
-                                alt="profile_img"
-                                src={memberDetail.profileImageList?.[0]?.profileImageLocation ?? 'default-profile-image.png'}
-                                width="10%"
-                                className="rounded-circle"
-                            />
-                            <div className="d-flex flex-column ml-2">
-                                <span className={`fw-bold ${headerStyle.profileText}`}>{memberDetail.memberName}{memberDetail.rankName}</span>
-                                <span className={headerStyle.profileText}>{memberDetail.teamName}</span>
+                            {/* <button className="btn-primary mr-5 rounded-1" onClick={ onClickLogoutHandler }>로그아웃</button> */}
+                            <div className="mr-3">
+                                <span className={`mr-2 ${headerStyle.profileText}`}>{memberDetail.teamName}</span>
+                                <span className={`${headerStyle.profileText}`}>{memberDetail.memberName} {memberDetail.rankName}</span>
+                            </div>
+                            <div className={`mr-3 ${headerStyle.profile}`}>
+                                <img
+                                    alt="profile_img"
+                                    src={memberDetail.profileImageList?.[0]?.profileImageLocation ?? 'default-profile-image.png'}
+                                />
+                            </div>
+                            <i className={`bx bx-bell fs-2 mr-3 ${headerStyle.logoutClick}`}></i>
+                            <div className={`d-flex align-items-center ml-4 ${headerStyle.logoutClick}`}>
+                                <i className={`bx bx-log-out fs-3 mr-1`} style={{ transform: 'rotate(180deg)' }}></i>
+                                <span className={`${headerStyle.profileText}`} onClick={ onClickLogoutHandler }>Log out</span>
                             </div>
                         </div>
                     )}

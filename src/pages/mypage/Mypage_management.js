@@ -166,12 +166,12 @@ function MypageManagement (){
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-buildings mr-3`}></i>
                                 <span>소속팀</span>
-                                <span className='float-right fw-blod'>{memberDetail.teamName || ''}</span>
+                                <span className='float-right fw-blod'>{memberDetail.team.teamName || ''}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-buildings mr-3`}></i>
                                 <span>직급</span>
-                                <span className='float-right fw-blod'>{memberDetail.rankName || ''}</span>
+                                <span className='float-right fw-blod'>{memberDetail.rank.rankName || ''}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-buildings mr-3`}></i>

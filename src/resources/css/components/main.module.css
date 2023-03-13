@@ -159,5 +159,6 @@
 
 .noticeBox {
     margin-top: 20%;
-    margin-bottom: 3%;
+    padding: 5% 5% 10% 5%;
+    margin-bottom: 10%;
 }
