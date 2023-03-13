@@ -3,7 +3,8 @@ import {
     POST_LOGIN,
     POST_REGISTER,
     PUT_MYINFO,
-    PUT_PASSWORD
+    PUT_PASSWORD,
+    PUT_PROFILEIMAGE
 } from '../modules/MemberModule';
 
 /* 개인정보조회 API */
@@ -150,5 +151,35 @@ export const callChangePasswordAPI = ({form, memberCode}) => {
         console.log('[MemberAPICalls] callChangePasswordAPI RESULT : ', result);
 
         dispatch({ type: PUT_PASSWORD, payload: result });
+    };
+}
+
+/* 프로필 이미지 변경 API */
+export const callChangeProfileImageAPI = ({form, memberCode}) => {
+    console.log('[MemberAPICalls] callChangeProfileImageAPI Call');
+    console.log('memberCode', memberCode);
+    console.log('form', form);
+
+    const entries = form.entries();
+        for (const [key, value] of entries) {
+        console.log(`${key}: ${value}`);
+    }
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/profileImage/update/${memberCode}`;
+
+    return async (dispatch, getState) => {
+        const result = await fetch(requestURL, {
+            method: "PUT",
+            headers: {
+                "Accept": "*/*",
+                "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+            },
+            body: form
+        })
+        .then(response => response.json());
+
+        console.log('[MemberAPICalls] callChangeProfileImageAPI RESULT : ', result);
+
+        dispatch({ type: PUT_PROFILEIMAGE, payload: result });
     };
 }

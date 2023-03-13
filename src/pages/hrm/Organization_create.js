@@ -41,8 +41,6 @@ function OrganizationCreate (){
         inlinePhone: ''
     });
 
-    // console.log("form : " + form.memberName);
-
     useEffect(() => {
 
             /* 이미지 업로드시 미리보기 세팅 */
