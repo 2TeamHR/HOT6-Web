@@ -5,14 +5,15 @@ import koLocale from '@fullcalendar/core/locales/ko';
 import CalendarAddBtn from './CalendarAddBtn';
 import { Button, Modal } from "react-bootstrap";
 import { useSelector, useDispatch } from 'react-redux';
-import {callMainCalendarListAPI} from '../../apis/CalendarAPICalls';
+import { 
+  callMainCalendarListAPI 
+  , callCalendarDeleteAPI
+} from '../../apis/CalendarAPICalls';
 
 const MyCalendar = () => {
 
   const dispatch = useDispatch();
   const calendarList = useSelector(state => state.calendarReducer);  
-
-  console.log('calendarList : ', calendarList);
 
   useEffect(
     () => {
@@ -24,8 +25,21 @@ const MyCalendar = () => {
   const [showModal, setShowModal] = useState(false);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-
+  const [selectedCode, setSelectedCode] = useState(null);
   const handleClose = () => setShowModal(false);
+
+  /* 일정 삭제 핸들러 */
+  const onDeleteHandler = async (calendarCode) => {
+    if (window.confirm('정말로 삭제하시겠습니까?')) {
+      try {
+        await dispatch(callCalendarDeleteAPI({ calendarCode }));
+        await dispatch(callMainCalendarListAPI());
+        setShowModal(false);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
 
   return (
     <div className="container mt-5">
@@ -38,8 +52,8 @@ const MyCalendar = () => {
         </Modal.Header>
         <Modal.Body>{content}</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            수정
+          <Button variant="primary" onClick={() => onDeleteHandler(selectedCode)}>
+            삭제
           </Button>
           <Button variant="secondary" onClick={handleClose}>
             닫기
@@ -76,23 +90,28 @@ const MyCalendar = () => {
             const className = (day === 0) ? 'text-danger' : (day === 6) ? 'text-primary' : '';
             return (
               <div className={className}>
-                <span>{date}</span>
+                <span>{date}일</span>
               </div>
             );
           }}
           eventClick={(info) => {
             setTitle(info.event.title);
             setContent(info.event.extendedProps.content);
+            setSelectedCode(info.event.extendedProps.code);
             setShowModal(true);
           }}
-          events={calendarList.map((calendar) => ({
-            title: calendar.calendarTitle,
-            start: calendar.calendarStartDate.toString().substring(0, 10),
-            end: calendar.calendarEndDate.toString().substring(0, 10),
-            borderColor: "#ffffff",
-            className: "text-center",
-            extendedProps: { content: calendar.calendarContent },
-          }))}
+          events={
+            Array.isArray(calendarList) && calendarList.map((calendar) => ({
+              title: calendar.calendarTitle,
+              start: calendar.calendarStartDate,
+              end: calendar.calendarEndDate,
+              code: calendar.calendarCode,
+              backgroundColor:"#2ECC71",
+              borderColor:"#FFFFFF",
+              className: "text-center",
+              extendedProps: { content: calendar.calendarContent }
+            }))
+          }
           // events={[
           //   {
           //     title: "노재영",

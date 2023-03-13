@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 import { POST_REGISTER } from '../../modules/MemberModule';
 import {
     callLoginAPI
-} from '../../api/MemberAPICalls'
+} from '../../apis/MemberAPICalls'
 import { POST_LOGIN } from '../../modules/MemberModule';
 
 function FindPassword() {
