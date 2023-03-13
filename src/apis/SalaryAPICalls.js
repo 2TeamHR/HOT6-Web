@@ -1,4 +1,7 @@
-import { GET_PAYMENT_SALARY, GET_SALARY, GET_SEVERANCE_SALARY, GET_MEMBERNAME_SALARY } from '../modules/SalaryModule.js'
+import { GET_PAYMENT_SALARY, 
+        GET_SALARY, GET_SEVERANCE_SALARY, 
+        GET_MEMBERCODE_SALARY,
+} from '../modules/SalaryModule.js'
 
 export const callGetMySalaryAPI = ({memberCode, year, month}) => {
 
@@ -55,9 +58,9 @@ export const callGetPaymentSalaryAPI = ({year, month, paymentsYn}) => {
     };
 }
 
-export const callGetMemberNameSalaryAPI = ({memberName}) => {
+export const callGetMemberCodeSalaryAPI = ({memberCode}) => {
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/salary/check/insert/${memberName}`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/salary/check/insert/${memberCode}`;
 
     console.log('requst', requestURL);
     
@@ -73,15 +76,15 @@ export const callGetMemberNameSalaryAPI = ({memberName}) => {
         .then(response => response.json());
 
         if(result.status === 200) {
-            console.log('[GetMemberNameAPICalls] callGetPaymentSalaryAPI RESULT : ', result);
-            dispatch({ type: GET_MEMBERNAME_SALARY, payload: result.data });
+            console.log('[GetMemberCodeAPICalls] callGetPaymentSalaryAPI RESULT : ', result);
+            dispatch({ type: GET_MEMBERCODE_SALARY, payload: result.data });
         }
 
     };
 }
 
 
-export const callGetRetireePaymentAPI = ({paymentYn}) => {
+export const callGetSeverancePaymentAPI = ({paymentYn}) => {
 
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/salary/severance/${paymentYn}`;
 
