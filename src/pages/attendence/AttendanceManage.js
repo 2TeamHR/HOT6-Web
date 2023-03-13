@@ -42,6 +42,7 @@ function AttendanceManage() {
         });
     }
 
+    const [ sendData, setSendData] = useState('');    
     const [age, setAge] = useState('');  //부서이름
     const [member1, setMember1] = useState(''); //사원이름
     const [startDate, setStartDate] = useState(new Date());
@@ -103,9 +104,13 @@ function AttendanceManage() {
             },
           })
           .then((response) => {
+            console.log("데이터 나오기 전");
+
             console.log(response.data); // 응답 데이터를 콘솔에 출력
-            console.log(payload);
+            
+ 
             console.log("Attendance Manage");
+            setSendData(response.data);
           })
           .catch((error) => {
             console.error(error);
@@ -220,7 +225,7 @@ function AttendanceManage() {
 
 
                 <div className={attendenceManage.employeeCalender4}>
-                <AttendanceManageTable/>
+                <AttendanceManageTable data={sendData}/>
                 </div>
 
                     <div className={attendenceManage.employeeCalender5}>
