@@ -28,14 +28,21 @@ function MypageMain() {
     const memberDetail = member.data;
     const myLeaveInfo = useSelector(state => state.leaveReducer); 
 
-    /* 임시로 리액트 에러 수정 */
-    let myLeaveAll = 1;
-    let myLeaveLeftover = 1;
+    useEffect(
+        () => {
+            dispatch(callGetMemberAPI({ 
+                memberCode: token.sub 
+            }));
+        }, []
+    );
 
-    if(myLeaveInfo.data !== undefined){
-        myLeaveAll =  myLeaveInfo.data[0].leavePaymentCount;
-        myLeaveLeftover = myLeaveInfo.data[0].leaveLeftoverCount;
-    }
+    useEffect(
+        () => {
+            dispatch(callGetMyLeaveInfoAPI({
+                memberCode: token.sub
+            }));
+        },[]
+    );
 
     useEffect(
         () => {
@@ -46,21 +53,18 @@ function MypageMain() {
         }
     );
 
-    useEffect(() => {
-            dispatch(callGetMyLeaveInfoAPI({
-                memberCode: token.sub
-            }));
-        },[]
-    );
+    if (!memberDetail || Object.keys(memberDetail).length === 0) {
+        return <div>Loading...</div>;
+    };
 
-    useEffect(() => {
-            if(token !== null) {
-                dispatch(callGetMemberAPI({
-                    memberCode: token.sub
-                }));          
-            }
-        },[]
-    );
+     /* 임시로 리액트 에러 수정 */
+     let myLeaveAll = 1;
+     let myLeaveLeftover = 1;
+ 
+     if(myLeaveInfo.data !== undefined){
+         myLeaveAll =  myLeaveInfo.data[0].leavePaymentCount;
+         myLeaveLeftover = myLeaveInfo.data[0].leaveLeftoverCount;
+     }
 
     function tick() {
         setDate(new Date());
@@ -71,12 +75,33 @@ function MypageMain() {
         navigate("/mypage/management", { replace: true })
     }
 
+    /* 출근하기 버튼 핸들러 */
     const onClickStartTimeHandler = () => {
-        setStartTimeStamp(moment(date).format('HH:mm:ss'));
+
+        if(!startTimeStamp) {
+
+            setStartTimeStamp(moment(date).format('HH:mm:ss'));
+        } else {
+
+            alert('이미 출근하셨습니다.');
+        }
     }
 
+    /* 퇴근하기 버튼 핸들러 */
     const onClickEndTimeHandler = () => {
-        setEndTimeStamp(moment(date).format('HH:mm:ss'));
+
+        if(!endTimeStamp) {
+
+            if (!startTimeStamp) {
+
+                alert('출근 시간이 설정되지 않았습니다.');
+            } else if(window.confirm('현재 서버 시간은 ' + date.toLocaleString() + " 입니다.\n정말로 퇴근하시겠습니까?")){
+    
+                setEndTimeStamp(moment(date).format('HH:mm:ss'));
+            }
+        } else {
+            alert('이미 퇴근을 하셨습니다.');
+        }
     }
 
     return (
@@ -86,7 +111,7 @@ function MypageMain() {
                     <Paper elevation={3} className={mypageStyle.module}>
                         <p className={mypageStyle.moduleTitle}>나의 정보</p>
                         <div className={profileStyle.profile}>
-                            <img className={profileStyle.mpmProfileImg} alt="profile_img" src={memberDetail.profileImageList[0].profileImageLocation} />
+                            <img className={profileStyle.mpmProfileImg} alt="profile_img" src={memberDetail?.profileImageList?.[0]?.profileImageLocation ?? 'default-profile-image.png'} />
                         </div>
                         <div className="text-center mt-4 mb-4">
                             <span className="fs-4 fw-bold">{memberDetail.memberName}</span>
@@ -170,12 +195,12 @@ function MypageMain() {
                             <button className={mypageStyle.workBtn} onClick={onClickEndTimeHandler}>퇴근하기</button>
                         </div>
                         <div className={mypageStyle.seeMore}>
-                            <p><Link to="/mypage/attendance">더보기 +</Link></p>
+                            <p><Link to="/mypage/attendance">더보기 ➢</Link></p>
                         </div>
                     </Paper>
                 </div>
 
-                <div className={mainTitleStyle.mainClass}>
+                <div className={`mb-5 ${mainTitleStyle.mainClass}`}>
 
                     <Paper elevation={3} className={mypageStyle.module}>
                         <p className={mypageStyle.moduleTitle}>나의 메세지함</p>
@@ -199,7 +224,7 @@ function MypageMain() {
                             <span>이순신사원</span>
                         </div>
                         <div className={mypageStyle.seeMore}>
-                        <p><Link to="/messsage/receivedMessage" >더보기 +</Link></p>
+                        <p><Link to="/messsage/receivedMessage" >더보기 ➢</Link></p>
                         </div>
                     </Paper>
 
@@ -220,15 +245,14 @@ function MypageMain() {
                             </div>
                         </div>
                         <div className={mypageStyle.seeMore}>
-                            <p><Link to="/mypage/annual/history">더보기 +</Link></p>
+                            <p><Link to="/mypage/annual/history">더보기 ➢</Link></p>
                         </div>
                     </Paper>
 
                     <Paper elevation={3} className={mypageStyle.module}>
                         <p className={mypageStyle.moduleTitle}>나의 근태</p>
                         <div className={mypageStyle.workMonth}>
-                            <span>1</span>
-                            <span>월</span>
+                            <span>{date.toLocaleString('default', { month: 'short' })}</span>
                         </div>
                         <div className="mb-5">
                             <div className="ml-5 mr-5 pb-3">
@@ -245,7 +269,7 @@ function MypageMain() {
                             </div>
                         </div>
                         <div className={mypageStyle.seeMore}>
-                            <p><Link to="/mypage/attendance/history">더보기 +</Link></p>
+                            <p><Link to="/mypage/attendance/history">더보기 ➢</Link></p>
                         </div>
                     </Paper>
 

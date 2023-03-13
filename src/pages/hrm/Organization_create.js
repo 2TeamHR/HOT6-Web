@@ -41,8 +41,6 @@ function OrganizationCreate (){
         inlinePhone: ''
     });
 
-    // console.log("form : " + form.memberName);
-
     useEffect(() => {
 
             /* 이미지 업로드시 미리보기 세팅 */
@@ -111,9 +109,9 @@ function OrganizationCreate (){
 
         console.log(form);
 
-        // alert('재직자명단으로 이동합니다.');
-        // navigate('/organization/chart', { replace: true});
-        // window.location.reload();
+        alert('재직자명단으로 이동합니다.');
+        navigate('/organization/chart', { replace: true});
+        window.location.reload();
     }
 
     return(
