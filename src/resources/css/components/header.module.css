@@ -1,0 +1,38 @@
+.profileText {
+  font-size: 20px;
+  text-align: center;
+}
+
+.profile {
+  margin: auto;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  border: 0px;
+  overflow: hidden;
+}
+
+.headerRight {
+  display: flex;
+  justify-content:end;
+  align-items: center;
+  margin-right: 10%;
+}
+
+.clock-icon {
+  animation: rotate 2s infinite linear;
+}
+
+.logoutClick:hover {
+  color: rgb(0, 179, 255);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

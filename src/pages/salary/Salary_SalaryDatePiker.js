@@ -1,5 +1,7 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { callGetPaymentSalaryAPI } from '../../apis/SalaryAPICalls';
 
 const years = Array.from({length: (new Date().getFullYear() - 2007)}, (_, i) => 2008 + i);
 const months = [
@@ -24,11 +26,43 @@ const statues = [
 
 
 function SelectDatePiker2() {
+  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [year, setYear] = useState('2023');
   const [month, setMonth] = useState('02');
-  const [status, setStatus] = useState('N');
-  
-  const navigate = useNavigate();
+  const [paymentsYn, setPaymentYn] = useState('N');
+  const [memberData, setMemberData] = useState(null);
+  const [changeDate, setChangeDate] = useState('N');
+
+  useEffect(() => {    
+      if(changeDate !== null) {
+          dispatch(callGetPaymentSalaryAPI({
+              year: year,
+              month: month,
+              paymentsYn: paymentsYn
+          })).then((data) => {
+            setMemberData(data);
+          });          
+      }
+  }
+  ,[changeDate]
+);
+
+  function handleSearch(e) {
+      e.preventDefault();
+      setChangeDate("Y");
+      if(changeDate !== null) {
+      dispatch(callGetPaymentSalaryAPI({
+              year: year,
+              month: month,
+              paymentsYn: paymentsYn
+      })).then((data) => {
+          setMemberData(data);
+      });          
+      }
+  }
+
 
   function handleYearChange(e) {
     setYear(e.target.value);
@@ -39,21 +73,12 @@ function SelectDatePiker2() {
   }
 
   function handleStatusChange(e) {
-    setStatus(e.target.value);
+    setPaymentYn(e.target.value);
   }
 
-  function handleClick() {
+  function insertHandler() {
 
-
-    const paymentStatus = statues.find(statu => statu.value === status);
-
-    console.log(paymentStatus.value);
-    
-    if (paymentStatus.value === 'Y') {
-      navigate('/salary/checkY');
-    } else {
-      navigate('/salary/checkN');
-    }
+    navigate('/salary/check/insert');
   }
 
 
@@ -81,7 +106,7 @@ function SelectDatePiker2() {
         <span className="ml-2">월</span>
       </label>
       <label className="ml-3">
-        <select value={status} onChange={handleStatusChange} style={{width:100}}>
+        <select value={paymentsYn} onChange={handleStatusChange} style={{width:100}}>
             {statues.map((status) => (
               <option key={status.value} value={status.value}>
                 {status.label}
@@ -89,7 +114,8 @@ function SelectDatePiker2() {
             ))}
         </select>
       </label>
-      <button className='btn btn-primary ml-3' onClick={handleClick}>조회하기</button>
+      <button className='btn btn-primary ml-3' onClick={handleSearch}>조회하기</button>
+      <button className='btn btn-primary ml-3' onClick={insertHandler}>추가하기</button>
     </div>
   );
 }
