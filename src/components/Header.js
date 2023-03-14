@@ -95,10 +95,11 @@ function Header() {
                     </div> */}
 
                     <div className="d-flex align-items-center">
-                        <BiTimeFive style={{ transform: `rotate(${rotation}deg)`, fontSize: "2rem" }} />
-                        <span className="ml-2 fs-3 fw-bold text-danger">
-                            발표까지 남은 시간: {dDay !== null ? timestampToTime(dDay) : "loading..."}
-                        </span>
+                    <BiTimeFive style={{ transform: `rotate(${rotation}deg)`, fontSize: "2rem" }} />
+                    <span className="ml-2 fs-3 fw-bold text-danger">
+                        {new Date().getHours() >= 21 || new Date().getHours() < 2 ? " [ 잠.이.오.니.?. ]" : ""}
+                        발표까지 남은 시간: {dDay !== null ? timestampToTime(dDay) : "loading..."}
+                    </span>
                     </div>
 
                     {memberDetail && (
