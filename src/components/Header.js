@@ -111,8 +111,8 @@ function Header() {
                                 className="rounded-circle"
                             />
                             <div className="d-flex flex-column ml-2">
-                                <span className={`fw-bold ${headerStyle.profileText}`}>{memberDetail.memberName}{memberDetail.rankName}</span>
-                                <span className={headerStyle.profileText}>{memberDetail.teamName}</span>
+                                <span className={`fw-bold ${headerStyle.profileText}`}>{memberDetail.memberName}{memberDetail.rank.rankName}</span>
+                                <span className={headerStyle.profileText}>{memberDetail.team.teamName}</span>
                             </div>
                         </div>
                     )}

@@ -3,7 +3,7 @@ import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
-import { Button, Grid, TextField } from '@mui/material';
+import { Button, Container, Grid, TextField } from '@mui/material';
 import EaSignerSearch from './EaSignerSearch';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -19,7 +19,8 @@ const Item = styled(Paper)(({ theme }) => ({
 function SalaryForm() {
   return (
     <>
-      <Grid container direction="row">
+    <Container>
+      <Grid container direction="row"  spacing={3}>
         <Grid item xs={8}>
           <Paper elevation={5} >
             <h2>급여정정 신청서</h2>
@@ -56,6 +57,7 @@ function SalaryForm() {
           </Paper>
         </Grid>
       </Grid>
+      </Container>
     </>
   );
 }

@@ -1,14 +1,13 @@
-import * as React from 'react';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
-import dayjs from 'dayjs';
 import { styled } from '@mui/material/styles';
-import { Button,  Container,  Grid, TextField } from '@mui/material';
+import { Button, Container, Grid, TextField } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import EaSignerSearch from './EaSignerSearch';
+import { useState } from 'react';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -23,7 +22,17 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 function LeaveForm() {
-  const [value, setValue] = React.useState(dayjs('2022-04-07'));
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+
+
+
+
+
+
+
+
+
   return (
     <>
       <Container>
@@ -48,7 +57,15 @@ function LeaveForm() {
                 <Grid item xs={3}><label>기안문서번호</label></Grid>
                 <Grid item xs={3}><input type="text" /></Grid>
                 <Grid item xs={3}><label>기안일시</label></Grid>
-                <Grid item xs={3}><input type="date" name="" id="" /></Grid>
+                <Grid item xs={3}><LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    disabled
+                    openTo="day"
+                    views={['year', 'month', 'day']}
+                    inputFormat={'YYYY-MM-DD'}
+                    value={new Date()}
+                    renderInput={(params) => <TextField size="small" {...params} />}
+                  /></LocalizationProvider></Grid>
                 <Grid item xs={3}><label>제목</label></Grid>
                 <Grid item xs={3}><input type="text" /></Grid>
                 <Grid item xs={3}><label>내용</label></Grid>
@@ -64,12 +81,13 @@ function LeaveForm() {
                 <Grid item xs={3}><label htmlFor="">휴가시작</label></Grid>
                 <Grid item xs={3}><LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
-                    disableFuture
                     openTo="day"
                     views={['year', 'month', 'day']}
-                    value={value}
+                    inputFormat={'YYYY-MM-DD'}
+                    minDate={new Date()}
+                    value={startDate}
                     onChange={(newValue) => {
-                      setValue(newValue);
+                      setStartDate(newValue);
                     }}
                     renderInput={(params) => <TextField size="small" {...params} />}
                   />
@@ -77,16 +95,16 @@ function LeaveForm() {
                 <Grid item xs={3}><label htmlFor="">휴가종료</label></Grid>
                 <Grid item xs={3}><LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
-                    disableFuture
                     openTo="day"
                     views={['year', 'month', 'day']}
-                    value={value}
+                    inputFormat={'YYYY-MM-DD'}
+                    value={endDate}
+                    minDate={new Date()}
                     onChange={(newValue) => {
-                      setValue(newValue);
+                      setEndDate(newValue);
                     }}
                     renderInput={(params) => <TextField size="small" {...params} />}
-                  />
-                </LocalizationProvider></Grid>
+                  /></LocalizationProvider></Grid>
                 <Grid item xs={3}><label htmlFor="">첨부파일</label></Grid>
                 <Grid item xs={3}><input type="file" /></Grid>
                 <Grid item xs={3}></Grid>
