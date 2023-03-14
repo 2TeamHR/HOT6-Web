@@ -81,8 +81,8 @@ function OrganizationChart() {
                 page={currentPage} 
                 onChange={handlePageChange} 
               />
-          </div>
-
+            </div>
+            
           </div>
         </div>
       </main>

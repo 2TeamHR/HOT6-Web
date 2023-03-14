@@ -28,6 +28,8 @@ function MypageMain() {
     const memberDetail = member.data;
     const myLeaveInfo = useSelector(state => state.leaveReducer); 
 
+    console.log('token : ', token);
+
     useEffect(
         () => {
             dispatch(callGetMemberAPI({ 

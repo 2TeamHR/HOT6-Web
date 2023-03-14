@@ -102,7 +102,7 @@ function App() {
             {/* 인사 */}
             <Route path="/organization/certification" element={<OrganiCertificate />} />
             <Route path="/organization/chart" element={<OrganizationChart />} />
-            <Route path="/organization/creacte" element={<OrganizationCreate />} />
+            <Route path="/organization/create" element={<OrganizationCreate />} />
             <Route path="/organization/retireeChart" element={<OrganizationRetireeChart />} />
 
             {/* 급여 */}
