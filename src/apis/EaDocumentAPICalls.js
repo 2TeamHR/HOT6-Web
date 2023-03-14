@@ -10,13 +10,13 @@ export const callEaDocumentListAPI = () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "*/*",
-                "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
             }
         })
         .then(response => response.json());
 
-        if(result.state === 200) {
+        if(result.status === 200) {
             dispatch({type: GET_EADOCUMENT, payload:result.data});
+            console.log(result.data);
         }
-    }
+    };
 }
