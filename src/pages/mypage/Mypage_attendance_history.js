@@ -40,23 +40,6 @@ function  MypageAttendanceHistory () {
         ,[]
     );
 
-    let commuteTotalTimeSum = 0;
-    const now = new Date();
-    const month = now.getMonth() + 1;
-    
-    for (let i = 0; i < attendanceList.length; i++) {
-
-    console.log('data.commuteDate.splice(7,7) === 2', attendanceList[i].commuteDate);
-    const yearFirstChar = String(attendanceList[i].commuteDate).charAt(6);
-    console.log('yearFirstChar', yearFirstChar);
-
-    if (parseInt(yearFirstChar) === month) {
-        commuteTotalTimeSum += attendanceList[i].commuteTotalTime;
-    }
-    }
-
-    console.log("총 근무 시간 : " + commuteTotalTimeSum);
-
     return (
         <main className={mainTitleStyle.main}>
             <div>
@@ -77,8 +60,8 @@ function  MypageAttendanceHistory () {
                         <EmployState/>
                     </div>
                 </div>
-                <h1>2월달 총 근무 시간 : {commuteTotalTimeSum}</h1>
-                <Paper elevation={3} className="mt-5 pb-5">
+
+                <Paper elevation={3} className="mt-4 pb-5">
                     <Table>
                         <thead>
                             <tr className="text-center">
@@ -105,7 +88,7 @@ function  MypageAttendanceHistory () {
                                     <td className='align-middle'>{attendance.commuteFcountTime.slice(11,19)}</td>
                                     <td className='align-middle'>{attendance.commuteTotalTime}시간</td>
                                     <td className='align-middle'>
-                                        <Button>미쳤나봥</Button>
+                                        <Button>사유서 제출 버튼 미구현</Button>
                                     </td>
                                 </tr>
                             ))}

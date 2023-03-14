@@ -29,7 +29,7 @@ function Login() {
 
             if (loginMember.status === 200) {
                 console.log("[Login] Login SUCCESS {}", loginMember);
-                navigate("/", { replace: true });
+                navigate("/main", { replace: true });
             }
 
             /* 회원 가입 후 로그인 페이지로 안내 되었을 때 */
@@ -58,12 +58,13 @@ function Login() {
         navigate("/register", { replace: true })
     }
 
+    console.log('loginMember',typeof loginMember.status);
     /* 로그인 버튼 클릭시 디스패처 실행 및 메인 페이지로 이동 */
     const onClickLoginHandler = () => {
         dispatch(callLoginAPI({	// 로그인
             form: form
         }));
-        navigate("/main", {replace : true})
+        // navigate("/main", {replace : true})
     }
 
     const onEnterkeyHandler = (e) => {
