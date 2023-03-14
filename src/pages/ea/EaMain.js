@@ -19,6 +19,12 @@ import EaRealTable from "./EaRealTable";
 function EaMain() {
 
 
+
+
+
+
+  
+
   return (
     <>
       <Container maxWidth={"lg"}>

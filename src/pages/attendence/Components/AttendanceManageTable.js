@@ -81,40 +81,36 @@ const columns = [
 
 ];
 //
-const rows = [
-    { id: 1,
-      status: '정상출근',
-        department:'개발부',
-        level: 'Jon',
-        name: '홍길동',
-        date: randomCreatedDate(),
-        originStartTime: '09:00',
-        startTime: '08:10',
-        originEndTime:'18:00',
-        endTime:'08:10',
-        note:'수정'
-    },
 
-    { id: 2,
-        status: '정상출근',
-        department:'개발부',
-        level: 'Jon',
-        name: '홍길동',
-        date: randomCreatedDate(),
-        originStartTime: '09:00',
-        startTime: '08:10',
-        originEndTime:'18:00',
-        endTime:'08:10',
-        note:'수정'
-    }
-];
 
 const editEventHandler = () => {
 
 
 }
 
-export default function AttendanceManageTable() {
+export default function AttendanceManageTable(props) {
+
+    console.log("props 테스트",props.data);
+
+    if (!props.data) {
+        return null; // 혹은 로딩 중임을 나타내는 다른 컴포넌트를 반환할 수도 있습니다.
+      }
+
+    const rows = Object.entries(props.data.data).map(([key, attendanceList], index) => (
+        { id: index,
+          status: '정상출근',
+            department:attendanceList.teamName,
+            level: attendanceList.rankName,
+            name: attendanceList.memberName,
+            date: attendanceList.commuteDate,
+            originStartTime: attendanceList.commuteStartTime,
+            startTime: attendanceList.commuteScountTime,
+            originEndTime:attendanceList.commuteFinishTime,
+            endTime:attendanceList.commuteFcountTime,
+            note:'수정'
+        }));
+    
+    
 
 
     return (
