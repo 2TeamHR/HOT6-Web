@@ -1,18 +1,11 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+ import { Navigate } from 'react-router-dom';
 
-function PrivateRoute({ rules, component: Component }) {
+ function PrivateRoute({ authenticated, component: Component }) {
+    
+   return (
+     authenticated ? Component : <Navigate to='/' {...alert("접근할 수 없는 페이지입니다.")} />
+   )
+ }
 
-    console.log('rules : ', rules);
-
-  if (rules) {
-
-    return Component;
-  }
-
-    alert("접근할 수 없는 페이지입니다.");
-    return <Navigate to="/" />;
-  
-}
-
-export default PrivateRoute;
+ export default PrivateRoute 

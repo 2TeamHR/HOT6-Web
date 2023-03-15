@@ -56,26 +56,23 @@ import ReinstatmentForm from './pages/ea/ReinstatementForm';
 import SeveranceInsert from './pages/salary/Salary_SeveranceInsert';
 import SalaryInsert from './pages/salary/Salary_SalaryInsert';
 import PrivateRoute from './components/PrivateRoute';
+import AdminRoute from './components/AdminRoute';
 import { decodeJwt } from '../src/utils/tokenUtils';
 
 function App() {
 
   const token = decodeJwt(window.localStorage.getItem("accessToken"));
 
-  console.log('APP token : ', token);
-
   return (
       <BrowserRouter>
         <Routes>
           {/* 레이아웃 사이에 넣기 */}
-          <Route index element={<Login />} />
+          <Route index element={<Login/>} />
           {/* <Route path="/findpassword" element={<FindPassword />} /> */}
-          <Route path="/ChangePassword" element={<ChangePassword />} />
           {/* <Route path="/" element={ <Layout /> } > */}
-          <Route path="/" element={<PrivateRoute rules={token} component={<Layout />}/>}>
+          <Route path="/" element={<PrivateRoute authenticated={token} component={<Layout />}/>}>
+            <Route path="/ChangePassword" element={<ChangePassword />} />
             <Route path='/main' element={ <Main />} />
-            <Route path="/attendence/AttendanceManage" element={<AttendanceManage />} />
-            <Route path="/attendence/AttendanceSelectTime" element={<AttendanceSelectTime />} />
 
             {/* 전자결재 */}
             <Route path="/ea/main" element={<EaMain />} />
@@ -101,39 +98,41 @@ function App() {
             <Route path="/mypage/annual/history" element={<MypageAnnualHistory />}/>
 
             {/* 근태관리 */}
-            <Route path="/annual/standardsManagement" element={<AnnualStandardsManagement />}/>
-            <Route path="/annual/payment" element={<AnnualPayment />}/>
-            <Route path="/annual/management" element={<AnnualManagement />}/>
-            <Route path="/annual/management/detailed" element={<AnnualManagementDetailed />}/>
+            <Route path="/attendence/AttendanceManage" element={<AdminRoute authenticated={token} component={<AttendanceManage />}/>} />
+            <Route path="/attendence/AttendanceSelectTime" element={<AdminRoute authenticated={token} component={<AttendanceSelectTime />}/>} />
+            <Route path="/annual/payment" element={<AdminRoute authenticated={token} component={<AnnualPayment />}/>}/>
+            <Route path="/annual/management" element={<AdminRoute authenticated={token} component={<AnnualManagement />}/>}/>
+            <Route path="/annual/management/detailed" element={<AdminRoute authenticated={token} component={<AnnualManagementDetailed />}/>}/>
+            <Route path="/annual/standardsManagement" element={<AdminRoute authenticated={token} component={<AnnualStandardsManagement />}/>}/>
 
             {/* 인사 */}
             <Route path="/organization/certification" element={<OrganiCertificate />} />
             <Route path="/organization/chart" element={<OrganizationChart />} />
-            <Route path="/organization/create" element={<OrganizationCreate />} />
-            <Route path="/organization/retireeChart" element={<OrganizationRetireeChart />} />
+            <Route path="/organization/create" element={<AdminRoute authenticated={token} component={<OrganizationCreate />}/>} />
+            <Route path="/organization/retireeChart" element={<AdminRoute authenticated={token} component={<OrganizationRetireeChart />}/>} />
 
             {/* 급여 */}
             <Route path="/salary/check" element={ <SalaryCheck />} />
             <Route path="/salary/specification" element={ <Specification />} />
-            <Route path="/salary/check/N" element={ <AllCheckN />} />
-            <Route path="/salary/check/Y" element={ <AllCheckY />} />
-            <Route path="/salary/check/insert" element={ <SalaryInsert />} />
-            <Route path="/salary/severance/N" element={ <SeveranceN />} />
-            <Route path="/salary/severance/Y" element={ <SeveranceY />} />
-            <Route path="/salary/severance/insert" element={ <SeveranceInsert />} />
-            <Route path="/salary/bonus" element={ <SalaryBonus />} />
-            <Route path="/salary/bonus/insert" element={ <BonusInsert />} />
+            <Route path="/salary/check/N" element={<AdminRoute authenticated={token} component={<AllCheckN />}/> } />
+            <Route path="/salary/check/Y" element={<AdminRoute authenticated={token} component={<AllCheckY />}/> } />
+            <Route path="/salary/check/insert" element={<AdminRoute authenticated={token} component={<SalaryInsert />}/> } />
+            <Route path="/salary/severance/N" element={<AdminRoute authenticated={token} component={<SeveranceN />}/> } />
+            <Route path="/salary/severance/Y" element={<AdminRoute authenticated={token} component={<SeveranceY />}/> } />
+            <Route path="/salary/severance/insert" element={<AdminRoute authenticated={token} component={<SeveranceInsert />}/> } />
+            <Route path="/salary/bonus" element={<AdminRoute authenticated={token} component={<SalaryBonus />}/> } />
+            <Route path="/salary/bonus/insert" element={<AdminRoute authenticated={token} component={<BonusInsert />}/> } />
 
             {/* 게시판 */}
             <Route path="/board/notice" element={<BoardNotice />} />
-            <Route path="/board/notice/write" element={<BoardNoticeWrite />} />
+            <Route path="/board/notice/write" element={<AdminRoute authenticated={token} component={<BoardNoticeWrite />}/> } />
             <Route path="/board/notice/detail" element={<BoardNoticeDetail />} />
             <Route path="/board/community" element={<BoardCommunity />} />
+            <Route path="/board/community/write" element={<BoardCommunityWrite />} />
+            <Route path="/board/community/detail" element={<BoardCommunityDetail/>} />
 
             {/* 캘린더 */}
             <Route path="/calendar" element={<MyCalendar />} />
-            <Route path="/board/community/write" element={<BoardCommunityWrite />} />
-            <Route path="/board/community/detail" element={<BoardCommunityDetail/>} />
 
             {/* 메세지 */}
             <Route path="/messsage/message" element={<Message />} />
