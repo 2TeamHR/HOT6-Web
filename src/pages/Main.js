@@ -1,34 +1,13 @@
 import mainStyle from '../resources/css/components/main.module.css';
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MyCalendar from './calendar/MyCalendar';
 import Paper from '@mui/material/Paper';
-import { useSelector, useDispatch } from 'react-redux';
-
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-import { decodeJwt } from '../utils/tokenUtils';
-
-import { callGetMemberAPI } from '../apis/MemberAPICalls';
 
 function Main() {
 
-    const [value, onChange] = useState(new Date());
-    const loginMember = useSelector(state => state.memberReducer);
-    const token = decodeJwt(window.localStorage.getItem("accessToken"));
+    // const [value, onChange] = useState(new Date());
 
-    const dispatch = useDispatch(); 
-
-    useEffect(
-        () => {
-            dispatch(callGetMemberAPI({ 
-                memberCode: token.sub 
-            }));
-        }, []
-    );
-
-    console.log('1111111', loginMember.length);
     return (
         <main className={`${mainStyle.main} mt-4 m row`}>
             
