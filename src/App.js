@@ -55,49 +55,66 @@ import LOAForm from './pages/ea/LOAForm';
 import ReinstatmentForm from './pages/ea/ReinstatementForm';
 import SeveranceInsert from './pages/salary/Salary_SeveranceInsert';
 import SalaryInsert from './pages/salary/Salary_SalaryInsert';
+import ProtectedRoutes from './pages/login/ProtectedRoute';
 
 function App() {
 
   return (
-      <BrowserRouter>
-        <Routes>
-          {/* 레이아웃 사이에 넣기 */}
-          <Route index element={<Login />} />
-          <Route path="/findpassword" element={<FindPassword />} />
-          <Route path="/ChangePassword" element={<ChangePassword />} />
-          <Route path="/" element={ <Layout /> } >
-            <Route path='/main' element={ <Main />} />
-            <Route path="/attendence/AttendanceManage" element={<AttendanceManage />} />
-            <Route path="/attendence/AttendanceSelectTime" element={<AttendanceSelectTime />} />
+    <BrowserRouter>
+      <Routes>
+        {/* 레이아웃 사이에 넣기 */}
+
+
+
+        {/* 퍼블릭 항목 */}
+        <Route path="/login" element={<Login />} />
+
+        {/* 권한여부 항목 */}
+
+
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/" element={<Layout />} >
+            <Route path='/' element={<Main />} />
+            <Route path='/main' element={<Main />} />
+            <Route path="/findpassword" element={<FindPassword />} />
+            <Route path="/ChangePassword" element={<ChangePassword />} />
+            </Route>
+        </Route>
+
+
+
+
+            {/* <Route path="/attendence/AttendanceManage" element={<AttendanceManage />} />
+          <Route path="/attendence/AttendanceSelectTime" element={<AttendanceSelectTime />} /> */}
 
             {/* 전자결재 */}
             <Route path="/ea/main" element={<EaMain />} />
-            <Route path='/ea/draftMenu' element={<EaDraftMenu />}/>
-            <Route path='/ea/leaveForm' element={<LeaveForm />}/>
-            <Route path='/ea/retireForm' element={<RetireForm />}/>
-            <Route path='/ea/salaryForm' element={<SalaryForm />}/>
-            <Route path='/ea/dutyForm' element={<DutyForm />}/>
-            <Route path='/ea/loaForm' element={<LOAForm />}/>
-            <Route path='/ea/reinstatementForm' element={<ReinstatmentForm />}/>
-            <Route path='/ea/certificationForm' element={<CertificationForm />}/>
-            <Route path='/ea/draftInbox' element={<EaDraftInbox />}/>
-            <Route path='/ea/wait' element={<EaWaitInbox />}/>
-            <Route path='/ea/prograss' element={<EaPrograssInbox />}/>
-            <Route path='/ea/complete' element={<EaCompleteInbox />}/>
+            <Route path='/ea/draftMenu' element={<EaDraftMenu />} />
+            <Route path='/ea/leaveForm' element={<LeaveForm />} />
+            <Route path='/ea/retireForm' element={<RetireForm />} />
+            <Route path='/ea/salaryForm' element={<SalaryForm />} />
+            <Route path='/ea/dutyForm' element={<DutyForm />} />
+            <Route path='/ea/loaForm' element={<LOAForm />} />
+            <Route path='/ea/reinstatementForm' element={<ReinstatmentForm />} />
+            <Route path='/ea/certificationForm' element={<CertificationForm />} />
+            <Route path='/ea/draftInbox' element={<EaDraftInbox />} />
+            <Route path='/ea/wait' element={<EaWaitInbox />} />
+            <Route path='/ea/prograss' element={<EaPrograssInbox />} />
+            <Route path='/ea/complete' element={<EaCompleteInbox />} />
 
             {/* 마이페이지 */}
-            <Route path="/mypage/main" element={ <MypageMain />} />
-            <Route path="/mypage/attendance" element={<MypageAttendance />}/>
-            <Route path="/mypage/management" element={<MypageManagement />}/>
-            <Route path="/mypage/management/update" element={<MypageManagementUpdate />}/>
-            <Route path="/mypage/attendance/history" element={<MypageAttendanceHistory />}/>
-            <Route path="/mypage/annual/history" element={<MypageAnnualHistory />}/>
+            <Route path="/mypage/main" element={<MypageMain />} />
+            <Route path="/mypage/attendance" element={<MypageAttendance />} />
+            <Route path="/mypage/management" element={<MypageManagement />} />
+            <Route path="/mypage/management/update" element={<MypageManagementUpdate />} />
+            <Route path="/mypage/attendance/history" element={<MypageAttendanceHistory />} />
+            <Route path="/mypage/annual/history" element={<MypageAnnualHistory />} />
 
             {/* 근태관리 */}
-            <Route path="/annual/standardsManagement" element={<AnnualStandardsManagement />}/>
-            <Route path="/annual/payment" element={<AnnualPayment />}/>
-            <Route path="/annual/management" element={<AnnualManagement />}/>
-            <Route path="/annual/management/detailed" element={<AnnualManagementDetailed />}/>
+            <Route path="/annual/standardsManagement" element={<AnnualStandardsManagement />} />
+            <Route path="/annual/payment" element={<AnnualPayment />} />
+            <Route path="/annual/management" element={<AnnualManagement />} />
+            <Route path="/annual/management/detailed" element={<AnnualManagementDetailed />} />
 
             {/* 인사 */}
             <Route path="/organization/certification" element={<OrganiCertificate />} />
@@ -106,16 +123,16 @@ function App() {
             <Route path="/organization/retireeChart" element={<OrganizationRetireeChart />} />
 
             {/* 급여 */}
-            <Route path="/salary/check" element={ <SalaryCheck />} />
-            <Route path="/salary/specification" element={ <Specification />} />
-            <Route path="/salary/check/N" element={ <AllCheckN />} />
-            <Route path="/salary/check/Y" element={ <AllCheckY />} />
-            <Route path="/salary/check/insert" element={ <SalaryInsert />} />
-            <Route path="/salary/severance/N" element={ <SeveranceN />} />
-            <Route path="/salary/severance/Y" element={ <SeveranceY />} />
-            <Route path="/salary/severance/insert" element={ <SeveranceInsert />} />
-            <Route path="/salary/bonus" element={ <SalaryBonus />} />
-            <Route path="/salary/bonus/insert" element={ <BonusInsert />} />
+            <Route path="/salary/check" element={<SalaryCheck />} />
+            <Route path="/salary/specification" element={<Specification />} />
+            <Route path="/salary/check/N" element={<AllCheckN />} />
+            <Route path="/salary/check/Y" element={<AllCheckY />} />
+            <Route path="/salary/check/insert" element={<SalaryInsert />} />
+            <Route path="/salary/severance/N" element={<SeveranceN />} />
+            <Route path="/salary/severance/Y" element={<SeveranceY />} />
+            <Route path="/salary/severance/insert" element={<SeveranceInsert />} />
+            <Route path="/salary/bonus" element={<SalaryBonus />} />
+            <Route path="/salary/bonus/insert" element={<BonusInsert />} />
 
             {/* 게시판 */}
             <Route path="/board/notice" element={<BoardNotice />} />
@@ -126,17 +143,23 @@ function App() {
             {/* 캘린더 */}
             <Route path="/calendar" element={<MyCalendar />} />
             <Route path="/board/community/write" element={<BoardCommunityWrite />} />
-            <Route path="/board/community/detail" element={<BoardCommunityDetail/>} />
+            <Route path="/board/community/detail" element={<BoardCommunityDetail />} />
 
             {/* 메세지 */}
             <Route path="/messsage/message" element={<Message />} />
             <Route path="/messsage/MessageSent" element={<MessageSent />} />
             <Route path="/messsage/MessageTrash" element={<MessageTrash />} />
             <Route path="/messsage/receivedMessage" element={<ReceivedMessage />} />
-          </Route>
-        </Routes>
 
-      </BrowserRouter>
+
+          
+
+
+
+
+      </Routes>
+
+    </BrowserRouter>
   );
 }
 
