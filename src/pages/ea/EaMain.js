@@ -29,7 +29,7 @@ function EaMain() {
     <>
       <Container maxWidth={"lg"}>
         <h4>전자결재 메인</h4>
-        <Grid container direction="row" rowSpacing={4} columnSpacing={4} justifyContent="space-between" >
+        <Grid container direction="row" rowSpacing={4} justifyContent="space-between" >
           <Grid item xs="auto">
             <Card sx={{ minWidth: 250 }}>
               <CardContent>

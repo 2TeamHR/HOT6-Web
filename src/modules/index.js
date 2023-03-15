@@ -5,6 +5,7 @@ import memberReducer from './MemberModule';
 import organizationReducer from './OrganizationModule';
 import boardNoticeReducer from "./BoardNoticeModule";
 import calendarReducer from "./CalendarModule"
+import eaDocumentReducer from "./EaDocumentModule"
 
 const rootReducer = combineReducers({
 
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     , organizationReducer
     , boardNoticeReducer
     , calendarReducer
+    , eaDocumentReducer
 });
 
 export default rootReducer;

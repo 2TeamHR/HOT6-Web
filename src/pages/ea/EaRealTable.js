@@ -1,7 +1,5 @@
 import {
-  Button,
-  Container,
-  Grid,
+  Grid
 } from "@mui/material";
 import * as React from "react";
 import Table from "@mui/material/Table";
@@ -11,29 +9,23 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { callEaDocumentListAPI } from '../../apis/EaDocumentAPICalls';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 
 function EaRealTable() {
 
-  const [ listData, setListdata]  = useState([]);
   const dispatch = useDispatch();
   const documentList = useSelector(state => state.eaDocumentReducer);
+
+  console.log("documentList{}", documentList);
+
 
   useEffect(() => {
     dispatch(callEaDocumentListAPI());
   }, []);
 
-  console.log("documentList{}",documentList?.data);
-  console.log('listdata{}',listData);
-
-
-
-
   return (
     <>
-
-
       <Grid item xs={12}>
         <Table aria-label="collapsible table" sx={{ margin: 0 }}>
           <TableHead>
@@ -49,12 +41,22 @@ function EaRealTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-          {documentList?.map()}
+            {documentList.map((docu, index) => (<><TableRow key={docu.eaCode}>
+              
+              <TableCell align="center">{docu?.eaCode}</TableCell>              
+              <TableCell align="center">{docu?.dtype}</TableCell>              
+              <TableCell align="center">{docu?.eaSubject}</TableCell>
+              <TableCell align="center">{/* {docu?.teamName} */}</TableCell>
+              <TableCell align="center">{/* {docu?.rankName} */}</TableCell>              
+              <TableCell align="center">{docu?.eaMember?.memberName}</TableCell>
+              <TableCell align="center">{docu?.eaDate}</TableCell>
+              <TableCell align="center">{/* {docu?.statusName} */}</TableCell>
+              </TableRow>
+            </>
+            ))}
           </TableBody>
         </Table>
-
       </Grid>
-
     </>
   );
 }
