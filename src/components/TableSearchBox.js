@@ -1,23 +1,63 @@
 import { Component } from 'react';
 import tableStyle from '../resources/css/components/tableComponent.module.css';
 
+
+/* 팀 검색 컴포넌트 */
 export class TsbDepartment extends Component{
+
+    teamSearchChangeHandler = (e) => {
+        this.props.onChange(e.target.value);
+    }
 
     render(){
 
         return(
             <div className="float-left mr-4">
-                <span className="mr-2">부서 이름</span>
-                <select>
+                <span className="mr-2">팀명 : </span>
+                <select name='teamSearch' onChange={this.teamSearchChangeHandler}>
                     <option>전체</option>
-                    <option>경영관리부</option>
-                    <option>마케팅부</option>
+                    <option value="1">인사팀</option>
+                    <option value="2">총무팀</option>
+                    <option value="3">회계팀</option>
+                    <option value="4">영업팀</option>
+                    <option value="5">마케팅팀</option>
+                    <option value="6">개발1팀</option>
+                    <option value="7">개발2팀</option>
                 </select>
             </div>
         );
     }
 }
 
+/* 직급 검색 컴포넌트 */
+export class TsbRank extends Component{
+
+    rankSearchChangeHandler = (e) => {
+        this.props.onChange(e.target.value);
+    }
+
+    render(){
+
+        return(
+            <div className="float-left mr-4">
+                <span className="mr-2">직급명 : </span>
+                <select name='teamSearch' onChange={this.rankSearchChangeHandler}>
+                    <option>전체</option>
+                    <option value="1">사장</option>
+                    <option value="2">이사</option>
+                    <option value="3">팀장</option>
+                    <option value="4">차장</option>
+                    <option value="5">과장</option>
+                    <option value="6">대리</option>
+                    <option value="7">주임</option>
+                    <option value="7">사원</option>
+                </select>
+            </div>
+        );
+    }
+}
+
+/* 사원 이름 검색 컴포넌트 */
 export class TsbEmployee extends Component{
 
     render(){
@@ -31,11 +71,12 @@ export class TsbEmployee extends Component{
     }
 }
 
+/* 결재 상태 검색 컴포넌트 */
 export class PayState extends Component{
 
     render(){
 
-        return(
+        return (
             <div className="float-left mr-5">
                 <span className="mr-2">결재 상태</span>
                 <select>
@@ -49,6 +90,7 @@ export class PayState extends Component{
     }
 }
 
+/* 기간 검색 컴포넌트 */
 export class Term extends Component{
 
     render(){
@@ -64,6 +106,7 @@ export class Term extends Component{
     }
 }
 
+/* 고용형태 검색 컴포넌트 */
 export class EmployState extends Component{
 
     render(){
@@ -76,18 +119,6 @@ export class EmployState extends Component{
                     <option>임원</option>
                     <option>계약직</option>
                 </select>
-            </div>
-        );
-    }
-}
-
-export class SearchBtn extends Component{
-
-    render(){
-
-        return(
-            <div className={`float-left ml-3 ${tableStyle.searchBtn}`}>
-                <button>조회</button>
             </div>
         );
     }
@@ -109,6 +140,19 @@ export class LeaveState extends Component{
                 <option>배우자출산휴가</option>
             </select>
         </div>
+        );
+    }
+}
+
+/* 검색 버튼 컴포넌트 */
+export class SearchBtn extends Component{
+
+    render(){
+
+        return(
+            <div className={`float-left ml-3 ${tableStyle.searchBtn}`}>
+                <button>조회</button>
+            </div>
         );
     }
 }

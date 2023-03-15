@@ -27,6 +27,11 @@ function MypageMain() {
     const member = useSelector(state => state.memberReducer);  
     const memberDetail = member.data;
     const myLeaveInfo = useSelector(state => state.leaveReducer); 
+    const attendanceList = useSelector(state => state.attendanceReducer);
+
+    if(token == undefined) {
+        navigate("/");
+    }
 
     useEffect(
         () => {

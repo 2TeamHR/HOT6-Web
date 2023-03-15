@@ -16,7 +16,7 @@ import OrganizationChart from './pages/hrm/Organization_chart';
 import OrganizationRetireeChart from './pages/hrm/Organization_retiree_chart';
 import Layout from './layouts/Layout';
 import Login from '../src/pages/login/Login';
-import FindPassword from '../src/pages/login/FindPassword';
+// import FindPassword from '../src/pages/login/FindPassword';
 import ChangePassword from '../src/pages/login/ChangePassword';
 import SalaryCheck from './pages/salary/Salary_check';
 import BoardCommunity from './pages/board/BoardCommunity';
@@ -55,17 +55,24 @@ import LOAForm from './pages/ea/LOAForm';
 import ReinstatmentForm from './pages/ea/ReinstatementForm';
 import SeveranceInsert from './pages/salary/Salary_SeveranceInsert';
 import SalaryInsert from './pages/salary/Salary_SalaryInsert';
+import PrivateRoute from './components/PrivateRoute';
+import { decodeJwt } from '../src/utils/tokenUtils';
 
 function App() {
+
+  const token = decodeJwt(window.localStorage.getItem("accessToken"));
+
+  console.log('APP token : ', token);
 
   return (
       <BrowserRouter>
         <Routes>
           {/* 레이아웃 사이에 넣기 */}
           <Route index element={<Login />} />
-          <Route path="/findpassword" element={<FindPassword />} />
+          {/* <Route path="/findpassword" element={<FindPassword />} /> */}
           <Route path="/ChangePassword" element={<ChangePassword />} />
-          <Route path="/" element={ <Layout /> } >
+          {/* <Route path="/" element={ <Layout /> } > */}
+          <Route path="/" element={<PrivateRoute rules={token} component={<Layout />}/>}>
             <Route path='/main' element={ <Main />} />
             <Route path="/attendence/AttendanceManage" element={<AttendanceManage />} />
             <Route path="/attendence/AttendanceSelectTime" element={<AttendanceSelectTime />} />
@@ -102,7 +109,7 @@ function App() {
             {/* 인사 */}
             <Route path="/organization/certification" element={<OrganiCertificate />} />
             <Route path="/organization/chart" element={<OrganizationChart />} />
-            <Route path="/organization/creacte" element={<OrganizationCreate />} />
+            <Route path="/organization/create" element={<OrganizationCreate />} />
             <Route path="/organization/retireeChart" element={<OrganizationRetireeChart />} />
 
             {/* 급여 */}

@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 import {
     callLoginAPI
 } from '../../apis/MemberAPICalls'
-import { POST_LOGIN } from '../../modules/MemberModule';
+
 
 import { Button } from '@mui/material'
 
