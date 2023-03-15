@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {callBoardNoticeListAPI} from "../../apis/BoardNoticeAPICalls";
 import Pagination from "@mui/material/Pagination";
+import {Link, useNavigate} from "react-router-dom";
 
 
 function BoardNotice() {
@@ -34,7 +35,7 @@ function BoardNotice() {
                 <div className="table-area">
                     <table className="table">
                         <thead>
-                        <tr style={{"text-align": "center", "backgroundColor": "#DDDDDD"}}>
+                        <tr style={{"textAlign": "center", "backgroundColor": "#DDDDDD"}}>
                             <th >번호</th>
                             <th>제목</th>
                             <th>작성자</th>
@@ -57,29 +58,29 @@ function BoardNotice() {
                         </tbody>
                     </table>
 
-                    <div className="mr-auto">
+                    <div className="d-flex justify-content-center">
                         <Pagination
-                            className="mr-auto"
+                            className="d-flex justify-content-center"
                             count={Math.ceil(boardNotice.length / perPage)}
                             page={currentPage}
                             onChange={handlePageChange}/>
+                        <br />
                     </div>
-                    {/*</div>*/}
-                    {/*<div className="search-area" align="center">*/}
-                    {/*    <form name="search-form" autoComplete="off" style={{"display": "inline"}}>*/}
-                    {/*        <select id="searchCondition" name="searchCondition">*/}
-                    {/*            <option value="noticeTitle">제목</option>*/}
-                    {/*            <option value="nickName">작성자</option>*/}
-                    {/*        </select>*/}
-                    {/*        <input type="search" id="searchValue" name="searchValue" placeholder="검색할 내용을 입력하세요."/>*/}
-                    {/*        <input type="submit" className="btn btn-secondary" value="검색"/>*/}
-                    {/*    </form>*/}
-                    {/*    <Link to="/board/notice/write" className={""}>*/}
-                    {/*        <input type="submit" id="" className="btn btn-info me-1"*/}
-                    {/*               style={{"float": "right", "backgroundColor": "black", "borderColor": "black"}}*/}
-                    {/*               value="글쓰기"/>*/}
-                    {/*    </Link>*/}
-                    {/*</div>*/}
+                    <Link to="/board/notice/write" className={""}>
+                        <input type="submit" id="" className="btn btn-info me-1"
+                               style={{"float": "right", "backgroundColor": "black", "borderColor": "black"}}
+                               value="글쓰기"/>
+                    </Link><br />
+                    <div className="search-area" align="center">
+                        <form name="search-form" autoComplete="off" style={{"display": "inline"}}>
+                            <select id="searchCondition" name="searchCondition">
+                                <option value="noticeTitle">제목</option>
+                                <option value="nickName">작성자</option>
+                            </select>
+                            <input type="search" id="searchValue" name="searchValue" placeholder="검색할 내용을 입력하세요."/>
+                            <input type="submit" className="btn btn-secondary" value="검색"/>
+                        </form>
+                    </div>
                     {/*<br/>*/}
                     {/*/!* 페이지 처리 *!/*/}
                     {/*<div className="pagingArea" align="center">*/}
