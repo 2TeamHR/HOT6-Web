@@ -1,5 +1,6 @@
 import { Button, Container } from "@mui/material";
 import EaExtendTable from "./EaExtendTable";
+import EaRealExtendTable from "./EaRealExtendTable";
 
 
 function EaWaitInbox() {
@@ -13,7 +14,7 @@ function EaWaitInbox() {
                     <option value="">사원번호</option>
                     <option value="">문서번호</option>
                 </select><input type="text" /><Button variant="outlined">검색</Button>
-                <EaExtendTable></EaExtendTable>
+                <EaRealExtendTable></EaRealExtendTable>
             </Container>
         </>
     );
