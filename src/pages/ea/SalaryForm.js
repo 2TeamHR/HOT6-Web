@@ -56,6 +56,7 @@ function SalaryForm() {
               <Button>신청하기</Button><Button>취소하기</Button></Paper>
           </Grid>
 
+          {/* 급여정정 신청 급여 지급기준일로부터 일주일 이내  */}
 
           <Grid item xs={4}>
             <Paper sx={{ maxWidth: 200 }} elevation={5}>

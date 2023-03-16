@@ -28,6 +28,43 @@ function LeaveForm() {
 
 
 
+// "memberCode"
+
+// "eaSubject"
+
+// "eaDetail"
+
+// "eaStatusCode"
+
+// "eaStatusCategory"
+
+// "eaApproverInfoList"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

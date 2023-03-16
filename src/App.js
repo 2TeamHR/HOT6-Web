@@ -78,8 +78,7 @@ function App() {
             <Route path='/main' element={<Main />} />
             <Route path="/findpassword" element={<FindPassword />} />
             <Route path="/ChangePassword" element={<ChangePassword />} />
-            </Route>
-        </Route>
+
 
 
 
@@ -152,8 +151,9 @@ function App() {
             <Route path="/messsage/receivedMessage" element={<ReceivedMessage />} />
 
 
-          
 
+          </Route>
+        </Route>
 
 
 
