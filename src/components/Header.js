@@ -80,7 +80,7 @@ function Header() {
         dispatch(callLogoutAPI());
 
         alert('로그아웃이 되어 로그인 페이지로 이동합니다.');
-        navigate("/", { replace: true })
+        navigate("/login", { replace: true })
         window.location.reload();
     }
 

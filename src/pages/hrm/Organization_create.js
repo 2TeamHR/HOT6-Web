@@ -101,6 +101,8 @@ function OrganizationCreate (){
 
         if(image){
             formData.append("memberImage", image);
+            console.log(form);
+            console.log(image);
         }
 
         dispatch(callRegisterAPI({	// 직원 정보 조회
@@ -109,9 +111,9 @@ function OrganizationCreate (){
 
         console.log(form);
 
-        alert('재직자명단으로 이동합니다.');
-        navigate('/organization/chart', { replace: true});
-        window.location.reload();
+        // alert('재직자명단으로 이동합니다.');
+        // navigate('/organization/chart', { replace: true});
+        // window.location.reload();
     }
 
     return(

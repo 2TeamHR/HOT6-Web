@@ -162,7 +162,7 @@ export const callChangePasswordAPI = ({form, memberCode}) => {
     console.log('memberCode', memberCode);
     console.log('form', form);
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/password/update/${memberCode}`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/members/password/${memberCode}`;
 
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
@@ -192,7 +192,7 @@ export const callChangeProfileImageAPI = ({form, memberCode}) => {
         console.log(`${key}: ${value}`);
     }
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/profileImage/update/${memberCode}`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/members/profileImage/${memberCode}`;
 
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {

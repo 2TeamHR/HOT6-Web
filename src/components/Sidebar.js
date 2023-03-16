@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {callLogoutAPI} from "../apis/MemberAPICalls";
+import { decodeJwt } from '../utils/tokenUtils';
 
 function Sidebar() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const token = decodeJwt(window.localStorage.getItem('accessToken'));
 
     const onClickLogoutHandler = () => {
         window.localStorage.removeItem('accessToken');
@@ -78,6 +80,8 @@ function Sidebar() {
                                         </div>
                                             <Link to="/organization/certification" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>신청 현황</Link>
                                     </div>
+
+                                    { (token.auth.includes("ROLE_ADMIN")) ? 
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             인사팀 기능
@@ -87,6 +91,8 @@ function Sidebar() {
                                             <Link to="/organization/retireeChart" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직자 명단</Link>
                                             <Link to="/" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>상여금 명단</Link>
                                     </div>
+                                    : <div/> }
+                                    
                                 </div>
                             </div>
                         </div>
@@ -114,6 +120,7 @@ function Sidebar() {
                                         </div>
                                             <Link to="mypage/annual/history" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>나의 연차이력</Link>
                                     </div>
+                                    { (token.auth.includes("ROLE_ADMIN")) ? 
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             인사팀 관리
@@ -124,6 +131,7 @@ function Sidebar() {
                                             <Link to="/annual/standardsManagement" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>연차 기준 관리</Link>
                                             <Link to="/annual/management" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>연차 관리</Link>
                                     </div>
+                                    : <div/> }
                                 </div>
                             </div>
                         </div>
@@ -182,6 +190,7 @@ function Sidebar() {
                                         </div>
                                             <Link to="/salary/check" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>내 급여 조회</Link>
                                     </div>
+                                    { (token.auth.includes("ROLE_ADMIN")) ? 
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             인사팀 관리
@@ -190,6 +199,7 @@ function Sidebar() {
                                             <Link to="/salary/bonus" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>상여금 지급 현황</Link>
                                             <Link to="/salary/severance/N" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직금 지급 현황</Link>
                                     </div>
+                                    : <div/> }
                                 </div>
                             </div>
                         </div>
