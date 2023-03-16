@@ -23,8 +23,8 @@ function OrganizationChart() {
       teamSearch: 0,
     });
 
-    // 팀 검색 상태 값 처리 핸드러
-    const handlePayStateChange = (value) => {
+    // 팀 검색 상태 값 처리 핸들러
+    const onTeamChange = (value) => {
       setForm({
         teamSearch: value
       })
@@ -34,7 +34,7 @@ function OrganizationChart() {
     const [currentPage, setCurrentPage] = useState(1);
     const perPage = 10;
   
-    const handlePageChange = (event, value) => {
+    const onChangePageHandler = (event, value) => {
       setCurrentPage(value);
     };
     
@@ -56,8 +56,7 @@ function OrganizationChart() {
           <Paper elevation={3}>
             <div className={tableStyle.boxStyle}>
                 <div className={tableStyle.searchBox}>
-                    <TsbDepartment onChange={handlePayStateChange}/>
-                    {form.teamSearch}
+                    <TsbDepartment onChange={onTeamChange}/>
                     <TsbEmployee/>
                     <Term/>
                     <SearchBtn/>
@@ -95,7 +94,7 @@ function OrganizationChart() {
               <Pagination 
                 count={Math.ceil(members.length / perPage)} 
                 page={currentPage} 
-                onChange={handlePageChange} 
+                onChange={onChangePageHandler} 
               />
             </div>
           </Paper>

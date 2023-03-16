@@ -8,48 +8,52 @@ import {
 
 
 import { Button } from '@mui/material'
+import { decodeJwt } from '../../utils/tokenUtils';
 
 function Login() {
 
     const navigate = useNavigate();
-
-    /* 리덕스를 이용하기 위한 디스패처, 셀렉터 선언 */
     const dispatch = useDispatch();
-    const loginMember = useSelector(state => state.memberReducer);  // API 요청하여 가져온 loginMember 정보
+    const loginMember = useSelector(state => state.memberReducer);
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));
 
-    /* 폼 데이터 한번에 변경 및 State에 저장 */
+    const [rememberChecked, setRememberChecked] = useState(false);
+    const placeholder = localStorage.getItem("memberCode") || "사번을 입력하세요.";
+
     const [form, setForm] = useState({
         memberCode: '',
         memberPassword: ''
     });
 
-    const [rememberChecked, setRememberChecked] = useState(false);
-
     useEffect(() => {
+
+        console.log('login token : ', token);
 
             if (loginMember.status === 200) {
                 console.log("[Login] Login SUCCESS {}", loginMember);
-                navigate("/main", { replace: true });
+                console.log("[Login] Login SUCCESS {}", token);
+                navigate("/", { replace: true });
+                // return <Navigate to="/main" />;
             } 
-        }, [loginMember]
+        }, [loginMember] // [token]
     );
 
     useEffect(() => {
         const savedMemberCode = localStorage.getItem('memberCode');
+
         if (savedMemberCode) {
             setForm({
                 ...form,
-                memberCode: savedMemberCode
-            });
+                memberCode: savedMemberCode });
             setRememberChecked(true);
         } 
       }, []
     );
 
     /* 로그인 상태일 시 로그인페이지로 접근 방지 */
-    if (loginMember.length > 0) {
+    if (token) {
         console.log("[Login] Login is already authenticated by the server");
-        return <Navigate to="/main" />
+        return <Navigate to="/" />
     }
 
     const onChangeHandler = (e) => {
@@ -65,17 +69,17 @@ function Login() {
 
     /* 로그인 버튼 클릭시 디스패처 실행 및 페이지 이동 */
     const onClickLoginHandler = () => {
-        dispatch(callLoginAPI({	// 로그인
+        dispatch(callLoginAPI({
             form: form
         }));
 
         if (rememberChecked) {
             localStorage.setItem('memberCode', form.memberCode);
-          } else {
+        } else {
             localStorage.removeItem('memberCode');
-          }
+        }
         
-        navigate(`/`, { replace: true });
+        // navigate(`/`, { replace: true });
     }
 
     const onEnterkeyHandler = (e) => {
@@ -86,9 +90,7 @@ function Login() {
     }
 
     const handleSubmit = (event) => {
-        event.preventDefault(); // 기본 이벤트 방지
-
-        // 아이디와 비밀번호를 사용하여 로그인하는 로직
+        event.preventDefault();
         dispatch(callLoginAPI({ form }));
     };
 
@@ -97,8 +99,6 @@ function Login() {
             handleSubmit(event);
         }
     };
-
-    const placeholder = localStorage.getItem("memberCode") || "사번을 입력하세요.";
 
     return (
         <>

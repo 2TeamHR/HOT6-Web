@@ -1,18 +1,14 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
+import { decodeJwt } from '../utils/tokenUtils';
 
-function PrivateRoute({ rules, component: Component }) {
+function PrivateRoute() {
+    
+    const authenticated = decodeJwt(window.localStorage.getItem('accessToken'));
 
-    console.log('rules : ', rules);
-
-  if (rules) {
-
-    return Component;
-  }
-
-    alert("접근할 수 없는 페이지입니다.");
-    return <Navigate to="/" />;
-  
+    return (
+        authenticated?.auth?.includes('ROLE_MEMBER') ? <Outlet /> : <Navigate to='/login' {...alert("접근할 수 없는 페이지입니다.")} />
+    )
 }
 
-export default PrivateRoute;
+export default PrivateRoute 
