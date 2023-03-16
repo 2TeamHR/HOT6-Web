@@ -74,7 +74,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* PUBLIC routes */}
-        <Route path="login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         {/* <Route path="/findpassword" element={<FindPassword />} /> */}
 
         {/* PRIVATE routes */}
@@ -108,8 +108,8 @@ function App() {
             <Route path="/mypage/annual/history" element={<MypageAnnualHistory />}/>
 
             {/* 인사 */}
-            <Route path="/organization/certification" element={<OrganiCertificate />} />
             <Route path="/organization/chart" element={<OrganizationChart />} />
+            <Route path="/organization/certification" element={<OrganiCertificate />} />
 
             {/* 급여 */}
             <Route path="/salary/check" element={ <SalaryCheck />} />
