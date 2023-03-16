@@ -32,19 +32,24 @@ export const callBoardNoticeListAPI = () => {
 export const callBoardNoticeWriteAPI = ({form}) => {
     console.log('[ProduceAPICalls] callNoticeWriteAPI Call');
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v2/board/notice`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v2/board/notice/write`;
 
     return async (dispatch, getState) => {
 
         const result = await fetch(requestURL, {
             method: "POST",
             headers: {
+                "Content-type":"application/json",
                 "Accept": "*/*",
-                "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+                "Authorization": "Bearer " + window.localStorage.getItem("accessToken"),
             },
-            body: form
+            body: JSON.stringify({
+                'memberCode': form.get('memberCode'),
+                'noticeTitle': form.get('noticeTitle'),
+                'noticeContent': form.get('noticeContent')
+            })
         })
-            .then(response => response.json());
+        .then(response => response.json());
 
         console.log('[ProduceAPICalls] callNoticeWriteAPI RESULT : ', result);
 

@@ -1,70 +1,46 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 function BoardNoticeDetail() {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [file, setFile] = useState(null);
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const handleContentChange = (e) => {
-    setContent(e.target.value);
-  };
-
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('content', content);
-    formData.append('file', file);
-
-    axios.post('/api/board/write', formData)
-      .then((response) => {
-        // 게시글 등록 완료 후 처리할 로직 작성
-      })
-      .catch((error) => {
-        // 에러 처리 로직 작성
-      });
-  };
-
-  return (
-
-    <div className="container">
-      <h1 className="mt-5 text-center">공지사항 글쓰기</h1>
-
-      <form action="" method="post">
-        <div className="form-group">
-          <label htmlFor="exampleFormControlInput1">제목</label>
-          <input type="text" className="form-control" id="exampleFormControlInput1" name="title"
-            placeholder="제목을 작성해주세요." />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="exampleFormControlTextarea1">내용</label>
-          <textarea className="form-control" id="exampleFormControlTextarea1" name="contents" rows={10}
-            defaultValue={""} />
-        </div>
+    return (
 
         <div>
-          <label htmlFor="file">첨부파일</label>
-          <input type="file" id="file" onChange={handleFileChange} />
-        </div><br />
-
-        <div>
-          <button type="submit" className="btn btn-info me-3" style={{ "background-color": "black", "border-color": "black" }}>등록하기</button>
-          <button type="button" className="btn btn-secondary">목록으로</button>
+            <h1>제목</h1>
+        <hr />
+            <p>글쓴이 | 작성일 | 조회수 : 0</p>
+            <hr/>
+            <p>본문<br />본문<br />본문<br />본문<br />본문<br />본문<br />본문<br />본문<br />본문<br />본문<br /></p>
+            <hr/>
+            <button onClick="editPost()">수정</button>
+            <button onClick="deletePost()">삭제</button>
+            <button onClick="goToList()">목록</button>
+            <hr />
+            <h3>댓글</h3>
+            <div>
+                <p>작성자 | 작성일</p>
+                <p>댓글 내용</p>
+                <button onclick="deleteComment()">삭제</button>
+            </div>
+            <div>
+                <p>작성자 | 작성일</p>
+                <p>댓글 내용</p>
+                <button onclick="deleteComment()">삭제</button>
+            </div>
+            <div>
+                <p>작성자 | 작성일</p>
+                <p>댓글 내용</p>
+                <button onclick="deleteComment()">삭제</button>
+            </div>
+            <hr/>
+            <hr/>
+            <form>
+                <label htmlFor="content">내용:</label>
+                <textarea id="content" name="content" defaultValue={""}/><br/>
+                <button type="submit">등록</button>
+            </form>
         </div>
-
-      </form>
-    </div>
-  );
+    );
 }
+
 
 export default BoardNoticeDetail;
