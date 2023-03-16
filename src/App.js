@@ -1,62 +1,72 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main'
+
+import MypageMain from './pages/mypage/Mypage_main';
 import MypageAttendance from './pages/mypage/Mypage_attendance';
 import MypageManagement from './pages/mypage/Mypage_management';
 import MypageManagementUpdate from './pages/mypage/Mypage_management_update';
 import MypageAttendanceHistory from './pages/mypage/Mypage_attendance_history';
 import MypageAnnualHistory from './pages/mypage/Mypage_annual_history';
+
+import MyCalendar from './pages/calendar/MyCalendar';
+
 import AnnualStandardsManagement from './pages/attendance_management/Annual_standards_management';
 import AnnualPayment from './pages/attendance_management/Annual_payment';
 import AnnualManagement from './pages/attendance_management/Annual_management';
 import AnnualManagementDetailed from './pages/attendance_management/Annual_management_detailed';
+import AttendanceManage from "./pages/attendence/AttendanceManage";
+import AttendanceSelectTime from "./pages/attendence/AttendanceSelectTime";
+
 import OrganiCertificate from './pages/hrm/Organization_Certificate';
 import OrganizationCreate from './pages/hrm/Organization_create';
 import OrganizationChart from './pages/hrm/Organization_chart';
 import OrganizationRetireeChart from './pages/hrm/Organization_retiree_chart';
+
 import Layout from './layouts/Layout';
+import PrivateRoute from './components/PrivateRoute';
+import AdminRoute from './components/AdminRoute';
+
 import Login from '../src/pages/login/Login';
 // import FindPassword from '../src/pages/login/FindPassword';
 import ChangePassword from '../src/pages/login/ChangePassword';
-import SalaryCheck from './pages/salary/Salary_check';
+
 import BoardCommunity from './pages/board/BoardCommunity';
 import BoardCommunityWrite from './pages/board/BoardCommunityWrite';
 import BoardCommunityDetail from './pages/board/BoardCommunityDetail';
 import BoardNotice from './pages/board/BoardNotice';
 import BoardNoticeWrite from './pages/board/BoardNoticeWrite';
 import BoardNoticeDetail from './pages/board/BoardNoticeDetail';
+
 import Message from "./pages/messsage/Message";
 import MessageSent from "./pages/messsage/MessageSent";
 import MessageTrash from "./pages/messsage/MessageTrash";
 import ReceivedMessage from "./pages/messsage/ReceivedMessage";
-import AttendanceManage from "./pages/attendence/AttendanceManage";
+
+import SalaryCheck from './pages/salary/Salary_check';
 import AllCheckN from './pages/salary/Salary_allCheckN';
 import AllCheckY from './pages/salary/Salary_allCheckY';
 import SeveranceN from './pages/salary/Salary_SeveranceN'
 import SeveranceY from './pages/salary/Salary_SeveranceY'
-import EsMain from './pages/es/EsMain'
-import EsDraftMenu from './pages/es/EsDraftMenu';
-import LeaveForm from './pages/es/LeaveForm';
-import RetireForm from './pages/es/RetireForm';
-import SalaryForm from './pages/es/SalaryForm';
-import CertificationForm from './pages/es/CertificationForm';
-import MypageMain from './pages/mypage/Mypage_main';
-import AttendanceSelectTime from "./pages/attendence/AttendanceSelectTime";
-import EsWaitInbox from "./pages/es/EsWaitInbox";
-import EsPrograssInbox from './pages/es/EsPrograssInbox';
-import EsCompleteInbox from './pages/es/EsCompleteInbox';
+import SeveranceInsert from './pages/salary/Salary_SeveranceInsert';
 import SalaryBonus from './pages/salary/Salary_bonus';
 import BonusInsert from './pages/salary/Salary_BonusInsert';
-import EsDraftInbox from './pages/es/EsDraftInbox';
-import MyCalendar from './pages/calendar/MyCalendar';
 import Specification from './pages/salary/Salary_Specification';
-import DutyForm from './pages/es/DutyForm';
-import LOAForm from './pages/es/LOAForm';
-import ReinstatmentForm from './pages/es/ReinstatementForm';
-import SeveranceInsert from './pages/salary/Salary_SeveranceInsert';
 import SalaryInsert from './pages/salary/Salary_SalaryInsert';
-import PrivateRoute from './components/PrivateRoute';
-import AdminRoute from './components/AdminRoute';
+
+import EaMain from './pages/ea/EaMain';
+import EaDraftMenu from './pages/ea/EaDraftMenu';
+import LeaveForm from './pages/ea/LeaveForm';
+import RetireForm from './pages/ea/RetireForm';
+import SalaryForm from './pages/ea/SalaryForm';
+import CertificationForm from './pages/ea/CertificationForm';
+import EaWaitInbox from "./pages/ea/EaWaitInbox";
+import EaPrograssInbox from './pages/ea/EaPrograssInbox';
+import EaCompleteInbox from './pages/ea/EaCompleteInbox';
+import EaDraftInbox from './pages/ea/EaDraftInbox';
+import DutyForm from './pages/ea/DutyForm';
+import LOAForm from './pages/ea/LOAForm';
+import ReinstatmentForm from './pages/ea/ReinstatementForm';
 
 function App() {
 
@@ -74,19 +84,19 @@ function App() {
             <Route index element={<Main />} />
 
             {/* 전자결재 */}
-            <Route path="/es/main" element={<EsMain />} />
-            <Route path='/es/draftMenu' element={<EsDraftMenu />}/>
-            <Route path='/es/leaveForm' element={<LeaveForm />}/>
-            <Route path='/es/retireForm' element={<RetireForm />}/>
-            <Route path='/es/salaryForm' element={<SalaryForm />}/>
-            <Route path='/es/dutyForm' element={<DutyForm />}/>
-            <Route path='/es/loaForm' element={<LOAForm />}/>
-            <Route path='/es/reinstatementForm' element={<ReinstatmentForm />}/>
-            <Route path='/es/certificationForm' element={<CertificationForm />}/>
-            <Route path='/es/draftInbox' element={<EsDraftInbox />}/>
-            <Route path='/es/wait' element={<EsWaitInbox />}/>
-            <Route path='/es/prograss' element={<EsPrograssInbox />}/>
-            <Route path='/es/complete' element={<EsCompleteInbox />}/>
+            <Route path="/ea/main" element={<EaMain />} />
+            <Route path='/ea/draftMenu' element={<EaDraftMenu />} />
+            <Route path='/ea/leaveForm' element={<LeaveForm />} />
+            <Route path='/ea/retireForm' element={<RetireForm />} />
+            <Route path='/ea/salaryForm' element={<SalaryForm />} />
+            <Route path='/ea/dutyForm' element={<DutyForm />} />
+            <Route path='/ea/loaForm' element={<LOAForm />} />
+            <Route path='/ea/reinstatementForm' element={<ReinstatmentForm />} />
+            <Route path='/ea/certificationForm' element={<CertificationForm />} />
+            <Route path='/ea/draftInbox' element={<EaDraftInbox />} />
+            <Route path='/ea/wait' element={<EaWaitInbox />} />
+            <Route path='/ea/prograss' element={<EaPrograssInbox />} />
+            <Route path='/ea/complete' element={<EaCompleteInbox />} />
 
             {/* 마이페이지 */}
             <Route path="/mypage/main" element={ <MypageMain />} />
@@ -144,9 +154,9 @@ function App() {
             <Route path="/salary/check/N" element={<AllCheckN />} />
             <Route path="/salary/check/Y" element={<AllCheckY />} />
             <Route path="/salary/check/insert" element={<SalaryInsert />} />
-            <Route path="/salary/severance/N" element={<SeveranceN />} />
-            <Route path="/salary/severance/Y" element={<SeveranceY />} />
-            <Route path="/salary/severance/insert" element={<SeveranceInsert />} />
+            {/* <Route path="/salary/severance/N" element={<SeveranceN />} /> */}
+            {/* <Route path="/salary/severance/Y" element={<SeveranceY />} /> */}
+            {/* <Route path="/salary/severance/insert" element={<SeveranceInsert />} /> */}
             <Route path="/salary/bonus" element={<SalaryBonus />} />
             <Route path="/salary/bonus/insert" element={<BonusInsert />}/>
 
