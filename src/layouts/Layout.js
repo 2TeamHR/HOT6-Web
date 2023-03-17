@@ -7,7 +7,7 @@ function Layout() {
 
     return (
         <>
-            <Header />
+            {/* <Header /> */}
             <Sidebar />
             {/* <SidebarV2 /> */}
             <Outlet />
