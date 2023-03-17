@@ -15,19 +15,10 @@ import { decodeJwt } from '../../utils/tokenUtils';
 function  MypageAttendanceHistory () {
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const attendanceList = useSelector(state => state.attendanceReducer);  
     const token = decodeJwt(window.localStorage.getItem("accessToken"));
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const perPage = 10;
-    
-    const handlePageChange = (event, value) => {
-        setCurrentPage(value);
-    };
-
-    const startIndex = (currentPage - 1) * perPage;
-    const endIndex = startIndex + perPage;
+    console.log('attendanceList : ', attendanceList);
 
     useEffect(
         () => {    
@@ -39,6 +30,17 @@ function  MypageAttendanceHistory () {
         }
         ,[]
     );
+
+    /* 페이징 처리 */
+    const [currentPage, setCurrentPage] = useState(1);
+    const perPage = 10;
+    
+    const handlePageChange = (event, value) => {
+        setCurrentPage(value);
+    };
+
+    const startIndex = (currentPage - 1) * perPage;
+    const endIndex = startIndex + perPage;
 
     return (
         <main className={mainTitleStyle.main}>

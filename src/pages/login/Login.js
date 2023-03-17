@@ -5,8 +5,6 @@ import { Navigate } from "react-router-dom";
 import {
     callLoginAPI
 } from '../../apis/MemberAPICalls'
-
-
 import { Button } from '@mui/material'
 import { decodeJwt } from '../../utils/tokenUtils';
 
@@ -33,14 +31,12 @@ function Login() {
                 console.log("[Login] Login SUCCESS {}", loginMember);
                 console.log("[Login] Login SUCCESS {}", token);
                 navigate("/", { replace: true });
-                // return <Navigate to="/main" />;
             } 
         }, [loginMember] // [token]
     );
 
     useEffect(() => {
         const savedMemberCode = localStorage.getItem('memberCode');
-
         if (savedMemberCode) {
             setForm({
                 ...form,
@@ -78,8 +74,6 @@ function Login() {
         } else {
             localStorage.removeItem('memberCode');
         }
-        
-        // navigate(`/`, { replace: true });
     }
 
     const onEnterkeyHandler = (e) => {
