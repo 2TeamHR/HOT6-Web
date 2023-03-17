@@ -118,7 +118,7 @@ function App() {
 
             {/* 게시판 */}
             <Route path="/board/notice" element={<BoardNotice />} />
-            <Route path="/board/notice/detail" element={<BoardNoticeDetail />} />
+            <Route path="/board/notice/:noticeCode" element={<BoardNoticeDetail />} />
             <Route path="/board/community" element={<BoardCommunity />} />
             <Route path="/board/community/write" element={<BoardCommunityWrite />} />
             <Route path="/board/community/detail" element={<BoardCommunityDetail/>} />
