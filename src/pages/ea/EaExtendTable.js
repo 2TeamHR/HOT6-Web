@@ -21,7 +21,7 @@
   import Paper from "@mui/material/Paper";
   import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
   import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import EaModal from "./EaModal";
+  import EaModal from "./EaModal";
 
 
  function createData(

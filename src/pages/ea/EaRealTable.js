@@ -1,4 +1,5 @@
 import {
+  Chip,
   Grid
 } from "@mui/material";
 import * as React from "react";
@@ -50,7 +51,7 @@ function EaRealTable() {
               <TableCell align="center">{docu?.eaMember?.rank?.rankName}</TableCell>              
               <TableCell align="center">{docu?.eaMember?.memberName}</TableCell>
               <TableCell align="center">{docu?.eaDate}</TableCell>
-              <TableCell align="center">{docu?.eaStatusCategory?.eaStatusName}</TableCell>
+              <TableCell align="center"><Chip label={docu?.eaStatusCategory?.eaStatusName} color="primary" /></TableCell>
               </TableRow>
             </>
             ))}
