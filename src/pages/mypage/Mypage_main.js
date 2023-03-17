@@ -62,14 +62,14 @@ function MypageMain() {
         },[]
     );
 
-    useEffect(
-        () => {
-            const timerID = setInterval(() => tick(), 1000);
-            return () => {
-                clearInterval(timerID);
-            };
-        }
-    );
+    // useEffect(
+    //     () => {
+    //         const timerID = setInterval(() => tick(), 1000);
+    //         return () => {
+    //             clearInterval(timerID);
+    //         };
+    //     }
+    // );
 
     // hs
     useEffect(() => {

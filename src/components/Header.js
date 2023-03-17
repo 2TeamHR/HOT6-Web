@@ -37,14 +37,14 @@ function Header() {
     );
 
     /* 남은 발표까지 */
-    useEffect(() => {
-        // 매 초마다 현재 시간을 업데이트
-        const interval = setInterval(() => {
-          setNow(new Date().getTime());
-        }, 1000);
+    // useEffect(() => {
+    //     // 매 초마다 현재 시간을 업데이트
+    //     const interval = setInterval(() => {
+    //       setNow(new Date().getTime());
+    //     }, 1000);
     
-        return () => clearInterval(interval);
-      }, []);
+    //     return () => clearInterval(interval);
+    //   }, []);
     
       useEffect(() => {
         // D-day까지 남은 시간을 계산하고 업데이트
@@ -57,13 +57,13 @@ function Header() {
       }, [now]);
     
       // 타임스탬프를 시간으로 변환하는 함수
-      const timestampToTime = (timestamp) => {
-        const days = Math.floor(timestamp / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timestamp % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timestamp % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-        const seconds = Math.floor((timestamp % (1000 * 60)) / 1000).toString().padStart(2, '0');
-        return `${days}일 ${hours}시간 ${minutes}분 ${seconds}초`;
-      };
+    //   const timestampToTime = (timestamp) => {
+    //     const days = Math.floor(timestamp / (1000 * 60 * 60 * 24));
+    //     const hours = Math.floor((timestamp % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    //     const minutes = Math.floor((timestamp % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+    //     const seconds = Math.floor((timestamp % (1000 * 60)) / 1000).toString().padStart(2, '0');
+    //     return `${days}일 ${hours}시간 ${minutes}분 ${seconds}초`;
+    //   };
 
       const [rotation, setRotation] = useState(0);
 
@@ -98,7 +98,7 @@ function Header() {
                     <BiTimeFive style={{ transform: `rotate(${rotation}deg)`, fontSize: "2rem" }} />
                     <span className="ml-2 fs-3 fw-bold text-danger">
                         {new Date().getHours() >= 21 || new Date().getHours() < 2 ? " [ 잠.이.오.니.?. ]" : ""}
-                        발표까지 남은 시간: {dDay !== null ? timestampToTime(dDay) : "loading..."}
+                        {/* 발표까지 남은 시간: {dDay !== null ? timestampToTime(dDay) : "loading..."} */}
                     </span>
                     </div>
 
