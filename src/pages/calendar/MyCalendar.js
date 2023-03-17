@@ -5,6 +5,7 @@ import koLocale from '@fullcalendar/core/locales/ko';
 import CalendarAddBtn from './CalendarAddBtn';
 import { Button, Modal } from "react-bootstrap";
 import { useSelector, useDispatch } from 'react-redux';
+import { decodeJwt } from '../../utils/tokenUtils';
 import { 
   callMainCalendarListAPI 
   , callCalendarDeleteAPI
@@ -14,6 +15,7 @@ const MyCalendar = () => {
 
   const dispatch = useDispatch();
   const calendarList = useSelector(state => state.calendarReducer);  
+  const token = decodeJwt(window.localStorage.getItem("accessToken"));
 
   useEffect(
     () => {
@@ -43,8 +45,8 @@ const MyCalendar = () => {
 
   return (
     <div className="container mt-5">
-
-      <CalendarAddBtn/>
+      
+      { (token.auth.includes("ROLE_ADMIN")) ? <CalendarAddBtn /> : <div/> }
 
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>

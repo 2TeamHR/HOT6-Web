@@ -10,7 +10,7 @@ function AnnualManagementDetailed() {
             <div>
 
                 <div className={mainTitleStyle.title}>
-                    <p>연차 관리 - 상세페이지</p>
+                    <p>휴가 관리 - 상세페이지</p>
                 </div>
 
                 <Paper elevation="3">

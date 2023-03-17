@@ -110,9 +110,9 @@ function Sidebar() {
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
-                                            연차
+                                            휴가
                                         </div>
-                                            <Link to="mypage/annual/history" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>나의 연차이력</Link>
+                                            <Link to="mypage/annual/history" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>나의 휴가이력</Link>
                                     </div>
                                     <div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
@@ -120,9 +120,9 @@ function Sidebar() {
                                         </div>
                                             <Link to="/attendence/AttendanceManage" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>근태 이력 조회</Link>
                                             <Link to="/attendence/AttendanceSelectTime" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>근무 시간 이력</Link>
-                                            <Link to="/annual/payment" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>연차 결재 리스트</Link>
-                                            <Link to="/annual/standardsManagement" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>연차 기준 관리</Link>
-                                            <Link to="/annual/management" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>연차 관리</Link>
+                                            <Link to="/annual/payment" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>휴가 결재 리스트</Link>
+                                            <Link to="/annual/standardsManagement" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>휴가 기준 관리</Link>
+                                            <Link to="/annual/management" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>휴가 관리</Link>
                                     </div>
                                 </div>
                             </div>

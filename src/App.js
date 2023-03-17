@@ -141,7 +141,6 @@ function App() {
             <Route path="/messsage/receivedMessage" element={<ReceivedMessage />} />
           </Route>
         </Routes>
-
       </BrowserRouter>
   );
 }
