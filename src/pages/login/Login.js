@@ -33,7 +33,6 @@ function Login() {
                 console.log("[Login] Login SUCCESS {}", loginMember);
                 console.log("[Login] Login SUCCESS {}", token);
                 navigate("/", { replace: true });
-                // return <Navigate to="/main" />;
             } 
         }, [loginMember] // [token]
     );
@@ -78,8 +77,6 @@ function Login() {
         } else {
             localStorage.removeItem('memberCode');
         }
-        
-        // navigate(`/`, { replace: true });
     }
 
     const onEnterkeyHandler = (e) => {

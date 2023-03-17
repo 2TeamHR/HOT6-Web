@@ -67,6 +67,7 @@ import EaDraftInbox from './pages/ea/EaDraftInbox';
 import DutyForm from './pages/ea/DutyForm';
 import LOAForm from './pages/ea/LOAForm';
 import ReinstatmentForm from './pages/ea/ReinstatementForm';
+import BoardNoticeUpdate from './pages/board/BoardNoticeUpdate';
 
 function App() {
 
@@ -162,6 +163,7 @@ function App() {
 
             {/* 게시판 */}
             <Route path="/board/notice/write" element={<BoardNoticeWrite />} />
+            <Route path="/board/notice/update" element={<BoardNoticeUpdate />} />
 
           </Route>
         </Route>

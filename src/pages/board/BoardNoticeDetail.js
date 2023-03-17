@@ -1,70 +1,99 @@
-import React, { useState } from 'react';
+import { useSelect } from '@mui/base';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { callGetNoticeAPI } from '../../apis/BoardNoticeAPICalls';
 
 function BoardNoticeDetail() {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [file, setFile] = useState(null);
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
-  };
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { noticeCode } = useParams(); // URL 파라미터에서 게시글 ID 가져오기
+    const [post, setPost] = useState(null); // 게시글 정보 상태 관리
+    // const notice = useSelector(state => state.boardNoticeReducer);
+    // const noticeDetail = notice.data;
 
-  const handleContentChange = (e) => {
-    setContent(e.target.value);
-  };
+    // console.log('noticeDetail', noticeDetail);
+    console.log('post', post);
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
+    useEffect(() => {
+        dispatch(callGetNoticeAPI({ noticeCode }));
+        }, [noticeCode]
+    );
+  
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('content', content);
-    formData.append('file', file);
+    if (!post) {
+        return <div>Loading...</div>
+    }; // 게시글 정보가 로드되지 않은 경우
 
-    axios.post('/api/board/write', formData)
-      .then((response) => {
-        // 게시글 등록 완료 후 처리할 로직 작성
-      })
-      .catch((error) => {
-        // 에러 처리 로직 작성
-      });
-  };
+    const noticeUpdateHref = () => {
+        navigate("/board/notice/update", { replace: true })
+    }
 
-  return (
+    const noticeDate = post.noticeDate ? new Date(post.noticeDate) : null;
+    const formattedNoticeDate = noticeDate ? noticeDate.toISOString().slice(0, 10) : '';
 
-    <div className="container">
-      <h1 className="mt-5 text-center">공지사항 글쓰기</h1>
 
-      <form action="" method="post">
-        <div className="form-group">
-          <label htmlFor="exampleFormControlInput1">제목</label>
-          <input type="text" className="form-control" id="exampleFormControlInput1" name="title"
-            placeholder="제목을 작성해주세요." />
+    return (
+
+        <div className="container">
+            <h1>{post.noticeTitle}</h1>
+            <hr/>
+
+            <span>글쓴이</span>
+            <span className='float-right fw-blod'>{post.memberCode || ''}</span>
+            <p> | </p>
+            <span>작성일</span>
+            <span className='float-right fw-blod'>{formattedNoticeDate}</span>
+            <p> | </p>
+            <span>조회수</span>
+            <span className='float-right fw-blod'>{post.noticeCount || 0}</span>
+            
+            <hr/>
+            
+            <span className='float-right fw-blod'>{post.noticeContent || ''}</span>
+            
+            <hr/>
+
+            <div className="btn btn-info me-3">
+                <button onClick={noticeUpdateHref}>수정</button>
+                {/* <button onClick={noticeUpdateHref}>삭제</button> */}
+                <button onClick={() => navigate(-1)}>목록으로</button>
+            </div>
+            
+            
+            <hr/>
+
+
+
+
+            <h3>댓글</h3>
+            <div>
+                <p>작성자 | 작성일</p>
+                <p>댓글 내용</p>
+                <button onclick="deleteComment()">삭제</button>
+            </div>
+            <div>
+                <p>작성자 | 작성일</p>
+                <p>댓글 내용</p>
+                <button onclick="deleteComment()">삭제</button>
+            </div>
+            <div>
+                <p>작성자 | 작성일</p>
+                <p>댓글 내용</p>
+                <button onclick="deleteComment()">삭제</button>
+            </div>
+            <hr/>
+            <hr/>
+            <form>
+                <label htmlFor="content">내용:</label>
+                <textarea id="content" name="content" defaultValue={""}/><br/>
+                <button type="submit">등록</button>
+            </form>
         </div>
-
-        <div className="form-group">
-          <label htmlFor="exampleFormControlTextarea1">내용</label>
-          <textarea className="form-control" id="exampleFormControlTextarea1" name="contents" rows={10}
-            defaultValue={""} />
-        </div>
-
-        <div>
-          <label htmlFor="file">첨부파일</label>
-          <input type="file" id="file" onChange={handleFileChange} />
-        </div><br />
-
-        <div>
-          <button type="submit" className="btn btn-info me-3" style={{ "background-color": "black", "border-color": "black" }}>등록하기</button>
-          <button type="button" className="btn btn-secondary">목록으로</button>
-        </div>
-
-      </form>
-    </div>
-  );
+    );
 }
+
 
 export default BoardNoticeDetail;
