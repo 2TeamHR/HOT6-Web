@@ -6,7 +6,7 @@ import {
 
 export const callBoardNoticeListAPI = () => {
 
-    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v2/board/notice`;
+    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/board/notice`;
 
     console.log('request', requestURL);
     return async (dispatch, getState) => {
@@ -32,7 +32,7 @@ export const callBoardNoticeListAPI = () => {
 export const callBoardNoticeWriteAPI = ({form}) => {
     console.log('[ProduceAPICalls] callNoticeWriteAPI Call');
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v2/board/notice/write`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/board/notice/write`;
 
     return async (dispatch, getState) => {
 

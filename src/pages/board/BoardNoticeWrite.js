@@ -1,11 +1,8 @@
-import {useEffect, useRef, useState} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import * as React from 'react';
+import {useEffect, useState} from 'react';
+import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
-import {
-    callBoardNoticeWriteAPI,
-} from '../../apis/BoardNoticeAPICalls';
-import TextField from "@mui/material/TextField";
-import * as React from "react";
+import {callBoardNoticeWriteAPI,} from '../../apis/BoardNoticeAPICalls';
 import {callGetMemberAPI} from "../../apis/MemberAPICalls";
 import {decodeJwt} from "../../utils/tokenUtils";
 
@@ -42,7 +39,7 @@ function BoardNoticeWrite() {
         }, []
     );
 
-    console.log("memberCode",memberDetail?.memberCode);
+    console.log("memberCode", memberDetail?.memberCode);
 
     const onClickNoticeWriteHandler = () => {
 
@@ -98,9 +95,7 @@ function BoardNoticeWrite() {
                     onClick={onClickNoticeWriteHandler}>
                     등록하기
                 </button>
-                <Link to="/board/notice" className={""}>
-                    <button type="button" className="btn btn-secondary">목록으로</button>
-                </Link>
+                    <button type="button" className="btn btn-secondary" onClick={ () => navigate(-1) }>목록으로</button>
             </div>
         </div>
     );

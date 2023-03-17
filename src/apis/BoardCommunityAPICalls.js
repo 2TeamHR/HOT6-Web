@@ -6,7 +6,7 @@ import {
 
 export const callBoardCommunityListAPI = () => {
 
-    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v2/board/community`;
+    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/board/community`;
 
     console.log('request', requestURL);
     return async (dispatch, getState) => {
