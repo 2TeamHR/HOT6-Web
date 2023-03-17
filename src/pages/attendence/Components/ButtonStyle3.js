@@ -49,10 +49,10 @@ const ColorButton = styled(Button)(({ theme }) => ({
     },
 }));
 
-export default function BasicButtons3() {
+export default function BasicButtons3(props) {
     return (
 
-            <BootstrapButton3 variant="contained" disableRipple>
+            <BootstrapButton3 variant="contained" disableRipple onClick={props.onClick}>
                 저 장
             </BootstrapButton3>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Redirect } from 'react-router-dom';
 import Main from './pages/Main'
 import MypageAttendance from './pages/mypage/Mypage_attendance';
 import MypageManagement from './pages/mypage/Mypage_management';
@@ -55,6 +55,8 @@ import LOAForm from './pages/es/LOAForm';
 import ReinstatmentForm from './pages/es/ReinstatementForm';
 import SeveranceInsert from './pages/salary/Salary_SeveranceInsert';
 import SalaryInsert from './pages/salary/Salary_SalaryInsert';
+
+
 
 function App() {
 
