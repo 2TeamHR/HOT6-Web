@@ -62,7 +62,7 @@ function MypageManagement (){
     }
 
     const memberBirth = memberDetail.memberBirth ? new Date(memberDetail.memberBirth) : null;
-    const formattedMemberBirthe = memberBirth ? memberBirth.toISOString().slice(0, 10) : '';
+    const formattedMemberBirth = memberBirth ? memberBirth.toISOString().slice(0, 10) : '';
 
     const joinDate = memberDetail.memberBirth ? new Date(memberDetail.joinDate) : null;
     const formattedJoinDate = joinDate ? joinDate.toISOString().slice(0, 10) : '';
@@ -146,7 +146,7 @@ function MypageManagement (){
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-calendar-alt mr-3`}></i>
                                 <span>생년월일</span>
-                                <span className='float-right fw-blod'>{formattedMemberBirthe}</span>
+                                <span className='float-right fw-blod'>{formattedMemberBirth}</span>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-male-female mr-3`}></i>
