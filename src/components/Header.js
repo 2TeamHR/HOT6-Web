@@ -36,25 +36,25 @@ function Header() {
         }, []
     );
 
-    /* 남은 발표까지 */
-    useEffect(() => {
-        // 매 초마다 현재 시간을 업데이트
-        const interval = setInterval(() => {
-          setNow(new Date().getTime());
-        }, 1000);
+    // /* 남은 발표까지 */
+    // useEffect(() => {
+    //     // 매 초마다 현재 시간을 업데이트
+    //     const interval = setInterval(() => {
+    //       setNow(new Date().getTime());
+    //     }, 1000);
     
-        return () => clearInterval(interval);
-      }, []);
+    //     return () => clearInterval(interval);
+    //   }, []);
     
-      useEffect(() => {
-        // D-day까지 남은 시간을 계산하고 업데이트
-        const timeLeft = dDayTime - now;
-        if (timeLeft > 0) {
-          setDDay(timeLeft);
-        } else {
-          setDDay(0);
-        }
-      }, [now]);
+    //   useEffect(() => {
+    //     // D-day까지 남은 시간을 계산하고 업데이트
+    //     const timeLeft = dDayTime - now;
+    //     if (timeLeft > 0) {
+    //       setDDay(timeLeft);
+    //     } else {
+    //       setDDay(0);
+    //     }
+    //   }, [now]);
     
       // 타임스탬프를 시간으로 변환하는 함수
       const timestampToTime = (timestamp) => {

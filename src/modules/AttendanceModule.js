@@ -4,10 +4,15 @@ import {createActions, handleActions} from 'redux-actions';
 const initialState = [];
 
 /* 액션 */
-export const GET_MYATTENDANCE = 'mypageAttendance/GET_MYATTENDANCE';
+export const GET_MYATTENDANCE = 'myPageAttendance/GET_MYATTENDANCE';
+export const GET_MYPAGESELECTATTENDANCE = 'myPageAttendance/GET_MYPAGESELECTATTENDANCE';
+
 
 const actions = createActions({
     [GET_MYATTENDANCE]: () => {
+    },
+
+    [GET_MYPAGESELECTATTENDANCE]: () => {
     },
 });
 
@@ -18,6 +23,12 @@ const attendanceReducer = handleActions(
 
             return payload;
         },
+
+        [GET_MYPAGESELECTATTENDANCE]: (state, {payload}) => {
+
+            return payload;
+        },
+
     },
     initialState
 );

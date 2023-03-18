@@ -1,12 +1,12 @@
 import mainStyle from '../resources/css/components/main.module.css';
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MyCalendar from './calendar/MyCalendar';
 import Paper from '@mui/material/Paper';
 
 function Main() {
 
-    // const [value, onChange] = useState(new Date());
+    const [value, onChange] = useState(new Date());
 
     return (
         <main className={`${mainStyle.main} mt-4 m row`}>

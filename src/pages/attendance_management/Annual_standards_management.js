@@ -90,79 +90,84 @@ function AnnualStandardsManagement() {
 
                 <div className={mainTitleStyle.title}>
                     <p>휴가 기준 관리</p>
+                    
+                </div>
+                
+                <div>
+                    <Button className={asmStyle.sorBtn} onClick={handleShow}>
+                        기준등록
+                    </Button>
+
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                        <Modal.Title>휴가 기준 등록</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                        <div className="text-center">
+                            <p className="text-left mt-4 mb-1">휴가명</p>
+                            <input 
+                                name='leaveCategoryName'
+                                onChange={ onChangeHandler } 
+                                className={asmStyle.modalInputTitle}
+                            />
+                            <p className="text-left mt-4 mb-1">기준일수</p>
+                            <input 
+                                name='leaveCategoryDateCount'
+                                onChange={ onChangeHandler } 
+                                className={asmStyle.modalInputTitle}
+                            />
+                            <p className="text-left mt-4 mb-1">급여 유무</p>
+                            <div className='float-left'>
+                                <label className='mr-3'>
+                                    <input type="radio" name="leavePayState" value="8" onChange={ onChangeHandler }/>유급</label>
+                                <label>
+                                    <input type="radio" name="leavePayState" value="1" onChange={ onChangeHandler }/>무급</label>
+                            </div>
+                            <div className='w-100'>
+                                <p className={`mt-5 ${asmStyle.modelInfo}`}>법정 휴가 가이드</p>
+                                <p className={`mt-5 ${asmStyle.modelInfo}`}>기본 연차 가이드</p>
+                            </div>
+                        </div>
+                        </Modal.Body>
+                        <Modal.Footer>
+                        <Button variant="primary" onClick={onClickLeaveRegistrationHandler}>
+                            생성
+                        </Button>
+                        <Button variant="secondary" onClick={handleClose}>
+                            취소
+                        </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
 
-                <Button className={asmStyle.sorBtn} onClick={handleShow}>
-                    기준등록
-                </Button>
-
-                <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                    <Modal.Title>휴가 기준 등록</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                    <div className="text-center">
-                        <p className="text-left mt-4 mb-1">휴가명</p>
-                        <input 
-                            name='leaveCategoryName'
-                            onChange={ onChangeHandler } 
-                            className={asmStyle.modalInputTitle}
-                        />
-                        <p className="text-left mt-4 mb-1">기준일수</p>
-                        <input 
-                            name='leaveCategoryDateCount'
-                            onChange={ onChangeHandler } 
-                            className={asmStyle.modalInputTitle}
-                        />
-                        <p className="text-left mt-4 mb-1">급여 유무</p>
-                        <div className='float-left'>
-                            <label className='mr-3'>
-                                <input type="radio" name="leavePayState" value="8" onChange={ onChangeHandler }/>유급</label>
-                            <label>
-                                <input type="radio" name="leavePayState" value="1" onChange={ onChangeHandler }/>무급</label>
-                        </div>
-                        <div className='w-100'>
-                            <p className={`mt-5 ${asmStyle.modelInfo}`}>법정 휴가 가이드</p>
-                            <p className={`mt-5 ${asmStyle.modelInfo}`}>기본 연차 가이드</p>
-                        </div>
-                    </div>
-                    </Modal.Body>
-                    <Modal.Footer>
-                    <Button variant="primary" onClick={onClickLeaveRegistrationHandler}>
-                        생성
-                    </Button>
-                    <Button variant="secondary" onClick={handleClose}>
-                        취소
-                    </Button>
-                    </Modal.Footer>
-                </Modal>
-                
-                <Table>
-                    <thead>
-                        <tr className="text-center">
-                            <th>No</th>
-                            <th>휴가명</th>
-                            <th>일수</th>
-                            <th>유급 / 무급</th>
-                            <th>삭제</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {leave.map((category, index) => (
-                            <tr key={category.leaveCategoryCode} className="text-center">
-                                <td className='align-middle'>{index + 1}</td>
-                                <td className='align-middle'>{category.leaveCategoryName}</td>
-                                <td className='align-middle'>{category.leaveCategoryDateCount}</td>
-                                <td className='align-middle'>{category.leavePayState === 8 ? '유급' : '무급'}</td>
-                                <td className='align-middle'>
-                                    <Button className={asmStyle.deleteBtn} onClick={() => onDeleteHandler(category.leaveCategoryCode)}>
-                                        삭제
-                                    </Button>
-                                </td>
+                <Paper elevation={3} className={asmStyle.leaveTable}>
+                    <Table>
+                        <thead>
+                            <tr className="text-center">
+                                <th>No</th>
+                                <th>휴가명</th>
+                                <th>일수</th>
+                                <th>유급 / 무급</th>
+                                <th>삭제</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </Table>
+                        </thead>
+                        <tbody>
+                            {leave?.map((category, index) => (
+                                <tr key={category.leaveCategoryCode} className="text-center">
+                                    <td className='align-middle'>{index + 1}</td>
+                                    <td className='align-middle'>{category.leaveCategoryName}</td>
+                                    <td className='align-middle'>{category.leaveCategoryDateCount}</td>
+                                    <td className='align-middle'>{category.leavePayState === 8 ? '유급' : '무급'}</td>
+                                    <td className='align-middle'>
+                                        <Button className={asmStyle.deleteBtn} onClick={() => onDeleteHandler(category.leaveCategoryCode)}>
+                                            삭제
+                                        </Button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                </Paper>
             </div>
         </main>
     );

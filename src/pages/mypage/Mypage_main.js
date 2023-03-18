@@ -16,22 +16,35 @@ import { decodeJwt } from '../../utils/tokenUtils';
 import { callGetMyLeaveInfoAPI } from '../../apis/LeaveAPICalls';
 import { callGetMemberAPI } from '../../apis/MemberAPICalls';
 
+import axios from 'axios';
+
+
 function MypageMain() {
 
     const [date, setDate] = useState(new Date());
     const [startTimeStamp, setStartTimeStamp] = useState('');
+
+    const [startTimeStampRecord, setStartTimeStampRecord] = useState(null);
+    const [finishTimeStampRecord, setFinishTimeStampRecord] = useState(null);
+    const [TotalWorkTime, setTotalWorkTime] = useState(null);
+    const [prevStartTimeStampRecord, setPrevStartTimeStampRecord] = useState(null);
+    const [finishTimeStore, setFinishTimeStore] = useState(null);
     const [endTimeStamp, setEndTimeStamp] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch(); 
     const token = decodeJwt(window.localStorage.getItem("accessToken"));
     const member = useSelector(state => state.memberReducer);  
     const memberDetail = member.data;
-    const myLeaveInfo = useSelector(state => state.leaveReducer); 
-    const attendanceList = useSelector(state => state.attendanceReducer);
+    const myLeaveInfo = useSelector(state => state.leaveReducer);
+    const [startTime, setStartTime] = useState("");
 
-    if(token == undefined) {
-        navigate("/");
-    }
+    // hs
+    const [hrForm, setHrForm] = useState({
+
+        commuteStartTime: '',
+
+    });
+
 
     useEffect(
         () => {
@@ -49,14 +62,74 @@ function MypageMain() {
         },[]
     );
 
-    useEffect(
-        () => {
-            const timerID = setInterval(() => tick(), 1000);
-            return () => {
-                clearInterval(timerID);
-            };
-        }
-    );
+    // useEffect(
+    //     () => {
+    //         const timerID = setInterval(() => tick(), 1000);
+    //         return () => {
+    //             clearInterval(timerID);
+    //         };
+    //     }
+    // );
+
+    // hs
+    useEffect(() => {
+        console.log("저장된 값 확인: " + startTimeStamp);
+      }, [startTimeStamp]);
+
+    // hs
+    useEffect(() => {
+        console.log("저장된 값 확인: " + finishTimeStore);
+      }, [finishTimeStore]);
+
+    // hs
+    useEffect(() => {
+        console.log("저장된 값 확인: " + hrForm);
+      }, [hrForm]);
+
+    // hs
+    useEffect(() => {
+        console.log("저장된 시간값 확인 " + startTimeStampRecord);
+      }, [startTimeStampRecord]);
+
+    // hs
+    // useEffect(() => {
+    //     const intervalId = setInterval(() => {
+    //       axios
+    //         .get(`http://localhost:8888/api/v1/attendance/mypageAregistSelect`, {
+    //           params: {
+    //             commuteStartTime: moment(date).format('YYYY-MM-DDTHH:mm:ss'),
+    //             memberCode: token.sub,
+    //           },
+    //           headers: {
+    //             "Content-Type": "application/json",
+    //             Accept: "*/*",
+    //             Authorization: `Bearer ${window.localStorage.getItem(
+    //               "accessToken"
+    //             )}`,
+    //           },
+    //         })
+    //         .then((response) => {
+    //             const commuteFinishTime = response.data.data[0].commuteFinishTime;
+    //             const formattedFinishTime = commuteFinishTime ? moment(commuteFinishTime, "YYYY-MM-DDTHH:mm:ss.SSSZ").format("HH:mm:ss") : '';
+
+
+    //             console.log("출근 시간 데이터 나오기 전");
+    //           console.log(response.data); // 응답 데이터를 콘솔에 출력
+    //           setStartTimeStampRecord(moment(response.data.data[0].commuteStartTime).format("HH:mm:ss"));
+    //           setFinishTimeStampRecord(formattedFinishTime);
+    //           setTotalWorkTime(response.data.data[0].commuteTotalTime);
+    //         })
+    //         .catch((error) => {
+    //           console.error(error);
+    //           console.log("출근시간 결과값 못 불러옴");
+    //           console.log(moment.utc(date).local().format('YYYY-MM-DDTHH:mm:ss'));
+    //         });
+    //     }, 2000); // 5초마다 실행
+
+    //     return () => clearInterval(intervalId); // cleanup 함수에서 interval 해제
+    //   }, []); // 의존성 배열에 값을 넣지 않아서 최초 1회만 실행
+
+
 
     if (!memberDetail || Object.keys(memberDetail).length === 0) {
         return <div>Loading...</div>;
@@ -80,34 +153,113 @@ function MypageMain() {
         navigate("/mypage/management", { replace: true })
     }
 
+
+
+    // hs
     /* 출근하기 버튼 핸들러 */
     const onClickStartTimeHandler = () => {
 
-        if(!startTimeStamp) {
+        if(!startTimeStampRecord) {
 
             setStartTimeStamp(moment(date).format('HH:mm:ss'));
+
+
+            const payload = {
+                commuteStartTime: date,
+              };
+
+              axios
+                .get(`http://localhost:8888/api/v1/attendance/mypageAregist`, {
+                    params : {
+                        commuteStartTime: date,
+                        memberCode: token.sub,
+                    },
+                  headers: {
+                    "Content-Type": "application/json",
+                    Accept: "*/*",
+                    Authorization: `Bearer ${window.localStorage.getItem(
+                      "accessToken"
+                    )}`,
+                  },
+                })
+
+
+                .then((response) => {
+                  console.log("데이터 나오기 전");
+                  console.log(response.data); // 응답 데이터를 콘솔에 출력
+                  setStartTimeStamp(moment(response.data.date).format('HH:mm:ss'));
+                  alert(response.data.data)
+                })
+                .catch((error) => {
+                  console.error(error);
+                  console.log("마이페이지 결과값 못 불러옴");
+                });
         } else {
 
             alert('이미 출근하셨습니다.');
         }
     }
 
+
+    // hs
     /* 퇴근하기 버튼 핸들러 */
     const onClickEndTimeHandler = () => {
 
         if(!endTimeStamp) {
 
-            if (!startTimeStamp) {
+            if (!startTimeStampRecord) {
 
                 alert('출근 시간이 설정되지 않았습니다.');
             } else if(window.confirm('현재 서버 시간은 ' + date.toLocaleString() + " 입니다.\n정말로 퇴근하시겠습니까?")){
     
+                setFinishTimeStore(date.toLocaleString());
                 setEndTimeStamp(moment(date).format('HH:mm:ss'));
+
+
+
+                const payload = {
+                    commuteFinishTime: finishTimeStore,
+                  };
+
+                  axios
+                    .get(`http://localhost:8888/api/v1/attendance/mypageAfinishRegist`, {
+                        params : {
+                            commuteFinishTime: date,
+                            memberCode: token.sub,
+                        },
+                      headers: {
+                        "Content-Type": "application/json",
+                        Accept: "*/*",
+                        Authorization: `Bearer ${window.localStorage.getItem(
+                          "accessToken"
+                        )}`,
+                      },
+                    })
+
+
+                    .then((response) => {
+                      console.log("데이터 나오기 전");
+                      console.log(response.data); // 응답 데이터를 콘솔에 출력
+                      setEndTimeStamp(moment(response.data.date).format('HH:mm:ss'));
+                    })
+                    .catch((error) => {
+                      console.error(error);
+                      console.log("마이페이지 결과값 못 불러옴");
+                    });
+
+
             }
         } else {
             alert('이미 퇴근을 하셨습니다.');
         }
     }
+
+
+
+
+
+
+
 
     return (
         <>
@@ -174,25 +326,24 @@ function MypageMain() {
                     <Paper elevation={3} className={mypageStyle.module}>
                         <p className={mypageStyle.moduleTitle}>근태관리</p>
                         <div className="text-lg-start ml-3 text-center time">
-                            <p className="alert-light fs-5 fw-bold text-dark">{date.toLocaleString()}</p>
+                            {/* <p className="alert-light fs-5 fw-bold text-dark">{date.toLocaleString()}</p> */}
                         </div>
                         <div className={mypageStyle.todayWorkTime}>
                             <p className="fw-bold fs-5 text-center">오늘 근무 시간</p>
                             <div className="text-center">
-                                <span className="fs-1 fw-bolder"></span>
+                                <span className="fs-1 fw-bolder">{TotalWorkTime}</span>
                                 <span className="fs-3 fw-bold">시간</span>
-                                <span className="fs-1 fw-bolder"></span>
-                                <span className="fs-3 fw-bold">분</span>
+
                             </div>
                         </div>
                         <div>
                             <div className="ml-5 mr-5">
                                 <span className="fw-300">출근 시간</span>
-                                <span className="fw-300 float-right">{startTimeStamp.toLocaleString()}</span>
+                                <span className="fw-300 float-right">{startTimeStampRecord}</span>
                             </div>
                             <div className="ml-5 mr-5 pb-3 border-bottom">
                                 <span className="fw-300">퇴근 시간</span>
-                                <span className="fw-300 float-right">{endTimeStamp.toLocaleString()}</span>
+                                <span className="fw-300 float-right">{finishTimeStampRecord}</span>
                             </div>
                         </div>
                         <div className="text-center">

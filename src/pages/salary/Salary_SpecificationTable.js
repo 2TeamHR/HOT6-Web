@@ -1,4 +1,3 @@
-import { shouldAutoRemoveFilter } from "@tanstack/table-core";
 import { Table } from "react-bootstrap";
 import salarytableStyle from "../../resources/css/pages/salary/salaryTable.module.css"
 
