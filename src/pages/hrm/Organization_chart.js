@@ -4,10 +4,10 @@ import tableStyle from '../../resources/css/components/tableComponent.module.css
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 import Pagination from '@mui/material/Pagination';
+import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-
 import { callGetMemberAPI } from '../../apis/organizationAPICalls';
 
 function OrganizationChart() {
@@ -15,16 +15,26 @@ function OrganizationChart() {
     const dispatch = useDispatch();
     const members = useSelector(state => state.organizationReducer);
 
-    console.log('member', members);
-
     useEffect(() => {
       dispatch(callGetMemberAPI());
     }, []);
   
+    const [form, setForm] = useState({
+      teamSearch: 0,
+    });
+
+    // 팀 검색 상태 값 처리 핸들러
+    const onTeamChange = (value) => {
+      setForm({
+        teamSearch: value
+      })
+    }
+
+    // 페이지네이션 처리
     const [currentPage, setCurrentPage] = useState(1);
     const perPage = 10;
   
-    const handlePageChange = (event, value) => {
+    const onChangePageHandler = (event, value) => {
       setCurrentPage(value);
     };
     
@@ -38,19 +48,24 @@ function OrganizationChart() {
     return (
       <main className={mainTitleStyle.main}>
         <div>
+
           <div className={mainTitleStyle.title}>
             <p>조직도</p>
           </div>
-  
-          <div className={tableStyle.boxStyle}>
-            <div className={tableStyle.searchBox}>
-              <TsbDepartment />
-              <TsbEmployee />
-              <Term />
-              <SearchBtn />
+          
+          <Paper elevation={3}>
+            <div className={tableStyle.boxStyle}>
+                <div className={tableStyle.searchBox}>
+                    <TsbDepartment onChange={onTeamChange}/>
+                    <TsbEmployee/>
+                    <Term/>
+                    <SearchBtn/>
+                </div>
             </div>
-  
-            <Table className='mt-5'>
+          </Paper>
+            
+          <Paper elevation={3} className="mt-4 pb-5">
+            <Table>
               <thead>
                 <tr className="text-center">
                   <th>No</th>
@@ -75,15 +90,15 @@ function OrganizationChart() {
               </tbody>
             </Table>
             
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center mt-5">
               <Pagination 
                 count={Math.ceil(members.length / perPage)} 
                 page={currentPage} 
-                onChange={handlePageChange} 
+                onChange={onChangePageHandler} 
               />
-          </div>
+            </div>
+          </Paper>
 
-          </div>
         </div>
       </main>
     );

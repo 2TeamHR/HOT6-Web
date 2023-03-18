@@ -43,12 +43,12 @@ function EaRealTable() {
           </TableHead>
           <TableBody>
             {documentList.map((docu, index) => (<><TableRow key={docu.eaCode}>
-              
-              <TableCell align="center">{docu?.eaCode}</TableCell>              
-              <TableCell align="center">{docu?.dtype}</TableCell>              
+
+              <TableCell align="center">{docu?.eaCode}</TableCell>
+              <TableCell align="center">{docu?.dtype}</TableCell>
               <TableCell align="center">{docu?.eaSubject}</TableCell>
               <TableCell align="center">{docu?.eaMember?.team?.teamName}</TableCell>
-              <TableCell align="center">{docu?.eaMember?.rank?.rankName}</TableCell>              
+              <TableCell align="center">{docu?.eaMember?.rank?.rankName}</TableCell>
               <TableCell align="center">{docu?.eaMember?.memberName}</TableCell>
               <TableCell align="center">{docu?.eaDate}</TableCell>
               <TableCell align="center"><Chip label={docu?.eaStatusCategory?.eaStatusName} color="primary" /></TableCell>

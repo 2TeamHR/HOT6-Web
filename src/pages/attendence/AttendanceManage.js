@@ -15,7 +15,7 @@ import BasicButtons from "./Components/ButtonStyle";
 import AttendanceManageTable from "./Components/AttendanceManageTable";
 import { useEffect } from "react";
 import axios from 'axios';
-
+import moment from 'moment'
 
 
 
@@ -105,12 +105,17 @@ function AttendanceManage() {
           })
           .then((response) => {
             console.log("데이터 나오기 전");
-
             console.log(response.data); // 응답 데이터를 콘솔에 출력
-            
- 
-            console.log("Attendance Manage");
-            setSendData(response.data);
+
+              const changeData = response.data.data.map((dataList) => ({
+                  ...dataList,
+                  commuteStartTime: moment(dataList.commuteStartTime).format('HH:mm'),
+                  commuteScountTime: moment(dataList.commuteScountTime).format('HH:mm'),
+                  commuteFinishTime: moment(dataList.commuteFinishTime).format('HH:mm'),
+                  commuteFcountTime: moment(dataList.commuteFcountTime).format('HH:mm'),
+              }));
+
+            setSendData(changeData);
           })
           .catch((error) => {
             console.error(error);
