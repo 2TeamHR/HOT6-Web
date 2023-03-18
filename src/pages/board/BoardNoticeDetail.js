@@ -14,7 +14,8 @@ function BoardNoticeDetail() {
   const params = useParams();
   const notice = useSelector(state => state.boardNoticeReducer);
   const noticeDetail = notice.data;
-  const token = decodeJwt(window.localStorage.getItem("accessToken"));
+  const member = useSelector(state => state.memberReducer);
+  const memberDetail = member.data; 
 
   console.log('noticeDetail', noticeDetail);
 
@@ -77,7 +78,7 @@ function BoardNoticeDetail() {
               </div>
               <br/>
               <button className="btn btn-info me-3" onClick={onClickNoticeListHandler}>목록으로</button>
-              {(token.sub === noticeDetail.memberCode) && (
+              {(memberDetail.teamCode = 1) && (
                   <>
                     <button className="btn btn-info me-3" onClick={noticeUpdateHref}>수정</button>
                     <button className="btn btn-info me-3" onClick={onClickNoticeDelete}>삭제</button>
