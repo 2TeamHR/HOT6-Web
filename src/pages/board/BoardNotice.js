@@ -32,6 +32,28 @@ function BoardNotice() {
     const startIndex = (currentPage - 1) * perPage;
     const endIndex = startIndex + perPage;
 
+    function displayTime(ggg) {
+
+        const dateTime = new Date(ggg);
+        const now = new Date();
+        const diff = (now.getTime() - dateTime.getTime()) / 1000;
+
+        if (diff < 60) {
+            return "방금 전";
+        } else if (diff < 3600) {
+            const minutes = Math.floor(diff / 60);
+            return `${minutes}분 전`;
+        } else if (diff < 86400 && dateTime.getDate() === now.getDate()) {
+            const hours = Math.floor(diff / 3600);
+            return `${hours}시간 전`;
+        } else {
+            const year = dateTime.getFullYear();
+            const month = dateTime.getMonth() + 1;
+            const day = dateTime.getDate();
+            return `${year}년 ${month}월 ${day}일`;
+        }
+    }
+
     return (
         <div className="container">
             <h1 className="mt-5 text-center">공지사항</h1><br/>
@@ -53,7 +75,7 @@ function BoardNotice() {
                             <td className='align-middle'>{noticeIndex + 1}</td>
                             <td className='align-middle'>{notice.noticeTitle}</td>
                             <td className='align-middle'>{notice.member.memberName}</td>
-                            <td className='align-middle'>{notice.noticeDate}</td>
+                            <td className='align-middle'>{displayTime(notice.noticeDate)}</td>
                             <td className='align-middle'>{notice.noticeCount}</td>
                         </tr>
                     ))}
