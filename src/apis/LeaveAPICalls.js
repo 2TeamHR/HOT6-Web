@@ -10,8 +10,8 @@ export const callLeaveCategoryListAPI = () => {
     let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/annual/standardsManagement`;
 
     console.log('request', requestURL);
-    return async (dispatch, getState) => {
 
+    return async (dispatch, getState) => {
 
         const result = await fetch(requestURL, {
             method: "GET",

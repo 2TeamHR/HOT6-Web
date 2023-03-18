@@ -129,7 +129,7 @@ import {
 
   
   
-  function EsTable() {
+  function EaTable() {
 
   
     return (
@@ -163,5 +163,5 @@ import {
     );
   }
   
-  export default EsTable;
+  export default EaTable;
   

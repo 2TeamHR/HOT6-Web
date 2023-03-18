@@ -5,20 +5,21 @@ import { Navigate } from "react-router-dom";
 import {
     callLoginAPI
 } from '../../apis/MemberAPICalls'
-import { POST_LOGIN } from '../../modules/MemberModule';
+
 
 import { Button } from '@mui/material'
-
+import { decodeJwt } from '../../utils/tokenUtils';
 
 function Login() {
 
     const navigate = useNavigate();
-
-    /* 리덕스를 이용하기 위한 디스패처, 셀렉터 선언 */
     const dispatch = useDispatch();
-    const loginMember = useSelector(state => state.memberReducer);  // API 요청하여 가져온 loginMember 정보
+    const loginMember = useSelector(state => state.memberReducer);
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));
 
-    /* 폼 데이터 한번에 변경 및 State에 저장 */
+    const [rememberChecked, setRememberChecked] = useState(false);
+    const placeholder = localStorage.getItem("memberCode") || "사번을 입력하세요.";
+
     const [form, setForm] = useState({
         memberCode: '',
         memberPassword: ''
@@ -26,17 +27,33 @@ function Login() {
 
     useEffect(() => {
 
+        console.log('login token : ', token);
+
             if (loginMember.status === 200) {
                 console.log("[Login] Login SUCCESS {}", loginMember);
+                console.log("[Login] Login SUCCESS {}", token);
                 navigate("/", { replace: true });
-            }
-        }, [loginMember]
+                // return <Navigate to="/main" />;
+            } 
+        }, [loginMember] // [token]
+    );
+
+    useEffect(() => {
+        const savedMemberCode = localStorage.getItem('memberCode');
+
+        if (savedMemberCode) {
+            setForm({
+                ...form,
+                memberCode: savedMemberCode });
+            setRememberChecked(true);
+        } 
+      }, []
     );
 
     /* 로그인 상태일 시 로그인페이지로 접근 방지 */
-    if (loginMember.length > 0) {
+    if (token) {
         console.log("[Login] Login is already authenticated by the server");
-        return <Navigate to="/main" />
+        return <Navigate to="/" />
     }
 
     const onChangeHandler = (e) => {
@@ -46,13 +63,23 @@ function Login() {
         });
     };
 
-    /* 로그인 버튼 클릭시 디스패처 실행 및 메인 페이지로 이동 */
+    const handleRememberChecked = (e) => {
+        setRememberChecked(e.target.checked);
+    }
+
+    /* 로그인 버튼 클릭시 디스패처 실행 및 페이지 이동 */
     const onClickLoginHandler = () => {
-        dispatch(callLoginAPI({	// 로그인
+        dispatch(callLoginAPI({
             form: form
         }));
 
-        navigate(`/main`, { replace: true });
+        if (rememberChecked) {
+            localStorage.setItem('memberCode', form.memberCode);
+        } else {
+            localStorage.removeItem('memberCode');
+        }
+        
+        // navigate(`/`, { replace: true });
     }
 
     const onEnterkeyHandler = (e) => {
@@ -63,9 +90,7 @@ function Login() {
     }
 
     const handleSubmit = (event) => {
-        event.preventDefault(); // 기본 이벤트 방지
-
-        // 아이디와 비밀번호를 사용하여 로그인하는 로직
+        event.preventDefault();
         dispatch(callLoginAPI({ form }));
     };
 
@@ -84,10 +109,11 @@ function Login() {
                         <input
                             type="text"
                             name='memberCode'
-                            placeholder="사번을 입력하세요."
+                            id='memberCode'
+                            placeholder={placeholder}
                             autoComplete='off'
                             onChange={onChangeHandler}
-                            autoFocus="autofocus"
+                            autoFocus={localStorage.getItem('memberCode') ? undefined : 'autofocus'} // autoFocus 설정
                             style={{ width: '100%', padding: '12px 20px', margin: '8px 0', display: 'inline-block', border: '1px solid #ccc', borderRadius: '4px', boxSizing: 'border-box' }}
                         />
                         <input
@@ -96,10 +122,11 @@ function Login() {
                             placeholder="비밀번호를 입력하세요."
                             autoComplete='off'
                             onChange={onChangeHandler}
+                            autoFocus={localStorage.getItem('memberCode') ? 'autofocus' : undefined} // autoFocus 설정
                             onKeyDown={onEnterkeyHandler}
                             style={{ width: '100%', padding: '12px 20px', margin: '8px 0', display: 'inline-block', border: '1px solid #ccc', borderRadius: '4px', boxSizing: 'border-box' }}
                         />
-                        <input type="checkbox" id="remember" name="remember" style={{ marginTop: '10px', marginRight: '10px' }}/>
+                        <input type="checkbox" id="remember" name="remember" checked={rememberChecked} onChange={handleRememberChecked} style={{ marginTop: '10px', marginRight: '10px' }}/>
                         <label htmlFor="remember" style={{ "display": "inline-block", "fontSize": "100%" }}>사번 저장</label>
                         <Button
                             onClick={onClickLoginHandler}
