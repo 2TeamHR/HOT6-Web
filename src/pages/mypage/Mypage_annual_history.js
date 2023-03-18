@@ -1,8 +1,6 @@
 import mpahStyle from '../../resources/css/pages/mypage/mypage-annual-history.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
 import Paper from '@mui/material/Paper';
-import { EnhancedTable } from '../../components/tableComponent';
-import { getMypageAnnualHistoryTableData } from '../../api/tableAPI';
 
 function MypageAnnualHistory() {
 
@@ -14,7 +12,7 @@ function MypageAnnualHistory() {
                 </div>
 
                 {/* <!-- check box --> */}
-                <Paper elevation="3" className="d-flex flex-row pt-5 pb-3 justify-content-around">
+                <Paper elevation={3} className="d-flex flex-row pt-5 pb-3 justify-content-around">
                     <div className={mpahStyle.annualMainBox}>
                         <div className={mpahStyle.annualMainBoxTitle}>
                             <p className='fs-3 fw-bold'>2022년도</p>
@@ -84,7 +82,6 @@ function MypageAnnualHistory() {
                 </select>
             </div>
             <div className={mpahStyle.annualTableMargin}>
-                <EnhancedTable tabledata={getMypageAnnualHistoryTableData()} />
             </div>
 
         </main>
