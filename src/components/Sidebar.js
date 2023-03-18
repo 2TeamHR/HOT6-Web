@@ -27,7 +27,7 @@ function Sidebar() {
         <div className={sidebarStyle.nav} id="navbar">
             <nav className={sidebarStyle.navContainer}>
                 <div>
-                    <Link to="/main" className={`${sidebarStyle.a} ${sidebarStyle.navLink} ${sidebarStyle.navLogo}`}>
+                    <Link to="/" className={`${sidebarStyle.a} ${sidebarStyle.navLink} ${sidebarStyle.navLogo}`}>
                         <i className={`bx bxs-disc ${sidebarStyle.navIcon}`}></i>
                         <span className={sidebarStyle.navLogoName}>The Tech Titan</span>
                     </Link>
@@ -195,7 +195,7 @@ function Sidebar() {
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             인사팀 관리
                                         </div>
-                                            <Link to="/salary/check/N" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>급여 지급 현황 </Link>
+                                            <Link to="/salary/check/All" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>급여 지급 현황 </Link>
                                             <Link to="/salary/bonus" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>상여금 지급 현황</Link>
                                             {/* <Link to="/salary/severance/N" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직금 지급 현황</Link> */}
                                     </div>

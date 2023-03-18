@@ -326,7 +326,7 @@ function MypageMain() {
                     <Paper elevation={3} className={mypageStyle.module}>
                         <p className={mypageStyle.moduleTitle}>근태관리</p>
                         <div className="text-lg-start ml-3 text-center time">
-                            <p className="alert-light fs-5 fw-bold text-dark">{date.toLocaleString()}</p>
+                            {/* <p className="alert-light fs-5 fw-bold text-dark">{date.toLocaleString()}</p> */}
                         </div>
                         <div className={mypageStyle.todayWorkTime}>
                             <p className="fw-bold fs-5 text-center">오늘 근무 시간</p>

@@ -36,24 +36,24 @@ import BoardCommunityWrite from './pages/board/BoardCommunityWrite';
 import BoardCommunityDetail from './pages/board/BoardCommunityDetail';
 import BoardNotice from './pages/board/BoardNotice';
 import BoardNoticeWrite from './pages/board/BoardNoticeWrite';
-import BoardNoticeDetail from './pages/board/BoardNoticeDetail';
+import BoardNoticeUpdate from './pages/board/BoardNoticeUpdate';
 
+import BoardNoticeDetail from './pages/board/BoardNoticeDetail';
 import Message from "./pages/messsage/Message";
 import MessageSent from "./pages/messsage/MessageSent";
 import MessageTrash from "./pages/messsage/MessageTrash";
-import ReceivedMessage from "./pages/messsage/ReceivedMessage";
 
+import ReceivedMessage from "./pages/messsage/ReceivedMessage";
 import SalaryCheck from './pages/salary/Salary_check';
 import AllCheckN from './pages/salary/Salary_allCheckN';
-import AllCheckY from './pages/salary/Salary_allCheckY';
-import SeveranceN from './pages/salary/Salary_SeveranceN'
-import SeveranceY from './pages/salary/Salary_SeveranceY'
-import SeveranceInsert from './pages/salary/Salary_SeveranceInsert';
+// import SeveranceN from './pages/salary/Salary_SeveranceN'
+// import SeveranceY from './pages/salary/Salary_SeveranceY'
+// import SeveranceInsert from './pages/salary/Salary_SeveranceInsert';
 import SalaryBonus from './pages/salary/Salary_bonus';
 import BonusInsert from './pages/salary/Salary_BonusInsert';
 import Specification from './pages/salary/Salary_Specification';
-import SalaryInsert from './pages/salary/Salary_SalaryInsert';
 
+import SalaryInsert from './pages/salary/Salary_SalaryInsert';
 import EaMain from './pages/ea/EaMain';
 import EaDraftMenu from './pages/ea/EaDraftMenu';
 import LeaveForm from './pages/ea/LeaveForm';
@@ -117,7 +117,7 @@ function App() {
 
             {/* 게시판 */}
             <Route path="/board/notice" element={<BoardNotice />} />
-            <Route path="/board/notice/detail" element={<BoardNoticeDetail />} />
+            <Route path="/board/notice/:noticeCode" element={<BoardNoticeDetail />} />
             <Route path="/board/community" element={<BoardCommunity />} />
             <Route path="/board/community/write" element={<BoardCommunityWrite />} />
             <Route path="/board/community/detail" element={<BoardCommunityDetail/>} />
@@ -151,9 +151,8 @@ function App() {
             <Route path="/organization/retireeChart" element={<OrganizationRetireeChart />} />
 
             {/* 급여 */}
-            <Route path="/salary/check/N" element={<AllCheckN />} />
-            <Route path="/salary/check/Y" element={<AllCheckY />} />
-            <Route path="/salary/check/insert" element={<SalaryInsert />} />
+            <Route path="/salary/check/All" element={<AllCheckN />} />
+            <Route path="/salary/month/insert" element={<SalaryInsert />} />
             {/* <Route path="/salary/severance/N" element={<SeveranceN />} /> */}
             {/* <Route path="/salary/severance/Y" element={<SeveranceY />} /> */}
             {/* <Route path="/salary/severance/insert" element={<SeveranceInsert />} /> */}
@@ -162,6 +161,7 @@ function App() {
 
             {/* 게시판 */}
             <Route path="/board/notice/write" element={<BoardNoticeWrite />} />
+            <Route path="/board/notice/update" element={<BoardNoticeUpdate />} />
 
           </Route>
         </Route>

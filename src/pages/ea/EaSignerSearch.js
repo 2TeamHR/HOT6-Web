@@ -1,8 +1,9 @@
-import { Avatar, Button, Checkbox, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, TextField } from "@mui/material";
+import { Avatar, Button, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, TextField } from "@mui/material";
 import React from "react";
 
-function EsSignerSearch() {
+function EaSignerSearch() {
 
+  
   const sampleSigner = [
     { no: 1, deptName: "인사팀", rankName: "사원", name: "노재영" },
     { no: 2, deptName: "인사팀", rankName: "대리", name: "이상목" },
@@ -60,4 +61,4 @@ function EsSignerSearch() {
   );
 }
 
-export default EsSignerSearch;
+export default EaSignerSearch;

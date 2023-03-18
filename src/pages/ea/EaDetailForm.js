@@ -1,6 +1,6 @@
 import { Paper } from "@mui/material";
 
-function EsDetailForm() {
+function EaDetailForm() {
     return (
         <>
         <Paper>
@@ -11,4 +11,4 @@ function EsDetailForm() {
 
 
 }
-export default EsDetailForm;
+export default EaDetailForm;
