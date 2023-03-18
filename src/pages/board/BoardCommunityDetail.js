@@ -1,70 +1,94 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import mpManagement from '../../resources/css/pages/mypage/mypage-management.module.css';
+import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
+import Paper from '@mui/material/Paper';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { callGetCommunityAPI, callUpdateCommunityAPI } from '../../apis/BoardCommunityAPICalls';
+import { decodeJwt } from '../../utils/tokenUtils';
 
 function BoardCommunityDetail() {
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [file, setFile] = useState(null);
 
-    const handleTitleChange = (e) => {
-        setTitle(e.target.value);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const params = useParams();
+    const community = useSelector(state => state.boardCommunityReducer);
+    const communityDetail = community.data;
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));
+
+    console.log('communityDetail', communityDetail);
+
+    useEffect(() => {
+            dispatch(callGetCommunityAPI({
+                boardCode: params.boardCode}));
+        }, []
+    );
+
+
+    if (!communityDetail) {
+        return <div>Loading...</div>
     };
 
-    const handleContentChange = (e) => {
-        setContent(e.target.value);
-    };
+    const communityUpdateHref = () => {
+        navigate("/board/community/update", { replace: true })
+    }
 
-    const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append('title', title);
-        formData.append('content', content);
-        formData.append('file', file);
-
-        axios.post('/api/board/write', formData)
-            .then((response) => {
-                // 게시글 등록 완료 후 처리할 로직 작성
+    const onClickCommunityDelete = () => {
+        dispatch(
+            callUpdateCommunityAPI({
+                boardCode: communityDetail.boardCode,
+                boardDeleteYn: "Y",
             })
-            .catch((error) => {
-                // 에러 처리 로직 작성
-            });
-    };
+        );
+    }
+
+    const onClickCommunityListHandler = () => {
+
+        alert('공시자항 목록으로 이동합니다.');
+        navigate('/board/community', {replace: true});
+        window.location.reload();
+    }
+
+    const communityDate = communityDetail.communityDate ? new Date(communityDetail.communityDate) : null;
+    const formattedCommunityDate = communityDate ? communityDate.toISOString().slice(0, 10) : '';
+
 
     return (
-
-        <div className="container">
-            <h1 className="mt-5 text-center">커뮤니티 글쓰기</h1>
-
-            <form action="" method="post">
-                <div className="form-group">
-                    <label htmlFor="exampleFormControlInput1">제목</label>
-                    <input type="text" className="form-control" id="exampleFormControlInput1" name="title"
-                        placeholder="제목을 작성해주세요." />
-                </div>
-
-                <div className="form-group">
-                    <label htmlFor="exampleFormControlTextarea1">내용</label>
-                    <textarea className="form-control" id="exampleFormControlTextarea1" name="contents" rows={10}
-                        defaultValue={""} />
-                </div>
-
-                <div>
-                    <label htmlFor="file">첨부파일</label>
-                    <input type="file" id="file" onChange={handleFileChange} />
-                </div><br />
-
-                <div>
-                    <button type="submit" className="btn btn-info me-3" style={{ "backgroundColor": "black", "borderColor": "black" }}>등록하기</button>
-                    <button type="button" className="btn btn-secondary">목록으로</button>
-                </div>
-
-            </form>
-        </div>
+        <main className={mainTitleStyle.main}>
+            {communityDetail ? (
+                <>
+                    <div className={`justify-content-center `}>
+                        <Paper elevation={3} className={mpManagement.profileInfoBox} style={{ height: '150px' }}>
+                            <div className={mpManagement.infoTitle}>
+                                <span className='fs-3' >제목&ensp;&ensp;{ communityDetail.boardTitle }</span>
+                            </div>
+                            <div className={mpManagement.infoModule}>
+                                <span>글쓴이&ensp;&ensp;{ communityDetail.memberCode || ''}&ensp;&ensp;&ensp;</span>
+                                <span>|&ensp;&ensp;&ensp;작성일&ensp;&ensp;{ formattedCommunityDate }&ensp;&ensp;&ensp;</span>
+                                <span>|&ensp;&ensp;&ensp;조회수&ensp;&ensp;{ communityDetail.boardCount || 0 }</span>
+                            </div>
+                        </Paper>
+                        <br/>
+                        <Paper elevation={3} className={mpManagement.profileInfoBox} style={{ height: '400px' }} >
+                            <div className={mpManagement.infoModule}>
+                                <span>{ communityDetail.boardContent || '' }</span>
+                            </div>
+                        </Paper>
+                    </div>
+                    <br/>
+                    <button className="btn btn-info me-3" onClick={onClickCommunityListHandler}>목록으로</button>
+                    {(token.sub === communityDetail.memberCode) && (
+                        <>
+                            <button className="btn btn-info me-3" onClick={communityUpdateHref}>수정</button>
+                            <button className="btn btn-info me-3" onClick={onClickCommunityDelete}>삭제</button>
+                        </>
+                    )}
+                </>
+            ) : '해당 게시글을 찾을 수 없습니다.'
+            }
+        </main>
     );
 }
+
 
 export default BoardCommunityDetail;

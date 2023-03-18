@@ -32,9 +32,9 @@ function BoardNotice() {
     const startIndex = (currentPage - 1) * perPage;
     const endIndex = startIndex + perPage;
 
-    function displayTime(ggg) {
+    function displayTime(noticeDate) {
 
-        const dateTime = new Date(ggg);
+        const dateTime = new Date(noticeDate);
         const now = new Date();
         const diff = (now.getTime() - dateTime.getTime()) / 1000;
 

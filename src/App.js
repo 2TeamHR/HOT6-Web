@@ -34,6 +34,7 @@ import ChangePassword from '../src/pages/login/ChangePassword';
 import BoardCommunity from './pages/board/BoardCommunity';
 import BoardCommunityWrite from './pages/board/BoardCommunityWrite';
 import BoardCommunityDetail from './pages/board/BoardCommunityDetail';
+import BoardCommunityUpdate from './pages/board/BoardCommunityUpdate';
 import BoardNotice from './pages/board/BoardNotice';
 import BoardNoticeWrite from './pages/board/BoardNoticeWrite';
 import BoardNoticeUpdate from './pages/board/BoardNoticeUpdate';
@@ -118,9 +119,10 @@ function App() {
             {/* 게시판 */}
             <Route path="/board/notice" element={<BoardNotice />} />
             <Route path="/board/notice/:noticeCode" element={<BoardNoticeDetail />} />
+            <Route path="/board/community/:boardCode" element={<BoardCommunityDetail />} />
             <Route path="/board/community" element={<BoardCommunity />} />
             <Route path="/board/community/write" element={<BoardCommunityWrite />} />
-            <Route path="/board/community/detail" element={<BoardCommunityDetail/>} />
+            <Route path="/board/community/update" element={<BoardCommunityUpdate />} />
 
             {/* 캘린더 */}
             <Route path="/calendar" element={<MyCalendar />} />
