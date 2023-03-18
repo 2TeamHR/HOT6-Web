@@ -3,6 +3,9 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { purple } from '@mui/material/colors';
+import { useState } from 'react';
+
+
 
 const BootstrapButton4 = styled(Button)({
     boxShadow: 'none',
@@ -50,10 +53,15 @@ const ColorButton = styled(Button)(({ theme }) => ({
     },
 }));
 
-export default function BasicButtons4() {
+
+
+export default function BasicButtons4(props) {
     return (
 
-            <BootstrapButton4 variant="contained" disableRipple>
+        
+    
+
+            <BootstrapButton4 variant="contained" disableRipple onClick={props.handleClose}>
                 취 소
             </BootstrapButton4>
 

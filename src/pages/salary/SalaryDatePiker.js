@@ -30,7 +30,7 @@ function SelectDatePiker() {
   const [changeDate, setChangeDate] = useState('N');
  
   useEffect(() => {    
-        console.log('token', token);
+    
         if(token !== null) {
             dispatch(callGetMySalaryAPI({
                 memberCode: token.sub,
@@ -47,7 +47,7 @@ function SelectDatePiker() {
   function handleSearch(e) {
     e.preventDefault();
     setChangeDate("Y");
-    console.log('token', token);
+
     if(token !== null) {
       dispatch(callGetMySalaryAPI({
         memberCode: token.sub,
