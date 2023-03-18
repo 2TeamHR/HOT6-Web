@@ -101,6 +101,8 @@ function OrganizationCreate (){
 
         if(image){
             formData.append("memberImage", image);
+            console.log(form);
+            console.log(image);
         }
 
         dispatch(callRegisterAPI({	// 직원 정보 조회

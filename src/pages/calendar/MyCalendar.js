@@ -9,11 +9,13 @@ import {
   callMainCalendarListAPI 
   , callCalendarDeleteAPI
 } from '../../apis/CalendarAPICalls';
+import { decodeJwt } from '../../utils/tokenUtils';
 
 const MyCalendar = () => {
 
   const dispatch = useDispatch();
-  const calendarList = useSelector(state => state.calendarReducer);  
+  const calendarList = useSelector(state => state.calendarReducer);
+  const token = decodeJwt(window.localStorage.getItem('accessToken'));
 
   useEffect(
     () => {
@@ -44,7 +46,7 @@ const MyCalendar = () => {
   return (
     <div className="container mt-5">
 
-      <CalendarAddBtn/>
+      { (token.auth.includes("ROLE_ADMIN")) ? <CalendarAddBtn /> : <div/> }
 
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -112,27 +114,6 @@ const MyCalendar = () => {
               extendedProps: { content: calendar.calendarContent }
             }))
           }
-          // events={[
-          //   {
-          //     title: "노재영",
-          //     start: "2023-03-02",
-          //     end: "2023-03-10",
-          //     extendedProps: { content: "내용1" },
-          //     backgroundColor: "#ff0000",
-          //     borderColor: "#ffffff",
-          //     className: "text-center",
-          //   },
-          //   {
-          //     title: "최고",
-          //     start: "2023-03-03",
-          //     extendedProps: { content: "내용2" },
-          //   },
-          //   {
-          //     title: "최고",
-          //     start: "2023-03-03",
-          //     extendedProps: { content: "내용3" },
-          //   }
-          // ]}
         />
       </div>
     </div>

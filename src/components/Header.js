@@ -36,25 +36,25 @@ function Header() {
         }, []
     );
 
-    /* 남은 발표까지 */
-    useEffect(() => {
-        // 매 초마다 현재 시간을 업데이트
-        const interval = setInterval(() => {
-          setNow(new Date().getTime());
-        }, 1000);
+    // /* 남은 발표까지 */
+    // useEffect(() => {
+    //     // 매 초마다 현재 시간을 업데이트
+    //     const interval = setInterval(() => {
+    //       setNow(new Date().getTime());
+    //     }, 1000);
     
-        return () => clearInterval(interval);
-      }, []);
+    //     return () => clearInterval(interval);
+    //   }, []);
     
-      useEffect(() => {
-        // D-day까지 남은 시간을 계산하고 업데이트
-        const timeLeft = dDayTime - now;
-        if (timeLeft > 0) {
-          setDDay(timeLeft);
-        } else {
-          setDDay(0);
-        }
-      }, [now]);
+    //   useEffect(() => {
+    //     // D-day까지 남은 시간을 계산하고 업데이트
+    //     const timeLeft = dDayTime - now;
+    //     if (timeLeft > 0) {
+    //       setDDay(timeLeft);
+    //     } else {
+    //       setDDay(0);
+    //     }
+    //   }, [now]);
     
       // 타임스탬프를 시간으로 변환하는 함수
       const timestampToTime = (timestamp) => {
@@ -80,7 +80,7 @@ function Header() {
         dispatch(callLogoutAPI());
 
         alert('로그아웃이 되어 로그인 페이지로 이동합니다.');
-        navigate("/", { replace: true })
+        navigate("/login", { replace: true })
         window.location.reload();
     }
 
@@ -95,10 +95,11 @@ function Header() {
                     </div> */}
 
                     <div className="d-flex align-items-center">
-                        <BiTimeFive style={{ transform: `rotate(${rotation}deg)`, fontSize: "2rem" }} />
-                        <span className="ml-2 fs-3 fw-bold text-danger">
-                            발표까지 남은 시간: {dDay !== null ? timestampToTime(dDay) : "loading..."}
-                        </span>
+                    <BiTimeFive style={{ transform: `rotate(${rotation}deg)`, fontSize: "2rem" }} />
+                    <span className="ml-2 fs-3 fw-bold text-danger">
+                        {new Date().getHours() >= 21 || new Date().getHours() < 2 ? " [ 잠.이.오.니.?. ]" : ""}
+                        발표까지 남은 시간: {dDay !== null ? timestampToTime(dDay) : "loading..."}
+                    </span>
                     </div>
 
                     {memberDetail && (
