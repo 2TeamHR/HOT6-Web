@@ -4,6 +4,12 @@ import messageStyle2 from '../../resources/css/pages/message/receivedMessage.mod
 import axios from 'axios';
 import {Link} from "react-router-dom";
 import moment from 'moment';
+import {decodeJwt} from "../../utils/tokenUtils";
+
+const token = decodeJwt(window.localStorage.getItem("accessToken"));
+const payload ={
+    memberCode: token.sub,
+}
 
 function MessageSent(){
 
@@ -14,7 +20,7 @@ function MessageSent(){
 
     useEffect(()=>{
 
-        axios.get(`http://localhost:8888/api/v1/messageSent`, {
+        axios.post(`http://localhost:8888/api/v1/messageSent`,payload, {
             headers: {
               "Content-Type": "application/json",
               "Accept": "*/*",
@@ -32,7 +38,7 @@ function MessageSent(){
 
 
     useEffect(() => {
-        axios.get(`http://localhost:8888/api/v1/messageReceivedCount`, {
+        axios.post(`http://localhost:8888/api/v1/messageReceivedCount`,payload, {
             headers: {
               "Content-Type": "application/json",
               "Accept": "*/*",
@@ -49,7 +55,7 @@ function MessageSent(){
 
 
       useEffect(() => {
-        axios.get(`http://localhost:8888/api/v1/messageSentCount`, {
+        axios.post(`http://localhost:8888/api/v1/messageSentCount`,payload, {
             headers: {
               "Content-Type": "application/json",
               "Accept": "*/*",
