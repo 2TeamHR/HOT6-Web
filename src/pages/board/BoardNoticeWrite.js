@@ -57,9 +57,9 @@ function BoardNoticeWrite() {
 
         console.log("form: ", form);
 
-        // alert('공시자항 목록으로 이동합니다.');
-        // navigate('/board/notice', {replace: true});
-        // window.location.reload();
+        alert('공시자항 목록으로 이동합니다.');
+        navigate('/board/notice', {replace: true});
+        window.location.reload();
     }
 
     return (

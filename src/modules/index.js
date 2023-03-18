@@ -6,8 +6,6 @@ import organizationReducer from './OrganizationModule';
 import boardCommunityReducer from "./BoardCommunityModule";
 import boardNoticeReducer from "./BoardNoticeModule";
 import calendarReducer from "./CalendarModule"
-import boardNoticeReducer from "./BoardNoticeModule";
-import calendarReducer from "./CalendarModule"
 import eaDocumentReducer from "./EaDocumentModule"
 import attendanceReducer from './AttendanceModule';
 

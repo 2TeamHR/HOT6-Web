@@ -30,8 +30,6 @@ function Login() {
                 navigate("/", { replace: true });
             }
         }, [loginMember] // [token]
-            }
-        }, [loginMember]
     );
 
     useEffect(() => {
