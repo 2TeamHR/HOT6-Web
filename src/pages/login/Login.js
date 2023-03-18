@@ -27,7 +27,7 @@ function Login() {
 
     useEffect(() => {
 
-            console.log('login token : ', token);
+        console.log('login token : ', token);
 
             if (loginMember.status === 200) {
                 console.log("[Login] Login SUCCESS {}", loginMember);
@@ -38,15 +38,15 @@ function Login() {
     );
 
     useEffect(() => {
-            const savedMemberCode = localStorage.getItem('memberCode');
+        const savedMemberCode = localStorage.getItem('memberCode');
 
-            if (savedMemberCode) {
-                setForm({
-                    ...form,
-                    memberCode: savedMemberCode });
-                setRememberChecked(true);
-            }
-        }, []
+        if (savedMemberCode) {
+            setForm({
+                ...form,
+                memberCode: savedMemberCode });
+            setRememberChecked(true);
+        } 
+      }, []
     );
 
     /* 로그인 상태일 시 로그인페이지로 접근 방지 */
@@ -77,6 +77,8 @@ function Login() {
         } else {
             localStorage.removeItem('memberCode');
         }
+        
+        // navigate(`/`, { replace: true });
     }
 
     const onEnterkeyHandler = (e) => {
