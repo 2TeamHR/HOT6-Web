@@ -49,14 +49,14 @@ function MypageMain() {
         },[]
     );
 
-    useEffect(
-        () => {
-            const timerID = setInterval(() => tick(), 1000);
-            return () => {
-                clearInterval(timerID);
-            };
-        }
-    );
+    // useEffect(
+    //     () => {
+    //         const timerID = setInterval(() => tick(), 1000);
+    //         return () => {
+    //             clearInterval(timerID);
+    //         };
+    //     }
+    // );
 
     if (!memberDetail || Object.keys(memberDetail).length === 0) {
         return <div>Loading...</div>;

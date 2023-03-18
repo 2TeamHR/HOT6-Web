@@ -4,6 +4,8 @@ import annualManagementStyle from '../../resources/css/pages/attendance-manageme
 import {TsbDepartment, TsbEmployee, PayState, Term, SearchBtn, LeaveState} from '../../components/TableSearchBox';
 import Pagination from '@mui/material/Pagination';
 import Paper from '@mui/material/Paper'
+import { useNavigate } from 'react-router-dom';
+import { callGetMemberTotalCountAPI } from '../../apis/MemberAPICalls';
 import { callLeaveAllListAPI } from '../../apis/LeaveAPICalls';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
@@ -11,11 +13,11 @@ import { useState, useEffect } from 'react';
 function AnnualManagement(){
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const leaveList = useSelector(state => state.leaveReducer);
+    const memberCount = useSelector(state => state.memberReducer);
 
-    console.log('leavelist', leaveList);
-    console.log('leavelist', leaveList.totalElements);
-
+    console.log('leaveList', leaveList);
 
     // 페이지네이션 처리
     const [currentPage, setCurrentPage] = useState(1);
@@ -30,12 +32,27 @@ function AnnualManagement(){
 
     useEffect(
         () => {
+                dispatch(callGetMemberTotalCountAPI({
+                }));          
+        }, [currentPage]
+    );
+
+    useEffect(
+        () => {
                 dispatch(callLeaveAllListAPI({
                     startIndex: currentPage-1,
                     endIndex: perPage
                 }));          
         }, [currentPage]
     );
+
+    /* 상세페이지 이동 핸들러 */
+    const navHandler = (memberCode) => {
+        navigate("/annual/management/detailed", { 
+          replace: true,
+          state: { memberCode: memberCode } 
+        });
+      }
 
     return(
         <main className={mainTitleStyle.main}>
@@ -138,7 +155,7 @@ function AnnualManagement(){
                                       };
 
                                     return (
-                                    <tr key={leave.memberCode} className="text-center">
+                                    <tr key={leave.memberCode} className={`text-center ${annualManagementStyle.annualStandardTablebody}`} onClick={() => navHandler(leave.memberCode)}>
                                         <td className='align-middle'>{index + 1}</td>
                                         <td className='align-middle'>{team.teamName}</td>
                                         <td className='align-middle'>{rank.rankName}</td>
@@ -179,7 +196,7 @@ function AnnualManagement(){
 
                     <div className="d-flex justify-content-center mt-5">
                         <Pagination 
-                            count={Math.ceil(leaveList.totalElements / perPage)} 
+                            count={Math.ceil(memberCount.data / perPage)} 
                             page={currentPage} 
                             onChange={handlePageChange} 
                         />

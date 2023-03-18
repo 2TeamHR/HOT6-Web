@@ -1,9 +1,142 @@
 import amdStyle from '../../resources/css/pages/attendance-management/annual-management-detailed.module.css'
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
 import { AnnualIncrease, AnnualDiminish } from '../../components/ModalGroup';
+import { useLocation } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
+import { callmemberLeaveAPI } from '../../apis/LeaveAPICalls';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 function AnnualManagementDetailed() {
+
+
+    const dispatch = useDispatch();
+    // const memberleaveList = useSelector(state => state.leaveReducer);
+    const location = useLocation();
+    const memberCode = location.state?.memberCode;
+
+    const a = [{
+        "status": 200,
+        "message": "조회 성공",
+        "data": {
+            "memberCode": "220205",
+            "memberName": "유영주",
+            "joinDate": "2022-02-28T15:00:00.000+00:00",
+            "workingStatus": "재직",
+            "teamName": "인사팀",
+            "rankName": "사원",
+            "leaveHistoryAndMemberList": [
+                {
+                    "leavePaymentHistoryCode": "LP153",
+                    "leaveCategoryCode": "LC1",
+                    "leavePaymentDate": "2023-01-01 00:00:00",
+                    "leavePaymentCount": 15,
+                    "leaveLeftoverCount": 11,
+                    "leavePaymentProcess": "자동",
+                    "leavePaymentMemo": null,
+                    "leaveUseHistoryList": [
+                        {
+                            "leaveUseHistoryCode": "LU4",
+                            "leavePaymentHistoryCode": "LP153",
+                            "startDate": "2023-01-31T15:00:00.000+00:00",
+                            "endDate": "2023-02-01T15:00:00.000+00:00",
+                            "generationCount": 2,
+                            "leaveUseProcess": "AUTO",
+                            "leaveUseMemo": null,
+                            "leaveUseCancellYn": "N"
+                        },
+                        {
+                            "leaveUseHistoryCode": "LU3",
+                            "leavePaymentHistoryCode": "LP153",
+                            "startDate": "2023-01-18T15:00:00.000+00:00",
+                            "endDate": "2023-01-19T15:00:00.000+00:00",
+                            "generationCount": 2,
+                            "leaveUseProcess": "AUTO",
+                            "leaveUseMemo": null,
+                            "leaveUseCancellYn": "N"
+                        },
+                        {
+                            "leaveUseHistoryCode": "LU5",
+                            "leavePaymentHistoryCode": "LP153",
+                            "startDate": "2022-02-09T15:00:00.000+00:00",
+                            "endDate": "2022-02-11T15:00:00.000+00:00",
+                            "generationCount": 3,
+                            "leaveUseProcess": "AUTO",
+                            "leaveUseMemo": null,
+                            "leaveUseCancellYn": "N"
+                        }
+                    ],
+                    "leavePaymentCancellYn": "N"
+                },
+                {
+                    "leavePaymentHistoryCode": "LP216",
+                    "leaveCategoryCode": "LC5",
+                    "leavePaymentDate": "2023-01-01 00:00:00",
+                    "leavePaymentCount": 1,
+                    "leaveLeftoverCount": 1,
+                    "leavePaymentProcess": "AUTO",
+                    "leavePaymentMemo": null,
+                    "leaveUseHistoryList": [],
+                    "leavePaymentCancellYn": "N"
+                },
+                {
+                    "leavePaymentHistoryCode": "LP217",
+                    "leaveCategoryCode": "LC5",
+                    "leavePaymentDate": "2023-02-01 00:00:00",
+                    "leavePaymentCount": 1,
+                    "leaveLeftoverCount": 0,
+                    "leavePaymentProcess": "AUTO",
+                    "leavePaymentMemo": null,
+                    "leaveUseHistoryList": [
+                        {
+                            "leaveUseHistoryCode": "LU6",
+                            "leavePaymentHistoryCode": "LP217",
+                            "startDate": "2023-02-05T15:00:00.000+00:00",
+                            "endDate": "2023-02-05T15:00:00.000+00:00",
+                            "generationCount": 1,
+                            "leaveUseProcess": "AUTO",
+                            "leaveUseMemo": null,
+                            "leaveUseCancellYn": "N"
+                        }
+                    ],
+                    "leavePaymentCancellYn": "N"
+                },
+                {
+                    "leavePaymentHistoryCode": "LP218",
+                    "leaveCategoryCode": "LC5",
+                    "leavePaymentDate": "2023-03-01 00:00:00",
+                    "leavePaymentCount": 1,
+                    "leaveLeftoverCount": 0,
+                    "leavePaymentProcess": "AUTO",
+                    "leavePaymentMemo": null,
+                    "leaveUseHistoryList": [
+                        {
+                            "leaveUseHistoryCode": "LU7",
+                            "leavePaymentHistoryCode": "LP218",
+                            "startDate": "2023-03-01T15:00:00.000+00:00",
+                            "endDate": "2023-03-01T15:00:00.000+00:00",
+                            "generationCount": 1,
+                            "leaveUseProcess": "AUTO",
+                            "leaveUseMemo": null,
+                            "leaveUseCancellYn": "N"
+                        }
+                    ],
+                    "leavePaymentCancellYn": "N"
+                }
+            ]
+        }
+    }];
+
+    const memberLeaveList = a[0].data;
+    console.log('memberLeaveList :', memberLeaveList);
+
+    useEffect(
+        () => {
+                dispatch(callmemberLeaveAPI({
+                    memberCode: memberCode
+                }));          
+        }, []
+    );
 
     return(
         <main className={mainTitleStyle.main}>
@@ -13,48 +146,60 @@ function AnnualManagementDetailed() {
                     <p>휴가 관리 - 상세페이지</p>
                 </div>
 
-                <Paper elevation="3">
+                <Paper elevation={3}>
                     <table className='table'>
                         <thead>
                             <tr>
                                 <th scope="col" className='text-center'>부서</th>
-                                <th scope="col" className='text-center'>팀</th>
                                 <th scope="col" className='text-center'>직급</th>
                                 <th scope="col" className='text-center'>성명</th>
                                 <th scope="col" className='text-center'>입사일</th>
-                                <th scope="col" className='text-center'>퇴사일</th>
+                                <th scope="col" className='text-center'>재직상태</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td className='text-center'>경영관리부</td>
-                                <td className='text-center'>영업1팀</td>
-                                <td className='text-center'>대리</td>
-                                <td className='text-center'>홍길동</td>
-                                <td className='text-center'>2023-01-01</td>
-                                <td className='text-center'>-</td>
+                                <td className='text-center'>{memberLeaveList.teamName}</td>
+                                <td className='text-center'>{memberLeaveList.rankName}</td>
+                                <td className='text-center'>{memberLeaveList.memberName}</td>
+                                <td className='text-center'>{memberLeaveList.joinDate?.slice(0, 10)}</td>
+                                <td className='text-center'>{memberLeaveList.workingStatus}</td>
                             </tr>
                         </tbody>
                     </table>
                 </Paper>
 
                 {/* <!-- check box --> */}
-                <Paper elevation="3" className={`d-flex flex-row justify-content-around ${amdStyle.annualMainBox}`}>
+                <Paper elevation={3} className={`d-flex flex-row justify-content-around ${amdStyle.annualMainBox}`}>
                     <div className='mt-5'>
                         <p>총 연차</p>
-                        <p className="fs-3">0</p>
+                        <p className="fs-3">{memberLeaveList.leaveHistoryAndMemberList[0].leavePaymentCount}</p>
                     </div>
                     <div>
                         <p className='mt-5'>사용 연차</p>
-                        <p className="fs-3">0</p>
+                        <p className="fs-3">{memberLeaveList.leaveHistoryAndMemberList[0].leavePaymentCount - memberLeaveList.leaveHistoryAndMemberList[0].leaveLeftoverCount}</p>
                     </div>
                     <div>
                         <p className='mt-5'>잔여 연차</p>
-                        <p className="fs-3">0</p>
+                        <p className="fs-3">{memberLeaveList.leaveHistoryAndMemberList[0].leaveLeftoverCount}</p>
                     </div>
                     <div>
                         <p className='mt-5'>특별 연차</p>
-                        <p className="fs-3">0</p>
+                        <p className="fs-3">
+                            {
+                            (() => {
+                                let lc5Total = 0;
+
+                                memberLeaveList.leaveHistoryAndMemberList.forEach((leaveHistory) => {
+                                if (leaveHistory.leaveCategoryCode === "LC5") { 
+                                    lc5Total += leaveHistory.leavePaymentCount;
+                                }
+                                });
+
+                                return lc5Total;
+                            })()
+                            }
+                        </p>
                     </div>
                     <div className="text-success mt-5">
                         <p>누적 총 연차</p>
@@ -90,7 +235,7 @@ function AnnualManagementDetailed() {
                     </div>
                 </div>
 
-                <Paper className="mt-5">
+                <Paper elevation={3} className="mt-5">
                     <table className="table">
                         <thead>
                             <tr className={amdStyle.annualMainContentTitle}>
@@ -111,28 +256,15 @@ function AnnualManagementDetailed() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className={amdStyle.annualMainContentBody}>
-                                <td>발생</td>
-                                <td>기본연차</td>
-                                <td>2023-01-01</td>
-                                <td>-</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>15</td>
-                                <td>자동지급</td>
-                                <td></td>
-                            </tr>
-                            <tr className={amdStyle.annualMainContentBody}>
-                                <td>사용</td>
-                                <td>기본연차</td>
-                                <td>2023-01-10</td>
-                                <td>2023-01-12</td>
-                                <td>3</td>
-                                <td>-3</td>
-                                <td>12</td>
-                                <td>결제완료</td>
-                                <td></td>
-                            </tr>
+                            {Array.isArray(memberLeaveList) && memberLeaveList.map((leave) => (
+                                leave.leaveHistoryAndMemberList && leave.leaveHistoryAndMemberList.length > 0 && leave.leaveHistoryAndMemberList.map((history) => (
+                                    <tr key={history.leavePaymentHistoryCode} className="text-center">
+                                        <td className='align-middle'>{leave.name}</td>
+                                        <td className='align-middle'>{history.leaveCategoryCode}</td>
+                                        <td className='align-middle'>{history.leavePaymentCount}</td>
+                                    </tr>
+                                ))
+                            ))}
                         </tbody>
                     </table>
                 </Paper>

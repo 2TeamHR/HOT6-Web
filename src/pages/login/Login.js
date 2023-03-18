@@ -25,14 +25,11 @@ function Login() {
 
     useEffect(() => {
 
-        console.log('login token : ', token);
-
             if (loginMember.status === 200) {
-                console.log("[Login] Login SUCCESS {}", loginMember);
-                console.log("[Login] Login SUCCESS {}", token);
+
                 navigate("/", { replace: true });
             } 
-        }, [loginMember] // [token]
+        }, [loginMember]
     );
 
     useEffect(() => {
@@ -48,7 +45,7 @@ function Login() {
 
     /* 로그인 상태일 시 로그인페이지로 접근 방지 */
     if (token) {
-        console.log("[Login] Login is already authenticated by the server");
+
         return <Navigate to="/" />
     }
 
@@ -78,7 +75,6 @@ function Login() {
 
     const onEnterkeyHandler = (e) => {
         if (e.key === 'Enter') {
-            console.log('Enter key', form);
             onClickLoginHandler();
         }
     }
