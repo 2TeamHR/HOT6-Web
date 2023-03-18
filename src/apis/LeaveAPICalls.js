@@ -3,7 +3,8 @@ import{
     POST_ANNUAL,
     DELETE_ANNUAL,
     GET_MYLEAVEINFO,
-    GET_ANNUALAll
+    GET_ANNUALAll,
+    GET_MEMBERLEAVEDETAIL
     } from '../modules/LeaveModule.js';
 
 export const callLeaveCategoryListAPI = () => {
@@ -23,10 +24,35 @@ export const callLeaveCategoryListAPI = () => {
         })
         .then(response => response.json());
 
-        console.log('[ProduceAPICalls] callProductDetailAPI RESULT : ', result);
+
         if(result.status === 200){
-            console.log('[ProduceAPICalls] callProductDetailAPI SUCCESS');
+
             dispatch({ type: GET_ANNUAL,  payload: result.data });
+        }
+        
+    };
+}
+
+export const callmemberLeaveAPI = ({memberCode}) => {
+    
+    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/annual/management/detailed/${memberCode}`;
+
+    console.log('request', requestURL);
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*"
+            }
+        })
+        .then(response => response.json());
+
+        if(result.status === 200){
+
+            dispatch({ type: GET_MEMBERLEAVEDETAIL,  payload: result.data });
         }
         
     };
@@ -56,6 +82,8 @@ export const callLeaveRegistAPI = ({form}) => {
         
     };    
 }
+
+
 
 export const callLeaveDeleteAPI = ({leaveCategoryCode}) => {
 

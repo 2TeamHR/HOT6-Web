@@ -114,27 +114,6 @@ const MyCalendar = () => {
               extendedProps: { content: calendar.calendarContent }
             }))
           }
-          // events={[
-          //   {
-          //     title: "노재영",
-          //     start: "2023-03-02",
-          //     end: "2023-03-10",
-          //     extendedProps: { content: "내용1" },
-          //     backgroundColor: "#ff0000",
-          //     borderColor: "#ffffff",
-          //     className: "text-center",
-          //   },
-          //   {
-          //     title: "최고",
-          //     start: "2023-03-03",
-          //     extendedProps: { content: "내용2" },
-          //   },
-          //   {
-          //     title: "최고",
-          //     start: "2023-03-03",
-          //     extendedProps: { content: "내용3" },
-          //   }
-          // ]}
         />
       </div>
     </div>

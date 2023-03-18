@@ -36,9 +36,18 @@
     margin-bottom: 2%;
     width: 40%;
     height: 40px;
-    border: 0px;
+    border: 1px solid #5e79dc;
     border-radius: 5px;
     box-shadow: 2px 2px 5px #a6a6a6;
-    background-color: #5e79dc;
+    color: #5e79dc;
+}
+
+.deleteBtn:hover {
     color: white;
+    background-color: #5e79dc;
+}
+
+/* 휴가 기준 등록 테이블 */
+.leaveTable {
+    margin-top: 7%;
 }

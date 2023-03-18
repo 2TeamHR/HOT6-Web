@@ -1,6 +1,7 @@
 import {
     GET_MEMBER,
     GET_SIMPLEMEMBER,
+    GET_MEMBERTOTALCOUNT,
     POST_LOGIN,
     POST_REGISTER,
     PUT_MYINFO,
@@ -50,11 +51,35 @@ export const callGetSimpleMemberAPI = ({memberCode}) => {
         })
            .then(response => response.json());
 
-        console.log('[MemberAPICalls] callGetSimpleMember RESULT : ', result);
+        console.log('[MemberAPICalls] callGetSimpleMemberAPI RESULT : ', result);
 
         if(result.status === 200){
             dispatch({ type: GET_SIMPLEMEMBER,  payload: result });
-            console.log('[MemberAPICalls] callGetSimpleMember RESULT : SUCCESS');
+        }
+   };
+}
+
+/* 재직중인 사원 total API */
+export const callGetMemberTotalCountAPI = () => {
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/members/allMember/count`;
+
+    return async (dispatch, getState) => {
+
+       const result = await fetch(requestURL, {
+           method: "GET",
+           headers: {
+               "Content-Type": "application/json",
+               "Accept": "*/*",
+           }
+        })
+           .then(response => response.json());
+
+        console.log('[MemberAPICalls] callGetMemberTotalCountAPI RESULT : ', result);
+
+        if(result.status === 200){
+            dispatch({ type: GET_MEMBERTOTALCOUNT,  payload: result });
+            console.log('[MemberAPICalls] callGetMemberTotalCountAPI RESULT : SUCCESS');
         }
    };
 }

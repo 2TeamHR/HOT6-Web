@@ -24,7 +24,7 @@ export const callMainCalendarListAPI = () => {
 
         console.log('[calendarAPICalls] callCalendarAPI RESULT : ', result);
         if(result.status === 200){
-            console.log('[calendarAPICalls] callCalendarAPI SUCCESS');
+
             dispatch({ type: GET_CALENDAR,  payload: result.data });
         }
     };
