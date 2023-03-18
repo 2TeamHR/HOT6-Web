@@ -6,6 +6,7 @@ const initialState = [];
 /* 액션 */
 export const GET_MYATTENDANCE = 'mypageAttendance/GET_MYATTENDANCE';
 
+
 const actions = createActions({
     [GET_MYATTENDANCE]: () => {
     },
