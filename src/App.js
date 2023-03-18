@@ -31,7 +31,6 @@ import MessageTrash from "./pages/messsage/MessageTrash";
 import ReceivedMessage from "./pages/messsage/ReceivedMessage";
 import AttendanceManage from "./pages/attendence/AttendanceManage";
 import AllCheckN from './pages/salary/Salary_allCheckN';
-import AllCheckY from './pages/salary/Salary_allCheckY';
 import SeveranceN from './pages/salary/Salary_SeveranceN'
 import SeveranceY from './pages/salary/Salary_SeveranceY'
 import EsMain from './pages/es/EsMain';
@@ -109,7 +108,7 @@ function App() {
             <Route path="/salary/check" element={ <SalaryCheck />} />
             <Route path="/salary/specification" element={ <Specification />} />
             <Route path="/salary/Allcheck" element={ <AllCheckN />} />
-            <Route path="/salary/check/insert" element={ <SalaryInsert />} />
+            <Route path="/salary/month/insert" element={ <SalaryInsert />} />
             <Route path="/salary/severance/N" element={ <SeveranceN />} />
             <Route path="/salary/severance/Y" element={ <SeveranceY />} />
             <Route path="/salary/severance/insert" element={ <SeveranceInsert />} />

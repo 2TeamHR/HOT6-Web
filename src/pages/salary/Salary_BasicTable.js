@@ -18,7 +18,7 @@ function BasicTable({ salaryDetail: {basicSalary, bonus, mealSalary, beforeSalar
             </tr>
             <tr>
                 <td>상여금</td>
-                <td>{ bonus.bonusSalary }</td>
+                <td>{ bonus ? bonus.bonusSalary : 0 }</td>
             </tr>
             <tr>
                 <td>식대</td>

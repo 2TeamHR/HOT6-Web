@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { callGetMemberCodeSalaryAPI } from '../../apis/SalaryAPICalls';
+import { callGetMemberCodeSalaryAPI,
+         callInsertSalaryAPI        
+} from '../../apis/SalaryAPICalls';
 import salaryInsertStyle from '../../resources/css/pages/salary/salary-insert.module.css';
 
 function SalaryInsert() {
@@ -9,13 +11,10 @@ function SalaryInsert() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [memberCode, setMemberCode] = useState('');
-    const [bonusSalary, setBonusSalary] = useState('');
     let [memberInfo, setMemberInfo] = useState('');
     const member = useSelector(state => state.salaryReducer);
 
-    console.log('member====test ===', member);
-    console.log('test =============', member?.team?.teamName);
-    console.log('test2 ==============', memberInfo.salaryList && memberInfo.salaryList.length > 0 ? memberInfo.salaryList[0].basicSalary : 0);
+    console.log('member=======', member);
 
     memberInfo = member;
 
@@ -40,11 +39,7 @@ function SalaryInsert() {
             memberName: '',
             hourlyMoney: 0,
             totalTime: 0,
-            basicSalary: 0,
             mealSalary: 0,
-            bonus: {
-                bonusSalary: 0
-            },
             incomTax : 0,
             healthTax: 0,
             nationalTax: 0,
@@ -55,26 +50,13 @@ function SalaryInsert() {
         console.log(`memberInfo=====>>>test`, memberInfo);
     }
 
+    
+    const handleSubmit = () => {
+        alert("handleSubmit 시점, memberInfo ==", memberInfo);
+        dispatch(callInsertSalaryAPI(memberInfo)).then(() => {});
+    };
 
 
-
-
-    // useEffect(() => {    
-
-    //     if(memberCode !== null) {
-    //         dispatch(callGetMemberCodeSalaryAPI({
-    //             memberCode: memberCode
-    //         })).then((data) => {
-    //             if(data){
-    //                 return data;
-    //             }else {
-    //                 return null;
-    //             }
-    //         });
-    //     }
-    // }
-    // , [memberCode]
-    // );
 
 
     console.log('memberInfo ============', memberInfo);
@@ -87,18 +69,18 @@ function SalaryInsert() {
                     <p>급여 명단 추가</p>
                 </div>
  
+                <form>
                 <div className={salaryInsertStyle.infoBtn}>
-                    <button className="ml-2 mr-2">등록하기</button>
+                    <button className="ml-2 mr-2" onClick={handleSubmit}>등록하기</button>
                     <button className="ml-2 mr-2" onClick={ () => { navigate(-1)}}>이전 페이지로</button>
                 </div>
 
                 <div className={salaryInsertStyle.parent}>
                     <div className= "container mt-5">
                         <div className="row">
-                            
                             <div className="mb-3">
                                 <p className={salaryInsertStyle.infoHead}>사원 번호</p>
-                                <input className={salaryInsertStyle.myInfo} value={memberCode} onChange={(e) => setMemberCode(e.target.value)} 
+                                <input className={salaryInsertStyle.myInfo} value={memberInfo.memberCode} onChange={(e) => setMemberCode(e.target.value)} 
 
                                 />                            
                                 </div>
@@ -112,7 +94,7 @@ function SalaryInsert() {
                             <div className="mb-3">
                                 <p className={salaryInsertStyle.infoHead}>조직</p>
                                 <input  className={salaryInsertStyle.myInfo} 
-                                        value={member.team?.teamName}
+                                        value={memberInfo.team?.teamName}
                                         readOnly
                                 />
                             </div>
@@ -133,7 +115,14 @@ function SalaryInsert() {
                             <div className="mb-3">
                                 <p className={salaryInsertStyle.infoHead}>총근무시간</p>
                                 <input  className={salaryInsertStyle.myInfo} 
-                                        // value={memberInfo.totalTime}
+                                        value={memberInfo.totalTime}
+                                        readOnly
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <p className={salaryInsertStyle.infoHead}>기본급</p>
+                                <input  className={salaryInsertStyle.myInfo} 
+                                        value= {memberInfo.basicSalary}
                                         readOnly
                                 />
                             </div>
@@ -141,45 +130,63 @@ function SalaryInsert() {
                     </div>
                     <div className="container mt-5">
                         <div className="row">
-                            
-                            <div className="mb-3">
-                                <p className={salaryInsertStyle.infoHead}>기본급</p>
-                                <input  className={salaryInsertStyle.myInfo} 
-                                        value= {memberInfo.salaryList && memberInfo.salaryList.length > 0 ? memberInfo.salaryList[0].basicSalary : 0}
-                                        readOnly
-                                />
-                            </div>
                             <div className="mb-3">
                                 <p className={salaryInsertStyle.infoHead}>식대</p>
                                 <input  className={salaryInsertStyle.myInfo} 
-                                        value= {memberInfo.salaryList && memberInfo.salaryList.length > 0 ? memberInfo.salaryList[0].mealSalary : 0}
-                                />
-                            </div>
-                         
-                            <div className="mb-3">
-                                <p className={salaryInsertStyle.infoHead}>세전 급액</p>
-                                <input  className={salaryInsertStyle.myInfo} 
-                                        value= {memberInfo.salaryList && memberInfo.salaryList.length > 0 ? memberInfo.salaryList[0].beforeSalary : 0}
+                                        value= {memberInfo.mealSalary}
                                         readOnly
                                 />
                             </div>
                             <div className="mb-3">
+                                <p className={salaryInsertStyle.infoHead}>세전 급액</p>
+                                <input  className={salaryInsertStyle.myInfo} 
+                                        value= {memberInfo.beforeSalary}
+                                        readOnly
+                                />
+                            </div>
+                            
+                            <div className="mb-3">
+                                <p className={salaryInsertStyle.infoHead}>소득세</p>
+                                <input  className={salaryInsertStyle.myInfo} 
+                                        value= {memberInfo.incomTax}
+                                        readOnly
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <p className={salaryInsertStyle.infoHead}>건강보험세</p>
+                                <input  className={salaryInsertStyle.myInfo} 
+                                        value= {memberInfo.healthTax}
+                                        readOnly
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <p className={salaryInsertStyle.infoHead}>국민연금세</p>
+                                <input  className={salaryInsertStyle.myInfo} 
+                                        value= {memberInfo.nationalTax}
+                                        readOnly
+                                />
+                            </div>
+                           
+                         
+                            
+                            <div className="mb-3">
                                 <p className={salaryInsertStyle.infoHead}>총 공제액</p>
                                 <input  className={salaryInsertStyle.myInfo} 
-                                        value= {memberInfo.salaryList && memberInfo.salaryList.length > 0 ? memberInfo.salaryList[0].totalTax : 0}
+                                        value= {memberInfo.totalTax}
                                         readOnly
                                 />
                             </div>
                             <div className="mb-3">
                                 <p className={salaryInsertStyle.infoHead}>세후 급액</p>
                                 <input  className={salaryInsertStyle.myInfo} 
-                                        value= {memberInfo.salaryList && memberInfo.salaryList.length > 0 ? memberInfo.salaryList[0].afterSalary : 0}
+                                        value= {memberInfo.afterSalary}
                                         readOnly
                                 />
                             </div>
                         </div>
                     </div>
-                </div>            
+                </div>
+                </form>            
             </div>
         </main>
     );

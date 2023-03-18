@@ -1,9 +1,23 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { callGetBonusSalaryAPI } from '../../apis/SalaryAPICalls';
 import salaryStyle from '../../resources/css/pages/salary/salary.module.css';
 import BonusTable from './SalaryBonusTable';
 import BonusDatePicker from './Salary_BonusDatePiker';
 
 function SalaryBonus(){
     
+    const dispatch = useDispatch();
+    const bonus = useSelector(state => state.salaryReducer);
+    
+    useEffect(
+        () => {
+            dispatch(callGetBonusSalaryAPI({
+
+            }));
+        }
+        , []
+    );
  
     return (
         <>

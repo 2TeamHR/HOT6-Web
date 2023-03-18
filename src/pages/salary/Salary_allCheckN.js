@@ -11,7 +11,6 @@ function AllCheckN(){
     const member = useSelector(state => state.salaryReducer);
 
     let memberInfo = '';
-    console.log('memberInfo ============', memberInfo);
 
 
     useEffect(

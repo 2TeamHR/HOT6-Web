@@ -5,19 +5,40 @@ import SelectDatePiker from './SalaryDatePiker';
 import { Link } from 'react-router-dom';
 import BasicTable from './Salary_BasicTable';
 import SpecificationModal from './Salary_Specification';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import TaxTable from './Salary_TaxTable';
 import SalaryTable from './Salary_Table';
+import { callGetMemberAPI } from '../../apis/MemberAPICalls';
+import { decodeJwt } from '../../utils/tokenUtils';
+import { shouldAutoRemoveFilter } from '@tanstack/table-core';
 
 
 function SalaryCheck() {
 
     const salary = useSelector(state => state.salaryReducer);
+    const member = useSelector(state => state.memberReducer);
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));
+    const dispatch = useDispatch();
+
+    const memberDetail = [{
+        memberInfo : member.data
+
+    }];
 
     let salaryDetail = '';
-    console.log('salaryDetail ===========', salaryDetail);
 
+    useEffect(
+        () => {
+            if (token !== null) {
+                dispatch(callGetMemberAPI({ 
+                  memberCode: token.sub 
+                }));
+              }
+        }, []
+    );
+
+    console.log('memberDetail===========', memberDetail);
 
     if(salary[0] !== undefined){
         salaryDetail = salary[0];
@@ -36,9 +57,7 @@ function SalaryCheck() {
             afterSalary: 0
         };
     }
-     
-
-    // console.log('salary ================', salary); 
+    console.log(salaryDetail);
 
     const [showModal, setShowModal] = useState(false);
 
@@ -61,12 +80,12 @@ function SalaryCheck() {
                 <SelectDatePiker />
             </div>
         </div>
-        <div className= {`pt-5 ${salarytableStyle.tableStyle}`}>
+        <div className= {`pt-5 ${salarytableStyle.tableStyle2}`}>
         
-            <BasicTable salaryDetail={ salaryDetail } /> 
-            <TaxTable salaryDetail={ salaryDetail } />
+            <BasicTable salaryDetail={ salaryDetail } className={`${salarytableStyle.leftTable}`} /> 
+            <TaxTable salaryDetail={ salaryDetail } className={`${salarytableStyle.rightTable}`} />
         </div>
-        <div className={`mt-5 ${salarytableStyle.tableStyle}`} >
+        <div className={`mt-5 ${salarytableStyle.bottomTable}`} >
             <SalaryTable salaryDetail={ salaryDetail } />
 
         </div>
@@ -74,7 +93,7 @@ function SalaryCheck() {
         <div className="pt-5 text-center">
             <Link to="/es/salaryForm" className="btn btn-primary mr-3">정정신청</Link>
             <button className="btn btn-primary ml-3" onClick={handleButtonClick}>급여 명세서</button>
-            {showModal && <SpecificationModal onClose={handleCloseModal}/>}
+            {showModal && <SpecificationModal onClose={handleCloseModal} salaryDetail={ salaryDetail } memberDetail={ memberDetail } />}
         </div>
     </>
     );
