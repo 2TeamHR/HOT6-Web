@@ -141,8 +141,6 @@ export const callInsertSalaryAPI = (memberInfo) => {
 
     return async (dispatch, getState) => {
         
-        alert("callInsertSalaryAPI시점 memberInfo == ", memberInfo);
-
         const result = await fetch(requestURL, {
             method: "post",
             headers: {

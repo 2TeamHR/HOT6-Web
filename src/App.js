@@ -150,9 +150,8 @@ function App() {
             <Route path="/organization/retireeChart" element={<OrganizationRetireeChart />} />
 
             {/* 급여 */}
-            <Route path="/salary/check/N" element={<AllCheckN />} />
-            <Route path="/salary/check/Y" element={<AllCheckY />} />
-            <Route path="/salary/check/insert" element={<SalaryInsert />} />
+            <Route path="/salary/check/All" element={<AllCheckN />} />
+            <Route path="/salary/month/insert" element={<SalaryInsert />} />
             {/* <Route path="/salary/severance/N" element={<SeveranceN />} /> */}
             {/* <Route path="/salary/severance/Y" element={<SeveranceY />} /> */}
             {/* <Route path="/salary/severance/insert" element={<SeveranceInsert />} /> */}

@@ -47,12 +47,10 @@ function SalaryInsert() {
             totalTax: 0,
             afterSalary: 0,
         };
-        console.log(`memberInfo=====>>>test`, memberInfo);
     }
 
     
     const handleSubmit = () => {
-        alert("handleSubmit 시점, memberInfo ==", memberInfo);
         dispatch(callInsertSalaryAPI(memberInfo)).then(() => {});
     };
 
