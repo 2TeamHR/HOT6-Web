@@ -7,6 +7,7 @@ const initialState = [];
 export const GET_MYATTENDANCE = 'myPageAttendance/GET_MYATTENDANCE';
 export const GET_MYPAGESELECTATTENDANCE = 'myPageAttendance/GET_MYPAGESELECTATTENDANCE';
 
+
 const actions = createActions({
     [GET_MYATTENDANCE]: () => {
     },
