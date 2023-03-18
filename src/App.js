@@ -45,9 +45,9 @@ import ReceivedMessage from "./pages/messsage/ReceivedMessage";
 
 import SalaryCheck from './pages/salary/Salary_check';
 import AllCheckN from './pages/salary/Salary_allCheckN';
-import SeveranceN from './pages/salary/Salary_SeveranceN'
-import SeveranceY from './pages/salary/Salary_SeveranceY'
-import SeveranceInsert from './pages/salary/Salary_SeveranceInsert';
+// import SeveranceN from './pages/salary/Salary_SeveranceN'
+// import SeveranceY from './pages/salary/Salary_SeveranceY'
+// import SeveranceInsert from './pages/salary/Salary_SeveranceInsert';
 import SalaryBonus from './pages/salary/Salary_bonus';
 import BonusInsert from './pages/salary/Salary_BonusInsert';
 import Specification from './pages/salary/Salary_Specification';
