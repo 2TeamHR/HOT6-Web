@@ -6,17 +6,22 @@ import {Link} from "react-router-dom";
 import moment from 'moment';
 import {decodeJwt} from "../../utils/tokenUtils";
 
-const token = decodeJwt(window.localStorage.getItem("accessToken"));
-const payload ={
-    memberCode: token.sub,
-}
+
+
 
 function MessageSent(){
+
+
 
     const [emailSelect, setEmailSelect] = useState('');
     const [count , setCount] = useState('');
     const [count2 , setCount2] = useState('');
     const [count3 , setCount3] = useState('');
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));
+
+    const payload ={
+        memberCode: token.sub,
+    }
 
     useEffect(()=>{
 
@@ -143,7 +148,7 @@ function MessageSent(){
                             <tr>
                                 <td ><input type="checkbox"/></td>
                                 <td style={{ textAlign: "center", 
-                                                         width:"130px",
+                                                         width:"200px",
                                                          overflow:'hidden',
                                                          whiteSpace:'nowrap',
                                                          textOverflow:'clip'
