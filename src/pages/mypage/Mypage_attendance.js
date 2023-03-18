@@ -6,7 +6,11 @@ import FullCalendar from '@fullcalendar/react';
 import koLocale from '@fullcalendar/core/locales/ko';
 import { Button, Modal } from "react-bootstrap";
 import dayGridPlugin from '@fullcalendar/daygrid';
+import {callMyPageSelectAttendanceListAPI} from '../../apis/AttendanceAPICalls';
 import Table from 'react-bootstrap/Table';
+import {decodeJwt} from "../../utils/tokenUtils";
+import attendanceReducer from "../../modules/AttendanceModule";
+
 
 function MypageAttendance() {
 
@@ -17,8 +21,19 @@ function MypageAttendance() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [selectedCode, setSelectedCode] = useState(null);
+  const token =decodeJwt(window.localStorage.getItem("accessToken"));
   const handleClose = () => setShowModal(false);
-  
+
+  const myPageAttendanceList = useSelector(state => state.attendanceReducer);
+
+  console.log('======================', token);
+  console.log('======================', myPageAttendanceList);
+
+  useEffect(() => {
+    dispatch(callMyPageSelectAttendanceListAPI({
+      memberCode:token.sub
+    }));
+  }, []);
 
   return (
     <>
@@ -145,6 +160,7 @@ function MypageAttendance() {
                     center: 'title',
                     end:"next"
                   }}
+                  //일,월,화,수 등 한글로 나오게함
                   dayHeaderContent={(info) => {
                     const day = info.date.getDay();
                     const className = (day === 0) ? 'text-danger' : (day === 6) ? 'text-primary' : '';
@@ -154,9 +170,11 @@ function MypageAttendance() {
                       </span>
                     )
                   }}
+                  //숫자 + 일 형식으로 나오게함
                   dayCellContent={(info) => {
                     const date = info.date.getDate();
                     const day = info.date.getDay();
+                    /*일요일은 빨간색, 토요일은 파란색*/
                     const className = (day === 0) ? 'text-danger' : (day === 6) ? 'text-primary' : '';
                     return (
                       <div className={className}>
@@ -171,27 +189,33 @@ function MypageAttendance() {
                     setShowModal(true);
                   }}
                   height='650px'
-                  events={[
-                    {
-                      title: "노재영",
-                      start: "2023-03-02",
-                      end: "2023-03-10",
-                      extendedProps: { content: "내용1" },
-                      backgroundColor: "#ff0000",
-                      borderColor: "#ffffff",
-                      className: "text-center",
-                    },
-                    {
-                      title: "최고",
-                      start: "2023-03-03",
-                      extendedProps: { content: "내용2" },
-                    },
-                    {
-                      title: "최고",
-                      start: "2023-03-03",
-                      extendedProps: { content: "내용3" },
-                    }
-                  ]}
+                  events={
+                      Array.isArray(myPageAttendanceList) && myPageAttendanceList.map((attendance) => {
+                        let backgroundColor;
+                        switch (attendance.commuteStatus) {
+                          case "결근":
+                            backgroundColor = "#FF0000"; // 빨간색
+                            break;
+                          case "지각":
+                          case "조퇴":
+                            backgroundColor = "#FFA500"; // 주황색
+                            break;
+                          default:
+                            backgroundColor = "#2ECC71"; // 초록색
+                            break;
+                        }
+                        return {
+                          title: attendance.commuteStatus,
+                          start: attendance.commuteDate.slice(0, 10),
+                          code: attendance.commuteCode,
+                          backgroundColor,
+                          borderColor:"#FFFFFF",
+                          width:"50%",
+                          className: "text-center",
+                          extendedProps: { content: attendance.commuteStatus }
+                        }
+                      })
+                  }
                 />
               </div>
               {/* 캘린더 start */}

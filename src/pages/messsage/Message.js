@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import {callGetMessageListAPI, callRegistMessageListAPI} from "../../apis/MessageAPICalls";
 import {useDispatch, useSelector} from "react-redux";
+import {decodeJwt} from "../../utils/tokenUtils";
 
 
 
@@ -15,6 +16,7 @@ function Message() {
         const [memberName1, setMemberName1] = useState('');
         const [members, setMembers] = useState([]);
         const [recipients, setRecipients] = useState([])
+        const token = decodeJwt(window.localStorage.getItem("accessToken"));
         const [form,setForm] = useState({
             recipients:[],
             messageTitle: '',
@@ -101,6 +103,8 @@ function Message() {
                 messageTitle: form.messageTitle,
                 messageContent: form.messageContent,
                 recipients: recipients,
+                memberCode: token.sub,
+
             }
             console.log(payloadMessage);
 
