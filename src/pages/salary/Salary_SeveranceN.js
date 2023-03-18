@@ -1,10 +1,26 @@
-import React, { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import salaryStyle from "../../resources/css/pages/salary/salary.module.css";
 import SalarySeveranceTableN from "./SalarySeveranceTableN";
 import SeveraceDatePiker from "./Salary_SeveranceDatePiker";
+import { callGetSeverancePaymentAPI } from '../../apis/SalaryAPICalls';
 
 function SeveranceN() {
 
+  const dispatch = useDispatch();
+  const member = useSelector(state => state.salaryReducer);
+
+    let memberInfo = '';
+    console.log('memberInfo ============', memberInfo);
+
+    useEffect(
+        () => {
+            dispatch(callGetSeverancePaymentAPI({
+
+            }));
+        }
+        , []
+    );
 
   return (
     <>

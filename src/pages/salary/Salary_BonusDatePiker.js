@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { callGetBonusSalaryAPI } from '../../apis/SalaryAPICalls';
 
 const years = Array.from({length: (new Date().getFullYear() - 2007)}, (_, i) => 2008 + i);
 const months = [
@@ -20,9 +22,39 @@ const months = [
 
 
 function BonusDatePicker() {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [year, setYear] = useState('2023');
   const [month, setMonth] = useState('02');
-  const navigate = useNavigate();
+  const [bonusData, setBonusData] = useState(null);
+  const [changeDate, setChangeDate] = useState('N');
+
+  useEffect(() => {
+    if(changeDate !== null) {
+      dispatch(callGetBonusSalaryAPI({
+        year: year,
+        month: month
+      })).then((data) => {
+        setBonusData(data);
+      });
+    }
+  }
+  ,[changeDate]
+  );
+
+  function handleSearch(e) {
+    e.preventDefault();
+    setChangeDate("Y");
+    if(changeDate !== null) {
+    dispatch(callGetBonusSalaryAPI({
+            year: year,
+            month: month
+    })).then((data) => {
+        setBonusData(data);
+    });          
+    }
+}
 
   function handleYearChange(e) {
     setYear(e.target.value);
@@ -33,9 +65,6 @@ function BonusDatePicker() {
   }
 
 
-  function seachHandler() {
-
-  }
   function insertHandler() {
 
     navigate("/salary/bonus/insert")
@@ -64,7 +93,7 @@ function BonusDatePicker() {
         </select>
         <span className="ml-2">월</span>
       </label>
-      <button className='btn btn-primary ml-3' onClick={seachHandler}>조회하기</button>
+      <button className='btn btn-primary ml-3' onClick={handleSearch}>조회하기</button>
       <button className='btn btn-primary ml-3' onClick={insertHandler}>명단 등록하기</button>
     </div>
   );

@@ -2,6 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
+    height:500px;
 }
 
 .tableStyle2 {
@@ -9,6 +11,46 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    flex-direction: row;
     height: 400px;
+    padding-right:100px;
     width:80%;
+}
+
+.tableStyle3 {
+
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+    height: 350px;
+}
+
+.tableStyle4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height:200px;
+}
+
+.salaryModal {
+
+    display: flex;
+    justify-content: center;
+}
+
+.leftTable {
+    margin-right: 10px;
+}
+
+.rightTable {
+    margin-left: 10px;
+}
+
+.bottomTable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:-400px;
 }
