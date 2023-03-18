@@ -92,42 +92,42 @@ function MypageMain() {
       }, [startTimeStampRecord]);
 
     // hs
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-          axios
-            .get(`http://localhost:8888/api/v1/attendance/mypageAregistSelect`, {
-              params: {
-                commuteStartTime: moment(date).format('YYYY-MM-DDTHH:mm:ss'),
-                memberCode: token.sub,
-              },
-              headers: {
-                "Content-Type": "application/json",
-                Accept: "*/*",
-                Authorization: `Bearer ${window.localStorage.getItem(
-                  "accessToken"
-                )}`,
-              },
-            })
-            .then((response) => {
-                const commuteFinishTime = response.data.data[0].commuteFinishTime;
-                const formattedFinishTime = commuteFinishTime ? moment(commuteFinishTime, "YYYY-MM-DDTHH:mm:ss.SSSZ").format("HH:mm:ss") : '';
+    // useEffect(() => {
+    //     const intervalId = setInterval(() => {
+    //       axios
+    //         .get(`http://localhost:8888/api/v1/attendance/mypageAregistSelect`, {
+    //           params: {
+    //             commuteStartTime: moment(date).format('YYYY-MM-DDTHH:mm:ss'),
+    //             memberCode: token.sub,
+    //           },
+    //           headers: {
+    //             "Content-Type": "application/json",
+    //             Accept: "*/*",
+    //             Authorization: `Bearer ${window.localStorage.getItem(
+    //               "accessToken"
+    //             )}`,
+    //           },
+    //         })
+    //         .then((response) => {
+    //             const commuteFinishTime = response.data.data[0].commuteFinishTime;
+    //             const formattedFinishTime = commuteFinishTime ? moment(commuteFinishTime, "YYYY-MM-DDTHH:mm:ss.SSSZ").format("HH:mm:ss") : '';
 
 
-                console.log("출근 시간 데이터 나오기 전");
-              console.log(response.data); // 응답 데이터를 콘솔에 출력
-              setStartTimeStampRecord(moment(response.data.data[0].commuteStartTime).format("HH:mm:ss"));
-              setFinishTimeStampRecord(formattedFinishTime);
-              setTotalWorkTime(response.data.data[0].commuteTotalTime);
-            })
-            .catch((error) => {
-              console.error(error);
-              console.log("출근시간 결과값 못 불러옴");
-              console.log(moment.utc(date).local().format('YYYY-MM-DDTHH:mm:ss'));
-            });
-        }, 2000); // 5초마다 실행
+    //             console.log("출근 시간 데이터 나오기 전");
+    //           console.log(response.data); // 응답 데이터를 콘솔에 출력
+    //           setStartTimeStampRecord(moment(response.data.data[0].commuteStartTime).format("HH:mm:ss"));
+    //           setFinishTimeStampRecord(formattedFinishTime);
+    //           setTotalWorkTime(response.data.data[0].commuteTotalTime);
+    //         })
+    //         .catch((error) => {
+    //           console.error(error);
+    //           console.log("출근시간 결과값 못 불러옴");
+    //           console.log(moment.utc(date).local().format('YYYY-MM-DDTHH:mm:ss'));
+    //         });
+    //     }, 2000); // 5초마다 실행
 
-        return () => clearInterval(intervalId); // cleanup 함수에서 interval 해제
-      }, []); // 의존성 배열에 값을 넣지 않아서 최초 1회만 실행
+    //     return () => clearInterval(intervalId); // cleanup 함수에서 interval 해제
+    //   }, []); // 의존성 배열에 값을 넣지 않아서 최초 1회만 실행
 
 
 

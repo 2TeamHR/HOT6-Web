@@ -56,7 +56,7 @@ export default function AttendanceManageTable(props) {
                 width: 130 ,
                 align: 'center',
                 headerAlign: 'center',
-                valueFormatter: (params) => dayjs(params.value).format('DD/MM/YYYY'),
+                valueFormatter: (params) => dayjs(params.value).format('YYYY-MM-DD'),
         
             },
         

@@ -1,8 +1,6 @@
 import mpahStyle from '../../resources/css/pages/mypage/mypage-annual-history.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
 import Paper from '@mui/material/Paper';
-import {EnhancedTable} from '../../components/tableComponent';
-import { getMypageAnnualHistoryTableData } from '../../api/tableAPI';
 
 function MypageAnnualHistory() {
 

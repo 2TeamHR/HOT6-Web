@@ -70,6 +70,7 @@ function SalaryCheck() {
     }
 
 
+
     return (
     <>
         <div className={`ml-5 ${salaryStyle.checkTitle}`}>

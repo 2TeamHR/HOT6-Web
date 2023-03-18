@@ -3,6 +3,7 @@ import { GET_MESSAGELIST,
          GET_MESSAGE_RECEIVE_LIST,
          GET_MESSAGE_RECEIVER_COUNT,   
          GET_MESSAGE_SENT_COUNT} from "../modules/MessageModule";
+import {decodeJwt} from "../utils/tokenUtils";
 
 
 /*리스트 가져오기 */
@@ -53,9 +54,10 @@ export const callRegistMessageListAPI = ({payload}) => {
                 body: JSON.stringify(payload)
             })
             .then(response => response.json());
-
+                alert("메세지 전송이 완료되었습니다.");
+                window.location.reload();
             
-            console.log('[MessageAPICalls] callRegistMessage Result: ' , result);
+                console.log('[MessageAPICalls] callRegistMessage Result: ' , result);
 
             dispatch({ type: POST_MESSAGE, payload: result});
     };
@@ -65,17 +67,27 @@ export const callRegistMessageListAPI = ({payload}) => {
 
 /*받은 편지함 가져오기 */
 export const callGetMessageReceiveListAPI = () => {
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));
+    const memberCode = token.sub;
+    console.log("토큰섭의 값",memberCode);
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/messageReceived`;
 
     return async (dispatch, getState) => {
+
+        const payload ={
+            memberCode : token.sub,
+        }
+
         try {
             const response = await fetch(requestURL, {
-                method: "GET",
+                method: "POST",
+
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "*/*",
                     "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
-                }
+                },
+                body: JSON.stringify(payload)
             });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -98,7 +110,7 @@ export const callGetMessageReceiveListAPI = () => {
     };
 }
                                                                                                                                                                                
-                                                             
+
 export const callGetMessageReceiveCountAPI = () => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/messageReceivedCount`;
 

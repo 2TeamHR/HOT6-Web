@@ -19,11 +19,11 @@ td {
 }
 
 
-
+/*테이블 안에 간격 축소*/
 .table {
-    width: 98%;
+    width: 90%;
     margin-top: 1px;
-    margin-left: 10px;
+    margin-left: 50px;
 
     /* border-top: 1px solid #aaaaaa; */
     border-bottom: 1px solid #aaaaaa;
@@ -45,14 +45,14 @@ td {
 
 .function {
     margin-top: 100px;
-    margin-left: 280px;
+    margin-left: 270px;
 }
 
 
 
-
+/*읽음 삭제 칸 이동*/
 .buttonOptionalSelect{
-    margin-left: 52px;
+    margin-left: 48px;
 }
 
 

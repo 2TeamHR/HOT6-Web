@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import {callGetMessageListAPI, callRegistMessageListAPI} from "../../apis/MessageAPICalls";
 import {useDispatch, useSelector} from "react-redux";
+import {decodeJwt} from "../../utils/tokenUtils";
 
 
 
@@ -15,6 +16,7 @@ function Message() {
         const [memberName1, setMemberName1] = useState('');
         const [members, setMembers] = useState([]);
         const [recipients, setRecipients] = useState([])
+        const token = decodeJwt(window.localStorage.getItem("accessToken"));
         const [form,setForm] = useState({
             recipients:[],
             messageTitle: '',
@@ -101,6 +103,8 @@ function Message() {
                 messageTitle: form.messageTitle,
                 messageContent: form.messageContent,
                 recipients: recipients,
+                memberCode: token.sub,
+
             }
             console.log(payloadMessage);
 
@@ -111,11 +115,14 @@ function Message() {
 
             };
 
+            const payload ={
+                memberCode: token.sub,
+            }
 
 
 
     useEffect(() => {
-        axios.get(`http://localhost:8888/api/v1/messageReceivedCount`, {
+        axios.post(`http://localhost:8888/api/v1/messageReceivedCount`,payload, {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "*/*",
@@ -132,7 +139,7 @@ function Message() {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:8888/api/v1/messageSentCount`, {
+        axios.post(`http://localhost:8888/api/v1/messageSentCount`,payload, {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "*/*",
@@ -162,7 +169,11 @@ function Message() {
                 <div className={messageStyle.module}>
                     <div className={messageStyle.module2}>
                         <div className={`${messageStyle.infoUpdate} center mt-3`}>
-                            <button><Link to="/messsage/message" style={{ color: 'white', textDecoration: 'none'}} >메세지 쓰기</Link></button>
+                            <button><Link to="/messsage/message"
+                                     style={{ color: 'white', textDecoration: 'none'}}
+
+                                    >메세지 쓰기</Link>
+                            </button>
                         </div>
 
                         <div className="mt-3 pt-3">
