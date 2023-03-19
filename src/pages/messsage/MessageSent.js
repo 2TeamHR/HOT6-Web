@@ -6,12 +6,12 @@ import {Link} from "react-router-dom";
 import moment from 'moment';
 import {decodeJwt} from "../../utils/tokenUtils";
 
-
+const token = decodeJwt(window.localStorage.getItem("accessToken"));
 
 
 function MessageSent(){
 
-
+    const payload ={ memberCode: token.sub }
 
     const [emailSelect, setEmailSelect] = useState('');
     const [count , setCount] = useState('');
