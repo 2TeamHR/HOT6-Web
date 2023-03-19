@@ -94,7 +94,7 @@ export default function EaModalNew({ documentInfo }) {
             <Grid item xs={6}><label>내용</label></Grid><Grid item xs={6}>{documentInfo?.eaDetail}</Grid>
 
 
-            {documentInfo?.dtype === "휴가신청" ? <LeaveInfo docu={documentInfo} /> : <div />}
+            {documentInfo?.dtype === "휴가신청" ? <LeaveInfo docu={documentInfo} />: <div />}
 
             {documentInfo?.dtype === "증명서 신청" ? <CertificationInfo docu={documentInfo} /> : <div />}
 

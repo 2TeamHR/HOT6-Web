@@ -18,7 +18,7 @@ const actions = createActions({
 
     [GET_EADOCUMENT_LIST]: ()=> {},
     [GET_FINISH_LEAVE_LIST]: ()=> {},
-    [GET_LEAVE_DOCUMENT]: ()=> {}
+    [GET_LEAVE_DOCUMENT]: ()=> {},
 
 });
 
