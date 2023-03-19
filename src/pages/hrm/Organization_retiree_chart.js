@@ -58,7 +58,7 @@ function OrganizationRetireeChart() {
                         <div className={tableStyle.searchBox}>
                             <TsbDepartment onChange={onTeamChange}/>
                             <TsbEmployee/>
-                            <Term/>
+                            {/* <Term/> */}
                             <SearchBtn/>
                         </div>
                     </div>

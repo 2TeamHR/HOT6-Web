@@ -19,10 +19,6 @@ function MessageSent(){
     const [count3 , setCount3] = useState('');
     const token = decodeJwt(window.localStorage.getItem("accessToken"));
 
-    const payload ={
-        memberCode: token.sub,
-    }
-
     useEffect(()=>{
 
         axios.post(`http://localhost:8888/api/v1/messageSent`,payload, {
