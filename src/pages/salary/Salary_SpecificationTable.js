@@ -6,7 +6,7 @@ function SpecificationTable({salaryDetail}) {
     const totalTax = salaryDetail.incomTax + salaryDetail.healthTax + salaryDetail.nationalTax;
     const afterSalary = salaryDetail.beforeSalary - totalTax;
 
-    console.log(afterSalary);
+    // const fotmat
 
   return (
     <>
@@ -22,15 +22,15 @@ function SpecificationTable({salaryDetail}) {
           <tbody className="text-center">
             <tr>
               <td>기본급</td>
-              <td>{salaryDetail.basicSalary}</td>
+              <td>{salaryDetail.basicSalary.toLocaleString()}</td>
             </tr>
             <tr>
               <td>상여금</td>
-              <td>{salaryDetail.bonus ? salaryDetail.bonus.bonusSalary : 0}</td>
+              <td>{salaryDetail.bonus ? salaryDetail.bonus.bonusSalary.toLocaleString() : 0}</td>
             </tr>
             <tr>
               <td>식대</td>
-              <td>{salaryDetail.mealSalary}</td>
+              <td>{salaryDetail.mealSalary.toLocaleString()}</td>
             </tr>
             <tr>
               <td>연장 수당</td>
@@ -38,7 +38,7 @@ function SpecificationTable({salaryDetail}) {
             </tr>
             <tr>
               <td>세전 총액</td>
-              <td>{salaryDetail.beforeSalary}</td>
+              <td>{salaryDetail.beforeSalary.toLocaleString()}</td>
             </tr>
           </tbody>
         </Table>
@@ -53,23 +53,23 @@ function SpecificationTable({salaryDetail}) {
           <tbody className="text-center">
             <tr>
               <td>소득세</td>
-              <td>{ salaryDetail.incomTax }</td>
+              <td>{ salaryDetail.incomTax.toLocaleString() }</td>
             </tr>
             <tr>
               <td>건강보험</td>
-              <td>{ salaryDetail.healthTax }</td>
+              <td>{ salaryDetail.healthTax.toLocaleString() }</td>
             </tr>
             <tr>
               <td>국민연금</td>
-              <td>{ salaryDetail.nationalTax }</td>
+              <td>{ salaryDetail.nationalTax.toLocaleString() }</td>
             </tr>
             <tr>
               <td>총 공제액</td>
-              <td>{ totalTax }</td>
+              <td>{ totalTax.toLocaleString() }</td>
             </tr>
             <tr>
               <td>실 수령액</td>
-              <td>{ afterSalary }</td>
+              <td>{ afterSalary.toLocaleString() }</td>
             </tr>
           </tbody>
         </Table>
