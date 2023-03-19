@@ -7,11 +7,11 @@ import moment from 'moment';
 import {decodeJwt} from "../../utils/tokenUtils";
 
 const token = decodeJwt(window.localStorage.getItem("accessToken"));
-const payload ={
-    memberCode: token.sub,
-}
+
 
 function MessageSent(){
+
+    const payload ={ memberCode: token.sub }
 
     const [emailSelect, setEmailSelect] = useState('');
     const [count , setCount] = useState('');

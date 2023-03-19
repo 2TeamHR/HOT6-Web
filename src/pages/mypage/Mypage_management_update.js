@@ -76,7 +76,7 @@ function MypageManagementUpdate (){
         navigate("/mypage/management/", { replace: true })
     }
     
-      /* 날짜 형식 변환 */
+    /* 날짜 형식 변환 */
     const memberBirth = memberDetail.memberBirth ? new Date(memberDetail.memberBirth) : null;
     const formattedMemberBirthe = memberBirth ? memberBirth.toISOString().slice(0, 10) : '';
 
