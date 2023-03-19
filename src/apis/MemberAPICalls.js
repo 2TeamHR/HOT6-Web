@@ -37,7 +37,7 @@ export const callGetMemberAPI = ({memberCode}) => {
 /* 간단한 사원 정보 조회 API */
 export const callGetSimpleMemberAPI = ({memberCode}) => {
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/simpleMember/${memberCode}`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/members/simpleInfo/${memberCode}`;
 
     return async (dispatch, getState) => {
 

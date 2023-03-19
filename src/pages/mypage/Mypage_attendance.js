@@ -26,9 +26,6 @@ function MypageAttendance() {
 
   const myPageAttendanceList = useSelector(state => state.attendanceReducer);
 
-  console.log('======================', token);
-  console.log('======================', myPageAttendanceList);
-
   useEffect(() => {
     dispatch(callMyPageSelectAttendanceListAPI({
       memberCode:token.sub
