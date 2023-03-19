@@ -8,6 +8,7 @@ import moment from 'moment';
 import { padding } from '@mui/system';
 import {useDispatch, useSelector} from "react-redux";
 import { callGetMessageReceiveCountAPI, callGetMessageReceiveListAPI, callGetMessageSentCountAPI, callGetMessageSentListAPI } from '../../apis/MessageAPICalls';
+import {decodeJwt} from "../../utils/tokenUtils";
 
 
 
@@ -23,6 +24,10 @@ function ReceivedMessage(){
     const dispatch = useDispatch();
     const messageReducer = useSelector(state => state.messageReducer);
     const [isSelectAll, setIsSelectAll] = useState(false);
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));
+
+    const memberCode = token.sub;
+
 
     useEffect(()=>{
 
@@ -34,8 +39,15 @@ function ReceivedMessage(){
     
         }, []);
 
+
+        const payload ={
+            memberCode: token.sub,
+        }
+
+
+
         useEffect(() => {
-            axios.get(`http://localhost:8888/api/v1/messageReceivedCount`, {
+            axios.post(`http://localhost:8888/api/v1/messageReceivedCount`,payload, {
               headers: {
                 "Content-Type": "application/json",
                 "Accept": "*/*",
@@ -53,7 +65,7 @@ function ReceivedMessage(){
           }, []);
 
           useEffect(() => {
-            axios.get(`http://localhost:8888/api/v1/messageSentCount`, {
+            axios.post(`http://localhost:8888/api/v1/messageSentCount`, payload,{
               headers: {
                 "Content-Type": "application/json",
                 "Accept": "*/*",
@@ -62,6 +74,7 @@ function ReceivedMessage(){
             })
             .then(response => {
               console.log(response.data);
+              console.log("보낸메세지 카운트");
               setCount2(response.data.data);
             })
             .catch(error => {

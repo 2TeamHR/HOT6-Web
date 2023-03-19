@@ -115,11 +115,14 @@ function Message() {
 
             };
 
+            const payload ={
+                memberCode: token.sub,
+            }
 
 
 
     useEffect(() => {
-        axios.get(`http://localhost:8888/api/v1/messageReceivedCount`, {
+        axios.post(`http://localhost:8888/api/v1/messageReceivedCount`,payload, {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "*/*",
@@ -136,7 +139,7 @@ function Message() {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:8888/api/v1/messageSentCount`, {
+        axios.post(`http://localhost:8888/api/v1/messageSentCount`,payload, {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "*/*",
@@ -166,7 +169,11 @@ function Message() {
                 <div className={messageStyle.module}>
                     <div className={messageStyle.module2}>
                         <div className={`${messageStyle.infoUpdate} center mt-3`}>
-                            <button><Link to="/messsage/message" style={{ color: 'white', textDecoration: 'none'}} >메세지 쓰기</Link></button>
+                            <button><Link to="/messsage/message"
+                                     style={{ color: 'white', textDecoration: 'none'}}
+
+                                    >메세지 쓰기</Link>
+                            </button>
                         </div>
 
                         <div className="mt-3 pt-3">

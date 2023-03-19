@@ -4,17 +4,28 @@ import messageStyle2 from '../../resources/css/pages/message/receivedMessage.mod
 import axios from 'axios';
 import {Link} from "react-router-dom";
 import moment from 'moment';
+import {decodeJwt} from "../../utils/tokenUtils";
+
+
+
 
 function MessageSent(){
+
+
 
     const [emailSelect, setEmailSelect] = useState('');
     const [count , setCount] = useState('');
     const [count2 , setCount2] = useState('');
     const [count3 , setCount3] = useState('');
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));
+
+    const payload ={
+        memberCode: token.sub,
+    }
 
     useEffect(()=>{
 
-        axios.get(`http://localhost:8888/api/v1/messageSent`, {
+        axios.post(`http://localhost:8888/api/v1/messageSent`,payload, {
             headers: {
               "Content-Type": "application/json",
               "Accept": "*/*",
@@ -32,7 +43,7 @@ function MessageSent(){
 
 
     useEffect(() => {
-        axios.get(`http://localhost:8888/api/v1/messageReceivedCount`, {
+        axios.post(`http://localhost:8888/api/v1/messageReceivedCount`,payload, {
             headers: {
               "Content-Type": "application/json",
               "Accept": "*/*",
@@ -49,7 +60,7 @@ function MessageSent(){
 
 
       useEffect(() => {
-        axios.get(`http://localhost:8888/api/v1/messageSentCount`, {
+        axios.post(`http://localhost:8888/api/v1/messageSentCount`,payload, {
             headers: {
               "Content-Type": "application/json",
               "Accept": "*/*",
@@ -137,7 +148,7 @@ function MessageSent(){
                             <tr>
                                 <td ><input type="checkbox"/></td>
                                 <td style={{ textAlign: "center", 
-                                                         width:"130px",
+                                                         width:"200px",
                                                          overflow:'hidden',
                                                          whiteSpace:'nowrap',
                                                          textOverflow:'clip'
