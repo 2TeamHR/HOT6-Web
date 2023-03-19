@@ -38,7 +38,7 @@ function AllCheckN(){
 
         {/* 데이터 테이블 */}
         <div className="pt-5 pl-5">
-            <CheckNTable}/>
+            <CheckNTable />
         </div>
 
         {/* 페이지 처리 */}

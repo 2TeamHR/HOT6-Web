@@ -8,8 +8,6 @@ function CheckNTable({ year, month, paymentsYn, currentPage, itemsPerPage, salar
   const [showModal, setShowModal] = useState(false);
   const [selectedSalaryCode, setSelectedSalaryCode] = useState("");
 
-  console.log('salaryData', salaryData);
-
   const salaryList = useSelector((state) => state.salaryReducer);
   const member = useSelector((state) => state.salaryReducer);
   const [memberInfo, setMemberInfo] = useState([]);
@@ -23,19 +21,6 @@ function CheckNTable({ year, month, paymentsYn, currentPage, itemsPerPage, salar
     setShowModal(true);
     setSelectedSalaryCode(memberDetail.salaryCode);
   }
-
-  // 페이지네이션 처리
-//   useEffect(() => {
-//     dispatch(
-//       callGetPagingSalaryAPI({
-//         year,
-//         month,
-//         paymentsYn,
-//         page: currentPage,
-//         size: itemsPerPage,
-//       })
-//     );
-//   }, [year, month, paymentsYn, currentPage, itemsPerPage, dispatch]);
 
   useEffect(() => {
     setSelectedData(salaryList.data?.content || []);
@@ -86,7 +71,7 @@ function CheckNTable({ year, month, paymentsYn, currentPage, itemsPerPage, salar
               </tr>
             </thead>
             <tbody>
-              {memberList.map((row) => (
+              {memberList.content.map((member) => (
                 <tr style={{ cursor: "pointer" }} key={member.salaryCode}>
                   <td>{1}</td>
                   <td>{member.team?.teamName}</td>
