@@ -41,3 +41,35 @@
     height: 35px;
     color: #5e97dc;
 }
+
+/* 조직도 */
+.orgChart {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.team {
+    text-align: center;
+    width: 13%;
+    margin: 5px;
+    padding: 5px;
+    background-color: #F2F2F2;
+    border: 1px solid #ccc;
+}
+
+.employee {
+    margin: 3px;
+    padding: 1px;
+    font-size: 12px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.employeeContainer {
+    display: grid;
+	grid-template-columns: 50% 50%;
+}

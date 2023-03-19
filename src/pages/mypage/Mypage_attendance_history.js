@@ -39,7 +39,7 @@ function  MypageAttendanceHistory () {
 
     const onChangeHandler = (e) => {
         setForm({
-            ...form,3
+            ...form,
             [e.target.name]: e.target.value,
         });
     };
@@ -62,9 +62,9 @@ function  MypageAttendanceHistory () {
             form: formData
         }));        
         
-        // alert('나의 근태 이력 페이지로 이동합니다.');
-        // navigate('/mypage/attendance/history', { replace: true});
-        // window.location.reload();
+        alert('나의 근태 이력 페이지로 이동합니다.');
+        navigate('/mypage/attendance/history', { replace: true});
+        window.location.reload();
     }
 
     const onChangeFileUpload = (e) => {
@@ -108,8 +108,6 @@ function  MypageAttendanceHistory () {
 
                 <div className={tableStyle.boxStyle}>
                     <div className={tableStyle.searchBox}>
-                        <TsbDepartment/>
-                        <TsbEmployee/>
                         <PayState/>
                         <Term/>
                         <SearchBtn/>
@@ -136,7 +134,7 @@ function  MypageAttendanceHistory () {
                                 <tr key={attendance.commuteNo} className="text-center">
                                     <td className='align-middle'>{index + 1}</td>
                                     <td className='align-middle'>{attendance.commuteDate.slice(0, 10)}</td>
-                                    <td className='align-middle'>{attendance.reasonStatus}</td>
+                                    <td className='align-middle'>{attendance.commuteStatus}</td>
                                     <td className='align-middle'>{attendance.commuteStartTime.slice(11,19)}</td>
                                     <td className='align-middle'>{attendance.commuteScountTime.slice(11,19)}</td>
                                     <td className='align-middle'>{attendance.commuteFinishTime.slice(11,19)}</td>
@@ -187,7 +185,7 @@ function  MypageAttendanceHistory () {
                     {/* 페이징 처리 */}
                     <div className="d-flex justify-content-center mt-5">
                         <Pagination 
-                            count={Math.ceil(attendanceList.totalElements / perPage)} 
+                            count={Math.ceil(attendanceList?.totalElements / perPage) || 1} 
                             page={currentPage} 
                             onChange={handlePageChange} 
                         />

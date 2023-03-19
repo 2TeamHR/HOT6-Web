@@ -164,7 +164,6 @@ function AnnualManagementDetailed() {
                                     </tr>
                                 );
                             })}
-
                         </tbody>
                     </table>
                 </Paper>
