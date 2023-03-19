@@ -17,7 +17,6 @@ import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {callRegisterAPI} from "../../apis/MemberAPICalls";
 
-
 function OrganizationCreate (){
 
     const dispatch = useDispatch();

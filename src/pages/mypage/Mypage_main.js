@@ -38,6 +38,7 @@ function MypageMain() {
     const myLeaveInfo = useSelector(state => state.leaveReducer);
     const [startTime, setStartTime] = useState("");
 
+    console.log('=============', token);
     // hs
     const [hrForm, setHrForm] = useState({
 

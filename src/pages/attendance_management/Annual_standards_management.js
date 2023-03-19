@@ -80,7 +80,6 @@ function AnnualStandardsManagement() {
     
 
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -103,31 +102,31 @@ function AnnualStandardsManagement() {
                         <Modal.Title>휴가 기준 등록</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                        <div className="text-center">
-                            <p className="text-left mt-4 mb-1">휴가명</p>
-                            <input 
-                                name='leaveCategoryName'
-                                onChange={ onChangeHandler } 
-                                className={asmStyle.modalInputTitle}
-                            />
-                            <p className="text-left mt-4 mb-1">기준일수</p>
-                            <input 
-                                name='leaveCategoryDateCount'
-                                onChange={ onChangeHandler } 
-                                className={asmStyle.modalInputTitle}
-                            />
-                            <p className="text-left mt-4 mb-1">급여 유무</p>
-                            <div className='float-left'>
-                                <label className='mr-3'>
+                            <div className="text-center">
+                                <p className="text-left mt-4 mb-1">휴가명</p>
+                                <input 
+                                    name='leaveCategoryName'
+                                    onChange={ onChangeHandler } 
+                                    className={asmStyle.modalInputTitle}
+                                />
+                                <p className="text-left mt-4 mb-1">기준일수</p>
+                                <input 
+                                    name='leaveCategoryDateCount'
+                                    onChange={ onChangeHandler } 
+                                    className={asmStyle.modalInputTitle}
+                                />
+                                <p className="text-left mt-4 mb-1">급여 유무</p>
+                                <div className='w-100 text-left'>
+                                    <label className='mr-3'>
                                     <input type="radio" name="leavePayState" value="8" onChange={ onChangeHandler }/>유급</label>
-                                <label>
+                                    <label>
                                     <input type="radio" name="leavePayState" value="1" onChange={ onChangeHandler }/>무급</label>
+                                </div>
+                                <div className='w-100'>
+                                    <p className={asmStyle.modelInfo}>법정 휴가 가이드</p>
+                                    <p className={asmStyle.modelInfo}>기본 연차 가이드</p>
+                                </div>
                             </div>
-                            <div className='w-100'>
-                                <p className={`mt-5 ${asmStyle.modelInfo}`}>법정 휴가 가이드</p>
-                                <p className={`mt-5 ${asmStyle.modelInfo}`}>기본 연차 가이드</p>
-                            </div>
-                        </div>
                         </Modal.Body>
                         <Modal.Footer>
                         <Button variant="primary" onClick={onClickLeaveRegistrationHandler}>
@@ -152,7 +151,7 @@ function AnnualStandardsManagement() {
                             </tr>
                         </thead>
                         <tbody>
-                            {leave?.map((category, index) => (
+                            {leave && leave.map((category, index) => (
                                 <tr key={category.leaveCategoryCode} className="text-center">
                                     <td className='align-middle'>{index + 1}</td>
                                     <td className='align-middle'>{category.leaveCategoryName}</td>

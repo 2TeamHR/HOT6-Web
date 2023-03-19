@@ -4,9 +4,23 @@ import {TsbDepartment, TsbEmployee, Term, SearchBtn} from '../../components/Tabl
 import Paper from '@mui/material/Paper';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-
+import { callLeavePaymentListAPI } from '../../apis/EaDocumentAPICalls';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
 
 function AnnualPayment(){
+
+    const dispatch = useDispatch();
+    const leavePaymentList = useSelector(state => state.eaDocumentReducer);
+
+    console.log('leavePatmentList :::', leavePaymentList);
+
+    useEffect(
+        () => {
+                dispatch(callLeavePaymentListAPI({
+                }));          
+        }, []
+    );
 
     return(
         <main className={mainTitleStyle.main}>
@@ -36,25 +50,21 @@ function AnnualPayment(){
                                 <th>직급</th>
                                 <th>성명</th>
                                 <th>휴가구분</th>
-                                <th>결제완료날짜</th>
-                                <th>증빙서류</th>
-                                <th>자세히보기</th>
+                                <th>기안날짜</th>
+                                {/* <th>증빙서류</th> */}
                             </tr>
                         </thead>
                         <tbody>
-                            {/* {leave.map((category, index) => (
-                                <tr key={category.leaveCategoryCode} className="text-center">
+                            {leavePaymentList.map((leave, index) => (
+                                <tr key={leave.eaCode} className="text-center">
                                     <td className='align-middle'>{index + 1}</td>
-                                    <td className='align-middle'>{category.leaveCategoryName}</td>
-                                    <td className='align-middle'>{category.leaveCategoryDateCount}</td>
-                                    <td className='align-middle'>{category.leavePayState === 8 ? '유급' : '무급'}</td>
-                                    <td className='align-middle'>
-                                        <Button className={asmStyle.deleteBtn} onClick={() => onDeleteHandler(category.leaveCategoryCode)}>
-                                            삭제
-                                        </Button>
-                                    </td>
+                                    <td className='align-middle'>{leave.eaMember.team.teamName}</td>
+                                    <td className='align-middle'>{leave.eaMember.rank.rankName}</td>
+                                    <td className='align-middle'>{leave.eaMember.memberName}</td>
+                                    <td className='align-middle'>{leave.leaveCategory.leaveCategoryName}</td>
+                                    <td className='align-middle'>{leave.eaDate}</td>
                                 </tr>
-                            ))} */}
+                            ))}
                         </tbody>
                     </Table>
                 </Paper>

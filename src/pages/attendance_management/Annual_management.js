@@ -16,12 +16,11 @@ function AnnualManagement(){
     const navigate = useNavigate();
     const leaveList = useSelector(state => state.leaveReducer);
     const memberCount = useSelector(state => state.memberReducer);
+    const total = memberCount.data;
+    const [perPage, setPerPage] = useState(10);
 
-    console.log('leaveList', leaveList);
-
-    // 페이지네이션 처리
+    // 페이징 처리
     const [currentPage, setCurrentPage] = useState(1);
-    const perPage = 10;
     
     const handlePageChange = (event, value) => {
         setCurrentPage(value);
@@ -47,12 +46,9 @@ function AnnualManagement(){
     );
 
     /* 상세페이지 이동 핸들러 */
-    const navHandler = (memberCode) => {
-        navigate("/annual/management/detailed", { 
-          replace: true,
-          state: { memberCode: memberCode } 
-        });
-      }
+    const navHandler = (memberCode, navigate) => {
+        navigate(`/annual/management/detailed?memberCode=${memberCode}`);
+    };
 
     return(
         <main className={mainTitleStyle.main}>
@@ -155,39 +151,43 @@ function AnnualManagement(){
                                       };
 
                                     return (
-                                    <tr key={leave.memberCode} className={`text-center ${annualManagementStyle.annualStandardTablebody}`} onClick={() => navHandler(leave.memberCode)}>
-                                        <td className='align-middle'>{index + 1}</td>
-                                        <td className='align-middle'>{team.teamName}</td>
-                                        <td className='align-middle'>{rank.rankName}</td>
-                                        <td className='align-middle'>{memberName}</td>
-                                        <td className='align-middle'>{leavePaymentCount}</td>
-                                        <td className='align-middle'>{leavePaymentCount - leaveLeftoverCount}</td>
-                                        <td className='align-middle'>{leaveLeftoverCount}</td>
-                                        <td className='align-middle'>{lastYear(0)}</td>
-                                        <td className='align-middle'>{lastYear(1)}</td>
-                                        <td className='align-middle'>{lastYear(2)}</td>
-                                        <td className='align-middle'>{lastYear(3)}</td>
-                                        <td className='align-middle'>{lastYear(4)}</td>
-                                        <td className='align-middle'>{lastYear(5)}</td>
-                                        <td className='align-middle'>{lastYear(6)}</td>
-                                        <td className='align-middle'>{lastYear(7)}</td>
-                                        <td className='align-middle'>{lastYear(8)}</td>
-                                        <td className='align-middle'>{lastYear(9)}</td>
-                                        <td className='align-middle'>{lastYear(10)}</td>
-                                        <td className='align-middle'>{lastYear(11)}</td>
-                                        <td className='align-middle'>{thisYear(0)}</td>
-                                        <td className='align-middle'>{thisYear(1)}</td>
-                                        <td className='align-middle'>{thisYear(2)}</td>
-                                        <td className='align-middle'>{thisYear(3)}</td>
-                                        <td className='align-middle'>{thisYear(4)}</td>
-                                        <td className='align-middle'>{thisYear(5)}</td>
-                                        <td className='align-middle'>{thisYear(6)}</td>
-                                        <td className='align-middle'>{thisYear(7)}</td>
-                                        <td className='align-middle'>{thisYear(8)}</td>
-                                        <td className='align-middle'>{thisYear(9)}</td>
-                                        <td className='align-middle'>{thisYear(10)}</td>
-                                        <td className='align-middle'>{thisYear(11)}</td>
-                                    </tr>
+                                        <tr
+                                        key={leave.memberCode}
+                                        className={`text-center ${annualManagementStyle.annualStandardTablebody}`}
+                                        onClick={() => navHandler(leave.memberCode, navigate)}
+                                        >
+                                            <td className='align-middle'>{index + 1}</td>
+                                            <td className='align-middle'>{team.teamName}</td>
+                                            <td className='align-middle'>{rank.rankName}</td>
+                                            <td className='align-middle'>{memberName}</td>
+                                            <td className='align-middle'>{leavePaymentCount}</td>
+                                            <td className='align-middle'>{leavePaymentCount - leaveLeftoverCount}</td>
+                                            <td className='align-middle'>{leaveLeftoverCount}</td>
+                                            <td className='align-middle'>{lastYear(0)}</td>
+                                            <td className='align-middle'>{lastYear(1)}</td>
+                                            <td className='align-middle'>{lastYear(2)}</td>
+                                            <td className='align-middle'>{lastYear(3)}</td>
+                                            <td className='align-middle'>{lastYear(4)}</td>
+                                            <td className='align-middle'>{lastYear(5)}</td>
+                                            <td className='align-middle'>{lastYear(6)}</td>
+                                            <td className='align-middle'>{lastYear(7)}</td>
+                                            <td className='align-middle'>{lastYear(8)}</td>
+                                            <td className='align-middle'>{lastYear(9)}</td>
+                                            <td className='align-middle'>{lastYear(10)}</td>
+                                            <td className='align-middle'>{lastYear(11)}</td>
+                                            <td className='align-middle'>{thisYear(0)}</td>
+                                            <td className='align-middle'>{thisYear(1)}</td>
+                                            <td className='align-middle'>{thisYear(2)}</td>
+                                            <td className='align-middle'>{thisYear(3)}</td>
+                                            <td className='align-middle'>{thisYear(4)}</td>
+                                            <td className='align-middle'>{thisYear(5)}</td>
+                                            <td className='align-middle'>{thisYear(6)}</td>
+                                            <td className='align-middle'>{thisYear(7)}</td>
+                                            <td className='align-middle'>{thisYear(8)}</td>
+                                            <td className='align-middle'>{thisYear(9)}</td>
+                                            <td className='align-middle'>{thisYear(10)}</td>
+                                            <td className='align-middle'>{thisYear(11)}</td>
+                                        </tr>
                                     );
                                 })
                                 }
@@ -195,11 +195,11 @@ function AnnualManagement(){
                     </table>     
 
                     <div className="d-flex justify-content-center mt-5">
-                        <Pagination 
-                            count={Math.ceil(memberCount.data / perPage)} 
-                            page={currentPage} 
-                            onChange={handlePageChange} 
-                        />
+                    <Pagination 
+                        count={Math.ceil(total / perPage) || 1} 
+                        page={currentPage} 
+                        onChange={handlePageChange} 
+                    />
                     </div>
                 </Paper>
             </div>
