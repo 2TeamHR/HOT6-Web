@@ -169,6 +169,14 @@ function Sidebar() {
                                         <Link to="/ea/prograss" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 진행 문서함</Link>
                                         <Link to="/ea/complete" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 완료 문서함</Link>                                        
                                     </div>
+                                    { (token.auth.includes("ROLE_ADMIN")) ? 
+                                    <div className={sidebarStyle.navDropdownContent}>
+                                        <div className={sidebarStyle.navDropdownContentTitle}>
+                                            인사팀 기능
+                                        </div>
+                                            <Link to="/ea/allEaList" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>전체 전자결재 문서함</Link>                                        
+                                    </div>
+                                    : <div/> }
                                 </div>
                             </div>
                         </div>

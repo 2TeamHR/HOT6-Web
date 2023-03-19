@@ -24,6 +24,7 @@ import EaModal from "./EaModal";
 import { useDispatch, useSelector } from "react-redux";
 import { callEaDocumentListAPI } from "../../apis/EaDocumentAPICalls";
 import { Suspense, useEffect, useState } from "react";
+import EaModalNew from "./EaModalNew";
 
 
 
@@ -38,8 +39,8 @@ function Row(docu1) {
   const count = 0;
   useEffect(() => {
 
-    docu?.eaStatusCode === 'EA_STATUS_WAITING' ? setStatusColor('info') : 
-    (docu?.eaStatusCode === 'EA_STATUS_FINISH' ? setStatusColor('success') : setStatusColor('primary'))
+    docu?.eaStatusCode === 'EA_STATUS_WAITING' ? setStatusColor('info') :
+      (docu?.eaStatusCode === 'EA_STATUS_FINISH' ? setStatusColor('success') : setStatusColor('primary'))
 
   }, [])
 
@@ -50,7 +51,7 @@ function Row(docu1) {
 
   }, [])
 
-console.log("docuStatus",docuStatus);
+  console.log("docuStatus", docuStatus);
 
 
   return (
@@ -65,19 +66,16 @@ console.log("docuStatus",docuStatus);
         <TableCell align="center">{docu?.eaMember?.memberName}</TableCell>
         <TableCell align="center">{docu?.eaDate}</TableCell>
         <TableCell align="center">
-      
 
-
-        <Chip label={docuStatus} color={statusColor} /> 
-
-
-
-
-
+          <Chip label={docuStatus} color={statusColor} />
 
         </TableCell>
         <TableCell align="center">
-          <EaModal documentInfo={docu} />
+
+          {/* 모달 */}
+          <EaModalNew documentInfo={docu} />
+
+
         </TableCell>
         <TableCell align="center">
           <IconButton
@@ -94,11 +92,12 @@ console.log("docuStatus",docuStatus);
         <TableCell style={{ paddingBottom: 0, paddingTop: 0, borderBottom: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1, }}>
+
               <Typography variant="h6" gutterBottom component="div">
                 전자결재 미리보기
               </Typography>
-              <Box sx={{ alignContent: 'center' }}>
 
+              <Box sx={{ alignContent: 'center' }}>
                 <Stepper activeStep={stepCount} alternativeLabel>
                   <Step>
                     <StepLabel>{docu?.eaMember?.memberName}</StepLabel>
@@ -110,9 +109,7 @@ console.log("docuStatus",docuStatus);
                     </Step>
                   ))}
 
-
                 </Stepper>
-
               </Box>
             </Box>
           </Collapse>
@@ -123,7 +120,7 @@ console.log("docuStatus",docuStatus);
   );
 }
 
-function EaRealExtendTable() {
+function EaAllListTable() {
 
   const dispatch = useDispatch();
   const documentList = useSelector(state => state.eaDocumentReducer);
@@ -170,4 +167,4 @@ function EaRealExtendTable() {
   );
 }
 
-export default EaRealExtendTable;
+export default EaAllListTable;

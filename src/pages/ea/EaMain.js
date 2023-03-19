@@ -33,7 +33,7 @@ function EaMain() {
           <Grid item xs="auto">
             <Card sx={{ minWidth: 250 }}>
               <CardContent>
-                <Typography variant="h6" textAlign="center" sx={{ fontWeight: 'bold' }}>지연된 결재 요청</Typography>
+                <Typography variant="h6" textAlign="center" sx={{ fontWeight: 'bold' }}>기안한 결재</Typography>
               </CardContent>
               <CardActions>
                 <Button>1건</Button>
@@ -43,7 +43,7 @@ function EaMain() {
           <Grid item xs="auto">
             <Card sx={{ minWidth: 250 }}>
               <CardContent>
-                <Typography variant="h6" textAlign="center" sx={{ fontWeight: 'bold' }}>확인하지 않은 결재 요청</Typography>
+                <Typography variant="h6" textAlign="center" sx={{ fontWeight: 'bold' }}>진행중인 결재</Typography>
               </CardContent>
               <CardActions>
                 <Button>1건</Button>
@@ -53,7 +53,7 @@ function EaMain() {
           <Grid item xs="auto">
             <Card sx={{ minWidth: 250 }}>
               <CardContent>
-                <Typography variant="h6" textAlign="center" sx={{ fontWeight: 'bold' }}>수신참조 결재</Typography>
+                <Typography variant="h6" textAlign="center" sx={{ fontWeight: 'bold' }}>완료된 결재</Typography>
               </CardContent>
               <CardActions item>
                 <Button>1건</Button>
