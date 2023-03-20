@@ -38,13 +38,13 @@ function CheckNTable() {
         setShowModal(false);
     }
 
-
-
-    let memberList = [];
-
+    
+    let memberList = '';
+    
     if(member !== undefined){
-        memberList.content = member;
-
+      memberList = member;
+      
+      console.log(`memberList =====`, memberList);
     } else {
         memberList.content = {
             team: {
@@ -79,14 +79,14 @@ function CheckNTable() {
                             </tr>
                         </thead>
                         <tbody>
-                            { memberList.length > 0 && memberList.map((memberDetail, index) => (
-                                <tr style={{ "cursor": "pointer" }} key={ memberDetail.content.salaryCode }>
+                            {Array.isArray(memberList.content) && memberList.content.length > 0 && memberList.content.map((memberDetail, index) => (
+                                <tr style={{ "cursor": "pointer" }} key={ memberDetail.salaryCode }>
                                 <td>{ index + 1 }</td>
-                                <td>{memberDetail.content.team?.teamName}</td>
-                                <td>{memberDetail.content.rank?.rankName}</td>
-                                <td>{memberDetail.content.memberName}</td>
-                                <td>{memberDetail.content.afterSalary}</td>
-                                <td>{memberDetail.content.paymentsYn}</td>
+                                <td>{memberDetail.team?.teamName}</td>
+                                <td>{memberDetail.rank?.rankName}</td>
+                                <td>{memberDetail.memberName}</td>
+                                <td>{memberDetail.afterSalary.toLocaleString()}</td>
+                                <td>{memberDetail.paymentsYn}</td>
                                 <td style={{width:120}}>
                                     <button 
                                         className="btn btn-primary" 

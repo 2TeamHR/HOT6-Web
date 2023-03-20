@@ -59,7 +59,7 @@ export default function EsModal({ documentInfo }) {
               divider={<Divider orientation="vertical" flexItem />}
               spacing={2}
             >
-              <Item>기안자
+              <Item>기안자 <br /><br />
                 {documentInfo?.eaMember?.memberName}
                 {documentInfo?.eaMember?.team.teamName}
                 {documentInfo?.eaMember?.rank.rankName}
@@ -69,7 +69,7 @@ export default function EsModal({ documentInfo }) {
 
               {documentInfo?.eaApproverInfoList.map((eaApproverCode) => (
                 <Item>
-                  {eaApproverCode?.eaAuthCode === "MIDDLE" ? "중간결재자" : "최종결재자"}
+                  {eaApproverCode?.eaAuthCode === "MIDDLE" ? "중간결재자" : "최종결재자"}<br /><br />
                   {eaApproverCode?.eaMember?.memberName}
                   {eaApproverCode?.eaMember?.team.teamName}
                   {eaApproverCode?.eaMember?.rank.rankName}

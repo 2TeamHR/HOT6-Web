@@ -82,7 +82,7 @@ function BonusTable() {
                                 <td>{bonusDetail.rank?.rankName}</td>
                                 <td>{bonusDetail.memberName}</td>
                                 <td>{bonusDetail.bonus?.bonusType}</td>
-                                <td>{bonusDetail.bonus?.bonusSalary.toLocaleString()}</td>
+                                <td>{bonusDetail.bonus?.bonusSalary?.toLocaleString()}</td>
                                 <td></td>
                                 </tr>
                             ))

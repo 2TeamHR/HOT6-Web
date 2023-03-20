@@ -1,6 +1,25 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { callGetCertificationList } from "../../apis/organizationAPICalls";
+import { decodeJwt } from "../../utils/tokenUtils";
 import CertificateTable from "./Organization_CertificateTable";
 
 function OrganiCertificate() {
+
+    const dispatch = useDispatch();
+    const certificate = useSelector(state => state.organizationReducer);
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));
+
+    console.log(`certificate =====`, certificate);
+    
+    useEffect(() => {
+
+        dispatch(callGetCertificationList({
+            memberCode: token.sub,
+        }));
+    }, []
+    );
+    
 
     return (
         <>
@@ -11,7 +30,7 @@ function OrganiCertificate() {
         </div>
 
         <div className="pt-5 pl-5">
-            <CertificateTable />
+            <CertificateTable certificate={certificate} />
         </div>
         </>
     );

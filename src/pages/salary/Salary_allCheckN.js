@@ -8,14 +8,8 @@ import CheckNTable from './Salary_CheckNTable';
 function AllCheckN(){
 
     const dispatch = useDispatch();
-    const member = useSelector(state => state.salaryReducer);
-
-    let memberTable = '';
 
 
-    memberTable = member;
-
-    console.log(memberTable);
     useEffect(
         () => {
             dispatch(callGetPaymentSalaryAPI({
@@ -44,8 +38,8 @@ function AllCheckN(){
         {/* 페이지 처리 */}
         <div style={{display: 'flex', justifyContent: 'center'}}>
             {/* <button disabled={pageNumber === 1} onClick={() => setPageNumber(pageNumber - 1)}>이전 페이지</button>
-            <button disabled={member.data?.length < itemsPerPage} onClick={() => setPageNumber(pageNumber + 1)}>다음 페이지</button> */}
-            {/* <span>현재 페이지: {pageNumber}</span> */}
+            <button disabled={member.data?.length < itemsPerPage} onClick={() => setPageNumber(pageNumber + 1)}>다음 페이지</button>
+            <span>현재 페이지: {pageNumber}</span> */}
         </div>
         </>
     );

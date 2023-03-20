@@ -52,19 +52,19 @@ function AllSalaryModal({ onClose, memberDetail, selectedSalaryCode }) {
                 <tbody className="text-center">
                     <tr>
                     <td>기본급</td>
-                    <td>{memberDetail.basicSalary}</td>
+                    <td>{memberDetail.basicSalary.toLocaleString()}</td>
                     </tr>
                     <tr>
                     <td>상여금</td>
-                    <td>{memberDetail.bonus ? memberDetail.bonus.bonusSalary : 0}</td>
+                    <td>{memberDetail.bonus ? memberDetail.bonus.bonusSalary.toLocaleString() : 0}</td>
                     </tr>
                     <tr>
                     <td>식대</td>
-                    <td>{memberDetail.mealSalary}</td>
+                    <td>{memberDetail.mealSalary.toLocaleString()}</td>
                     </tr>
                     <tr>
                     <td>세전 총액</td>
-                    <td>{memberDetail.beforeSalary}</td>
+                    <td>{memberDetail.beforeSalary.toLocaleString()}</td>
                     </tr>
                 </tbody>
             </Table>
@@ -78,19 +78,19 @@ function AllSalaryModal({ onClose, memberDetail, selectedSalaryCode }) {
                 <tbody className="text-center">
                     <tr>
                         <td>소득세</td>
-                        <td>{memberDetail.incomTax}</td>
+                        <td>{memberDetail.incomTax.toLocaleString()}</td>
                     </tr>
                     <tr>
                         <td>건강보험</td>
-                        <td>{memberDetail.healthTax}</td>
+                        <td>{memberDetail.healthTax.toLocaleString()}</td>
                     </tr>
                     <tr>
                         <td>국민연금</td>
-                        <td>{memberDetail.nationalTax}</td>
+                        <td>{memberDetail.nationalTax.toLocaleString()}</td>
                     </tr>
                     <tr>
                         <td>총 공제액</td>
-                        <td>{totalTax}</td>
+                        <td>{totalTax.toLocaleString()}</td>
                     </tr>
                 </tbody>
             </Table>
@@ -105,7 +105,7 @@ function AllSalaryModal({ onClose, memberDetail, selectedSalaryCode }) {
                 </thead>
                 <tbody className="text-center">
                     <tr>
-                        <td>{memberDetail.afterSalary}</td>
+                        <td>{memberDetail.afterSalary.toLocaleString()}</td>
                     </tr>
                 
                 </tbody>
