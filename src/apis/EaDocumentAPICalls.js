@@ -24,9 +24,9 @@ export const callEaDocumentListAPI = () => {
 
 
 
-export const callEaLeaveFinishListAPI = () => {
+export const callLeavePaymentListAPI = ({status}) => {
 
-    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/ea/eaList`;
+    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/ea/eaList/leave?status=${status}`;
     console.log('eaRequestUrl', requestURL);
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
