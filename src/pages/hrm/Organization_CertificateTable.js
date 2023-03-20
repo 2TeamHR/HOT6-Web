@@ -171,7 +171,7 @@ export default function CertificateTable({certificate}) {
                   { index + 1 }
                 </TableCell>
                 <TableCell align="center" style={{ width: 150 }}>
-                  {certiInfo.eaCertCategory.certCategoryName}
+                  {certiInfo.eaCertCategory?.certCategoryName}
                 </TableCell>
                 <TableCell align="center" style={{ width: 150 }}>
                   {certiInfo.certRequireCount}
@@ -180,10 +180,10 @@ export default function CertificateTable({certificate}) {
                   {certiInfo.eaDate}
                 </TableCell>
                 <TableCell align="center" style={{ width: 150 }}>
-                  {certiInfo.eaStatusCategory.eaStatusName}
+                  {certiInfo.eaStatusCategory?.eaStatusName}
                 </TableCell>
                 <TableCell align="center" style={{ width: 150 }}>
-                  {certiInfo.eaApproverInfoList[1].eaMember.memberName}
+                  {certiInfo.eaApproverInfoList && certiInfo.eaApproverInfoList[1].eaMember.memberName}
                 </TableCell>
                 <TableCell align="center" style={{ width: 150 }}>
                   <button
@@ -196,14 +196,10 @@ export default function CertificateTable({certificate}) {
               </TableRow>
             ))}
           </TableBody>
-              {showModal && selectedCertificateInfo.eaCertCategory.certCategoryName === '재직증명서' && <EmploymentModal onClose={handleCloseModal} certificate={selectedCertificateInfo} /> }
-              {showModal && selectedCertificateInfo.eaCertCategory.certCategoryName === '경력증명서' && <CareerModal onClose={handleCloseModal} certificate={selectedCertificateInfo} /> }
+              {showModal && selectedCertificateInfo && selectedCertificateInfo.eaCertCategory?.certCategoryName === '재직증명서' && <EmploymentModal onClose={handleCloseModal} certificate={selectedCertificateInfo} /> }
+              {showModal && selectedCertificateInfo && selectedCertificateInfo.eaCertCategory?.certCategoryName === '경력증명서' && <CareerModal onClose={handleCloseModal} certificate={selectedCertificateInfo} /> }
               
               
-              {/* selectedCertificateInfo.eaCertCategory.certCategoryName == '경력증명서' ? 
-                <CareerModal onClose={handleCloseModal} certificate={certificate}/> :
-                <EmploymentModal onClose={handleCloseModal} certificate={certificate} />
-                } */}
         </Table>
       </TableContainer>
       
