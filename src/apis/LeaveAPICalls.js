@@ -9,9 +9,7 @@ import{
 
 export const callLeaveCategoryListAPI = () => {
     
-    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/annual/standardsManagement`;
-
-    console.log('request', requestURL);
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/annual/standardsManagement`;
 
     return async (dispatch, getState) => {
 
@@ -34,10 +32,12 @@ export const callLeaveCategoryListAPI = () => {
 }
 
 export const callmemberLeaveAPI = ({memberCode}) => {
-    
-    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/annual/management/detailed/${memberCode}`;
 
-    console.log('request', requestURL);
+    console.log('왜 없지?', memberCode);
+    
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/annual/management/detail/${memberCode}`;
+
+    console.log('여기가 불러지는거 마자용');
 
     return async (dispatch, getState) => {
 
@@ -83,8 +83,6 @@ export const callLeaveRegistAPI = ({form}) => {
     };    
 }
 
-
-
 export const callLeaveDeleteAPI = ({leaveCategoryCode}) => {
 
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/annual/standardsManagement/${leaveCategoryCode}`;
@@ -129,9 +127,6 @@ export const callGetMyLeaveInfoAPI = ({memberCode}) => {
 
 /* 전사원 휴가 정보 조회 */
 export const callLeaveAllListAPI = ({startIndex, endIndex}) => {
-    
-    console.log('API startIndex : ', startIndex);
-    console.log('API endIndex : ', endIndex);
 
     let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/annual/management/${startIndex}/${endIndex}`;
 

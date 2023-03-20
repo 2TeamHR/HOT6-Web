@@ -1,12 +1,13 @@
 import {
-    GET_MEMBER,
-    GET_SIMPLEMEMBER,
-    GET_MEMBERTOTALCOUNT,
-    POST_LOGIN,
-    POST_REGISTER,
-    PUT_MYINFO,
-    PUT_PASSWORD,
-    PUT_PROFILEIMAGE
+    GET_MEMBER
+    , GET_SIMPLEMEMBER
+    , GET_MEMBERTOTALCOUNT
+    , GET_MEMBERDETAIL
+    , POST_LOGIN
+    , POST_REGISTER
+    , PUT_MYINFO
+    , PUT_PASSWORD
+    , PUT_PROFILEIMAGE
 } from '../modules/MemberModule';
 
 /* 개인정보조회 API */
@@ -37,7 +38,7 @@ export const callGetMemberAPI = ({memberCode}) => {
 /* 간단한 사원 정보 조회 API */
 export const callGetSimpleMemberAPI = ({memberCode}) => {
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/simpleMember/${memberCode}`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/members/simpleInfo/${memberCode}`;
 
     return async (dispatch, getState) => {
 
@@ -55,6 +56,30 @@ export const callGetSimpleMemberAPI = ({memberCode}) => {
 
         if(result.status === 200){
             dispatch({ type: GET_SIMPLEMEMBER,  payload: result });
+        }
+   };
+}
+/* 간단한 사원 정보 조회 API */
+export const callGetMemberDetailAPI = ({memberCode}) => {
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/members/simpleInfo/${memberCode}`;
+
+    return async (dispatch, getState) => {
+
+       const result = await fetch(requestURL, {
+           method: "GET",
+           headers: {
+               "Content-Type": "application/json",
+               "Accept": "*/*",
+               "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+           }
+        })
+           .then(response => response.json());
+
+        console.log('[MemberAPICalls] callGetSimpleMemberAPI RESULT : ', result);
+
+        if(result.status === 200){
+            dispatch({ type: GET_MEMBERDETAIL,  payload: result });
         }
    };
 }

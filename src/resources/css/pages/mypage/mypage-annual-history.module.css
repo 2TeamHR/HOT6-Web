@@ -10,7 +10,6 @@
 
 .annualMainBox p {
     font-size: 20px;
-    margin-top: 1rem;
     text-align: center;
 }
 
@@ -25,8 +24,4 @@
     padding-right: 5px;
     border-radius: 10px;
     border: 1px solid #b5b5b5;
-}
-
-.annualTableMargin {
-    margin-top: 5%;
 }

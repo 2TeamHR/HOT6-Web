@@ -228,7 +228,7 @@ function Sidebar() {
                         </div>
 
                         {/* <!-- nav 캘린더 --> */}
-                        <div className={sidebarStyle.navItems}>
+                        {/* <div className={sidebarStyle.navItems}>
 
                             <div className={sidebarStyle.navDropdown}>
                             <div className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>   
@@ -238,7 +238,7 @@ function Sidebar() {
                             </div>  
                                 <div className={sidebarStyle.navDropdownCollapse}>
                                     {/* <!-- 중분류 --> */}
-                                    <div className={sidebarStyle.navDropdownContent}>
+                                    {/*<div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             캘린더
                                         </div>
@@ -246,7 +246,7 @@ function Sidebar() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
 
                         {/* <!-- nav 메세지 --> */}
                         <div className={sidebarStyle.navItems}>

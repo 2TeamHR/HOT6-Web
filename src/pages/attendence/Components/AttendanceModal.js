@@ -113,8 +113,7 @@ export default function AttendanceModal(props) {
                 startIcon = {<EditIcon/>}
                 onClick={handleOpen}>
                 Edit
-            </Button
-                >
+            </Button>
             </div>
 
 

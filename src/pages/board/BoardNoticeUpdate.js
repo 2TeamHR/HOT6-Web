@@ -1,92 +1,99 @@
-import * as React from 'react';
-import {useEffect, useState} from 'react';
-import {useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from 'react-redux';
-import {callBoardNoticeWriteAPI,} from '../../apis/BoardNoticeAPICalls';
-import {callGetMemberAPI} from "../../apis/MemberAPICalls";
-import {decodeJwt} from "../../utils/tokenUtils";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { callGetNoticeAPI, callUpdateNoticeAPI } from "../../apis/BoardNoticeAPICalls";
 
 function BoardNoticeUpdate() {
-    //
-    // const navigate = useNavigate();
-    // const dispatch = useDispatch();
-    // const params = useParams();
-    // const notice = useSelector(state => state.boardNoticeReducer);
-    // const noticeDetail = notice.data;
-    // const token = decodeJwt(window.localStorage.getItem("accessToken"));
-    //
-    // console.log('noticeDetail', noticeDetail);
-    //
-    // useEffect(() => {
-    //         dispatch(callGetNoticeAPI({
-    //             noticeCode: params.noticeCode}));
-    //     }, []
-    // );
-    //
-    //
-    // if (!noticeDetail) {
-    //     return <div>Loading...</div>
-    // };
-    //
-    // const noticeUpdateHref = () => {
-    //     navigate("/board/notice/update", { replace: true })
-    // }
-    //
-    // const onClickNoticeDelete = () => {
-    //     dispatch(
-    //         callUpdateNoticeAPI({
-    //             noticeCode: noticeDetail.noticeCode,
-    //             noticeDeleteYn: "Y",
-    //         })
-    //     );
-    // }
-    //
-    // const onClickNoticeListHandler = () => {
-    //
-    //     alert('공시자항 목록으로 이동합니다.');
-    //     navigate('/board/notice', {replace: true});
-    //     window.location.reload();
-    // }
-    //
-    // const noticeDate = noticeDetail.noticeDate ? new Date(noticeDetail.noticeDate) : null;
-    // const formattedNoticeDate = noticeDate ? noticeDate.toISOString().slice(0, 10) : '';
-    //
-    //
-    // return (
-    //     <main className={mainTitleStyle.main}>
-    //         {noticeDetail ? (
-    //             <>
-    //                 <div className={`justify-content-center `}>
-    //                     <Paper elevation={3} className={mpManagement.profileInfoBox} style={{ height: '150px' }}>
-    //                         <div className={mpManagement.infoTitle}>
-    //                             <span className='fs-3' >제목&ensp;&ensp;{ noticeDetail.noticeTitle }</span>
-    //                         </div>
-    //                         <div className={mpManagement.infoModule}>
-    //                             <span>글쓴이&ensp;&ensp;{ noticeDetail.memberCode || ''}&ensp;&ensp;&ensp;</span>
-    //                             <span>|&ensp;&ensp;&ensp;작성일&ensp;&ensp;{ formattedNoticeDate }&ensp;&ensp;&ensp;</span>
-    //                             <span>|&ensp;&ensp;&ensp;조회수&ensp;&ensp;{ noticeDetail.noticeCount || 0 }</span>
-    //                         </div>
-    //                     </Paper>
-    //                     <br/>
-    //                     <Paper elevation={3} className={mpManagement.profileInfoBox} style={{ height: '400px' }} >
-    //                         <div className={mpManagement.infoModule}>
-    //                             <span>{ noticeDetail.noticeContent || '' }</span>
-    //                         </div>
-    //                     </Paper>
-    //                 </div>
-    //                 <br/>
-    //                 <button className="btn btn-info me-3" onClick={onClickNoticeListHandler}>목록으로</button>
-    //                 {(token.sub === noticeDetail.memberCode) && (
-    //                     <>
-    //                         <button className="btn btn-info me-3" onClick={noticeUpdateHref}>수정</button>
-    //                         <button className="btn btn-info me-3" onClick={onClickNoticeDelete}>삭제</button>
-    //                     </>
-    //                 )}
-    //             </>
-    //         ) : '해당 게시글을 찾을 수 없습니다.'
-    //         }
-    //     </main>
-    // );
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const boardNotice = useSelector(state => state.boardNoticeReducer);
+    const noticeDetail = boardNotice.data;
+
+    console.log('noticeDetail', noticeDetail);
+
+    useEffect(() => {
+            dispatch(callGetNoticeAPI({
+                noticeCode: noticeDetail.noticeCode
+            }));
+        },[]
+    );
+
+    /* 변경할 데이터 form */
+    const [form, setForm] = useState({
+        noticeTitle: noticeDetail.noticeTitle || '',
+        noticeContent: noticeDetail.noticeContent || ''
+    });
+
+    const onChangeHandler = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    /* 공지사항 정보 변경 핸들러 */
+    const onClickNoticeUpdateHandler = () => {
+
+    console.log('[NoticeUpdate] onClicNoticeUpdateHandler');
+
+        const formData = new FormData();
+        formData.append("noticeTitle", form.noticeTitle);
+        formData.append("noticeContent", form.noticeContent);
+
+        dispatch(callUpdateNoticeAPI({
+            form: formData,
+            noticeCode: noticeDetail.noticeCode
+        }));
+
+        alert("게시글이 수정되었습니다.")
+        navigate("/board/notice", { replace: true })
+        window.location.reload();
+    }
+
+    /* 취소시 메인 이동 */
+    const cancelNoticeUpdateHref = () => {
+        alert("수정이 취소 되었습니다.");
+        navigate("/board/notice", { replace: true })
+        window.location.reload();
+    }
+
+    return (
+        <div className="container">
+            <h1 className="mt-5 text-center">공지사항 수정하기</h1>
+            <hr/>
+            <div className="form-group">
+                <label htmlFor="exampleFormControlInput1">제목</label>
+                <input
+                    className="form-control"
+                    name="noticeTitle"
+                    id="exampleFormControlInput1"
+                    defaultValue={form.noticeTitle}
+                    onChange={onChangeHandler}
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="exampleFormControlTextarea1">내용</label>
+                <textarea
+                    className="form-control"
+                    name="noticeContent"
+                    id="exampleFormControlTextarea1"
+                    defaultValue={form.noticeContent}
+                    rows={15}
+                    onChange={onChangeHandler}
+                />
+            </div>
+            <br/>
+            <div>
+                <button
+                    className="btn btn-info me-3"
+                    style={{"backgroundColor": "black", "borderColor": "black"}}
+                    onClick={onClickNoticeUpdateHandler}>완료
+                </button>
+                    <button type="button" className="btn btn-secondary" onClick={cancelNoticeUpdateHref}>취소</button>
+            </div>
+        </div>
+    );
 }
 
 export default BoardNoticeUpdate;

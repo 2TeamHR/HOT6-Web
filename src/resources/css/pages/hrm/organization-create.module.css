@@ -1,17 +1,12 @@
 
 .managementInput {
-    float: right;
-    width: 85%;
+    margin-left: 25%;
+    width: 50%;
 }
 
 .infoModule {
     margin: 4% 10% 4% 5%;
     font-size: 20px;
-}
-
-.datePicker {
-    float: right;
-    width: 85%;
 }
 
 .radioBtn {
