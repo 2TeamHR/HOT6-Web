@@ -26,30 +26,15 @@ function DutyInfo() {
     const [value, setValue] = React.useState(dayjs('2022-04-07'));
     return (
         <>
-            <Container>
-                <Grid container direction="row" spacing={3}>
-                    <Grid item xs={8}>
-                                 
-                            <Grid container columns={6}>
-                               
-                                <Grid item xs={3}><label>예비군 훈련종류</label></Grid>
-                                <Grid item xs={3}><select name="" id="">
-                                    <option value="1">동원훈련</option>
-                                    <option value="2">동미참훈련</option>
+            <Grid item xs={6}><label>예비군 훈련종류</label></Grid>
+            <Grid item xs={6}>
+            </Grid>
+            <Grid item xs={6}><label htmlFor="">예비군 훈련 시작일</label></Grid>
 
-                                </select></Grid>
-                                <Grid item xs={3}><label htmlFor="">예비군 훈련 시작일</label></Grid>
-                                
-                                <Grid item xs={3}><label htmlFor="">예비군 훈련 종료일</label></Grid>
-                                
-                                <Grid item xs={3}><input type="file" /></Grid>
-                                <Grid item xs={3}></Grid>
-                            </Grid>
+            <Grid item xs={6}><label htmlFor="">예비군 훈련 종료일</label></Grid>
 
-                    </Grid>
-                    
-                </Grid>
-            </Container>
+            <Grid item xs={6}><input type="file" /></Grid>
+            <Grid item xs={6}></Grid>
         </>
     );
 }
