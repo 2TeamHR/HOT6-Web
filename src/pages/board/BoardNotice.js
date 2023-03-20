@@ -65,16 +65,17 @@ function BoardNotice() {
                         </tr>
                     </thead>
                     <tbody>
-                    {boardNotice && boardNotice.slice(startIndex, endIndex).map((notice, noticeIndex) => (
-                        <tr key={notice.noticeCode} className="text-center"
-                            onClick={() => onClickTableTr(notice.noticeCode)} style={{cursor: 'pointer'}}>
-                            <td className='align-middle'>{noticeIndex + 1}</td>
-                            <td className='align-middle'>{notice.noticeTitle}</td>
-                            <td className='align-middle'>{notice.member.memberName}</td>
-                            <td className='align-middle'>{notice.noticeDate}</td>
-                            <td className='align-middle'>{notice.noticeCount}</td>
-                        </tr>
-                    ))}
+                        {boardNotice.slice(startIndex, endIndex).map((notice, index) => (
+                            <tr key={notice.noticeCode} className="text-center">
+                                <td className='align-middle'>{startIndex + index + 1}</td>
+                                <td className='align-middle'>
+                                    <Link to={`${notice.noticeCode}`}>{notice.noticeTitle}</Link>
+                                </td>
+                                <td className='align-middle'>{notice.member.memberName}</td>
+                                <td className='align-middle'>{displayTime(notice.noticeDate)}</td>
+                                {/* <td className='align-middle'>{notice.noticeCount}</td> */}
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
                 <div className="d-flex justify-content-center">

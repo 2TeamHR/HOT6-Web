@@ -32,9 +32,9 @@ function BoardCommunity() {
     const startIndex = (currentPage - 1) * perPage;
     const endIndex = startIndex + perPage;
 
-    function displayTime(boardDate) {
+    function displayTime(date) {
 
-        const dateTime = new Date(boardDate);
+        const dateTime = new Date(date);
         const now = new Date();
         const diff = (now.getTime() - dateTime.getTime()) / 1000;
 
@@ -54,6 +54,14 @@ function BoardCommunity() {
         }
     }
 
+    function boardCommunityCommentColor(number) {
+        if(number != 0) {
+            return {"color": "red"};
+        } else {
+            return {"color": "black"};
+        }
+    }
+
     return (
         <div className="container">
             <h1 className="mt-5 text-center">커뮤니티</h1><br/>
@@ -69,11 +77,11 @@ function BoardCommunity() {
                     </tr>
                     </thead>
                     <tbody>
-                    {boardCommunity && boardCommunity.slice(startIndex, endIndex).map((community, communityIndex) => (
+                    {Array.isArray(boardCommunity) && boardCommunity.slice(startIndex, endIndex).map((community, communityIndex) => (
                         <tr key={community.boardCode} className="text-center"
                             onClick={() => onClickTableTr(community.boardCode)} style={{cursor: 'pointer'}}>
                             <td className='align-middle'>{communityIndex + 1}</td>
-                            <td className='align-middle'>{community.boardTitle}</td>
+                            <td className='align-middle'>{community.boardTitle}<span style={boardCommunityCommentColor(community.boardCommunityComment.length)}>&ensp;[{community.boardCommunityComment.length}]</span></td>
                             <td className='align-middle'>{community.member.memberName}</td>
                             <td className='align-middle'>{displayTime(community.boardInsertDate)}</td>
                             <td className='align-middle'>{community.boardCount}</td>
