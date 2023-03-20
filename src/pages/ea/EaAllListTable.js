@@ -18,109 +18,19 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+
 import EaModal from "./EaModal";
 import { useDispatch, useSelector } from "react-redux";
 import { callEaDocumentListAPI } from "../../apis/EaDocumentAPICalls";
 import { Suspense, useEffect, useState } from "react";
 import EaModalNew from "./EaModalNew";
+import Row from "./Row";
 
 
 
 
 
-function Row(docu1) {
-  const { docu } = docu1;
-  const [open, setOpen] = useState(false);
-  const [stepCount, setStepCount] = useState(0);
-  const [docuStatus, setDocuStatus] = useState('');
-  const [statusColor, setStatusColor] = useState('primary');
-  const count = 0;
-  useEffect(() => {
-
-    docu?.eaStatusCode === 'EA_STATUS_WAITING' ? setStatusColor('info') :
-      (docu?.eaStatusCode === 'EA_STATUS_FINISH' ? setStatusColor('success') : setStatusColor('primary'))
-
-  }, [])
-
-
-  useEffect(() => {
-
-    setDocuStatus(docu?.eaStatusCategory?.eaStatusName);
-
-  }, [])
-
-  console.log("docuStatus", docuStatus);
-
-
-  return (
-    <>
-
-      <TableRow>
-        <TableCell align="center">{docu?.eaCode}</TableCell>
-        <TableCell align="center">{docu?.dtype}</TableCell>
-        <TableCell align="center">{docu?.eaSubject}</TableCell>
-        <TableCell align="center">{docu?.eaMember?.team?.teamName}</TableCell>
-        <TableCell align="center">{docu?.eaMember?.rank?.rankName}</TableCell>
-        <TableCell align="center">{docu?.eaMember?.memberName}</TableCell>
-        <TableCell align="center">{docu?.eaDate}</TableCell>
-        <TableCell align="center">
-
-          <Chip label={docuStatus} color={statusColor} />
-
-        </TableCell>
-        <TableCell align="center">
-
-          {/* 모달 */}
-          <EaModalNew documentInfo={docu} />
-
-
-        </TableCell>
-        <TableCell align="center">
-          <IconButton
-            aria-label="expand row"
-            size="small"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
-        </TableCell>
-      </TableRow>
-
-      <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0, borderBottom: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 1, }}>
-
-              <Typography variant="h6" gutterBottom component="div">
-                전자결재 미리보기
-              </Typography>
-
-              <Box sx={{ alignContent: 'center' }}>
-                <Stepper activeStep={stepCount} alternativeLabel>
-                  <Step>
-                    <StepLabel>{docu?.eaMember?.memberName}</StepLabel>
-                  </Step>
-
-                  {docu?.eaApproverInfoList?.map((label) => (
-                    <Step key={label?.eaMember?.eaApproverCode}>
-                      <StepLabel>{label?.eaMember?.memberName}</StepLabel>
-                    </Step>
-                  ))}
-
-                </Stepper>
-              </Box>
-            </Box>
-          </Collapse>
-        </TableCell>
-      </TableRow>
-
-    </>
-  );
-}
-
-function EaAllListTable() {
+export default function EaAllListTable() {
 
   const dispatch = useDispatch();
   const documentList = useSelector(state => state.eaDocumentReducer);
@@ -130,7 +40,7 @@ function EaAllListTable() {
   useEffect(() => {
     dispatch(callEaDocumentListAPI());
   }, []);
-
+  console.log("2번째 렌더");
   return (
     <>
 
@@ -153,7 +63,7 @@ function EaAllListTable() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {documentList?.map((row) => (
+                {documentList && documentList?.map((row) => (
                   <Row key={row.eaCode} docu={row} />
                 ))}
               </TableBody>
@@ -166,5 +76,3 @@ function EaAllListTable() {
     </>
   );
 }
-
-export default EaAllListTable;

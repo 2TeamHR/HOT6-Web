@@ -12,6 +12,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import LeaveInfo from './LeaveInfo';
 import CertificationInfo from './CertificationInfo';
+import { Link } from 'react-router-dom';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -25,9 +26,9 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function EaModalNew({ documentInfo }) {
 
-  const {documentInfo2} = documentInfo;
-  const [open, setOpen] = React.useState(false);
 
+  const [open, setOpen] = React.useState(false);
+  ;
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -36,14 +37,7 @@ export default function EaModalNew({ documentInfo }) {
     setOpen(false);
   };
 
-  const [leave, setLeave] = React.useState('');
-
-  const handleChange = (event) => {
-    setLeave(event.target.value);
-  };
-
-  const [value, setValue] = React.useState(dayjs('2022-04-07'));
-
+  console.log("4번째 렌더");
 
 
   return (
@@ -94,8 +88,7 @@ export default function EaModalNew({ documentInfo }) {
             <Grid item xs={6}><label>내용</label></Grid><Grid item xs={6}>{documentInfo?.eaDetail}</Grid>
 
 
-            {documentInfo?.dtype === "휴가신청" ? <LeaveInfo docu={documentInfo} />: <div />}
-
+            {documentInfo?.dtype === "휴가신청" ? <React.Suspense> <LeaveInfo docu={documentInfo} /> </React.Suspense> : <div />}
             {documentInfo?.dtype === "증명서 신청" ? <CertificationInfo docu={documentInfo} /> : <div />}
 
             {documentInfo?.dtype === "예비군 신청" ? <div>예비군</div> : <div />}

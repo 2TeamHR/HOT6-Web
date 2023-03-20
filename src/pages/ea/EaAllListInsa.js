@@ -3,7 +3,7 @@ import EaAllListTable from "./EaAllListTable";
 
 
 export default function EaAllListInsa() {
-
+console.log("1번째 렌더");
     return (
         <>
             <Container>
