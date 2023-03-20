@@ -28,6 +28,8 @@ const style = {
 
 export default function AttendanceModal(props) {
 
+    // console.log('props test', props.data);
+    // console.log('props test commute', props.data.commuteCode);
 
     const [open, setOpen] = React.useState(false);
     const [selectedRowIndex, setSelectedRowIndex] = React.useState(null); // 선택한 행의 index 값 저장
@@ -162,7 +164,7 @@ export default function AttendanceModal(props) {
 
                                 {/*증빙서류 확인 버튼*/}
                                 <div className={attendanceManage.dbutton2}>
-                                <BasicButtons2 />
+                                <BasicButtons2 data={props}/>
                                 </div>
 
                                 {/*저장 버튼*/}

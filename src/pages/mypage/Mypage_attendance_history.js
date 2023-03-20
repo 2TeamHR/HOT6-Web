@@ -39,7 +39,7 @@ function  MypageAttendanceHistory () {
 
     const onChangeHandler = (e) => {
         setForm({
-            ...form,3
+            ...form,
             [e.target.name]: e.target.value,
         });
     };
