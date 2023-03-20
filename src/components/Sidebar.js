@@ -189,6 +189,7 @@ function Sidebar() {
                                             급여
                                         </div>
                                             <Link to="/salary/check" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>내 급여 조회</Link>
+                                            <Link to="/salary/my/require" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>정정 신청</Link>
                                     </div>
                                     { (token.auth.includes("ROLE_ADMIN")) ? 
                                     <div className={sidebarStyle.navDropdownContent}>
@@ -196,6 +197,7 @@ function Sidebar() {
                                             인사팀 관리
                                         </div>
                                             <Link to="/salary/check/All" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>급여 지급 현황 </Link>
+                                            <Link to="/salary/require/list" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>정정 신청 현황</Link>
                                             <Link to="/salary/bonus" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>상여금 지급 현황</Link>
                                             {/* <Link to="/salary/severance/N" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직금 지급 현황</Link> */}
                                     </div>

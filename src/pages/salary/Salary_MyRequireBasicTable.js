@@ -1,11 +1,11 @@
 import Table from 'react-bootstrap/Table';
 
-function BasicTable({ salaryDetail: {basicSalary, bonus, mealSalary, beforeSalary }}){
+function MyRequireBasicTable({ salaryInfo }){
 
-    const formattedBasicSalary = basicSalary?.toLocaleString();
-    const formattedBonusSalary = bonus ? bonus.bonusSalary?.toLocaleString() : 0;
-    const formattedMealSalary = mealSalary?.toLocaleString();
-    const formattedBeforeSalary = beforeSalary?.toLocaleString();
+    const formattedBasicSalary = salaryInfo.basicSalary?.toLocaleString();
+    const formattedBonusSalary = salaryInfo.bonus ? salaryInfo.bonus.bonusSalary.toLocaleString() : 0;
+    const formattedMealSalary = salaryInfo.mealSalary?.toLocaleString();
+    const formattedBeforeSalary = salaryInfo.beforeSalary?.toLocaleString();
 
     return(
     <Table striped style={{width:500}} className="mr-5">
@@ -38,4 +38,4 @@ function BasicTable({ salaryDetail: {basicSalary, bonus, mealSalary, beforeSalar
     );
 }
 
-export default BasicTable;
+export default MyRequireBasicTable;

@@ -9,6 +9,8 @@ import { GET_PAYMENT_SALARY,
         POST_SALARY,
         PUT_SALARY,
         PUT_BONUS,
+        GET_MY_REQUIRE_SALARY,
+        GET_REQUIRE_LIST,
 } from '../modules/SalaryModule.js'
 
 
@@ -79,6 +81,54 @@ export const callGetSalaryModalAPI = ({selectedSalaryCode}) => {
         if(result.status === 200) {
             console.log('[GetSalaryModalAPICalls] callSalaryModalAPI RESULT : ', result);
             dispatch({ type: GET_SALARY_MODAL, payload: result.data });
+        }
+
+    };
+}
+
+/* 나의 급여 정정 신청 리스트 */
+export const callGetMyRequireSalary = ({memberCode}) => {
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/salary/my/require/${memberCode}`;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+            }
+        })
+        .then(response => response.json());
+
+        if(result.status === 200) {
+            console.log('[GetMyRequireSalaryAPICalls] GetMyRequireSalaryAPICalls RESULT : ', result);
+            dispatch({ type: GET_MY_REQUIRE_SALARY, payload: result.data });
+        }
+
+    };
+}
+
+/* 급여 신청 리스트 조회 */
+export const callGetRequireSalaryAPI = () => {
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/salary/require/list`;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+            }
+        })
+        .then(response => response.json());
+
+        if(result.status === 200) {
+            console.log('[GetRequireListAPICalls] GetRequireListAPICalls RESULT : ', result);
+            dispatch({ type: GET_REQUIRE_LIST, payload: result.data });
         }
 
     };
