@@ -167,7 +167,7 @@ export default function AttendanceModal(props) {
                                 {/*증빙서류 확인 버튼*/}
                                 <div className={attendanceManage.dbutton2}>
                                 <BasicButtons2 data={props}/>
-                                <BasicButtons2 data={props} />
+                            
                                 </div>
 
                                 {/*저장 버튼*/}

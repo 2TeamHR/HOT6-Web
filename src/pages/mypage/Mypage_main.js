@@ -141,16 +141,19 @@ function MypageMain() {
     /*받은 편지함의 내용을 가져온다.*/
     useEffect(()=>{
 
-
         dispatch(callGetMessageReceiveListAPI())
             .then((receivedData) => {
-                console.log("메세지 받아온 값 확인" , receivedData.data);
+                console.log("메세지 받아온 값 확인" , receivedData);
                 setEmailSelect(receivedData);
-                console.log("api에서 받은 값 출력", emailSelect);
+                console.log("api에서 받은 값 출력",emailSelect);
             }).catch(error => console.log(error))
 
     }, []);
 
+
+    useEffect(() => {
+        console.log("api에서 받은 값 출력", emailSelect);
+      }, [emailSelect])
 
     /*나의 메세지함 카운트*/
     useEffect(() => {
@@ -431,9 +434,9 @@ function MypageMain() {
                         <div className={mypageStyle.noteCount}>
                             <span>{count}</span>
                             <span>건</span>
-                        </div>
+                       </div>
 
-                        {emailSelect.slice(0, 3).map((receivedEmail,index) => {
+                         {[...emailSelect].slice(0, 3).map((receivedEmail,index) => {
                             return (
                             <table key={index} className={`text-center ${mypageStyle.noteContent}`}>
                             <tbody>
@@ -445,7 +448,7 @@ function MypageMain() {
                             </tbody>
                              </table>
                             );
-                        })}
+                        })}   
 
                         <div className={mypageStyle.seeMore}>
                         <br/>
