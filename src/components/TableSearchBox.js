@@ -93,35 +93,62 @@ export class PayState extends Component{
 /* 기간 검색 컴포넌트 */
 export class Term extends Component{
 
+    
+
+    handleDateChange = (event) => {
+        const { name, value } = event.target;
+        this.props.onAttendanceStateChange({ [name]: value });
+    };
+
     render(){
 
         return(
-            <div className="float-left mr-4">
+            <div className="float-left mr-4 w-25">
                 <span className="mr-2">기간 : </span>
-                <input className='rounded rounded-lg' type="date"/>
+                <input 
+                    onChange={this.handleDateChange} 
+                    className={tableStyle.dateInput} 
+                    type="date"
+                    value="1900-01-01"
+                    name="startDate"
+                />
                 <span> ~ </span>
-                <input className='rounded rounded-lg' type="date"/>
+                <input 
+                    onChange={this.handleDateChange} 
+                    className={tableStyle.dateInput} 
+                    type="date" 
+                    name="endDate" 
+                    value={new Date().toISOString().split("T")[0]}
+                    max={new Date().toISOString().split("T")[0]} 
+                />
             </div>
         );
     }
 }
 
+
 /* 고용형태 검색 컴포넌트 */
-export class EmployState extends Component{
+export class AttendanceState extends Component {
 
-    render(){
+    handleSelectChange = (event) => {
+        const selectedValue = event.target.value;
+        this.props.onAttendanceStateChange(selectedValue);
+    };
 
-        return(
-            <div>
-                <span className="mr-2">고용형태</span>
-                <select>
-                    <option>정규직</option>
-                    <option>임원</option>
-                    <option>계약직</option>
-                </select>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className="float-left mr-4">
+        <span className="mr-2">근태 유형 : </span>
+        <select onChange={this.handleSelectChange} defaultValue="전체">
+          <option value="전체">전체</option>
+          <option value="정상출근">정상출근</option>
+          <option value="지각">지각</option>
+          <option value="조퇴">조퇴</option>
+          <option value="무단결근">무단결근</option>
+        </select>
+      </div>
+    );
+  }
 }
 
 export class LeaveState extends Component{
