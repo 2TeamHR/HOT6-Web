@@ -1,7 +1,7 @@
 import { 
     GET_MYATTENDANCE
     , GET_MYPAGESELECTATTENDANCE
-    , POST_REASON
+    , GET_REASONFILE, POST_REASON
  } from '../modules/AttendanceModule';
 
 
@@ -53,12 +53,40 @@ export const callCreateReasonAPI = ({form}) => {
         })
             .then(response => response.json());
 
-        console.log('[MemberAPICalls] callCreateReasonAPI RESULT : ', result);
+        console.log('[AttendanceAPICalls] callCreateReasonAPI RESULT : ', result);
 
         dispatch({ type: POST_REASON,  payload: result });
     };
 }
 
+export const callGetReasonFileAPI = ({commuteNo}) => {
+    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/attendance/mypage/history/reason/${commuteNo}`;
+
+    console.log('request', requestURL);
+
+    return async (dispatch, getState) => {
+
+        try {
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+            }
+        })
+        .then(response => response.blob())
+        console.log(result);
+        if (result) {
+            console.log('[AttendanceAPICalls] callGetReasonFileAPI RESULT : ', result);
+            dispatch({ type: GET_REASONFILE, payload: result });
+        }
+    } catch(error) {
+            console.log('Error downloading file:', error);
+            return false;
+        };
+    };
+}
 
 /* 마이페이지 내 캘린더 근태 보기 */
 export const callMyPageSelectAttendanceListAPI = ({memberCode}) => {
