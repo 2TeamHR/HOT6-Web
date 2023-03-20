@@ -143,16 +143,16 @@ function BoardCommunityDetail() {
                         {/* 댓글 리스트 출력 */}
                         {communityDetail.boardCommunityComment.length > 0 ? (
 
-                            <tbody>
+                            <div>
                             {Array.isArray(communityDetail.boardCommunityComment) && communityDetail.boardCommunityComment?.map((boardCommunityComment, boardCommunityCommentIndex) => (
-                                <tr key={boardCommunityComment.commentCode} className="text-center">
-                                    <td className='align-middle'>{`[${boardCommunityCommentIndex + 1}]`}</td>
-                                    <td className='align-middle'>&ensp;{`${boardCommunityComment.boardMember.memberName} : `}</td>
-                                    <td className='align-' style={{"text-align" : "initial"}}>&ensp;{boardCommunityComment.commentContent}</td>
-                                    <td className='align-middle'>&ensp;{displayTime(boardCommunityComment.commentInsertDate)}</td>
-                                </tr>
+                                <p style = {{"display": "table"}} key={boardCommunityComment.commentCode} className="text-center">
+                                    <h4><span className='align-middle'>{`[${boardCommunityCommentIndex + 1}]`}</span>
+                                    <span className='align-middle'>&ensp;{`${boardCommunityComment.boardMember.memberName} : `}</span>
+                                    <span className='align-middle' style={{"textAlign" : "initial"}}>&ensp;{boardCommunityComment.commentContent}</span>
+                                    <span className='align-middle'>&ensp;{displayTime(boardCommunityComment.commentInsertDate)}</span></h4>
+                                </p>
                             ))}
-                            </tbody>
+                            </div>
                             // <ul>
                             //     {Array.isArray(communityDetail) && communityDetail?.map((boardCommunityComment, boardCommunityCommentIndex) => (
                             //         <li key={boardCommunityComment.commentCode}>

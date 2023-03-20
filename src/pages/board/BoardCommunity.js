@@ -81,7 +81,7 @@ function BoardCommunity() {
                         <tr key={community.boardCode} className="text-center"
                             onClick={() => onClickTableTr(community.boardCode)} style={{cursor: 'pointer'}}>
                             <td className='align-middle'>{communityIndex + 1}</td>
-                            <td className='align-middle'>{community.boardTitle}
+                            <td className='align-middle' style={{"display":"flex"}}>{community.boardTitle}
                                 <span style={boardCommunityCommentColor(community.boardCommunityComment.length)}>
                                     &ensp;[{community.boardCommunityComment.length}]
                                 </span>

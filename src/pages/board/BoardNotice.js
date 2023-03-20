@@ -65,11 +65,11 @@ function BoardNotice() {
                         </tr>
                     </thead>
                     <tbody>
-                        {boardNotice.slice(startIndex, endIndex).map((notice, index) => (
+                        {Array.isArray(boardNotice) && boardNotice.slice(startIndex, endIndex).map((notice, index) => (
                             <tr key={notice.noticeCode} className="text-center">
                                 <td className='align-middle'>{startIndex + index + 1}</td>
-                                <td className='align-middle'>
-                                    <Link to={`${notice.noticeCode}`}>{notice.noticeTitle}</Link>
+                                <td className='align-middle' style={{"display":"textAlign: initial"}}>
+                                    <Link to={notice.noticeCode} style={{ textDecoration: "none", color: "black", float: "left"}}>{notice.noticeTitle}</Link>
                                 </td>
                                 <td className='align-middle'>{notice.member.memberName}</td>
                                 <td className='align-middle'>{displayTime(notice.noticeDate)}</td>
@@ -85,14 +85,14 @@ function BoardNotice() {
                         page={currentPage}
                         onChange={handlePageChange}
                     />
+                </div>
+                <div>
                 {(memberDetail?.teamName === '인사팀') ? (
-                    <>
                         <Link to="/board/notice/write" className={""}>
                             <input type="submit" id="" className="btn btn-info me-1" value="글쓰기"
-                                style={{ "backgroundColor": "black", "borderColor": "black"}}
+                                style={{float: "right", backgroundColor: "black", borderColor: "black"}}
                             />
                         </Link>
-                    </>
                 ) : ''}
                 </div>
                 <br/>
