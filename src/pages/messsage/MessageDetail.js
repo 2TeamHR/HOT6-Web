@@ -1,16 +1,16 @@
 
 import React from 'react';
-import messageStyle from '../../resources/css/pages/message/message.module.css'
+import messageStyle from '../../resources/css/pages/message/messageDetail.module.css'
 import {Link, useNavigate} from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import {callGetMessageListAPI, callRegistMessageListAPI} from "../../apis/MessageAPICalls";
 import {useDispatch, useSelector} from "react-redux";
 import {decodeJwt} from "../../utils/tokenUtils";
+import {useLocation} from "react-router-dom";
 
 
-
-function Message() {
+function MessageDetail() {
 
         const navigate = useNavigate();
         const [memberName1, setMemberName1] = useState('');
@@ -27,8 +27,12 @@ function Message() {
         const [count , setCount] = useState('');
         const [count2 , setCount2] = useState('');
         const [count3 , setCount3] = useState('');
+        const [valueCheck , setValueCheck] = useState('')
+        const location = useLocation();
 
+        const messageData = location.state || {};
 
+        console.log("메세지데이터 ",messageData);
 
         useEffect(() =>{
             if(memberName1) {
@@ -154,6 +158,7 @@ function Message() {
             });
     }, []);
 
+
     useEffect(() => {
         axios.post(`http://localhost:8888/api/v1/messageTrashCount`,payload, {
             headers: {
@@ -171,8 +176,6 @@ function Message() {
                 console.error(error);
             });
     }, []);
-
-
 
 
     return (
@@ -215,48 +218,16 @@ function Message() {
                  
                     <div className={messageStyle.messageBlank}>
 
-                    <div className={` ml-1 mr-4 pb-3 ${messageStyle.infoUpdate2}`} >
-                        <button onClick={onClickMessageHandler} >보내기</button>
-                    </div>
 
-                        
                         <div className="ml-1 mr-4 pb-3">
-                            <span>받는 사람 &ensp;</span>
+                            <span>보낸 사람 &ensp;</span>
                             <input type="text" 
                                    id="searchInput" 
                                    name="searchInput"
-                                   onChange={handlerSearch}
-                                   />
-                            {/* <button>주소록</button> */}
+                                   value={`${messageData.receivedEmail.name} <${messageData.receivedEmail.email}>`}
+                            />
 
-
-                           
-                        <div className={messageStyle.selectBox2}>
-                            {recipients.map((recipient, index)=> (
-                                <div key={index} className={messageStyle.selectNameAdd}>
-                                    <b>{recipient.name} {recipient.email}</b>
-                                    <button onClick={()=>handleRemoveRecipient(recipient)}>삭제</button>
-                                    <button onClick={() =>complete(recipient)}>추가</button>
-                                    
-                                </div>    
-                                ))}
-                        </div>  
-                            
-                           
-                        
-                                        {/* 목록값에서 가져와 선택 */}
-                                        {/* <button onClick ={() =>{
-                                        const searchInput = document.getElementById("searchInput")
-                                        searchInput.value = member.name;
-                                        setMembers([])
-                                    }}> 선택 </button>  */}  
-                       
-                            
                         </div>
-
-                              
-
-
 
                 
                         <div className="ml-1 mr-4 pb-3">
@@ -264,47 +235,28 @@ function Message() {
                             <input
                                    id="messageTitle"
                                    name="messageTitle"
-                                   onChange={handlerSearch}
-
+                                   value={messageData.receivedEmail.title}
                             />
+
                         </div>
-                        <div className="ml-1 mr-4 pb-3">
-                            <span>파일첨부&emsp;</span>
-                            
-                            <input type="file" 
-                                   id="input-file" 
-                                   display="none"/>
-                            
-                        </div>
-                        <div className={`${messageStyle.fileUpload} ml-1 mr-4 pb-3`}>
-                            <span>&emsp;&emsp;&emsp;&emsp;&emsp;</span>
-                            <input/>
-                        </div>
+
 
                         <div  className={`${messageStyle.writePlace}`}>
                             <textarea 
                                       id="messageContent"
                                       name="messageContent" 
-                                      onChange={handlerSearch}   
-                                      rows="14" 
-                                      cols="89">
+
+                                      rows="14"
+                                      cols="80"
+                                      value={messageData.receivedEmail.name}
+                            >
+
                             </textarea>
                         </div>
 
 
                       
 
-                        <div className={messageStyle.selectBox}>
-                            {members.map((member,index) => (
-                                <div key={index} className={messageStyle.selectName}>
-                                    <b>{member.name} {member.email}</b>
-                                    <button onClick ={() =>
-                                        handleSelectRecipient(member)
-                                        }> 선택 </button>
-                                    </div>
-
-                            ))}
-                        </div>
 
 
                              
@@ -324,4 +276,4 @@ function Message() {
     );
 }
 
-export default Message;
+export default MessageDetail;

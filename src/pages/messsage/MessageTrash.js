@@ -4,7 +4,10 @@ import messageStyle2 from '../../resources/css/pages/message/receivedMessage.mod
 import { useEffect, useState } from 'react';
 import {Link} from "react-router-dom";
 import axios from 'axios';
-
+import moment from "moment/moment";
+import {callGetMessageReceiveListAPI, callGetMessageTrashListAPI} from "../../apis/MessageAPICalls";
+import {useDispatch, useSelector} from "react-redux";
+import {decodeJwt} from "../../utils/tokenUtils";
 
 function MessageTrash(){
 
@@ -13,32 +16,90 @@ function MessageTrash(){
     const [count , setCount] = useState('');
     const [count2 , setCount2] = useState('');
     const [count3 , setCount3] = useState('');
+    const [isSelectAll, setIsSelectAll] = useState(false);
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));
+    const dispatch = useDispatch();
+    const payload ={
+        memberCode: token.sub,
+    }
+    useEffect(()=>{
+
+
+        dispatch(callGetMessageTrashListAPI())
+            .then((receivedData) => {
+                setEmailSelect(receivedData);
+                console.log("api에서 받은 값 출력", emailSelect);
+            }).catch(error => console.log(error))
+
+    }, []);
+
 
 
 
     useEffect(() => {
-        axios.get(`http://localhost:8888/api/v1/messageReceivedCount`)
-          .then(response => {
-            console.log(response.data); // 응답 데이터를 콘솔에 출력
-            setCount(response.data.data);
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      }, []);
+        axios.post(`http://localhost:8888/api/v1/messageReceivedCount`,payload, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(response => {
+                console.log(response.data);
+                setCount(response.data.data);
+            })
+            .catch(error => {
+                console.log("useEffect 쪽 문제");
+                console.error(error);
+            });
+    }, []);
+
+    useEffect(() => {
+        axios.post(`http://localhost:8888/api/v1/messageSentCount`, payload,{
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(response => {
+                console.log(response.data);
+                console.log("보낸메세지 카운트");
+                setCount2(response.data.data);
+            })
+            .catch(error => {
+                console.log("useEffect 쪽 문제");
+                console.error(error);
+            });
+    }, []);
 
 
-      useEffect(() => {
-        axios.get(`http://localhost:8888/api/v1/messageSentCount`)
-          .then(response => {
-            console.log(response.data); // 응답 데이터를 콘솔에 출력
-            setCount2(response.data.data);
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      }, []);
 
+    useEffect(() => {
+        axios.post(`http://localhost:8888/api/v1/messageTrashCount`,payload, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(response => {
+                console.log(response.data);
+                setCount3(response.data.data);
+            })
+            .catch(error => {
+                console.log("useEffect 쪽 문제");
+                console.error(error);
+            });
+    }, []);
+
+    function selectAll() {
+        const checkboxes = document.querySelectorAll("input[type='checkbox']");
+        for (let i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = !isSelectAll;
+        }
+        setIsSelectAll(!isSelectAll);
+    }
 
 
 
@@ -60,7 +121,7 @@ function MessageTrash(){
 
                         <div className="mt-3 pt-3">
                             <div className="ml-4 mr-4 pb-4">
-                                <span className="ml-4 fs-5 mr-3"><Link to="/messsage/receivedMessage" style={{ color: 'black', textDecoration: 'none'}}>받은 메세지</Link></span>
+                                <span className="ml-4 fs-5 mr-3 "><Link to="/messsage/receivedMessage" style={{ color: 'black', textDecoration: 'none'}}>받은 메세지</Link></span>
                                 <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>{count}</span>
                             </div>
                             <div className="ml-4 mr-4 pb-4">
@@ -69,7 +130,7 @@ function MessageTrash(){
                             </div>
                             <div className="ml-4 mr-4 pb-4">
                                 <span className="ml-4 fs-5 mr-3 font-weight-bold"><Link to="/messsage/MessageTrash" style={{ color: 'black', textDecoration: 'none'}}>휴지통</Link></span>
-                                <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>5</span>
+                                <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>{count3}</span>
                             </div>
                         </div>
 
@@ -79,50 +140,75 @@ function MessageTrash(){
 
 
 
-                   
 
-            
+
+
                     <div className="mt-5">
 
-                        
+
                         <div className={messageStyle2.function}>
 
-                            
-                        <div className={`${messageStyle2.buttonOptionalSelect3}`}>
-                            <div className={messageStyle2.buttonTaskWrap} >
-                                <input type="checkbox" id="selection_all" className={messageStyle2.buttonCheckboxBlind} />
-                            </div>
-                
-                            <div className={messageStyle2.buttonTaskWrap}>
-                                <button type="button" className={messageStyle2.buttonTaskSvg}>
-                                    <span className="text">복구</span>
-                                </button>
-                            </div>
-                            <div className={`${messageStyle2.buttonTaskWrap}`}>
-                                <button type="button" className={messageStyle2.buttonTaskSvg}>
-                                    <span className="text">영구삭제</span>
-                                </button>
-                            </div>
-                        </div>  
 
-                        <div className={`${messageStyle2.tableBox}`} >
-                         <table className={messageStyle2.table}>   
-                            <tbody className={messageStyle2.textCenter}>
-                            <tr>
-                                <td ><input type="checkbox"/></td>
-                                <td >인사담당자</td>
-                                <td>메세지 확인 부탁드립니다.</td>
-                                <td></td>
-                                <td>12-22 18:33</td> 
-                            </tr>
-                            </tbody>
-                         </table>   
-                         </div>
+                            <div className={messageStyle2.buttonOptionalSelect}>
+                                <div className={messageStyle2.buttonTaskWrap} >
+                                    <input type="checkbox" id="selection_all" className={messageStyle2.buttonCheckboxBlind} onClick={selectAll} checked={isSelectAll} />
+                                </div>
 
-                    </div>      
+                                <div className={messageStyle2.buttonTaskWrap}>
+                                    <button type="button" className={messageStyle2.buttonTaskSvg}>
+                                        <span className="text">읽음</span>
+                                    </button>
+                                </div>
+                                <div className={`${messageStyle2.buttonTaskWrap}`}>
+                                    <button type="button" className={messageStyle2.buttonTaskSvg}>
+                                        <span className="text">삭제</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className={`${messageStyle2.tableBox}`} >
+                                {emailSelect.length>0 && emailSelect.map((receivedEmail,index) => {
+                                    console.log("receivedEmail 값 출력" ,receivedEmail);
+                                    return (
+                                        <table key={index} className={messageStyle2.table}>
+                                            <tbody className={messageStyle2.textCenter}>
+                                            <tr>
+                                                <td ><input type="checkbox"/></td>
+                                                <td style={{ textAlign: "center",
+                                                    width:"200px",
+                                                    overflow:'hidden',
+                                                    whiteSpace:'nowrap',
+                                                    textOverflow:'clip'
+
+                                                }}>{receivedEmail.name}</td>
+
+                                                <td></td>
+                                                <td colSpan="2" style={{ textAlign: "center",
+                                                    width:"200px",
+                                                    overflow:'hidden',
+                                                    whiteSpace:'nowrap',
+                                                    textOverflow:'clip'}}
+                                                    >
+
+                                                    {receivedEmail.title}
+
+                                                </td>
+                                                <td></td>
+
+                                                {/* <td></td> */}
+                                                <td colSpan="2">{moment(receivedEmail.date).format('YY-MM-DD hh:mm')}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    );
+                                })}
+
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
         </main>
 
 

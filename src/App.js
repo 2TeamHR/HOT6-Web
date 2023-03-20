@@ -67,6 +67,7 @@ import EaDraftInbox from './pages/ea/EaDraftInbox';
 import DutyForm from './pages/ea/DutyForm';
 import LOAForm from './pages/ea/LOAForm';
 import ReinstatmentForm from './pages/ea/ReinstatementForm';
+import MessageDetail from "./pages/messsage/MessageDetail";
 
 function App() {
 
@@ -130,6 +131,8 @@ function App() {
             <Route path="/messsage/MessageSent" element={<MessageSent />} />
             <Route path="/messsage/MessageTrash" element={<MessageTrash />} />
             <Route path="/messsage/receivedMessage" element={<ReceivedMessage />} />
+            <Route path="/messsage/messageDetail" element={<MessageDetail />} />
+
 
           </Route>
         </Route>

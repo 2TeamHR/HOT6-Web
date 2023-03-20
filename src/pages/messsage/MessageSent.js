@@ -76,6 +76,26 @@ function MessageSent(){
       }, []);
 
 
+    useEffect(() => {
+        axios.post(`http://localhost:8888/api/v1/messageTrashCount`,payload, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(response => {
+                console.log(response.data);
+                setCount3(response.data.data);
+            })
+            .catch(error => {
+                console.log("useEffect 쪽 문제");
+                console.error(error);
+            });
+    }, []);
+
+
+
     return (
     <>
         
@@ -106,7 +126,7 @@ function MessageSent(){
                             <div className="ml-4 mr-4 pb-4">
                                 <span className="ml-4 fs-5 mr-3"><Link to="/messsage/MessageTrash" style={{ color: 'black', textDecoration: 'none'}}>휴지통</Link></span>
                                
-                                <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>5</span>
+                                <span className={`ml-1 fs-5 float-none ${messageStyle.workDay}`}>{count3}</span>
                             </div>
                         </div>
 

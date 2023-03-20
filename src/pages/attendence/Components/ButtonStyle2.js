@@ -49,14 +49,27 @@ const ColorButton = styled(Button)(({ theme }) => ({
     },
 }));
 
-export default function BasicButtons2() {
+
+
+
+
+export default function BasicButtons2(props) {
+
+    const printData = () => {
+        console.log("모달 2 props 데이터 확인", props.data);
+    };
+
     return (
 
-            <BootstrapButton2 variant="contained" disableRipple>
-                증빙 서류 확인
-            </BootstrapButton2>
+        <BootstrapButton2 variant="contained"
+                          disableRipple
+                          onClick={printData}
+        >
+            증빙 서류 확인
+
+        </BootstrapButton2>
 
     );
-}
 
+}
 

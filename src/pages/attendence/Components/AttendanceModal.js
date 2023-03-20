@@ -59,7 +59,9 @@ export default function AttendanceModal(props) {
 
     const selectedRow = props.data[selectedRowIndex]; 
     // const teamName = props.data.member.teamName;
-    console.log(props.data);
+
+
+    console.log("모달창 값들을 출력",props.data);
 
     useEffect(()=> {
         console.log("selectedStatus 저장된 값 확인   " + selectedStatus);
@@ -163,7 +165,7 @@ export default function AttendanceModal(props) {
 
                                 {/*증빙서류 확인 버튼*/}
                                 <div className={attendanceManage.dbutton2}>
-                                <BasicButtons2 />
+                                <BasicButtons2 data={props} />
                                 </div>
 
                                 {/*저장 버튼*/}
