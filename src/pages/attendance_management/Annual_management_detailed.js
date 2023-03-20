@@ -4,7 +4,7 @@ import { AnnualIncrease, AnnualDiminish } from '../../components/ModalGroup';
 import { useLocation } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import { callGetMyLeaveInfoAPI } from '../../apis/LeaveAPICalls';
-import { callGetSimpleMemberAPI } from '../../apis/MemberAPICalls';
+import { callGetMemberDetailAPI } from '../../apis/MemberAPICalls';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 
@@ -16,7 +16,7 @@ function AnnualManagementDetailed() {
     
     const memberLeaveList = useSelector(state => state.leaveReducer);
     const memberInfo = useSelector(state => state.memberReducer);
-    const member = memberInfo?.data;
+    const memberDetail = memberInfo?.data;
     
     console.log('memberCode =====', memberCode);
     console.log('memberInfo =====', memberInfo);
@@ -31,10 +31,10 @@ function AnnualManagementDetailed() {
 
     useEffect(() => {
         if (memberCode) {
-            dispatch(callGetMyLeaveInfoAPI({ memberCode }));
-            dispatch(callGetSimpleMemberAPI({ memberCode }));
+            // dispatch(callGetMyLeaveInfoAPI({ memberCode }));
+            dispatch(callGetMemberDetailAPI({ memberCode }));
         }
-      }, [memberCode]);
+      }, []);
 
     return(
         <main className={mainTitleStyle.main}>
@@ -57,11 +57,11 @@ function AnnualManagementDetailed() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td className='text-center'>{member?.teamName}</td>
-                                <td className='text-center'>{member?.rankName}</td>
-                                <td className='text-center'>{member?.memberName}</td>
-                                <td className='text-center'>{member?.joinDate?.slice(0, 10)}</td>
-                                <td className='text-center'>{member?.workingStatus}</td>
+                                <td className='text-center'>{memberDetail?.teamName}</td>
+                                <td className='text-center'>{memberDetail?.rankName}</td>
+                                <td className='text-center'>{memberDetail?.memberName}</td>
+                                <td className='text-center'>{memberDetail?.joinDate?.slice(0, 10)}</td>
+                                <td className='text-center'>{memberDetail?.workingStatus}</td>
                             </tr>
                         </tbody>
                     </table>

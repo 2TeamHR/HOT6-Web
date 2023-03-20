@@ -6,6 +6,7 @@ const initialState = [];
 /* 액션 */
 export const GET_MEMBER             = 'member/GET_MEMBER';
 export const GET_SIMPLEMEMBER       = 'member/GET_SIMPLEMEMBER';
+export const GET_MEMBERDETAIL       = 'member/GET_MEMBERDETAIL';
 export const GET_MEMBERTOTALCOUNT   = 'member/GET_MEMBERTOTALCOUNT';
 export const POST_LOGIN             = 'member/POST_LOGIN';
 export const POST_REGISTER          = 'member/POST_REGISTER';
@@ -17,6 +18,7 @@ const actions = createActions({
     [GET_MEMBER]: () => {},
     [GET_SIMPLEMEMBER]: () => {},
     [GET_MEMBERTOTALCOUNT]: () => {},
+    [GET_MEMBERDETAIL]: () => {},
     [POST_LOGIN]: () => {},
     [POST_REGISTER]: () => {},
     [PUT_MYINFO]: () => {},
@@ -36,6 +38,10 @@ const memberReducer = handleActions(
             return payload;
         },
         [GET_MEMBERTOTALCOUNT]: (state, { payload }) => {
+
+            return payload;
+        },
+        [GET_MEMBERDETAIL]: (state, { payload }) => {
 
             return payload;
         },
