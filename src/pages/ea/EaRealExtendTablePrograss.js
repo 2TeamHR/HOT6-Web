@@ -1,11 +1,11 @@
 import {
   Chip,
   Container,
+  createTheme,
   Grid,
   Step,
   StepLabel,
   Stepper,
-  TablePagination,
   Typography,
 } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -36,9 +36,37 @@ function Row(docu1) {
   const [docuStatus, setDocuStatus] = useState('');
   const [statusColor, setStatusColor] = useState('primary');
   const count = 0;
+
+  const theme = createTheme({
+    typography: {
+      fontFamily: [
+  
+        'Spoqa Han Sans Neo',
+      ].join(',')
+    },
+    palette: {
+      primary: {
+        main: "#4AD395",
+        // light: main값을 통해 계산됨
+  	    // dark: main값을 통해 계산됨
+        // contrastText: main값을 통해 계산됨
+      },
+    }
+  });
+  
+
+
+
+
+
+
+
+
+
+
   useEffect(() => {
 
-    docu?.eaStatusCode === 'EA_STATUS_WAITING' ? setStatusColor('error') : 
+    docu?.eaStatusCode === 'EA_STATUS_WAITING' ? setStatusColor('info') : 
     (docu?.eaStatusCode === 'EA_STATUS_FINISH' ? setStatusColor('success') : setStatusColor('primary'))
 
   }, [])
@@ -123,7 +151,7 @@ console.log("docuStatus",docuStatus);
   );
 }
 
-function EaRealExtendTable() {
+function EaRealExtendTablePrograss() {
 
   const dispatch = useDispatch();
   const documentList = useSelector(state => state.eaDocumentReducer);
@@ -170,4 +198,4 @@ function EaRealExtendTable() {
   );
 }
 
-export default EaRealExtendTable;
+export default EaRealExtendTablePrograss;

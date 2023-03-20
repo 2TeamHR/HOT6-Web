@@ -68,6 +68,7 @@ import EaDraftInbox from './pages/ea/EaDraftInbox';
 import DutyForm from './pages/ea/DutyForm';
 import LOAForm from './pages/ea/LOAForm';
 import ReinstatmentForm from './pages/ea/ReinstatementForm';
+import EaAllListInsa from './pages/ea/EaAllListInsa';
 
 function App() {
 
@@ -165,6 +166,8 @@ function App() {
             <Route path="/board/notice/write" element={<BoardNoticeWrite />} />
             <Route path="/board/notice/update" element={<BoardNoticeUpdate />} />
 
+            {/* 전자결재 */}
+            <Route path="/ea/allEaList" element={<EaAllListInsa />}/>
           </Route>
         </Route>
     </Routes>

@@ -61,7 +61,7 @@ export default function EaModal({ documentInfo }) {
               divider={<Divider orientation="vertical" flexItem />}
               spacing={2}
             >
-              <Item>기안자 <br /><br />
+              <Item>기안자
                 {documentInfo?.eaMember?.memberName}
                 {documentInfo?.eaMember?.team.teamName}
                 {documentInfo?.eaMember?.rank.rankName}
@@ -71,7 +71,7 @@ export default function EaModal({ documentInfo }) {
 
               {documentInfo?.eaApproverInfoList.map((eaApproverCode) => (
                 <Item>
-                  {eaApproverCode?.eaAuthCode === "MIDDLE" ? "중간결재자" : "최종결재자"}<br /><br />
+                  {eaApproverCode?.eaAuthCode === "MIDDLE" ? "중간결재자" : "최종결재자"}
                   {eaApproverCode?.eaMember?.memberName}
                   {eaApproverCode?.eaMember?.team.teamName}
                   {eaApproverCode?.eaMember?.rank.rankName}

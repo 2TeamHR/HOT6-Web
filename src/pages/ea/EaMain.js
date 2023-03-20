@@ -23,7 +23,7 @@ function EaMain() {
 
 
 
-  
+
 
   return (
     <>
@@ -33,7 +33,7 @@ function EaMain() {
           <Grid item xs="auto">
             <Card sx={{ minWidth: 250 }}>
               <CardContent>
-                <Typography variant="h6" textAlign="center" sx={{ fontWeight: 'bold' }}>지연된 결재 요청</Typography>
+                <Typography variant="h6" textAlign="center" sx={{ fontWeight: 'bold' }}>기안한 결재</Typography>
               </CardContent>
               <CardActions>
                 <Button>1건</Button>
@@ -43,7 +43,7 @@ function EaMain() {
           <Grid item xs="auto">
             <Card sx={{ minWidth: 250 }}>
               <CardContent>
-                <Typography variant="h6" textAlign="center" sx={{ fontWeight: 'bold' }}>확인하지 않은 결재 요청</Typography>
+                <Typography variant="h6" textAlign="center" sx={{ fontWeight: 'bold' }}>진행중인 결재</Typography>
               </CardContent>
               <CardActions>
                 <Button>1건</Button>
@@ -53,7 +53,7 @@ function EaMain() {
           <Grid item xs="auto">
             <Card sx={{ minWidth: 250 }}>
               <CardContent>
-                <Typography variant="h6" textAlign="center" sx={{ fontWeight: 'bold' }}>수신참조 결재</Typography>
+                <Typography variant="h6" textAlign="center" sx={{ fontWeight: 'bold' }}>완료된 결재</Typography>
               </CardContent>
               <CardActions item>
                 <Button>1건</Button>
@@ -74,7 +74,8 @@ function EaMain() {
             <Paper elevation={5}>
               <Grid item container justifyContent="space-between">
                 <h4>실제 데이터 테이블</h4>
-                <Button>더보기</Button></Grid>
+
+              </Grid>
               <Divider />
               <EaRealTable></EaRealTable>
             </Paper>
@@ -83,7 +84,7 @@ function EaMain() {
             <Paper elevation={5}>
               <Grid item container justifyContent="space-between">
                 <h4>결재 기안 문서</h4>
-                <Button>더보기</Button></Grid>
+              </Grid>
               <Divider />
               <EaTable></EaTable>
             </Paper>
@@ -92,7 +93,7 @@ function EaMain() {
             <Paper elevation={5}>
               <Grid item container justifyContent="space-between">
                 <h4>결재 대기 문서</h4>
-                <Button>더보기</Button></Grid>
+              </Grid>
               <Divider />
               <EaTable></EaTable>
             </Paper>
@@ -101,7 +102,7 @@ function EaMain() {
             <Paper elevation={5}>
               <Grid item container justifyContent="space-between">
                 <h4>결재 진행 문서</h4>
-                <Button>더보기</Button></Grid>
+              </Grid>
               <Divider />
               <EaTable></EaTable>
             </Paper>
@@ -110,7 +111,7 @@ function EaMain() {
             <Paper elevation={5}>
               <Grid item container justifyContent="space-between">
                 <h4>결재 완료 문서</h4>
-                <Button>더보기</Button></Grid>
+              </Grid>
               <Divider />
               <EaTable></EaTable>
             </Paper>
