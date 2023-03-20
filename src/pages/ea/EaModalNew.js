@@ -2,17 +2,15 @@ import * as React from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
+
 import DialogTitle from '@mui/material/DialogTitle';
-import { Divider, FormControl, Input, InputLabel, MenuItem, Paper, Select, Stack, styled } from '@mui/material';
-import dayjs from 'dayjs';
-import { Button, Grid, TextField, FilledInput } from '@mui/material';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { createTheme, Divider,Input, Paper,  Stack,  styled, ThemeProvider } from '@mui/material';
+
+import { Button, Grid} from '@mui/material';
 import LeaveInfo from './LeaveInfo';
 import CertificationInfo from './CertificationInfo';
-import { Link } from 'react-router-dom';
+import SalaryInfo from './SalaryInfo';
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -26,6 +24,14 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function EaModalNew({ documentInfo }) {
 
+  const theme = createTheme({
+    typography: {
+      fontFamily: [
+  
+        'Spoqa Han Sans Neo',
+      ].join(',')
+    },
+  });
 
   const [open, setOpen] = React.useState(false);
   ;
@@ -37,11 +43,9 @@ export default function EaModalNew({ documentInfo }) {
     setOpen(false);
   };
 
-  console.log("4번째 렌더");
-
-
   return (
-    <div>
+    <>
+    <ThemeProvider theme={theme}>
       <Button variant="outlined" onClick={handleClickOpen}>
         상세보기
       </Button>
@@ -99,7 +103,7 @@ export default function EaModalNew({ documentInfo }) {
 
             {documentInfo?.dtype === "복직신청" ? <div>복직신청</div> : <div />}
 
-            {documentInfo?.dtype === "급여정정 신청" ? <div>급여정정</div> : <div />}
+            {documentInfo?.dtype === "급여정정 신청" ? <SalaryInfo docu={documentInfo} /> : <div />}
 
 
             <Grid item xs={6}><label>첨부파일</label></Grid>
@@ -116,6 +120,7 @@ export default function EaModalNew({ documentInfo }) {
 
 
       </Dialog>
-    </div >
+    </ThemeProvider >
+    </>
   );
 }
