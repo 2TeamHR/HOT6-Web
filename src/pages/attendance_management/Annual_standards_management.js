@@ -10,9 +10,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import {
-    callLeaveCategoryListAPI,
-    callLeaveRegistAPI,
-    callLeaveDeleteAPI
+    callLeaveCategoryListAPI
+    , callLeaveRegistAPI
+    , callLeaveDeleteAPI
 } from '../../apis/LeaveAPICalls';
 
 function AnnualStandardsManagement() {

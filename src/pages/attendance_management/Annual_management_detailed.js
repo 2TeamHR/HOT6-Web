@@ -3,8 +3,8 @@ import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.c
 import { AnnualIncrease, AnnualDiminish } from '../../components/ModalGroup';
 import { useLocation } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
-import { callGetMyLeaveInfoAPI } from '../../apis/LeaveAPICalls';
 import { callGetMemberDetailAPI } from '../../apis/MemberAPICalls';
+import { callmemberLeaveAPI } from '../../apis/LeaveAPICalls';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 
@@ -12,17 +12,29 @@ function AnnualManagementDetailed() {
 
     const dispatch = useDispatch();
     const location = useLocation();
-    const memberCode = new URLSearchParams(location.search).get('memberCode');
+    const memberDetailCode = new URLSearchParams(location.search).get('memberCode');
     
     const memberLeaveList = useSelector(state => state.leaveReducer);
     const memberInfo = useSelector(state => state.memberReducer);
     const memberDetail = memberInfo?.data;
     
-    console.log('memberCode =====', memberCode);
+    console.log('memberCode =====', memberDetailCode);
     console.log('memberInfo =====', memberInfo);
     console.log('memberleaveList =====', memberLeaveList);
 
-    const sumLeavePaymentCount = memberLeaveList?.data?.reduce((accumulator, currentValue) => {
+    /* 차감 내역 */
+    const leaveUseHistoryCodes = [];
+
+    if (memberLeaveList) {
+        memberLeaveList.forEach((leave) => {
+            leave.leaveUseHistoryList.forEach((use) => {
+                leaveUseHistoryCodes.push(use);
+            });
+        });
+    }
+
+    /* 특별연차 더하기 */
+    const sumLeavePaymentCount = memberLeaveList?.reduce((accumulator, currentValue) => {
         if (currentValue.leaveCategoryCode !== "LC1") {
           return accumulator + currentValue.leavePaymentCount;
         }
@@ -30,11 +42,29 @@ function AnnualManagementDetailed() {
       }, 0);
 
     useEffect(() => {
-        if (memberCode) {
-            // dispatch(callGetMyLeaveInfoAPI({ memberCode }));
-            dispatch(callGetMemberDetailAPI({ memberCode }));
-        }
+            dispatch(callGetMemberDetailAPI({ memberCode: memberDetailCode }));
+            dispatch(callmemberLeaveAPI({ memberCode: memberDetailCode }));
+    }, []);
+
+    useEffect(() => {
+        handleSelectChange({ target: { value: 'payment' }});
       }, []);
+
+    const [isPaymentSelected, setIsPaymentSelected] = useState(false);
+
+    const handleSelectChange = (event) => {
+        if (event.target.value === 'payment') {
+            setIsPaymentSelected(true);
+          } else {
+            setIsPaymentSelected(false);
+          }
+    }
+
+    function sortByDateDescending(a, b) {
+        const aDate = new Date(a.leavePaymentDate || a.endDate);
+        const bDate = new Date(b.leavePaymentDate || b.endDate);
+        return bDate - aDate;
+    }
 
     return(
         <main className={mainTitleStyle.main}>
@@ -69,7 +99,7 @@ function AnnualManagementDetailed() {
 
                 {/* <!-- check box --> */}
                 <Paper elevation={3} className={`d-flex flex-row justify-content-around ${amdStyle.annualMainBox}`}>
-                    {memberLeaveList?.data?.map((memberLeave) => {
+                    {Array.isArray(memberLeaveList) && memberLeaveList?.map((memberLeave) => {
                         if (memberLeave.leaveCategoryCode === "LC1") {
                         const { leavePaymentCount, leaveLeftoverCount } = memberLeave;
                         return (
@@ -81,7 +111,7 @@ function AnnualManagementDetailed() {
                         }
                         return null;
                     })}
-                    {memberLeaveList?.data?.map((memberLeave) => {
+                    {Array.isArray(memberLeaveList) && memberLeaveList?.map((memberLeave) => {
                         if (memberLeave.leaveCategoryCode === "LC1") {
                         const { leavePaymentCount, leaveLeftoverCount } = memberLeave;
                         return (
@@ -93,7 +123,7 @@ function AnnualManagementDetailed() {
                         }
                         return null;
                     })}
-                    {memberLeaveList?.data?.map((memberLeave) => {
+                    {Array.isArray(memberLeaveList) && memberLeaveList?.map((memberLeave) => {
                         if (memberLeave.leaveCategoryCode === "LC1") {
                         const { leavePaymentCount, leaveLeftoverCount } = memberLeave;
                         return (
@@ -105,7 +135,7 @@ function AnnualManagementDetailed() {
                         }
                         return null;
                     })}
-                    <div className='mt-3'>
+                    <div className='mt-3 text-danger fw-bold'>
                         <p>특별 연차</p>
                         <p className="fs-3">{sumLeavePaymentCount}</p>
                     </div>
@@ -115,10 +145,9 @@ function AnnualManagementDetailed() {
                 <div className={amdStyle.mainBtn}>
                     <div className="float-left">
                         <span>휴가구분 : </span>
-                        <select>
-                            <option>전체</option>
-                            <option>지급</option>
-                            <option>차감</option>
+                        <select className={amdStyle.selectBox} defaultValue="payment" onChange={handleSelectChange}>
+                            <option value="payment">지급 내역</option>
+                            <option value="deduction">차감 내역</option>
                         </select>
                     </div>
                     <div>
@@ -148,8 +177,9 @@ function AnnualManagementDetailed() {
                             </tr>
                         </thead>
                         <tbody>
-                    
-                            {memberLeaveList?.data?.map((leave) => {
+                        {isPaymentSelected ? (
+                            <>
+                            {Array.isArray(memberLeaveList) && memberLeaveList?.sort(sortByDateDescending).map((leave) => {
                                 return (
                                     <tr key={leave.leavePaymentHistoryCode} className='mt-3'>
                                         <td className='text-center'>지급</td>
@@ -164,6 +194,26 @@ function AnnualManagementDetailed() {
                                     </tr>
                                 );
                             })}
+                            </>
+                            ) : (
+                            <>
+                            {Array.isArray(leaveUseHistoryCodes) && leaveUseHistoryCodes?.map((leave) => {
+                                return (
+                                    <tr key={leave.leaveUseHistoryCode} className='mt-3'>
+                                        <td className='text-center'>차감</td>
+                                        <td className='text-center'>{leave.leaveUseHistoryCode}</td>
+                                        <td className='text-center'>{leave.startDate.slice(0, 10)}</td>
+                                        <td className='text-center'>{leave.endDate.slice(0, 10)}</td>
+                                        <td className='text-center'>{leave.generationCount}</td>
+                                        <td className='text-center'>-{leave.generationCount}</td>
+                                        <td className='text-center'>-</td>
+                                        <td className='text-center'>{leave.leaveUseProcess}</td>
+                                        <td className='text-center'>{leave.leaveUseMemo === null ? '없음' : leave.leaveUseMemo}</td>
+                                    </tr>
+                                );
+                            })}
+                            </>
+                            )}
                         </tbody>
                     </table>
                 </Paper>

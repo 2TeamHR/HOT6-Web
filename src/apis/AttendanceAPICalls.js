@@ -1,7 +1,10 @@
 import { 
     GET_MYATTENDANCE
+    , GET_MYATTENDANCESEARCH
     , GET_MYPAGESELECTATTENDANCE
-    , GET_REASONFILE, POST_REASON
+    , GET_REASONFILE
+    , POST_REASON
+    , POST_MYATTENDANCESEARCH
  } from '../modules/AttendanceModule';
 
 
@@ -27,6 +30,37 @@ export const callMyAttendanceListAPI = ({memberCode, startIndex, endIndex}) => {
         if(result.status === 200){
             console.log('');
             dispatch({ type: GET_MYATTENDANCE,  payload: result.data });
+        }
+    };
+}
+
+/* 마이페이지 내 나의 근태 이력 조회 */
+export const callMyAttendanceSearchListAPI = ({form}) => {
+
+    console.log('요청 들어왔다요');
+
+    const entries = form.entries();
+        for (const [key, value] of entries) {
+        console.log(`${key}: ${value}`);
+        }
+
+    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/attendance/mypage/history/search`;
+
+    console.log('request', requestURL);
+
+    return async (dispatch, getState) => {
+        const result = await fetch(requestURL, {
+            method: "POST",
+            headers: {
+                "Accept": "*/*",
+                "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+            },
+            body: form
+        })
+        .then(response => response.json());
+
+        if(result.status === 200){
+            dispatch({ type: POST_MYATTENDANCESEARCH,  payload: result.data });
         }
     };
 }
