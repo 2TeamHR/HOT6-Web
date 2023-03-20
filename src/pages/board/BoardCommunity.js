@@ -55,7 +55,7 @@ function BoardCommunity() {
     }
 
     function boardCommunityCommentColor(number) {
-        if(number != 0) {
+        if (number >= 1) {
             return {"color": "red"};
         } else {
             return {"color": "black"};
@@ -81,7 +81,11 @@ function BoardCommunity() {
                         <tr key={community.boardCode} className="text-center"
                             onClick={() => onClickTableTr(community.boardCode)} style={{cursor: 'pointer'}}>
                             <td className='align-middle'>{communityIndex + 1}</td>
-                            <td className='align-middle'>{community.boardTitle}<span style={boardCommunityCommentColor(community.boardCommunityComment.length)}>&ensp;[{community.boardCommunityComment.length}]</span></td>
+                            <td className='align-middle'>{community.boardTitle}
+                                <span style={boardCommunityCommentColor(community.boardCommunityComment.length)}>
+                                    &ensp;[{community.boardCommunityComment.length}]
+                                </span>
+                            </td>
                             <td className='align-middle'>{community.member.memberName}</td>
                             <td className='align-middle'>{displayTime(community.boardInsertDate)}</td>
                             <td className='align-middle'>{community.boardCount}</td>
