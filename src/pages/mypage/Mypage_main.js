@@ -38,14 +38,14 @@ function MypageMain() {
     const myLeaveInfo = useSelector(state => state.leaveReducer);
     const [startTime, setStartTime] = useState("");
 
-    console.log('=============', token);
+
+    console.log('myLeaveInfo : ', myLeaveInfo);
     // hs
     const [hrForm, setHrForm] = useState({
 
         commuteStartTime: '',
 
     });
-
 
     useEffect(
         () => {
@@ -140,9 +140,9 @@ function MypageMain() {
      let myLeaveAll = 1;
      let myLeaveLeftover = 1;
  
-     if(myLeaveInfo.data !== undefined){
-         myLeaveAll =  myLeaveInfo.data[0].leavePaymentCount;
-         myLeaveLeftover = myLeaveInfo.data[0].leaveLeftoverCount;
+     if(myLeaveInfo !== undefined){
+         myLeaveAll =  myLeaveInfo[0].leavePaymentCount;
+         myLeaveLeftover = myLeaveInfo[0].leaveLeftoverCount;
      }
 
     function tick() {
@@ -254,13 +254,6 @@ function MypageMain() {
             alert('이미 퇴근을 하셨습니다.');
         }
     }
-
-
-
-
-
-
-
 
     return (
         <>
@@ -388,18 +381,14 @@ function MypageMain() {
                     <Paper elevation={3} className={mypageStyle.module}>
                         <p className={mypageStyle.moduleTitle}>나의 휴가 이력</p>
                         <div className={`ml-2 mr-2 ${mypageStyle.yearHistory}`}>
-                            <div className="ml-5 mr-5 pb-3">
-                                <span className="fw-300">2022년도</span>
-                                <span className={`fw-300 float-right ${mypageStyle.workDay}`}>21개 사용</span>
-                            </div>
-                            <div className="ml-5 mr-5 pb-3">
-                                <span className="fw-300">2021년도</span>
-                                <span className={`fw-300 float-right ${mypageStyle.workDay}`}>18개 사용</span>
-                            </div>
-                            <div className="ml-5 mr-5 pd-3">
-                                <span className="fw-300">2020년도</span>
-                                <span className={`fw-300 float-right ${mypageStyle.workDay}`}>16개 사용</span>
-                            </div>
+                            {Array.isArray(myLeaveInfo) && myLeaveInfo.map((item) => {
+                                return (
+                                    <div className="ml-5 mr-5 pb-3" key={item.leavePaymentHistoryCode}>
+                                        <span className="fw-300">{item.leavePaymentDate.slice(0, 4)}년</span>
+                                        <span className={`fw-300 float-right ${mypageStyle.workDay}`}>21개 사용</span>
+                                    </div>
+                                );
+                            })}
                         </div>
                         <div className={mypageStyle.seeMore}>
                             <p><Link to="/mypage/annual/history">더보기 ➢</Link></p>
