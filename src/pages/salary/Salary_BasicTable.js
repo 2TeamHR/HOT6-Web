@@ -2,6 +2,10 @@ import Table from 'react-bootstrap/Table';
 
 function BasicTable({ salaryDetail: {basicSalary, bonus, mealSalary, beforeSalary }}){
 
+    const formattedBasicSalary = basicSalary.toLocaleString();
+    const formattedBonusSalary = bonus ? bonus.bonusSalary.toLocaleString() : 0;
+    const formattedMealSalary = mealSalary.toLocaleString();
+    const formattedBeforeSalary = beforeSalary.toLocaleString();
 
     return(
     <Table striped style={{width:500}} className="mr-5">
@@ -14,19 +18,19 @@ function BasicTable({ salaryDetail: {basicSalary, bonus, mealSalary, beforeSalar
         <tbody className="text-center">
             <tr>
                 <td>기본급</td>
-                <td>{ basicSalary }</td>
+                <td>{ formattedBasicSalary }</td>
             </tr>
             <tr>
                 <td>상여금</td>
-                <td>{ bonus ? bonus.bonusSalary : 0 }</td>
+                <td>{formattedBonusSalary }</td>
             </tr>
             <tr>
                 <td>식대</td>
-                <td>{ mealSalary }</td>
+                <td>{ formattedMealSalary }</td>
             </tr>
             <tr>
                 <td>세전 총액</td>
-                <td>{ beforeSalary }</td>
+                <td>{ formattedBeforeSalary }</td>
             </tr>
         </tbody>
     </Table>

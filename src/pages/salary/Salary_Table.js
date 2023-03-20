@@ -6,8 +6,12 @@ function SalaryTable({salaryDetail :{ beforeSalary,
     nationalTax,
     afterSalary }}) {
 
+
+
     const totalTax = incomTax + healthTax + nationalTax;
     var afterSalary = beforeSalary - totalTax;
+
+    const formattedAfterSalary = afterSalary.toLocaleString();
 
     return (
     <Table className="mr-5" striped style={{width:"400px"}}>
@@ -18,7 +22,7 @@ function SalaryTable({salaryDetail :{ beforeSalary,
         </thead>
         <tbody className="text-center">
             <tr>
-                <td>{ afterSalary }</td>
+                <td>{ formattedAfterSalary }</td>
             </tr>
           
         </tbody>
