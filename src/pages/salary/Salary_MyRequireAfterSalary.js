@@ -1,14 +1,11 @@
 import Table from 'react-bootstrap/Table';
 
-function SalaryTable({salaryDetail :{ beforeSalary, 
-    incomTax,
-    healthTax,
-    nationalTax,
-    afterSalary }}) {
+function MyRequireAfterSalary({ salaryInfo }) {
 
 
-    const totalTax = incomTax + healthTax + nationalTax;
-    var afterSalary = beforeSalary - totalTax;
+
+    const totalTax = salaryInfo.incomTax + salaryInfo.healthTax + salaryInfo.nationalTax;
+    var afterSalary = salaryInfo.beforeSalary - totalTax;
 
     const formattedAfterSalary = afterSalary?.toLocaleString();
 
@@ -30,4 +27,4 @@ function SalaryTable({salaryDetail :{ beforeSalary,
 
 }
 
-export default SalaryTable;
+export default MyRequireAfterSalary;

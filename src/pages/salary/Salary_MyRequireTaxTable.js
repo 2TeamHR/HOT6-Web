@@ -1,11 +1,11 @@
 import Table from 'react-bootstrap/Table';
 
-function TaxTable({salaryDetail : {incomTax, healthTax, nationalTax }}){
+function MyRequireTaxTable({ salaryInfo }){
 
-    const formattedIncomTax = incomTax?.toLocaleString();
-    const formattedHealthTax = healthTax?.toLocaleString();
-    const formattedNationalTax = nationalTax?.toLocaleString();
-    const totalTax = incomTax + healthTax + nationalTax;
+    const formattedIncomTax = salaryInfo.incomTax?.toLocaleString();
+    const formattedHealthTax = salaryInfo.healthTax?.toLocaleString();
+    const formattedNationalTax = salaryInfo.nationalTax?.toLocaleString();
+    const totalTax = salaryInfo.incomTax + salaryInfo.healthTax + salaryInfo.nationalTax;
     const formattedTotalTax = totalTax?.toLocaleString();
 
     return(
@@ -39,4 +39,4 @@ function TaxTable({salaryDetail : {incomTax, healthTax, nationalTax }}){
     );
 }
 
-export default TaxTable;
+export default MyRequireTaxTable;
