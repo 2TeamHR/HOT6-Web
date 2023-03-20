@@ -6,18 +6,18 @@ import {Link} from "react-router-dom";
 import moment from 'moment';
 import {decodeJwt} from "../../utils/tokenUtils";
 
-const token = decodeJwt(window.localStorage.getItem("accessToken"));
+
 
 
 function MessageSent(){
 
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));
     const payload ={ memberCode: token.sub }
 
     const [emailSelect, setEmailSelect] = useState('');
     const [count , setCount] = useState('');
     const [count2 , setCount2] = useState('');
     const [count3 , setCount3] = useState('');
-    const token = decodeJwt(window.localStorage.getItem("accessToken"));
 
     useEffect(()=>{
 

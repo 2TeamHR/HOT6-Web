@@ -7,6 +7,7 @@ const initialState = [];
 export const GET_MYATTENDANCE           = 'myPageAttendance/GET_MYATTENDANCE';
 export const GET_MYPAGESELECTATTENDANCE = 'myPageAttendance/GET_MYPAGESELECTATTENDANCE';
 export const POST_REASON                = 'myPageAttendance/POST_REASON';
+export const GET_REASONFILE             = 'attendance/GET_REASONFILE';
 
 const actions = createActions({
     [GET_MYATTENDANCE]: () => {
@@ -14,6 +15,8 @@ const actions = createActions({
     [GET_MYPAGESELECTATTENDANCE]: () => {
     },
     [POST_REASON]: () => {
+    },
+    [GET_REASONFILE]: () => {
     },
 });
 
@@ -29,6 +32,9 @@ const attendanceReducer = handleActions(
         [POST_REASON]: (state, {payload}) => {
             return payload;
         },
+        [GET_REASONFILE]: (state, {payload}) => {
+            return payload;
+        }
     },
     initialState
 );

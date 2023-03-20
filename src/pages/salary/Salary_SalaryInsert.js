@@ -51,7 +51,7 @@ function SalaryInsert() {
 
     
     const handleSubmit = () => {
-        dispatch(callInsertSalaryAPI(memberInfo)).then(() => {});
+        dispatch(callInsertSalaryAPI(memberInfo));
     };
 
 
