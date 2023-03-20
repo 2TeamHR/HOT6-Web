@@ -5,7 +5,6 @@ import {
   Step,
   StepLabel,
   Stepper,
-  TablePagination,
   Typography,
 } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -23,7 +22,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import EaModal from "./EaModal";
 import { useDispatch, useSelector } from "react-redux";
 import { callEaDocumentListAPI } from "../../apis/EaDocumentAPICalls";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 
 

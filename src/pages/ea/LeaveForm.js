@@ -26,50 +26,6 @@ function LeaveForm() {
   const [endDate, setEndDate] = useState(new Date());
 
 
-
-
-// "memberCode"
-
-// "eaSubject"
-
-// "eaDetail"
-
-// "eaStatusCode"
-
-// "eaStatusCategory"
-
-// "eaApproverInfoList"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <>
       <Container>
