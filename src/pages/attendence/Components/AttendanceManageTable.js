@@ -21,7 +21,7 @@ export default function AttendanceManageTable(props) {
     //   }
 
     const rows = Object.entries(props.data).map(([key, attendanceList], index) => (
-        { id: index,
+        { id: index + 1,
           status: attendanceList.commuteStatus,
             department:attendanceList.member.teamName,
             level: attendanceList.member.rankName,

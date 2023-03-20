@@ -34,6 +34,7 @@ import ChangePassword from '../src/pages/login/ChangePassword';
 import BoardCommunity from './pages/board/BoardCommunity';
 import BoardCommunityWrite from './pages/board/BoardCommunityWrite';
 import BoardCommunityDetail from './pages/board/BoardCommunityDetail';
+import BoardCommunityUpdate from './pages/board/BoardCommunityUpdate';
 import BoardNotice from './pages/board/BoardNotice';
 import BoardNoticeWrite from './pages/board/BoardNoticeWrite';
 import BoardNoticeUpdate from './pages/board/BoardNoticeUpdate';
@@ -67,6 +68,7 @@ import EaDraftInbox from './pages/ea/EaDraftInbox';
 import DutyForm from './pages/ea/DutyForm';
 import LOAForm from './pages/ea/LOAForm';
 import ReinstatmentForm from './pages/ea/ReinstatementForm';
+import EaAllListInsa from './pages/ea/EaAllListInsa';
 import MessageDetail from "./pages/messsage/MessageDetail";
 
 function App() {
@@ -119,9 +121,10 @@ function App() {
             {/* 게시판 */}
             <Route path="/board/notice" element={<BoardNotice />} />
             <Route path="/board/notice/:noticeCode" element={<BoardNoticeDetail />} />
+            <Route path="/board/community/:boardCode" element={<BoardCommunityDetail />} />
             <Route path="/board/community" element={<BoardCommunity />} />
             <Route path="/board/community/write" element={<BoardCommunityWrite />} />
-            <Route path="/board/community/detail" element={<BoardCommunityDetail/>} />
+            <Route path="/board/community/update" element={<BoardCommunityUpdate />} />
 
             {/* 캘린더 */}
             <Route path="/calendar" element={<MyCalendar />} />
@@ -166,6 +169,8 @@ function App() {
             <Route path="/board/notice/write" element={<BoardNoticeWrite />} />
             <Route path="/board/notice/update" element={<BoardNoticeUpdate />} />
 
+            {/* 전자결재 */}
+            <Route path="/ea/allEaList" element={<EaAllListInsa />}/>
           </Route>
         </Route>
     </Routes>

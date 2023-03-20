@@ -8,7 +8,6 @@ import {
   TablePagination,
   Typography,
 } from "@mui/material";
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -24,6 +23,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import EaModal from "./EaModal";
 import { useDispatch, useSelector } from "react-redux";
 import { callEaDocumentListAPI } from "../../apis/EaDocumentAPICalls";
+import { Suspense, useEffect, useState } from "react";
 
 
 
@@ -31,11 +31,30 @@ import { callEaDocumentListAPI } from "../../apis/EaDocumentAPICalls";
 
 function Row(docu1) {
   const { docu } = docu1;
-  console.log("docu", docu)
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [stepCount, setStepCount] = useState(0);
+  const [docuStatus, setDocuStatus] = useState('');
+  const [statusColor, setStatusColor] = useState('primary');
+  const count = 0;
+  useEffect(() => {
+
+    docu?.eaStatusCode === 'EA_STATUS_WAITING' ? setStatusColor('error') : 
+    (docu?.eaStatusCode === 'EA_STATUS_FINISH' ? setStatusColor('success') : setStatusColor('primary'))
+
+  }, [])
+
+
+  useEffect(() => {
+
+    setDocuStatus(docu?.eaStatusCategory?.eaStatusName);
+
+  }, [])
+
+console.log("docuStatus",docuStatus);
+
 
   return (
-    <React.Fragment>
+    <>
 
       <TableRow>
         <TableCell align="center">{docu?.eaCode}</TableCell>
@@ -45,7 +64,18 @@ function Row(docu1) {
         <TableCell align="center">{docu?.eaMember?.rank?.rankName}</TableCell>
         <TableCell align="center">{docu?.eaMember?.memberName}</TableCell>
         <TableCell align="center">{docu?.eaDate}</TableCell>
-        <TableCell align="center"><Chip label={docu?.eaStatusCategory?.eaStatusName} color="primary" /></TableCell>
+        <TableCell align="center">
+      
+
+
+        <Chip label={docuStatus} color={statusColor} /> 
+
+
+
+
+
+
+        </TableCell>
         <TableCell align="center">
           <EaModal documentInfo={docu} />
         </TableCell>
@@ -67,53 +97,31 @@ function Row(docu1) {
               <Typography variant="h6" gutterBottom component="div">
                 전자결재 미리보기
               </Typography>
-              <Box sx={{ alignContent: 'center'  }}>
-                <Stepper activeStep={1} alternativeLabel>
-                <Step>
-                <StepLabel>{docu?.eaMember?.memberName}</StepLabel>
-                </Step>
+              <Box sx={{ alignContent: 'center' }}>
+
+                <Stepper activeStep={stepCount} alternativeLabel>
+                  <Step>
+                    <StepLabel>{docu?.eaMember?.memberName}</StepLabel>
+                  </Step>
+
                   {docu?.eaApproverInfoList?.map((label) => (
                     <Step key={label?.eaMember?.eaApproverCode}>
                       <StepLabel>{label?.eaMember?.memberName}</StepLabel>
                     </Step>
                   ))}
+
+
                 </Stepper>
-             </Box>
+
+              </Box>
             </Box>
           </Collapse>
         </TableCell>
       </TableRow>
 
-    </React.Fragment>
+    </>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function EaRealExtendTable() {
 
@@ -122,7 +130,7 @@ function EaRealExtendTable() {
 
   console.log("documentList{}", documentList);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(callEaDocumentListAPI());
   }, []);
 
@@ -143,8 +151,8 @@ function EaRealExtendTable() {
                   <TableCell align="center">기안자</TableCell>
                   <TableCell align="center">신청일</TableCell>
                   <TableCell align="center">상태</TableCell>
-                  <TableCell align="center">간단히 보기</TableCell>
-                  <TableCell align="center">확인</TableCell>
+                  <TableCell align="center">상세보기</TableCell>
+                  <TableCell align="center">진행상태보기</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

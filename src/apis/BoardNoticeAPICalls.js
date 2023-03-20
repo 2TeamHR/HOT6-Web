@@ -80,6 +80,9 @@ export const callBoardNoticeWriteAPI = ({form}) => {
 
 /* 공지사항 수정 */
 export const callUpdateNoticeAPI = ({form, noticeCode}) => {
+    console.log('[BoardNoticeAPICalls] callUpdateNoticeAPI Call');
+    console.log('noticeCode', noticeCode);
+    console.log('form', form);
 
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/board/notice/${noticeCode}`;
 

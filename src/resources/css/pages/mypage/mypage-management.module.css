@@ -1,6 +1,6 @@
 
 .infoBtn {
-    width: 55%;
+    width: 70%;
     margin: auto;
 }
 
@@ -43,6 +43,7 @@
 
 .profileMain {
     width: 30%;
+    padding-top: 30px;
     margin-left: 1%;
     margin-right: 1%;
 }
@@ -51,7 +52,7 @@
 }
 
 .profileInfoBox {
-    padding-top: 3%;
+    padding-top: 30px;
     padding-bottom: 3%;
     border-radius: 15px;
     box-shadow: 1px 1px 6px 1px #a4a4a4;

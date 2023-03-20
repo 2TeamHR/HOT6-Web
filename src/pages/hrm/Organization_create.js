@@ -16,7 +16,8 @@ import {useEffect, useRef, useState} from "react";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {callRegisterAPI} from "../../apis/MemberAPICalls";
-
+import DaumPostcode from 'react-daum-postcode';
+import Modal from 'react-bootstrap/Modal';
 
 function OrganizationCreate (){
 
@@ -116,6 +117,17 @@ function OrganizationCreate (){
         window.location.reload();
     }
 
+    const [address, setAddress] = useState('');
+
+    const handleComplete = (data) => {
+        setAddress(data.address);
+        setShow(false);;
+    };
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return(
         <main className={mainTitleStyle.main}>
             <div>
@@ -144,9 +156,9 @@ function OrganizationCreate (){
                                 />
                             </div>
                             <div className={mpManagement.infoBtn}>
+                                <button onClick={ onClickImageUpload }>이미지 업로드</button>
                                 <button onClick={onClickMemberRegistrationHandler}>완료</button>
                                 <button onClick={() => navigate(-1)}>취소</button>
-                                <button onClick={ onClickImageUpload }>이미지 업로드</button>
                             </div>
                         </div>
                     </Paper>
@@ -156,35 +168,87 @@ function OrganizationCreate (){
                                 <div className={mpManagement.infoTitle}>
                                     <p>신규사원정보</p>
                                 </div>
-                                <div className={organizationCreateStyle.infoModule}>
-                                    <i className={`bx bx-user mr-3`}></i>
-                                    <span>이름</span>
-                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="이름" variant="outlined"
-                                                name="memberName" onChange={ onChangeHandler } />
+                                <div className={`d-flex align-items-center justify-content-between ${organizationCreateStyle.infoModule}`}>
+                                    <div>
+                                        <i className={`bx bx-user mr-3`}></i>
+                                        <span>이름</span>
+                                    </div>
+                                    <TextField 
+                                        className={organizationCreateStyle.managementInput} 
+                                        id="outlined-basic" 
+                                        label="이름" 
+                                        variant="outlined"
+                                        name="memberName" onChange={ onChangeHandler } 
+                                    />
                                 </div>
-                                <div className={organizationCreateStyle.infoModule}>
-                                    <i className={`bx bx-phone mr-3`}></i>
-                                    <span>휴대전화</span>
-                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="휴대전화" variant="outlined"
-                                                name="memberPhone" onChange={ onChangeHandler } />
+                                <div className={`d-flex align-items-center justify-content-between ${organizationCreateStyle.infoModule}`}>
+                                    <div>
+                                        <i className={`bx bx-phone mr-3`}></i>
+                                        <span>휴대전화</span>
+                                    </div>
+                                    <TextField 
+                                        className={organizationCreateStyle.managementInput} 
+                                        id="outlined-basic" 
+                                        label="휴대전화" 
+                                        variant="outlined"
+                                        name="memberPhone" 
+                                        onChange={ onChangeHandler }
+                                    />
                                 </div>
-                                <div className={organizationCreateStyle.infoModule}>
-                                    <i className={`bx bx-envelope mr-3`}></i>
-                                    <span>이메일</span>
-                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="이메일" variant="outlined"
-                                                name="memberEmail" onChange={ onChangeHandler } />
+                                <div className={`d-flex align-items-center justify-content-between ${organizationCreateStyle.infoModule}`}>
+                                    <div>
+                                        <i className={`bx bx-envelope mr-3`}></i>
+                                        <span>이메일</span>
+                                    </div>
+                                    <TextField 
+                                        className={organizationCreateStyle.managementInput} 
+                                        id="outlined-basic" 
+                                        label="이메일" 
+                                        variant="outlined"
+                                        name="memberEmail" 
+                                        onChange={ onChangeHandler } 
+                                    />
                                 </div>
-                                <div className={organizationCreateStyle.infoModule}>
-                                    <i className={`bx bx-home mr-3`}></i>
-                                    <span>주소</span>
-                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="주소" variant="outlined"
-                                                name="memberAddress" onChange={ onChangeHandler } />
+                                <div className={`d-flex align-items-center justify-content-between ${organizationCreateStyle.infoModule}`}>
+                                    <div>
+                                        <i className={`bx bx-home mr-3`}></i>
+                                        <span cl>주소</span>
+                                    </div>
+                                    <TextField 
+                                        className={organizationCreateStyle.managementInput} 
+                                        onClick={handleShow}
+                                        id="outlined-basic" 
+                                        label="주소" 
+                                        value={address}
+                                        variant="outlined"
+                                        name="memberAddress" onChange={ onChangeHandler } 
+                                    />
+                            
+                                    <Modal show={show} onHide={handleClose}>
+                                        <Modal.Header closeButton>
+                                        <Modal.Title>주소 검색</Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            <div className="text-center">
+                                                <DaumPostcode
+                                                    onComplete={handleComplete}
+                                                    autoClose
+                                                    width={500}
+                                                    height={600}
+                                                />
+                                            </div>
+                                        </Modal.Body>
+                                        <Modal.Footer>
+                                        </Modal.Footer>
+                                    </Modal>
                                 </div>
-                                <div className={organizationCreateStyle.infoModule}>
-                                    <i className={`bx bx-calendar-alt mr-3`}></i>
-                                    <span>생년월일</span>
+                                <div className={`d-flex align-items-center justify-content-between ${organizationCreateStyle.infoModule}`}>
+                                    <div>
+                                        <i className={`bx bx-calendar-alt mr-3`}></i>
+                                        <span>생년월일</span>
+                                    </div>
                                     <DatePicker
-                                        className={organizationCreateStyle.datePicker}
+                                        className={organizationCreateStyle.managementInput}
                                         disableFuture
                                         label="생년월일"
                                         openTo="year"
@@ -194,38 +258,40 @@ function OrganizationCreate (){
                                         renderInput={(params) => <TextField {...params} />}
                                     />
                                 </div>
-                                <div className={organizationCreateStyle.infoModule}>
-                                    <i className={`bx bx-male-female mr-3`}></i>
-                                    <span>성별</span>
-                                    <label className={organizationCreateStyle.radioBtn} >
-                                    남성
-                                        <input type="radio" className="ml-2" name="memberGender" value="M" onChange={onChangeHandler}/>
-                                    </label>
-                                    <label className={organizationCreateStyle.radioBtn} >
-                                    여성
-                                        <input type="radio" className="ml-2" name="memberGender" value="F" onChange={onChangeHandler}/>
-                                    </label>
+                                <div className={`d-flex align-items-center justify-content-between ${organizationCreateStyle.infoModule}`}>
+                                    <div>
+                                        <i className={`bx bx-male-female mr-3`}></i>
+                                        <span>성별</span>
+                                    </div>
+                                    <div className='d-flex align-items-center justify-content-start w-50'>
+                                        남성
+                                        <input type="radio" className="ml-3 mr-5" name="memberGender" value="M" onChange={onChangeHandler}/>
+                                        여성
+                                        <input type="radio" className="ml-3" name="memberGender" value="F" onChange={onChangeHandler}/>
+                                    </div>
                                 </div>
-                                <div className={organizationCreateStyle.infoModule}>
-                                    <i className={`bx bx-male-female mr-3`}></i>
-                                    <span>결혼여부</span>
-                                    <label className={organizationCreateStyle.radioBtn}>
-                                    기혼
-                                        <input type="radio" className="ml-2" name="memberMarried" value="Y" onChange={onChangeHandler}/>
-                                    </label>
-                                    <label className={organizationCreateStyle.radioBtn} >
-                                    미혼
-                                        <input type="radio" className="ml-2" name="memberMarried" value="N" onChange={onChangeHandler}/>
-                                    </label>
+                                <div className={`d-flex align-items-center justify-content-between ${organizationCreateStyle.infoModule}`}>
+                                    <div>
+                                        <i className={`bx bx-male-female mr-3`}></i>
+                                        <span>결혼여부</span>
+                                    </div>
+                                    <div className='d-flex align-items-center justify-content-start w-50'>
+                                        기혼
+                                        <input type="radio" className="ml-3 mr-5" name="memberMarried" value="Y" onChange={onChangeHandler}/>
+                                        미혼
+                                        <input type="radio" className="ml-3" name="memberMarried" value="N" onChange={onChangeHandler}/>
+                                    </div>
                                 </div>
                             </Paper>
                             <Paper elevation={3} className={`mt-3 ${mpManagement.profileInfoBox}`}>
                                 <div className={mpManagement.infoTitle}>
                                     <p>회사정보</p>
                                 </div>
-                                <div className={organizationCreateStyle.infoModule}>
-                                    <i className={`bx bx-buildings mr-3`}></i>
-                                    <span>소속팀</span>
+                                <div className={`d-flex align-items-center justify-content-between ${organizationCreateStyle.infoModule}`}>
+                                    <div>
+                                        <i className={`bx bx-buildings mr-3`}></i>
+                                        <span>소속팀</span>
+                                    </div>
                                     <FormControl className={organizationCreateStyle.managementInput}>
                                         <InputLabel id="demo-simple-select-helper-label">소속팀</InputLabel>
                                         <Select
@@ -248,17 +314,19 @@ function OrganizationCreate (){
                                         </Select>
                                     </FormControl>
                                 </div>
-                                <div className={organizationCreateStyle.infoModule}>
-                                    <i className={`bx bx-buildings mr-3`}></i>
-                                    <span>직급</span>
+                                <div className={`d-flex align-items-center justify-content-between ${organizationCreateStyle.infoModule}`}>
+                                    <div>
+                                        <i className={`bx bx-buildings mr-3`}></i>
+                                        <span>직급</span>
+                                    </div>
                                     <FormControl className={organizationCreateStyle.managementInput}>
                                         <InputLabel id="demo-simple-select-helper-label">직급</InputLabel>
                                         <Select
-                                        labelId="demo-simple-select-helper-label"
-                                        id="demo-simple-select-helper"
-                                        label="Rank"
-                                        name="rankCode"
-                                        onChange={onChangeHandler}
+                                            labelId="demo-simple-select-helper-label"
+                                            id="demo-simple-select-helper"
+                                            label="Rank"
+                                            name="rankCode"
+                                            onChange={onChangeHandler}
                                         >
                                         <MenuItem value="">
                                             <em></em>
@@ -274,11 +342,19 @@ function OrganizationCreate (){
                                         </Select>
                                     </FormControl>
                                 </div>
-                                <div className={organizationCreateStyle.infoModule}>
-                                    <i className={`bx bx-buildings mr-3`}></i>
-                                    <span>내선번호</span>
-                                    <TextField className={organizationCreateStyle.managementInput} id="outlined-basic" label="내선번호" variant="outlined"
-                                                name="inlinePhone" onChange={ onChangeHandler } />
+                                <div className={`d-flex align-items-center justify-content-between ${organizationCreateStyle.infoModule}`}>
+                                    <div>
+                                        <i className={`bx bx-buildings mr-3`}></i>
+                                        <span>내선번호</span>
+                                    </div>
+                                    <TextField 
+                                        className={organizationCreateStyle.managementInput} 
+                                        id="outlined-basic" 
+                                        label="내선번호" 
+                                        variant="outlined"
+                                        name="inlinePhone" 
+                                        onChange={ onChangeHandler }
+                                    />
                                 </div>
                             </Paper>
                         </LocalizationProvider>

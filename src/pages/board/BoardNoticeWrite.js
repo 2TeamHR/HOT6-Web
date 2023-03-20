@@ -57,7 +57,7 @@ function BoardNoticeWrite() {
 
         console.log("form: ", form);
 
-        alert('공시자항 목록으로 이동합니다.');
+        alert('공지사항이 등록되었습니다.');
         navigate('/board/notice', {replace: true});
         window.location.reload();
     }

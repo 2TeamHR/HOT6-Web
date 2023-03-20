@@ -12,9 +12,9 @@ export class TsbDepartment extends Component{
     render(){
 
         return(
-            <div className="float-left mr-4">
+            <div className="float-left ml-5 mr-4">
                 <span className="mr-2">팀명 : </span>
-                <select name='teamSearch' onChange={this.teamSearchChangeHandler}>
+                <select className='rounded rounded-lg' name='teamSearch' onChange={this.teamSearchChangeHandler}>
                     <option>전체</option>
                     <option value="1">인사팀</option>
                     <option value="2">총무팀</option>
@@ -41,7 +41,7 @@ export class TsbRank extends Component{
         return(
             <div className="float-left mr-4">
                 <span className="mr-2">직급명 : </span>
-                <select name='teamSearch' onChange={this.rankSearchChangeHandler}>
+                <select className='rounded rounded-lg' name='teamSearch' onChange={this.rankSearchChangeHandler}>
                     <option>전체</option>
                     <option value="1">사장</option>
                     <option value="2">이사</option>
@@ -64,8 +64,8 @@ export class TsbEmployee extends Component{
 
         return(
             <div className="float-left mr-4">
-                <span className="mr-2">사원</span>
-                <input/>
+                <span className="mr-2">사원명 : </span>
+                <input className='rounded rounded-lg'/>
             </div>
         );
     }
@@ -78,8 +78,8 @@ export class PayState extends Component{
 
         return (
             <div className="float-left mr-5">
-                <span className="mr-2">결재 상태</span>
-                <select>
+                <span className="mr-2">결재 상태 : </span>
+                <select className='rounded rounded-lg'>
                     <option>전체</option>
                     <option>완료</option>
                     <option>취소</option>
@@ -93,35 +93,62 @@ export class PayState extends Component{
 /* 기간 검색 컴포넌트 */
 export class Term extends Component{
 
+    
+
+    handleDateChange = (event) => {
+        const { name, value } = event.target;
+        this.props.onAttendanceStateChange({ [name]: value });
+    };
+
     render(){
 
         return(
-            <div className="float-left mr-4">
-                <span className="mr-2">기간</span>
-                <input type="date"/>
+            <div className="float-left mr-4 w-25">
+                <span className="mr-2">기간 : </span>
+                <input 
+                    onChange={this.handleDateChange} 
+                    className={tableStyle.dateInput} 
+                    type="date"
+                    value="1900-01-01"
+                    name="startDate"
+                />
                 <span> ~ </span>
-                <input type="date"/>
+                <input 
+                    onChange={this.handleDateChange} 
+                    className={tableStyle.dateInput} 
+                    type="date" 
+                    name="endDate" 
+                    value={new Date().toISOString().split("T")[0]}
+                    max={new Date().toISOString().split("T")[0]} 
+                />
             </div>
         );
     }
 }
 
+
 /* 고용형태 검색 컴포넌트 */
-export class EmployState extends Component{
+export class AttendanceState extends Component {
 
-    render(){
+    handleSelectChange = (event) => {
+        const selectedValue = event.target.value;
+        this.props.onAttendanceStateChange(selectedValue);
+    };
 
-        return(
-            <div>
-                <span className="mr-2">고용형태</span>
-                <select>
-                    <option>정규직</option>
-                    <option>임원</option>
-                    <option>계약직</option>
-                </select>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className="float-left mr-4">
+        <span className="mr-2">근태 유형 : </span>
+        <select onChange={this.handleSelectChange} defaultValue="전체">
+          <option value="전체">전체</option>
+          <option value="정상출근">정상출근</option>
+          <option value="지각">지각</option>
+          <option value="조퇴">조퇴</option>
+          <option value="무단결근">무단결근</option>
+        </select>
+      </div>
+    );
+  }
 }
 
 export class LeaveState extends Component{
@@ -130,7 +157,7 @@ export class LeaveState extends Component{
 
         return(
             <div>
-            <span className="mr-2">휴가구분</span>
+            <span className="mr-2">휴가구분 : </span>
             <select>
                 <option>전체</option>
                 <option>기본연차</option>

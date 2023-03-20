@@ -1,139 +1,124 @@
-import React from 'react';
-import sidebarStyle from "../../resources/css/components/sidebar.module.css";
-import { Link } from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {callBoardCommunityListAPI} from "../../apis/BoardCommunityAPICalls";
+import Pagination from "@mui/material/Pagination";
+import {Link, useNavigate} from "react-router-dom";
 
-const BoardCommunity = () => {
+
+function BoardCommunity() {
+
+    const dispatch = useDispatch();
+    const boardCommunity = useSelector(state => state.boardCommunityReducer);
+    console.log('boardCommunity: ', boardCommunity);
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const perPage = 10;
+    const handlePageChange = (event, value) => {
+        setCurrentPage(value);
+    };
+
+    const navigate = useNavigate();
+    const onClickTableTr = (boardCode) => {
+        navigate(`/board/community/${boardCode}`, {replace: false});
+    }
+
+
+    useEffect(
+        () => {
+            dispatch(callBoardCommunityListAPI());
+        }
+        , []
+    );
+    const startIndex = (currentPage - 1) * perPage;
+    const endIndex = startIndex + perPage;
+
+    function displayTime(date) {
+
+        const dateTime = new Date(date);
+        const now = new Date();
+        const diff = (now.getTime() - dateTime.getTime()) / 1000;
+
+        if (diff < 60) {
+            return "방금 전";
+        } else if (diff < 3600) {
+            const minutes = Math.floor(diff / 60);
+            return `${minutes}분 전`;
+        } else if (diff < 86400 && dateTime.getDate() === now.getDate()) {
+            const hours = Math.floor(diff / 3600);
+            return `${hours}시간 전`;
+        } else {
+            const year = dateTime.getFullYear();
+            const month = dateTime.getMonth() + 1;
+            const day = dateTime.getDate();
+            return `${year}년 ${month}월 ${day}일`;
+        }
+    }
+
+    function boardCommunityCommentColor(number) {
+        if (number >= 1) {
+            return {"color": "red"};
+        } else {
+            return {"color": "black"};
+        }
+    }
 
     return (
-        <>
-            <div className="container">
-                <h1 className="mt-5 text-center">커뮤니티 게시판</h1>
-                <div className="table-area">
-                    <table className="table table-hover">
-                        <thead>
-                            <tr style={{ "backgroundColor": "#DDDDDD" }}>
-                                <th>번호</th>
-                                <th>제목</th>
-                                <th>작성자</th>
-                                <th>날짜</th>
-                                <th>조회수</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr style={{ "cursor": "pointer" }}>
-                                <td>51</td>
-                                <td>빛성일</td>
-                                <td>작성자1</td>
-                                <td>2023-01-12 16:17</td>
-                                <td>35</td>
-                            </tr>
-                            <tr style={{ "cursor": "pointer" }}>
-                                <td>50</td>
-                                <td>킹보성</td>
-                                <td>작성자2</td>
-                                <td>2023-01-10 18:33</td>
-                                <td>21</td>
-                            </tr>
-                            <tr style={{ "cursor": "pointer" }}>
-                                <td>40</td>
-                                <td>테스트 제목2</td>
-                                <td>작성자3</td>
-                                <td>2023-01-09 16:17</td>
-                                <td>16</td>
-                            </tr>
-                            <tr style={{ "cursor": "pointer" }}>
-                                <td>39</td>
-                                <td>테스트 제목3</td>
-                                <td>작성자4</td>
-                                <td>2023-01-09 16:17</td>
-                                <td>16</td>
-                            </tr>
-                            <tr style={{ "cursor": "pointer" }}>
-                                <td>37</td>
-                                <td>테스트5</td>
-                                <td>작성자5</td>
-                                <td>2023-01-09 16:17</td>
-                                <td>6</td>
-                            </tr>
-                            <tr style={{ "cursor": "pointer" }}>
-                                <td>36</td>
-                                <td>테스트 제목6</td>
-                                <td>작성자6</td>
-                                <td>2023-01-08 16:17</td>
-                                <td>12</td>
-                            </tr>
-                            <tr style={{ "cursor": "pointer" }}>
-                                <td>35</td>
-                                <td>희재님 그곳은 행복하십니까?</td>
-                                <td>작성자7</td>
-                                <td>2023-01-08 16:17</td>
-                                <td>8</td>
-                            </tr>
-                            <tr style={{ "cursor": "pointer" }}>
-                                <td>34</td>
-                                <td>현구는 더 커여워</td>
-                                <td>작성자8</td>
-                                <td>2023-01-08 16:17</td>
-                                <td>6</td>
-                            </tr>
-                            <tr style={{ "cursor": "pointer" }}>
-                                <td>33</td>
-                                <td>상목이 커여워</td>
-                                <td>작성자9</td>
-                                <td>2023-01-08 16:17</td>
-                                <td>6</td>
-                            </tr>
-                            <tr style={{ "cursor": "pointer" }}>
-                                <td>32</td>
-                                <td>하이미디어의 진실</td>
-                                <td>작성자10</td>
-                                <td>2023-01-08 16:17</td>
-                                <td>8</td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <div className="container">
+            <h1 className="mt-5 text-center">커뮤니티</h1><br/>
+            <div className="table-area">
+                <table className="table">
+                    <thead>
+                    <tr style={{"textAlign": "center", "backgroundColor": "#DDDDDD"}}>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>작성일</th>
+                        <th>조회수</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {Array.isArray(boardCommunity) && boardCommunity.slice(startIndex, endIndex).map((community, communityIndex) => (
+                        <tr key={community.boardCode} className="text-center"
+                            onClick={() => onClickTableTr(community.boardCode)} style={{cursor: 'pointer'}}>
+                            <td className='align-middle'>{communityIndex + 1}</td>
+                            <td className='align-middle'>{community.boardTitle}
+                                <span style={boardCommunityCommentColor(community.boardCommunityComment.length)}>
+                                    &ensp;[{community.boardCommunityComment.length}]
+                                </span>
+                            </td>
+                            <td className='align-middle'>{community.member.memberName}</td>
+                            <td className='align-middle'>{displayTime(community.boardInsertDate)}</td>
+                            <td className='align-middle'>{community.boardCount}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+                <div className="d-flex justify-content-center">
+                    <Pagination
+                        className="d-flex justify-content-center"
+                        count={Math.ceil(boardCommunity.length / perPage)}
+                        page={currentPage}
+                        onChange={handlePageChange}/>
+                    <br/>
                 </div>
+                <Link to="/board/community/write" className={""}>
+                    <input type="submit" id="" className="btn btn-info me-1"
+                           style={{"float": "right", "backgroundColor": "black", "borderColor": "black"}}
+                           value="글쓰기"/>
+                </Link><br/>
                 <div className="search-area" align="center">
-                    <form name="search-form" autoComplete="off" style={{ "display": "inline-block" }}>
+                    <form name="search-form" autoComplete="off" style={{"display": "inline"}}>
                         <select id="searchCondition" name="searchCondition">
-                            <option value="communityTitle">제목</option>
+                            <option value="boardTitle">제목</option>
                             <option value="nickName">작성자</option>
                         </select>
-                        <input type="search" id="searchValue" name="searchValue" placeholder="검색할 내용을 입력하세요." />
-                        <input type="submit" id="searchList" className="btn btn-secondary" value="검색" />
+                        <input type="search" id="searchValue" name="searchValue" placeholder="검색할 내용을 입력하세요."/>
+                        <input type="submit" className="btn btn-secondary" value="검색"/>
                     </form>
-                    <Link to="/board/community/write" className={""}>
-                        <input type="submit" id="" className="btn btn-info me-1"
-                            style={{ "float": "right", "backgroundColor": "black", "borderColor": "black" }} value="글쓰기" />
-                    </Link>
-                </div>
-                <br />
-                {/* 페이지 처리 */}
-                <div className="pagingArea" align="center">
-                    {/* 맨 앞으로 이동 버튼 */}
-                    <button onClick={() => ""}>
-                        &lt;&lt;
-                    </button>
-                    {/* 이전 페이지 버튼 */}
-                    <button onClick={() => ""}>
-                        &lt;
-                    </button>
-                    {/* 숫자 버튼 */}
-                    <button onClick={() => ""} disabled="disabled">1</button>
-                    <button onClick={() => ""}>2</button>
-                    <button onClick={() => ""}>3</button>
-                    {/* 다음 페이지 버튼 */}
-                    <button onClick={() => ""}>
-                        &gt;
-                    </button>
-                    {/* 마지막 페이지로 이동 버튼 */}
-                    <button onClick={() => ""}>
-                        &gt;&gt;
-                    </button>
                 </div>
             </div>
-        </>
+        </div>
     );
-};
+}
 
 export default BoardCommunity;

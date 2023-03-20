@@ -1,3 +1,4 @@
+import { Await } from 'react-router-dom';
 import {GET_EADOCUMENT_LIST, GET_FINISH_LEAVE_LIST} from '../modules/EaDocumentModule';
 
 export const callEaDocumentListAPI = () => {
@@ -23,9 +24,9 @@ export const callEaDocumentListAPI = () => {
 
 
 
-export const callEaLeaveFinishListAPI = () => {
+export const callLeavePaymentListAPI = ({status}) => {
 
-    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/ea/eaList`;
+    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/ea/eaList/leave?status=${status}`;
     console.log('eaRequestUrl', requestURL);
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {

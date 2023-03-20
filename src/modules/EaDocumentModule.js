@@ -6,10 +6,12 @@ export const GET_EADOCUMENT_LIST = 'ea/GET_EADOCUMENT_LIST'
 export const GET_FINISH_LEAVE_LIST = 'ea/GET_FINISH_LEAVE_LIST'
 
 
+
 const actions = createActions({
 
     [GET_EADOCUMENT_LIST]: ()=> {},
-    [GET_FINISH_LEAVE_LIST]: ()=> {}
+    [GET_FINISH_LEAVE_LIST]: ()=> {},
+
 
 });
 

@@ -8,9 +8,6 @@ import CheckNTable from './Salary_CheckNTable';
 function AllCheckN(){
 
     const dispatch = useDispatch();
-    const member = useSelector(state => state.salaryReducer);
-
-    let memberInfo = '';
 
 
     useEffect(
@@ -39,27 +36,10 @@ function AllCheckN(){
         </div>
 
         {/* 페이지 처리 */}
-        <div className="pagingArea" align="center">
-            {/* 맨 앞으로 이동 버튼 */}
-            <button onClick={() => ""}>
-                &lt;&lt;
-            </button>
-            {/* 이전 페이지 버튼 */}
-            <button onClick={() => ""}>
-                &lt;
-            </button>
-            {/* 숫자 버튼 */}
-            <button onClick={() => ""} disabled="disabled">1</button>
-            <button onClick={() => ""}>2</button>
-            <button onClick={() => ""}>3</button>
-            {/* 다음 페이지 버튼 */}
-            <button onClick={() => ""}>
-                &gt;
-            </button>
-            {/* 마지막 페이지로 이동 버튼 */}
-            <button onClick={() => ""}>
-                &gt;&gt;
-            </button>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+            {/* <button disabled={pageNumber === 1} onClick={() => setPageNumber(pageNumber - 1)}>이전 페이지</button>
+            <button disabled={member.data?.length < itemsPerPage} onClick={() => setPageNumber(pageNumber + 1)}>다음 페이지</button>
+            <span>현재 페이지: {pageNumber}</span> */}
         </div>
         </>
     );

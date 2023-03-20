@@ -7,6 +7,7 @@ import boardCommunityReducer from "./BoardCommunityModule";
 import boardNoticeReducer from "./BoardNoticeModule";
 import calendarReducer from "./CalendarModule"
 import eaDocumentReducer from "./EaDocumentModule"
+import eaDocumentReducer2 from "./EaDocumentModule2"
 import attendanceReducer from './AttendanceModule';
 
 const rootReducer = combineReducers({
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     , calendarReducer
     , eaDocumentReducer
     , attendanceReducer
+    , eaDocumentReducer2
 });
 
 export default rootReducer;

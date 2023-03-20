@@ -169,6 +169,14 @@ function Sidebar() {
                                         <Link to="/ea/prograss" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 진행 문서함</Link>
                                         <Link to="/ea/complete" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 완료 문서함</Link>                                        
                                     </div>
+                                    { (token.auth.includes("ROLE_ADMIN")) ? 
+                                    <div className={sidebarStyle.navDropdownContent}>
+                                        <div className={sidebarStyle.navDropdownContentTitle}>
+                                            인사팀 기능
+                                        </div>
+                                            <Link to="/ea/allEaList" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>전체 전자결재 문서함</Link>                                        
+                                    </div>
+                                    : <div/> }
                                 </div>
                             </div>
                         </div>
@@ -228,7 +236,7 @@ function Sidebar() {
                         </div>
 
                         {/* <!-- nav 캘린더 --> */}
-                        <div className={sidebarStyle.navItems}>
+                        {/* <div className={sidebarStyle.navItems}>
 
                             <div className={sidebarStyle.navDropdown}>
                             <div className={`${sidebarStyle.a} ${sidebarStyle.navLink}`}>   
@@ -238,7 +246,7 @@ function Sidebar() {
                             </div>  
                                 <div className={sidebarStyle.navDropdownCollapse}>
                                     {/* <!-- 중분류 --> */}
-                                    <div className={sidebarStyle.navDropdownContent}>
+                                    {/*<div className={sidebarStyle.navDropdownContent}>
                                         <div className={sidebarStyle.navDropdownContentTitle}>
                                             캘린더
                                         </div>
@@ -246,7 +254,7 @@ function Sidebar() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
 
                         {/* <!-- nav 메세지 --> */}
                         <div className={sidebarStyle.navItems}>

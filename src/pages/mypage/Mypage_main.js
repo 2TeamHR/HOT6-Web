@@ -45,6 +45,7 @@ function MypageMain() {
     const [countLate, setCountLate] = useState('');
     const [thisWeekTotalTime, setThisWeekTotalTime] = useState('');
 
+    console.log('=============', token);
     const payload ={
         memberCode: token.sub,
     }

@@ -1,5 +1,5 @@
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
-import {TsbDepartment, TsbEmployee, PayState, Term, EmployState, SearchBtn, LeaveState, TsbRank} from '../../components/TableSearchBox';
+import {TsbDepartment, TsbEmployee, SearchBtn, TsbRank} from '../../components/TableSearchBox';
 import tableStyle from '../../resources/css/components/tableComponent.module.css';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
@@ -50,18 +50,41 @@ function OrganizationChart() {
           <div className={mainTitleStyle.title}>
             <p>조직도</p>
           </div>
-          <Paper elevation={3}>
+          {/* <Paper elevation={3}>
             <div className={tableStyle.boxStyle}>
                 <div className={tableStyle.searchBox}>
                     <TsbDepartment value={form.select} onChange={onChangeHandler}/>
                     <TsbRank onChange={onChangeHandler}/>
                     <TsbEmployee onChange={onChangeHandler}/>
-                    {/* <Term/> */}
                     <SearchBtn onClick={onClickHandler}/>
                 </div>
             </div>
-          </Paper>
-          <Paper elevation={3} className="mt-4 pb-5">
+          </Paper> */}
+            <div className={tableStyle.orgChart}>
+              {members &&
+                members.reduce((teams, member) => {
+                  const teamIndex = teams.findIndex((team) => team.teamName === member.teamName);
+                  if (teamIndex === -1) {
+                    teams.push({ teamName: member.teamName, members: [{ memberName: member.memberName, rankName: member.rankName }] });
+                  } else {
+                    teams[teamIndex].members.push({ memberName: member.memberName, rankName: member.rankName });
+                  }
+                  return teams;
+                }, []).map((team) => (
+                  <div key={team.teamName} className={tableStyle.team}>
+                    <h3>{team.teamName}</h3>
+                    <div className={tableStyle.employeeContainer}>
+                      {team.members.map((member) => (
+                        <div key={member.memberName} className={tableStyle.employee}>
+                          <div>{member.memberName} {member.rankName}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          {/* <Paper elevation={3} className="mt-4 pb-5">
             <Table>
               <thead>
                 <tr className="text-center">
@@ -93,7 +116,7 @@ function OrganizationChart() {
                 onChange={onChangePageHandler} 
               />
             </div>
-          </Paper>
+          </Paper> */}
         </div>
       </main>
     );
