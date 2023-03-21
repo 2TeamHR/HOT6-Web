@@ -26,7 +26,7 @@ export const callEaDocumentListAPI = () => {
 
 export const callEaDocumentWaitingListAPI = ({memberCode}) => {
 
-    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/ea/eaList/EA_STATUS_WAITING/${memberCode}`;
+    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/ea/status/EA_STATUS_WAITING/${memberCode}`;
     console.log('eaRequestUrl', requestURL);
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
@@ -49,7 +49,7 @@ export const callEaDocumentWaitingListAPI = ({memberCode}) => {
 
 export const callEaDocumentProcessingListAPI = ({memberCode}) => {
 
-    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/ea/eaList/EA_STATUS_PROCESS/${memberCode}`;
+    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/ea/status/EA_STATUS_PROCESS/${memberCode}`;
     console.log('eaRequestUrl', requestURL);
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
@@ -72,7 +72,7 @@ export const callEaDocumentProcessingListAPI = ({memberCode}) => {
 
 export const callEaDocumentFinishedListAPI = ({memberCode}) => {
 
-    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/ea/eaList/EA_STATUS_FINISH/${memberCode}`;
+    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/ea/status/EA_STATUS_FINISH/${memberCode}`;
     console.log('eaRequestUrl', requestURL);
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
