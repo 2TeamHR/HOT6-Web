@@ -26,7 +26,7 @@ const Item = styled(Paper)(({ theme }) => ({
   height: 100
 }));
 
-export default function EaModalNew({ documentInfo }) {
+export default function EaModalApprover({ documentInfo }) {
 
   const theme = createTheme({
     typography: {
