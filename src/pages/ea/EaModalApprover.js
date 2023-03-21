@@ -119,8 +119,8 @@ export default function EaModalApprover({ documentInfo }) {
         </DialogContent>
 
         <DialogActions>
-          <Button onClick={handleClose}>승인</Button>
-          <Button onClick={handleClose}>반려</Button>
+          <Button onClick={onHandleSuccess}>승인</Button>
+          <Button onClick={onHandleDenied}>반려</Button>
         </DialogActions>
 
 
