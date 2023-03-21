@@ -5,13 +5,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import EditIcon from '@mui/icons-material/Edit';
 import attendanceManage from '../../../resources/css/pages/attendence/attendence.module.css'
-import BasicButtons2 from "./ButtonStyle2";
+// import BasicButtons2 from "./ButtonStyle2";
 import BasicButtons3 from "./ButtonStyle3";
 import BasicButtons4 from "./ButtonStyle4";
 import moment from 'moment';
 import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-
+import { callGetReasonFileAPI } from '../../../apis/AttendanceAPICalls';
+import { styled } from '@mui/material/styles';
 
 const style = {
     position: 'absolute',
@@ -26,13 +28,56 @@ const style = {
     p: 4,
 };
 
+const BootstrapButton2 = styled(Button)({
+    boxShadow: 'none',
+    textTransform: 'none',
+    fontSize: 14,
+    color: 'white',
+    fontWeight: 'bold',
+    padding: '3px 8px',
+    border: '1px solid',
+    lineHeight: 1.5,
+    backgroundColor: '#43B2CA',
+    borderColor: '#43B2CA',
+    fontFamily: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+    ].join(','),
+    '&:hover': {
+        backgroundColor: '#0069d9',
+        borderColor: '#0062cc',
+        boxShadow: 'none',
+    },
+    '&:active': {
+        boxShadow: 'none',
+        backgroundColor: '#0062cc',
+        borderColor: '#005cbf',
+    },
+    '&:focus': {
+        boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+    },
+});
+
 export default function AttendanceModal(props) {
 
     // console.log('props test', props.data);
     // console.log('props test commute', props.data.commuteCode);
 
+    const dispatch = useDispatch();
     const [open, setOpen] = React.useState(false);
     const [selectedRowIndex, setSelectedRowIndex] = React.useState(null); // 선택한 행의 index 값 저장
+    const attendance = useSelector(state => state.attendanceReducer);
+
+    console.log('attendance :::::', attendance);
+
     const handleOpen = (index) => {
         setSelectedRowIndex(index); // 선택한 행의 index 값을 상태에 저장
         setOpen(true);
@@ -57,9 +102,9 @@ export default function AttendanceModal(props) {
       };
 
 
-    // console.log("모달 값 전달 확인" +JSON.stringify(props.data));
+    console.log("모달 값 전달 확인" +JSON.stringify(props.data));
 
-    const selectedRow = props.data[selectedRowIndex]; 
+    // const selectedRow = props.data[selectedRowIndex]; 
     // const teamName = props.data.member.teamName;
 
 
@@ -103,8 +148,42 @@ export default function AttendanceModal(props) {
           });
       };
 
+      const onClickDownloadHandler =  () => {
 
+        dispatch(callGetReasonFileAPI({
+            commuteNo: props.data.commuteCode
+        })); 
+ 
+        // const url =  attendance[0]?.reasonFaddress;
 
+        // fetch(url, {
+        //     method: "GET",
+
+        // }).then((response) => response.blob())
+        // .then((blob) => {
+        //     const url = window.URL.createObjectURL(blob);
+        //     const link = document.createElement('a');
+        //     const name = attendance[0].reasonFname;
+        //     // alert('test',link);
+        //     link.setAttribute(
+        //         'href',
+        //         url
+        //     );
+
+        //     link.setAttribute(
+        //         'download',
+        //         name
+        //     );
+
+        //     document.body.appendChild(link);
+        //     link.click();
+
+        //     link.parentNode.removeChild(link);
+
+        //     window.URL.revokeObjectURL(url);
+        // })
+    };
+      
 
     return (
         <div>
@@ -166,7 +245,8 @@ export default function AttendanceModal(props) {
 
                                 {/*증빙서류 확인 버튼*/}
                                 <div className={attendanceManage.dbutton2}>
-                                <BasicButtons2 data={props}/>
+                                <BootstrapButton2 onClick={onClickDownloadHandler}>증빙 서류 확인</BootstrapButton2>
+                                {/* <BasicButtons2 data={props}/> */}
                             
                                 </div>
 

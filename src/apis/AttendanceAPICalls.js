@@ -1,6 +1,5 @@
 import { 
     GET_MYATTENDANCE
-    , GET_MYATTENDANCESEARCH
     , GET_MYPAGESELECTATTENDANCE
     , GET_REASONFILE
     , POST_REASON
@@ -93,14 +92,44 @@ export const callCreateReasonAPI = ({form}) => {
     };
 }
 
+// export const callGetReasonFileAPI = ({commuteNo}) => {
+
+//     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/attendance/mypage/history/reason/${commuteNo}`;
+
+//     console.log('request', requestURL);
+
+//     return async (dispatch, getState) => {
+
+//         try {
+//         const result = await fetch(requestURL, {
+//             method: "GET",
+//             headers: {
+//                 "Content-Type": "application/json",
+//                 "Accept": "*/*",
+//                 "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+//             }
+//         })
+//         .then(response => response.blob())
+//         console.log(result);
+//         if (result) {
+//             console.log('[AttendanceAPICalls] callGetReasonFileAPI RESULT : ', result);
+//             dispatch({ type: GET_REASONFILE, payload: result });
+//         }
+//     } catch(error) {
+//             console.log('Error downloading file:', error);
+//             return false;
+//         };
+//     };
+// }
+
 export const callGetReasonFileAPI = ({commuteNo}) => {
+
     let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/attendance/mypage/history/reason/${commuteNo}`;
 
     console.log('request', requestURL);
 
     return async (dispatch, getState) => {
 
-        try {
         const result = await fetch(requestURL, {
             method: "GET",
             headers: {
@@ -109,16 +138,43 @@ export const callGetReasonFileAPI = ({commuteNo}) => {
                 "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
             }
         })
-        .then(response => response.blob())
-        console.log(result);
-        if (result) {
-            console.log('[AttendanceAPICalls] callGetReasonFileAPI RESULT : ', result);
-            dispatch({ type: GET_REASONFILE, payload: result });
+        .then(response => response.json());
+
+        if(result.status === 200){
+
+            console.log('요청 완료 됭');
+
+            dispatch({ type: GET_REASONFILE,  payload: result.data });
+
+            const url =  result.data[0]?.reasonFaddress;
+
+        fetch(url, {
+            method: "GET",
+
+        }).then((response) => response.blob())
+        .then((blob) => {
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            const name = result.data[0].reasonFname;
+            // alert('test',link);
+            link.setAttribute(
+                'href',
+                url
+            );
+
+            link.setAttribute(
+                'download',
+                name
+            );
+
+            document.body.appendChild(link);
+            link.click();
+
+            link.parentNode.removeChild(link);
+
+            window.URL.revokeObjectURL(url);
+        })
         }
-    } catch(error) {
-            console.log('Error downloading file:', error);
-            return false;
-        };
     };
 }
 
@@ -148,3 +204,4 @@ export const callMyPageSelectAttendanceListAPI = ({memberCode}) => {
         }
     };
 }
+

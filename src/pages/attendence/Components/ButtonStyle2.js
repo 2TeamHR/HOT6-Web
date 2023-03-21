@@ -7,7 +7,8 @@ import { callGetReasonFileAPI } from '../../../apis/AttendanceAPICalls';
 
 function BasicButtons2(props) {
 
-    console.log('props test', props.data);
+
+
 
     const BootstrapButton2 = styled(Button)({
         boxShadow: 'none',
@@ -58,28 +59,46 @@ function BasicButtons2(props) {
     let commuteNo = props.data.data.commuteCode;
 
     const onClickDownloadHandler = async () => {
-        console.log('[Download] onClickDownloadHandler');
 
-        try {
-            const blob = await dispatch(callGetReasonFileAPI({commuteNo}));
-            console.log('blob====>2', blob);
-            const url = URL.createObjectURL(blob);
-            const extension = blob.type.split('/')[1];
-            const filename = `${commuteNo}.${extension}`;
+        const commuteFile = await dispatch(callGetReasonFileAPI({commuteNo: commuteNo}));
+
+        console.log('commuteFile ;;;;;;;;;: ', commuteFile);
+
+        const url = "http://localhost:8888/files/87362ee535d5454ead494176dc239e53.xlsx";       
+
+        fetch(url, {
+            method: "GET",
+
+        }).then((response) => response.blob())
+        .then((blob) => {
+            const url = window.URL.createObjectURL(blob);
             const link = document.createElement('a');
-            link.href = url;
-            link.download = filename;
+            const name = '통합문서1.xlsx';
+            // alert('test',link);
+            link.setAttribute(
+                'href',
+                url
+            );
+
+            link.setAttribute(
+                'download',
+                name
+            );
+
+            document.body.appendChild(link);
             link.click();
-            URL.revokeObjectURL(url);
-        } catch (error) {
-            console.error(error);
-        }
-        };
+
+            link.parentNode.removeChild(link);
+
+            window.URL.revokeObjectURL(url);
+        })
+
+        // alert('다운로드 완료');
+    };
 
     return (
         <BootstrapButton2
-            variant="contained" disableRipple
-            src={props.data.data.reasonFaddress}
+            variant="contained" 
             onClick={onClickDownloadHandler}
         >
         증빙 서류 확인
