@@ -272,7 +272,7 @@ function MypageMain() {
     /* 퇴근하기 버튼 핸들러 */
     const onClickEndTimeHandler = () => {
 
-        if(!endTimeStamp) {
+        if(!finishTimeStampRecord) {
 
             if (!startTimeStampRecord) {
 
