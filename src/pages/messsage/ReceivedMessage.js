@@ -42,19 +42,26 @@ function ReceivedMessage({receivedEmail}){
 
 
     function handleCheckboxChange(event, receivedEmail) {
-        if (event.target.checked) {
-            setSelectedEmails([...selectedEmails, receivedEmail]);
-        } else {
-            setSelectedEmails(selectedEmails.filter(emailList => emailList.id !== receivedEmail.id));
+        const selectedEmails = [];
+
+        // 선택된 이메일이 없는 경우, 이메일을 추가하고 배열을 업데이트합니다.
+        if (!isSelected(receivedEmail)) {
+          selectedEmails.push(receivedEmail);
+          setSelectedEmails(selectedEmails);
+          console.log("IF 문에서 추가된 값 확인", selectedEmails);
         }
-    }
-
-    console.log("값확인1" ,selectedEmails);
-
-    function isSelected(receivedEmail) {
-        return selectedEmails.some(email => email.id === receivedEmail.id);
-    }
-
+      
+        // 선택된 이메일이 있는 경우, 선택된 이메일을 제외한 나머지 이메일을 배열에서 제거하고 배열을 업데이트합니다.
+        else {
+          const filteredEmails = selectedEmails.filter((email) => email.id !== receivedEmail.id);
+          setSelectedEmails(filteredEmails);
+        }
+      }
+      
+      function isSelected(receivedEmail) {
+        // 선택된 이메일 배열에서 이메일이 존재하는지 확인합니다.
+        return selectedEmails.some((email) => email.id === receivedEmail.id);
+      }
 
 
     function selectAll() {
@@ -257,7 +264,7 @@ function ReceivedMessage({receivedEmail}){
                               <td ><input type="checkbox"
                                           onChange={(event) =>
                                               handleCheckboxChange(event, receivedEmail)}
-                                          checked={isSelected(receivedEmail)}
+                                        //   checked={isSelected(receivedEmail)}
 
                                    /></td>
                               <td style={{ textAlign: "center",
