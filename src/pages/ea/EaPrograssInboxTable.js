@@ -153,37 +153,32 @@ export default function EaPrograssInboxTable() {
   console.log("2번째 렌더");
   return (
     <>
-
-
-        <Grid item xs={12}>
-          <TableContainer component={Paper}>
-            <Table aria-label="collapsible table">
-              <TableHead>
-                <TableRow>
-                  <TableCell align="center">문서번호</TableCell>
-                  <TableCell align="center">문서유형</TableCell>
-                  <TableCell align="center">제목</TableCell>
-                  <TableCell align="center">부서명</TableCell>
-                  <TableCell align="center">직급</TableCell>
-                  <TableCell align="center">기안자</TableCell>
-                  <TableCell align="center">신청일</TableCell>
-                  <TableCell align="center">상태</TableCell>
-                  <TableCell align="center">상세보기</TableCell>
-                  <TableCell align="center">진행상태보기</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {documentList && documentList?.map((row) => (
-                  <Row key={row.eaCode} docu={row} />
-                ))}
-              </TableBody>
-            </Table>
-            {documentList?.length <= 0 ? <Box align="center" sx={{height: '600px'}}><h3>데이터가 존재하지 않습니다</h3></Box>:<div></div>}
-          </TableContainer>
-
-
-        </Grid>
- 
+     <Grid item xs={12}>
+        <TableContainer component={Paper}>
+          <Table aria-label="collapsible table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="center">문서번호</TableCell>
+                <TableCell align="center">문서유형</TableCell>
+                <TableCell align="center">제목</TableCell>
+                <TableCell align="center">부서명</TableCell>
+                <TableCell align="center">직급</TableCell>
+                <TableCell align="center">기안자</TableCell>
+                <TableCell align="center">신청일</TableCell>
+                <TableCell align="center">상태</TableCell>
+                <TableCell align="center">상세보기</TableCell>
+                <TableCell align="center">진행상태보기</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {documentList && documentList?.map((row) => (
+                <Row key={row.eaCode} docu={row} />
+              ))}
+            </TableBody>
+          </Table>
+          {documentList?.length <= 0 ? <Box align="center" sx={{ height: '600px' }}><h3>데이터가 존재하지 않습니다</h3></Box> : <div></div>}
+        </TableContainer>
+      </Grid>
     </>
   );
 }
