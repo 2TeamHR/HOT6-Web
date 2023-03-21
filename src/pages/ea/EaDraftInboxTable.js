@@ -18,8 +18,9 @@ import { useEffect, useState } from "react";
 import { decodeJwt } from "../../utils/tokenUtils";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import EaModalApprover from "./EaModalApprover";
+
 import { height } from "@mui/system";
+import EaModalNew from "./EaModalNew";
 
 
 function Row(docu1) {
@@ -82,7 +83,7 @@ function Row(docu1) {
           <TableCell align="center">
 
             {/* 모달 */}
-            <EaModalApprover documentInfo={docu} />
+            <EaModalNew documentInfo={docu} />
 
 
           </TableCell>
