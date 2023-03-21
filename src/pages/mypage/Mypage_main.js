@@ -45,8 +45,6 @@ function MypageMain() {
     const [countLate, setCountLate] = useState('');
     const [thisWeekTotalTime, setThisWeekTotalTime] = useState('');
 
-    console.log('myLeaveInfo : ', myLeaveInfo);
-
     const payload ={
         memberCode: token.sub,
     }

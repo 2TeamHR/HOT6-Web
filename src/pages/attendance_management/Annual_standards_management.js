@@ -20,8 +20,6 @@ function AnnualStandardsManagement() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const leave = useSelector(state => state.leaveReducer);
-    
-    console.log('leave : ', leave);
 
     useEffect(
         () => {
@@ -45,8 +43,6 @@ function AnnualStandardsManagement() {
 
     /* 휴가 기준 등록 핸들러 */
     const onClickLeaveRegistrationHandler = () => {
-
-        console.log('[LeaveRegistration] onClickLeaveRegistrationHandler');
 
         const formData = new FormData();
 
@@ -153,7 +149,7 @@ function AnnualStandardsManagement() {
                             </tr>
                         </thead>
                         <tbody>
-                            {leave && leave.map((category, index) => (
+                            {Array.isArray(leave) && leave?.map((category, index) => (
                                 <tr key={category.leaveCategoryCode} className="text-center">
                                     <td className='align-middle'>{index + 1}</td>
                                     <td className='align-middle'>{category.leaveCategoryName}</td>

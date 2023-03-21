@@ -7,7 +7,8 @@ import { callGetReasonFileAPI } from '../../../apis/AttendanceAPICalls';
 
 function BasicButtons2(props) {
 
-    console.log('props test', props.data);
+
+
 
     const BootstrapButton2 = styled(Button)({
         boxShadow: 'none',
@@ -57,47 +58,47 @@ function BasicButtons2(props) {
     const dispatch = useDispatch();
     let commuteNo = props.data.data.commuteCode;
 
-    // const onClick = () => {
-    //     <Link to='http://localhost:8888/files/0006bbef77a64e03adfd0db7760b68f0.jpeg'></Link>
-    // }
-
     const onClickDownloadHandler = async () => {
-        console.log('[Download] onClickDownloadHandler');
 
-            const download = await dispatch(callGetReasonFileAPI({commuteNo}));
-            // const extension = blob.split('.')[1];
-            // const filename = `${commuteNo}.${extension}`;
+        const commuteFile = await dispatch(callGetReasonFileAPI({commuteNo: commuteNo}));
 
-            window.location.href = download;
-            // const filename = blob;
-            // const convertedBlob = new Blob([blob], { type: 'application/json' });
-            // console.log('blob이 undefined 나오면 안돼', convertedBlob);
-            // const url = URL.createObjectURL(convertedBlob);
-            // // const url = blob
-            // // const extension = blob.type.split('/')[1];
-            // const link = document.createElement('a');
-            // link.href = url;
-            // link.download = filename;
-            // link.click();
-            // URL.revokeObjectURL(url);
+        console.log('commuteFile ;;;;;;;;;: ', commuteFile);
 
-            // const response = await dispatch(callGetReasonFileAPI({commuteNo}));
-            // const blob = await response.body; // Response 객체에서 Blob 객체를 추출
-            // console.log('blob이 undefined 나오면 안돼', blob);
-            // const extension = response.split('.')[1];
-            // const filename = `${commuteNo}.${extension}`;
-            // const url = URL.createObjectURL(blob);
-            // const link = document.createElement('a');
-            // link.href = url;
-            // link.download = filename;
-            // link.click();
-            // URL.revokeObjectURL(url);
+        const url = "http://localhost:8888/files/87362ee535d5454ead494176dc239e53.xlsx";       
 
+        // fetch(url, {
+        //     method: "GET",
+        //
+        // }).then((response) => response.blob())
+        // .then((blob) => {
+        //     const url = window.URL.createObjectURL(blob);
+        //     const link = document.createElement('a');
+        //     const name = '통합문서1.xlsx';
+        //     // alert('test',link);
+        //     link.setAttribute(
+        //         'href',
+        //         url
+        //     );
+        //
+        //     link.setAttribute(
+        //         'download',
+        //         name
+        //     );
+        //
+        //     document.body.appendChild(link);
+        //     link.click();
+        //
+        //     link.parentNode.removeChild(link);
+        //
+        //     window.URL.revokeObjectURL(url);
+        // })
+
+        // alert('다운로드 완료');
     };
 
     return (
-        <BootstrapButton2 
-            variant="contained" disableRipple
+        <BootstrapButton2
+            variant="contained" 
             onClick={onClickDownloadHandler}
         >
         증빙 서류 확인

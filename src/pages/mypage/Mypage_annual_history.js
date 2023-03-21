@@ -79,12 +79,7 @@ function MypageAnnualHistory() {
                                         </div>
                                     );
                                 } else if((item.leaveCategoryCode === "LC1" && item.leavePaymentDate.slice(0,4) !== '2022')) {
-                                    return (
-                                        <div>
-                                            <p>총 연차</p>
-                                            <p className="fs-3">-</p>
-                                        </div>
-                                    );
+                                    return null;
                                 }
                             })}
                             {Array.isArray(memberLeaveList) && memberLeaveList.map((item) => {
@@ -99,12 +94,7 @@ function MypageAnnualHistory() {
                                         </div>
                                     );
                                 } else if((item.leaveCategoryCode === "LC1" && item.leavePaymentDate.slice(0,4) !== '2022')) {
-                                    return (
-                                        <div>
-                                            <p>사용</p>
-                                            <p className="fs-3">-</p>
-                                        </div>
-                                    );
+                                    return null;
                                 }
                             })}
                             {Array.isArray(memberLeaveList) && memberLeaveList.map((item) => {
@@ -119,12 +109,7 @@ function MypageAnnualHistory() {
                                         </div>
                                     );
                                 } else if((item.leaveCategoryCode === "LC1" && item.leavePaymentDate.slice(0,4) !== '2022')) {
-                                    return (
-                                        <div>
-                                            <p>잔여</p>
-                                            <p className="fs-3">-</p>
-                                        </div>
-                                    );
+                                    return null;
                                 }
                             })}
                         </div>
@@ -146,12 +131,7 @@ function MypageAnnualHistory() {
                                         </div>
                                     );
                                 } else if((item.leaveCategoryCode === "LC1" && item.leavePaymentDate.slice(0,4) !== '2023')) {
-                                    return (
-                                        <div>
-                                            <p>총 연차</p>
-                                            <p className="fs-3">-</p>
-                                        </div>
-                                    );
+                                    return null;
                                 }
                             })}
                             {Array.isArray(memberLeaveList) && memberLeaveList.map((item) => {
@@ -166,12 +146,7 @@ function MypageAnnualHistory() {
                                         </div>
                                     );
                                 } else if((item.leaveCategoryCode === "LC1" && item.leavePaymentDate.slice(0,4) !== '2023')) {
-                                    return (
-                                        <div>
-                                            <p>사용</p>
-                                            <p className="fs-3">-</p>
-                                        </div>
-                                    );
+                                    return null;
                                 }
                             })}
                             {Array.isArray(memberLeaveList) && memberLeaveList.map((item) => {
@@ -186,12 +161,7 @@ function MypageAnnualHistory() {
                                         </div>
                                     );
                                 } else if((item.leaveCategoryCode === "LC1" && item.leavePaymentDate.slice(0,4) !== '2023')) {
-                                    return (
-                                        <div>
-                                            <p>잔여</p>
-                                            <p className="fs-3">-</p>
-                                        </div>
-                                    );
+                                    return null;
                                 }
                             })}
                         </div>

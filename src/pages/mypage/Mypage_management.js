@@ -21,8 +21,6 @@ function MypageManagement (){
     const [imageUrl, setImageUrl] = useState();
     const imageInput = useRef();
 
-    console.log('memberDetail', memberDetail);
-
     useEffect(
         () => {
             if(token !== null) {
