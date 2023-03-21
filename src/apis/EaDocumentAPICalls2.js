@@ -1,4 +1,4 @@
-import {GET_CERT_DOCUMENT, GET_LEAVE_DOCUMENT, GET_SALARY_DOCUMENT} from '../modules/EaDocumentModule2';
+import { GET_CERT_DOCUMENT, GET_LEAVE_DOCUMENT, GET_SALARY_DOCUMENT, GET_APPROVER_LIST} from '../modules/EaDocumentModule2';
 
 
 export const callEaLeaveDocumentAPI = ({eaCode}) => {
@@ -76,7 +76,7 @@ export const callEaSalaryDocumentAPI = ({eaCode}) => {
 
 export const callApproverListAPI = ({memberSpl}) => {
 
-    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/message/search/${memberName1}`;
+    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/message/search/${memberSpl}`;
     console.log('eaRequestUrl', requestURL);
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {

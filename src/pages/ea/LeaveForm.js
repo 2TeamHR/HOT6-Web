@@ -30,23 +30,23 @@ const Item = styled(Paper)(({ theme }) => ({
 function LeaveForm() {
 
 
-  //   {
-  //     "memberCode": "220204",
+  // {
+  //   "memberCode": "220204",
   //     "eaSubject": "new 휴가",
-  //     "eaDetail": "휴가신청합니다",
-  //     "eaApproverInfoList": [
-  //         {
+  //       "eaDetail": "휴가신청합니다",
+  //         "eaApproverInfoList": [
+  //           {
   //             "memberCode": "180034",
   //             "eaAuthCode": "MIDDLE"
-  //         },
-  //         {
+  //           },
+  //           {
   //             "memberCode": "160008",
   //             "eaAuthCode": "FINAL"
-  //         }
-  //     ],
-  //     "leaveStartDate": "2023-03-16",
-  //     "leaveEndDate": "2023-03-16",
-  //     "leaveCategoryCode": "LC1"
+  //           }
+  //         ],
+  //           "leaveStartDate": "2023-03-16",
+  //             "leaveEndDate": "2023-03-16",
+  //               "leaveCategoryCode": "LC1"
   // }
 
 
@@ -100,21 +100,46 @@ function LeaveForm() {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
+  // const [form, setForm] = useState({
+  //   memberCode: '',
+  //   eaSubject: '',
+  //   eaDetail: '',
+  //   eaApproverInfoList: [
+  //     {
+  //       memberCode: '',
+  //       eaAuthCode: ''
+  //     }
+
+  //   ],
+  //   leaveStartDate: startDate,
+  //   leaveEndDate: endDate,
+  //   leaveCategoryCode: ''
+  // });
+
   const [form, setForm] = useState({
-    memberCode: '',
-    eaSubject: '',
-    eaDetail: '',
+    memberCode: "220204",
+    eaSubject: "new 휴가",
+    eaDetail: "휴가신청합니다",
     eaApproverInfoList: [
       {
-        memberCode: '',
-        eaAuthCode: ''
+        "memberCode": "180034",
+        "eaAuthCode": "MIDDLE"
+      },
+      {
+        "memberCode": "160008",
+        "eaAuthCode": "FINAL"
       }
-
     ],
-    leaveStartDate: startDate,
-    leaveEndDate: endDate,
-    leaveCategoryCode: ''
+    leaveStartDate: "2023-03-16",
+    leaveEndDate: "2023-03-16",
+    leaveCategoryCode: "LC1"
   });
+
+
+
+
+
+
 
 
   const onStartDateChangeHandler = (date) => {
@@ -155,7 +180,7 @@ function LeaveForm() {
 
 
 
-    navigate('/annual/standardsManagement', { replace: true });
+    navigate('/ea/main', { replace: true });
     window.location.reload();
 
   }
