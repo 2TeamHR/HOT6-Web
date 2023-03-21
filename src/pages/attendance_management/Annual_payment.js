@@ -17,7 +17,7 @@ function AnnualPayment(){
 
     useEffect(
         () => {
-                dispatch(callLeavePaymentListAPI({
+                dispatch(callLeavePaymentListAPI({status:"EA_STATUS_FINISH"
                 }));          
         }, []
     );

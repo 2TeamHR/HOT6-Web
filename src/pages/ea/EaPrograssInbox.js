@@ -1,5 +1,5 @@
 import { Button, Container } from "@mui/material";
-import EaExtendTable from "./EaExtendTable";
+import EaRealExtendTablePrograss from "./EaRealExtendTablePrograss";
 
 function EaPrograssInbox() {
 
@@ -12,7 +12,7 @@ function EaPrograssInbox() {
                     <option value="">사원번호</option>
                     <option value="">문서번호</option>
                 </select><input type="text" /><Button variant="outlined">검색</Button>
-                <EaExtendTable></EaExtendTable>
+                <EaRealExtendTablePrograss></EaRealExtendTablePrograss>
             </Container>
         </>
     );

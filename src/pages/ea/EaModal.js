@@ -21,7 +21,9 @@ const Item = styled(Paper)(({ theme }) => ({
   height: 100
 }));
 
-export default function EsModal({ documentInfo }) {
+export default function EaModal({ documentInfo }) {
+
+
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -45,7 +47,7 @@ export default function EsModal({ documentInfo }) {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        결재 진행중
+        상세보기
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>전자결재</DialogTitle>

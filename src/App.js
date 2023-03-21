@@ -68,6 +68,11 @@ import EaDraftInbox from './pages/ea/EaDraftInbox';
 import DutyForm from './pages/ea/DutyForm';
 import LOAForm from './pages/ea/LOAForm';
 import ReinstatmentForm from './pages/ea/ReinstatementForm';
+import MyRequireSalary from './pages/salary/Salary_MyRequireSalary';
+import RequireSalaryList from './pages/salary/Salary_RequireSalaryList';
+import RequireSalaryUpdate from './pages/salary/Salary_RequireSalaryUpdate';
+import EaAllListInsa from './pages/ea/EaAllListInsa';
+import MessageDetail from "./pages/messsage/MessageDetail";
 
 function App() {
 
@@ -115,6 +120,7 @@ function App() {
             {/* 급여 */}
             <Route path="/salary/check" element={ <SalaryCheck />} />
             <Route path="/salary/specification" element={ <Specification />} />
+            <Route path="/salary/my/require" element={ <MyRequireSalary />} />
 
             {/* 게시판 */}
             <Route path="/board/notice" element={<BoardNotice />} />
@@ -132,6 +138,8 @@ function App() {
             <Route path="/messsage/MessageSent" element={<MessageSent />} />
             <Route path="/messsage/MessageTrash" element={<MessageTrash />} />
             <Route path="/messsage/receivedMessage" element={<ReceivedMessage />} />
+            <Route path="/messsage/messageDetail" element={<MessageDetail />} />
+
 
           </Route>
         </Route>
@@ -155,9 +163,11 @@ function App() {
             {/* 급여 */}
             <Route path="/salary/check/All" element={<AllCheckN />} />
             <Route path="/salary/month/insert" element={<SalaryInsert />} />
+            <Route path="/salary/require/update" element={<RequireSalaryUpdate />} />
             {/* <Route path="/salary/severance/N" element={<SeveranceN />} /> */}
             {/* <Route path="/salary/severance/Y" element={<SeveranceY />} /> */}
             {/* <Route path="/salary/severance/insert" element={<SeveranceInsert />} /> */}
+            <Route path="/salary/require/list" element={<RequireSalaryList />} />
             <Route path="/salary/bonus" element={<SalaryBonus />} />
             <Route path="/salary/bonus/insert" element={<BonusInsert />}/>
 
@@ -165,6 +175,8 @@ function App() {
             <Route path="/board/notice/write" element={<BoardNoticeWrite />} />
             <Route path="/board/notice/update" element={<BoardNoticeUpdate />} />
 
+            {/* 전자결재 */}
+            <Route path="/ea/allEaList" element={<EaAllListInsa />}/>
           </Route>
         </Route>
     </Routes>

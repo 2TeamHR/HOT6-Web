@@ -60,7 +60,7 @@ export function EmploymentModal({onClose, certificate}) {
             <br />
             <label>
               재직기간 :
-              <input type="text" value={certificate.member?.joinDate.slice(0, 10)} readOnly />
+              <input type="text" value={certificate.member?.joinDate?.slice(0, 10)} readOnly />
                ~
                <input type="text" readOnly />
             </label>

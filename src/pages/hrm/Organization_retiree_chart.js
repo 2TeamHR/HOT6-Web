@@ -53,16 +53,16 @@ function OrganizationRetireeChart() {
                     <p>퇴직자 명단</p>
                 </div>
 
-                <Paper elevation={3}>
+                {/* <Paper elevation={3}>
                     <div className={tableStyle.boxStyle}>
                         <div className={tableStyle.searchBox}>
                             <TsbDepartment onChange={onTeamChange}/>
                             <TsbEmployee/>
                             {/* <Term/> */}
-                            <SearchBtn/>
+                            {/*<SearchBtn/>
                         </div>
                     </div>
-                </Paper>
+                </Paper> */}
 
                 <Paper elevation={3} className="mt-4 pb-5">
                     <Table>

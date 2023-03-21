@@ -56,30 +56,48 @@ function BasicButtons2(props) {
 
     const dispatch = useDispatch();
     let commuteNo = props.data.data.commuteCode;
-    
+
+    // const onClick = () => {
+    //     <Link to='http://localhost:8888/files/0006bbef77a64e03adfd0db7760b68f0.jpeg'></Link>
+    // }
+
     const onClickDownloadHandler = async () => {
         console.log('[Download] onClickDownloadHandler');
 
-        try {
-            const blob = await dispatch(callGetReasonFileAPI({commuteNo}));
-            console.log('blob====>2', blob);
-            const url = URL.createObjectURL(blob);
-            const extension = blob.type.split('/')[1];
-            const filename = `${commuteNo}.${extension}`;
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = filename;
-            link.click();
-            URL.revokeObjectURL(url);
-        } catch (error) {
-            console.error(error);
-        }
-        };
+            const download = await dispatch(callGetReasonFileAPI({commuteNo}));
+            // const extension = blob.split('.')[1];
+            // const filename = `${commuteNo}.${extension}`;
+
+            window.location.href = download;
+            // const filename = blob;
+            // const convertedBlob = new Blob([blob], { type: 'application/json' });
+            // console.log('blob이 undefined 나오면 안돼', convertedBlob);
+            // const url = URL.createObjectURL(convertedBlob);
+            // // const url = blob
+            // // const extension = blob.type.split('/')[1];
+            // const link = document.createElement('a');
+            // link.href = url;
+            // link.download = filename;
+            // link.click();
+            // URL.revokeObjectURL(url);
+
+            // const response = await dispatch(callGetReasonFileAPI({commuteNo}));
+            // const blob = await response.body; // Response 객체에서 Blob 객체를 추출
+            // console.log('blob이 undefined 나오면 안돼', blob);
+            // const extension = response.split('.')[1];
+            // const filename = `${commuteNo}.${extension}`;
+            // const url = URL.createObjectURL(blob);
+            // const link = document.createElement('a');
+            // link.href = url;
+            // link.download = filename;
+            // link.click();
+            // URL.revokeObjectURL(url);
+
+    };
 
     return (
         <BootstrapButton2 
             variant="contained" disableRipple
-            src={props.data.data.reasonFaddress}
             onClick={onClickDownloadHandler}
         >
         증빙 서류 확인

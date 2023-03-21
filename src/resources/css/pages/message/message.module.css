@@ -18,7 +18,7 @@ main {
 
 /* 큰박스 */
 .module{
-    width: 70%;
+    width: 60%;
     height: auto;
     margin: 10px 100px 10px 10px;
     border: 1px solid #aaaaaa;
@@ -95,7 +95,7 @@ main {
 
 .messageBlank input{
 
-    width: 75%;
+    width: 60%;
 
 }
 
@@ -104,7 +104,7 @@ main {
 /* 파일업로드 */
 .fileUpload input{
 
-    width: 75%;
+    width: 60%;
     height: 70px;
 }
 

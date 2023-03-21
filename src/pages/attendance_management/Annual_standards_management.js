@@ -10,16 +10,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import {
-    callLeaveCategoryListAPI,
-    callLeaveRegistAPI,
-    callLeaveDeleteAPI
+    callLeaveCategoryListAPI
+    , callLeaveRegistAPI
+    , callLeaveDeleteAPI
 } from '../../apis/LeaveAPICalls';
 
 function AnnualStandardsManagement() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const leave = useSelector(state => state.leaveReducer);  
+    const leave = useSelector(state => state.leaveReducer);
+    
+    console.log('leave : ', leave);
 
     useEffect(
         () => {

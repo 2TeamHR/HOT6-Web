@@ -2,10 +2,10 @@ import Table from 'react-bootstrap/Table';
 
 function BasicTable({ salaryDetail: {basicSalary, bonus, mealSalary, beforeSalary }}){
 
-    const formattedBasicSalary = basicSalary.toLocaleString();
-    const formattedBonusSalary = bonus ? bonus.bonusSalary.toLocaleString() : 0;
-    const formattedMealSalary = mealSalary.toLocaleString();
-    const formattedBeforeSalary = beforeSalary.toLocaleString();
+    const formattedBasicSalary = basicSalary?.toLocaleString();
+    const formattedBonusSalary = bonus ? bonus.bonusSalary?.toLocaleString() : 0;
+    const formattedMealSalary = mealSalary?.toLocaleString();
+    const formattedBeforeSalary = beforeSalary?.toLocaleString();
 
     return(
     <Table striped style={{width:500}} className="mr-5">

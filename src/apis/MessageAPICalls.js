@@ -100,7 +100,11 @@ export const callGetMessageReceiveListAPI = () => {
             const receivedData = result.data.map(receivedEmail=>({
                 name:receivedEmail.memberName, 
                 title:receivedEmail.messageTitle, 
-                date:receivedEmail.messageSendDate}))    
+                date:receivedEmail.messageSendDate,
+                content:receivedEmail.messageContent,
+                email:receivedEmail.memberEmail,
+                code:receivedEmail.messageCode
+                }))
             dispatch({ type: GET_MESSAGE_RECEIVE_LIST, payload: receivedData });
             return receivedData;
         } catch (error) {
@@ -109,7 +113,59 @@ export const callGetMessageReceiveListAPI = () => {
         }                                      
     };
 }
-                                                                                                                                                                               
+
+
+/*휴지통 가져오기 */
+export const callGetMessageTrashListAPI = () => {
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));
+    const memberCode = token.sub;
+    console.log("토큰섭의 값",memberCode);
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/messageTrash`;
+
+    return async (dispatch, getState) => {
+
+        const payload ={
+            memberCode : token.sub,
+        }
+
+        try {
+            const response = await fetch(requestURL, {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "*/*",
+                    "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+                },
+                body: JSON.stringify(payload)
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const result = await response.json();
+            if (!result || !result.data) {
+                throw new Error('No data found');
+            }
+            console.log(result.data);
+            const receivedData = result.data.map(receivedEmail=>({
+                name:receivedEmail.memberName,
+                title:receivedEmail.messageTitle,
+                date:receivedEmail.messageSendDate,
+                content:receivedEmail.messageContent,
+                email:receivedEmail.memberEmail,
+
+            }))
+            dispatch({ type: GET_MESSAGE_RECEIVE_LIST, payload: receivedData });
+            return receivedData;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    };
+}
+
+
+
 
 export const callGetMessageReceiveCountAPI = () => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/messageReceivedCount`;

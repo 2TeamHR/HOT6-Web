@@ -1,10 +1,10 @@
 import{     
-    GET_ANNUAL, 
-    POST_ANNUAL,
-    DELETE_ANNUAL,
-    GET_MYLEAVEINFO,
-    GET_ANNUALAll,
-    GET_MEMBERLEAVEDETAIL
+    GET_ANNUAL 
+    , POST_ANNUAL
+    , DELETE_ANNUAL
+    , GET_MYLEAVEINFO
+    , GET_ANNUALAll
+    , GET_ANNUALMEMBER
     } from '../modules/LeaveModule.js';
 
 export const callLeaveCategoryListAPI = () => {
@@ -52,7 +52,7 @@ export const callmemberLeaveAPI = ({memberCode}) => {
 
         if(result.status === 200){
 
-            dispatch({ type: GET_MEMBERLEAVEDETAIL,  payload: result.data });
+            dispatch({ type: GET_ANNUALMEMBER,  payload: result.data });
         }
         
     };
@@ -120,7 +120,7 @@ export const callGetMyLeaveInfoAPI = ({memberCode}) => {
 
         console.log('[LeaveAPICalls] callGetMemberAPI RESULT : ', result);
 
-        dispatch({ type: GET_MYLEAVEINFO,  payload: result });
+        dispatch({ type: GET_MYLEAVEINFO,  payload: result.data });
 
     };
 }

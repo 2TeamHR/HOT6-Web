@@ -2,11 +2,11 @@ import Table from 'react-bootstrap/Table';
 
 function TaxTable({salaryDetail : {incomTax, healthTax, nationalTax }}){
 
-    const formattedIncomTax = incomTax.toLocaleString();
-    const formattedHealthTax = healthTax.toLocaleString();
-    const formattedNationalTax = nationalTax.toLocaleString();
+    const formattedIncomTax = incomTax?.toLocaleString();
+    const formattedHealthTax = healthTax?.toLocaleString();
+    const formattedNationalTax = nationalTax?.toLocaleString();
     const totalTax = incomTax + healthTax + nationalTax;
-    const formattedTotalTax = totalTax.toLocaleString();
+    const formattedTotalTax = totalTax?.toLocaleString();
 
     return(
     <Table striped style={{width:500}}>

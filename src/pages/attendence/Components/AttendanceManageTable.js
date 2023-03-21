@@ -102,7 +102,7 @@ export default function AttendanceManageTable(props) {
                 columns={columns}
                 pageSize={10}
                 rowsPerPageOptions={[5]}
-                checkboxSelection
+                // checkboxSelection
             />
         </div>
     );

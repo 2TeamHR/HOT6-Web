@@ -17,6 +17,7 @@ import { callGetMyLeaveInfoAPI } from '../../apis/LeaveAPICalls';
 import { callGetMemberAPI } from '../../apis/MemberAPICalls';
 
 import axios from 'axios';
+import {callGetMessageReceiveListAPI} from "../../apis/MessageAPICalls";
 
 
 function MypageMain() {
@@ -37,15 +38,20 @@ function MypageMain() {
     const memberDetail = member.data;
     const myLeaveInfo = useSelector(state => state.leaveReducer);
     const [startTime, setStartTime] = useState("");
+    const [count , setCount] = useState('');
+    const [emailSelect, setEmailSelect] = useState('');
+    const [thisMonth, setThisMonth] = useState('');
+    const [countOnTime, setCountOnTime] = useState('');
+    const [countLate, setCountLate] = useState('');
+    const [thisWeekTotalTime, setThisWeekTotalTime] = useState('');
 
-    console.log('=============', token);
+    console.log('myLeaveInfo : ', myLeaveInfo);
+
+    const payload ={
+        memberCode: token.sub,
+    }
     // hs
-    const [hrForm, setHrForm] = useState({
-
-        commuteStartTime: '',
-
-    });
-
+    const [hrForm, setHrForm] = useState({commuteStartTime: ''});
 
     useEffect(
         () => {
@@ -93,46 +99,102 @@ function MypageMain() {
       }, [startTimeStampRecord]);
 
     // hs
-    // useEffect(() => {
-    //     const intervalId = setInterval(() => {
-    //       axios
-    //         .get(`http://localhost:8888/api/v1/attendance/mypageAregistSelect`, {
-    //           params: {
-    //             commuteStartTime: moment(date).format('YYYY-MM-DDTHH:mm:ss'),
-    //             memberCode: token.sub,
-    //           },
-    //           headers: {
-    //             "Content-Type": "application/json",
-    //             Accept: "*/*",
-    //             Authorization: `Bearer ${window.localStorage.getItem(
-    //               "accessToken"
-    //             )}`,
-    //           },
-    //         })
-    //         .then((response) => {
-    //             const commuteFinishTime = response.data.data[0].commuteFinishTime;
-    //             const formattedFinishTime = commuteFinishTime ? moment(commuteFinishTime, "YYYY-MM-DDTHH:mm:ss.SSSZ").format("HH:mm:ss") : '';
+    /*등록한 출퇴근이 조회된다*/
+    useEffect(() => {
+          axios
+            .get(`http://localhost:8888/api/v1/attendance/mypageAregistSelect`, {
+              params: {
+                commuteStartTime: moment(date).format('YYYY-MM-DDTHH:mm:ss'),
+                memberCode: token.sub,
+              },
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "*/*",
+                Authorization: `Bearer ${window.localStorage.getItem(
+                  "accessToken"
+                )}`,
+              },
+            })
+            .then((response) => {
+                const commuteFinishTime = response.data.data[0].commuteFinishTime;
+                const formattedFinishTime = commuteFinishTime ? moment(commuteFinishTime, "YYYY-MM-DDTHH:mm:ss.SSSZ").format("HH:mm:ss") : '';
 
 
-    //             console.log("출근 시간 데이터 나오기 전");
-    //           console.log(response.data); // 응답 데이터를 콘솔에 출력
-    //           setStartTimeStampRecord(moment(response.data.data[0].commuteStartTime).format("HH:mm:ss"));
-    //           setFinishTimeStampRecord(formattedFinishTime);
-    //           setTotalWorkTime(response.data.data[0].commuteTotalTime);
-    //         })
-    //         .catch((error) => {
-    //           console.error(error);
-    //           console.log("출근시간 결과값 못 불러옴");
-    //           console.log(moment.utc(date).local().format('YYYY-MM-DDTHH:mm:ss'));
-    //         });
-    //     }, 2000); // 5초마다 실행
+                console.log("출근 시간 데이터 나오기 전");
+              console.log(response.data); // 응답 데이터를 콘솔에 출력
+              setStartTimeStampRecord(moment(response.data.data[0].commuteStartTime).format("HH:mm:ss"));
+              setFinishTimeStampRecord(formattedFinishTime);
+              setTotalWorkTime(response.data.data[0].commuteTotalTime);
+            })
+            .catch((error) => {
+              console.error(error);
+              console.log("출근시간 결과값 못 불러옴");
+              console.log(moment.utc(date).local().format('YYYY-MM-DDTHH:mm:ss'));
+            });
 
-    //     return () => clearInterval(intervalId); // cleanup 함수에서 interval 해제
-    //   }, []); // 의존성 배열에 값을 넣지 않아서 최초 1회만 실행
+      },[])
+
+    /*받은 편지함의 내용을 가져온다.*/
+    useEffect(()=>{
+
+        dispatch(callGetMessageReceiveListAPI())
+            .then((receivedData) => {
+                console.log("메세지 받아온 값 확인" , receivedData);
+                setEmailSelect(receivedData);
+                console.log("api에서 받은 값 출력",emailSelect);
+            }).catch(error => console.log(error))
+
+    }, []);
 
 
+    useEffect(() => {
+        console.log("api에서 받은 값 출력", emailSelect);
+      }, [emailSelect])
+
+    /*나의 메세지함 카운트*/
+    useEffect(() => {
+        axios.post(`http://localhost:8888/api/v1/messageReceivedCount`,payload, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+            }
+        }).then(response => {
+            console.log(response.data); // 응답 데이터를 콘솔에 출력
+            setCount(response.data.data);
+        })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
+
+
+    /*나의 근태 정보 출력*/
+    useEffect(() => {
+        axios.post(`http://localhost:8888/api/v1/attendance/myPageAttendanceMonth`,payload, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+            }
+        }).then(response => {
+            console.log("근태정보출력",response.data); // 응답 데이터를 콘솔에 출력
+            setThisMonth(response.data.data.thisMonth);
+            setCountOnTime(response.data.data.countOnTime);
+            setCountLate(response.data.data.countLate);
+            setThisWeekTotalTime(response.data.data.thisWeekTotalTime);
+
+        })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
 
     if (!memberDetail || Object.keys(memberDetail).length === 0) {
+        return <div>Loading...</div>;
+    };
+
+    if (!myLeaveInfo || Object.keys(myLeaveInfo).length === 0) {
         return <div>Loading...</div>;
     };
 
@@ -140,10 +202,16 @@ function MypageMain() {
      let myLeaveAll = 1;
      let myLeaveLeftover = 1;
  
-     if(myLeaveInfo.data !== undefined){
-         myLeaveAll =  myLeaveInfo.data[0].leavePaymentCount;
-         myLeaveLeftover = myLeaveInfo.data[0].leaveLeftoverCount;
-     }
+     if (myLeaveInfo !== undefined) {
+        const currentYear = new Date().getFullYear();
+        const matchingLeave = myLeaveInfo.find(item => 
+          item.leaveCategoryCode === 'LC1' && new Date(item.leavePaymentDate).getFullYear() === currentYear
+        );
+        if (matchingLeave !== undefined) {
+          myLeaveAll = matchingLeave.leavePaymentCount;
+          myLeaveLeftover = matchingLeave.leaveLeftoverCount;
+        }
+      }
 
     function tick() {
         setDate(new Date());
@@ -164,7 +232,6 @@ function MypageMain() {
 
             setStartTimeStamp(moment(date).format('HH:mm:ss'));
 
-
             const payload = {
                 commuteStartTime: date,
               };
@@ -184,12 +251,12 @@ function MypageMain() {
                   },
                 })
 
-
                 .then((response) => {
                   console.log("데이터 나오기 전");
                   console.log(response.data); // 응답 데이터를 콘솔에 출력
                   setStartTimeStamp(moment(response.data.date).format('HH:mm:ss'));
                   alert(response.data.data)
+                  window.location.reload();
                 })
                 .catch((error) => {
                   console.error(error);
@@ -201,12 +268,11 @@ function MypageMain() {
         }
     }
 
-
     // hs
     /* 퇴근하기 버튼 핸들러 */
     const onClickEndTimeHandler = () => {
 
-        if(!endTimeStamp) {
+        if(!finishTimeStampRecord) {
 
             if (!startTimeStampRecord) {
 
@@ -216,32 +282,31 @@ function MypageMain() {
                 setFinishTimeStore(date.toLocaleString());
                 setEndTimeStamp(moment(date).format('HH:mm:ss'));
 
-
-
                 const payload = {
                     commuteFinishTime: finishTimeStore,
                   };
 
-                  axios
-                    .get(`http://localhost:8888/api/v1/attendance/mypageAfinishRegist`, {
-                        params : {
-                            commuteFinishTime: date,
-                            memberCode: token.sub,
-                        },
-                      headers: {
-                        "Content-Type": "application/json",
-                        Accept: "*/*",
-                        Authorization: `Bearer ${window.localStorage.getItem(
-                          "accessToken"
-                        )}`,
-                      },
-                    })
+                axios
+                .get(`http://localhost:8888/api/v1/attendance/mypageAfinishRegist`, {
+                    params : {
+                        commuteFinishTime: date,
+                        memberCode: token.sub,
+                    },
+                    headers: {
+                    "Content-Type": "application/json",
+                    Accept: "*/*",
+                    Authorization: `Bearer ${window.localStorage.getItem(
+                        "accessToken"
+                    )}`,
+                    },
+                })
 
 
                     .then((response) => {
                       console.log("데이터 나오기 전");
                       console.log(response.data); // 응답 데이터를 콘솔에 출력
                       setEndTimeStamp(moment(response.data.date).format('HH:mm:ss'));
+                      window.location.reload();
                     })
                     .catch((error) => {
                       console.error(error);
@@ -254,13 +319,6 @@ function MypageMain() {
             alert('이미 퇴근을 하셨습니다.');
         }
     }
-
-
-
-
-
-
-
 
     return (
         <>
@@ -362,25 +420,26 @@ function MypageMain() {
                     <Paper elevation={3} className={mypageStyle.module}>
                         <p className={mypageStyle.moduleTitle}>나의 메세지함</p>
                         <div className={mypageStyle.noteCount}>
-                            <span>5</span>
+                            <span>{count}</span>
                             <span>건</span>
-                        </div>
-                        <div className={`text-center ${mypageStyle.noteContent}`}>
-                            <span className={mypageStyle.noteDay}>23.11.13</span>
-                            <span>연차신청</span>
-                            <span>이순신사원</span>
-                        </div>
-                        <div className={`text-center ${mypageStyle.noteContent}`}>
-                            <span className={mypageStyle.noteDay}>23.11.13</span>
-                            <span>연차신청</span>
-                            <span>이순신사원</span>
-                        </div>
-                        <div className={`text-center mb-5 ${mypageStyle.noteContent}`}>
-                            <span className={mypageStyle.noteDay}>23.11.13</span>
-                            <span>연차신청</span>
-                            <span>이순신사원</span>
-                        </div>
+                       </div>
+
+                         {[...emailSelect].slice(0, 3).map((receivedEmail,index) => {
+                            return (
+                            <table key={index} className={`text-center ${mypageStyle.noteContent}`}>
+                            <tbody>
+                            <tr>
+                            <td className={mypageStyle.noteDay}>{moment(receivedEmail.date).format('YY-MM-DD')}</td>
+                            <td className={mypageStyle.titleStyle}>{receivedEmail.title}</td>
+                            <td>{receivedEmail.name}</td>
+                            </tr>
+                            </tbody>
+                             </table>
+                            );
+                        })}   
+
                         <div className={mypageStyle.seeMore}>
+                        <br/>
                         <p><Link to="/messsage/receivedMessage" >더보기 ➢</Link></p>
                         </div>
                     </Paper>
@@ -414,16 +473,16 @@ function MypageMain() {
                         <div className="mb-5">
                             <div className="ml-5 mr-5 pb-3">
                                 <span className="fw-300">출근일수</span>
-                                <span className={`fw-300 float-right ${mypageStyle.workDay}`}>17일</span>
+                                <span className={`fw-300 float-right ${mypageStyle.workDay}`}>{countOnTime}일</span>
                             </div>
                             <div className="ml-5 mr-5 pb-3">
                                 <span className="fw-300">지각</span>
-                                <span className={`fw-300 float-right ${mypageStyle.workDay}`}>2일</span>
+                                <span className={`fw-300 float-right ${mypageStyle.workDay}`}>{countLate}일</span>
                             </div>
-                            <div className="ml-5 mr-5 pb-3">
-                                <span className="fw-300">추가근무</span>
-                                <span className={`fw-300 float-right ${mypageStyle.workDay}`}>6일</span>
-                            </div>
+                            {/*<div className="ml-5 mr-5 pb-3">*/}
+                            {/*    <span className="fw-300">추가근무</span>*/}
+                            {/*    <span className={`fw-300 float-right ${mypageStyle.workDay}`}>6일</span>*/}
+                            {/*</div>*/}
                         </div>
                         <div className={mypageStyle.seeMore}>
                             <p><Link to="/mypage/attendance/history">더보기 ➢</Link></p>
@@ -433,7 +492,7 @@ function MypageMain() {
                     <Paper elevation={3} className={mypageStyle.module}>
                         <p className={mypageStyle.moduleTitle}>주 근무 시간</p>
                         <div className={mypageStyle.weekTime}>
-                            <span className={mypageStyle.weekMyTime}>40</span>
+                            <span className={mypageStyle.weekMyTime}>{thisWeekTotalTime}</span>
                             <span>/</span>
                             <span>52</span>
                             <span>시간</span>

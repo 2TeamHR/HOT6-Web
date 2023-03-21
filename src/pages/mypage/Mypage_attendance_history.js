@@ -1,12 +1,13 @@
 import tableStyle from '../../resources/css/components/tableComponent.module.css';
 import mainTitleStyle from '../../resources/css/pages/mypage/main-title.module.css';
-import {TsbDepartment, TsbEmployee, PayState, Term, SearchBtn} from '../../components/TableSearchBox';
+import {AttendanceState, Term, SearchBtn} from '../../components/TableSearchBox';
 import { Modal, Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import Paper from '@mui/material/Paper';
 import { 
     callMyAttendanceListAPI
     , callCreateReasonAPI
+    , callMyAttendanceSearchListAPI
 } from '../../apis/AttendanceAPICalls';
 import { useNavigate } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
@@ -30,13 +31,33 @@ function  MypageAttendanceHistory () {
 
     const [file, setFile] = useState(null);
 
+    /* 사유서 폼 */
     const [form, setForm] = useState({
-        reasonTitle: '',
-        reasonDetail: '',
-        commuteCode: '',
-        reasonStatus: ''
+        reasonTitle: ''
+        , reasonDetail: ''
+        , commuteCode: ''
+        , reasonStatus: ''
     });
 
+    /* 검색 폼 */
+    const [searchForm, setSearchForm] = useState({
+        attendanceSelect: '',
+        startDate: '1900-01-01',
+        endDate: new Date().toISOString().split("T")[0],
+    });
+
+    const handleAttendanceStateChange = (selectedValue) => {
+        setSearchForm({ attendanceSelect: selectedValue });
+    };
+
+    const handleDateStateChange = ({ startDate, endDate }) => {
+        setSearchForm((prevSearchForm) => ({
+          ...prevSearchForm,
+          startDate: startDate || prevSearchForm.startDate,
+          endDate: endDate || prevSearchForm.endDate,
+        }));
+      };
+      
     const onChangeHandler = (e) => {
         setForm({
             ...form,
@@ -98,6 +119,44 @@ function  MypageAttendanceHistory () {
         ,[currentPage]
     );
 
+    // useEffect(
+    //     () => {    
+    //         if(token !== null) {
+    //             dispatch(callMyAttendanceSearchListAPI({
+    //                 memberCode: token.sub,
+    //                 startIndex: currentPage-1,
+    //                 endIndex: perPage,
+    //                 attendanceSelect: searchForm.attendanceSelect,
+    //                 startDate: searchForm.startDate,
+    //                 endDate: searchForm.endDate
+    //             }));          
+    //         }
+    //     }
+    //     ,[currentPage]
+    // );
+
+    const onClickLeaveRegistrationHandler = () => {
+
+        const formData = new FormData();
+
+        formData.append("memberCode", token.sub);
+        formData.append("page", currentPage-1);
+        formData.append("size", perPage);
+        formData.append("attendanceSelect", searchForm.attendanceSelect);
+        formData.append("startDate", searchForm.startDate);
+        formData.append("endDate", searchForm.endDate);
+
+        if(token !== null) {
+            dispatch(callMyAttendanceSearchListAPI({
+                form: formData
+            }));          
+        }        
+        
+        // alert('휴가 기준페이지로 이동합니다.');
+        // navigate('/annual/standardsManagement', { replace: true});
+        // window.location.reload();
+    }
+
     return (
         <main className={mainTitleStyle.main}>
             <div>
@@ -108,9 +167,9 @@ function  MypageAttendanceHistory () {
 
                 <div className={tableStyle.boxStyle}>
                     <div className={tableStyle.searchBox}>
-                        <PayState/>
-                        <Term/>
-                        <SearchBtn/>
+                        <AttendanceState onAttendanceStateChange={handleAttendanceStateChange}/>
+                        <Term onAttendanceStateChange={handleDateStateChange}/>
+                        <button className={tableStyle.searchBtn} onClick={onClickLeaveRegistrationHandler}>검색하기</button>
                     </div>
                 </div>
 
@@ -130,15 +189,15 @@ function  MypageAttendanceHistory () {
                             </tr>
                         </thead>
                         <tbody>
-                            {Array.isArray(attendanceList.content) && attendanceList.content.slice(startIndex, endIndex).map((attendance, index) => (
+                            {Array.isArray(attendanceList.content) && attendanceList?.content?.slice(startIndex, endIndex).map((attendance, index) => (
                                 <tr key={attendance.commuteNo} className="text-center">
                                     <td className='align-middle'>{index + 1}</td>
-                                    <td className='align-middle'>{attendance.commuteDate.slice(0, 10)}</td>
+                                    <td className='align-middle'>{attendance.commuteDate ? attendance.commuteDate.slice(0, 10) : ""}</td>
                                     <td className='align-middle'>{attendance.commuteStatus}</td>
-                                    <td className='align-middle'>{attendance.commuteStartTime.slice(11,19)}</td>
-                                    <td className='align-middle'>{attendance.commuteScountTime.slice(11,19)}</td>
-                                    <td className='align-middle'>{attendance.commuteFinishTime.slice(11,19)}</td>
-                                    <td className='align-middle'>{attendance.commuteFcountTime.slice(11,19)}</td>
+                                    <td className='align-middle'>{attendance.commuteStartTime ? attendance.commuteStartTime.slice(11,19) : ""}</td>
+                                    <td className='align-middle'>{attendance.commuteScountTime ? attendance.commuteScountTime.slice(11,19) : ""}</td>
+                                    <td className='align-middle'>{attendance.commuteFinishTime ? attendance.commuteFinishTime.slice(11,19) : ""}</td>
+                                    <td className='align-middle'>{attendance.commuteFcountTime ? attendance.commuteFcountTime.slice(11,19) : ""}</td>
                                     <td className='align-middle'>{attendance.commuteTotalTime}시간</td>
                                     <td className='align-middle'>
                                         <Button onClick={handleShow} className={tableStyle.documentsSubmit}>
@@ -161,7 +220,7 @@ function  MypageAttendanceHistory () {
                                                     <input 
                                                         className='w-100 rounded rounded-lg'
                                                         name='reasonFile'
-                                                        accept='file/pdf, file/word, file/png, file/jpg, file/jpeg'
+                                                        accept='file/pdf, file/word, file/png, file/jpg, file/jpeg, file/xlsx'
                                                         onChange={onChangeFileUpload}
                                                         type="file"
                                                     />

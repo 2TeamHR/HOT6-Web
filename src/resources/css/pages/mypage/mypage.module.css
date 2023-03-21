@@ -61,6 +61,7 @@
 
 .noteContent {
     margin-bottom: 10px;
+    margin-left: 75px;
 }
 
 .noteContent span {
@@ -112,4 +113,13 @@
     text-align: center;
     font-size: 30px;
     color: #B8B8B8;
+}
+
+/*나의 메세지함 스타일*/
+.titleStyle{
+    display: block;
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

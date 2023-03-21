@@ -126,7 +126,7 @@ function Sidebar() {
                                             인사팀 관리
                                         </div>
                                             <Link to="/attendence/AttendanceManage" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>근태 이력 조회</Link>
-                                            <Link to="/attendence/AttendanceSelectTime" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>근무 시간 이력</Link>
+                                            {/* <Link to="/attendence/AttendanceSelectTime" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>근무 시간 이력</Link> */}
                                             <Link to="/annual/payment" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>휴가 결재 리스트</Link>
                                             <Link to="/annual/standardsManagement" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>휴가 기준 관리</Link>
                                             <Link to="/annual/management" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>휴가 관리</Link>
@@ -169,6 +169,14 @@ function Sidebar() {
                                         <Link to="/ea/prograss" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 진행 문서함</Link>
                                         <Link to="/ea/complete" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>결재 완료 문서함</Link>                                        
                                     </div>
+                                    { (token.auth.includes("ROLE_ADMIN")) ? 
+                                    <div className={sidebarStyle.navDropdownContent}>
+                                        <div className={sidebarStyle.navDropdownContentTitle}>
+                                            인사팀 기능
+                                        </div>
+                                            <Link to="/ea/allEaList" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>전체 전자결재 문서함</Link>                                        
+                                    </div>
+                                    : <div/> }
                                 </div>
                             </div>
                         </div>
@@ -189,6 +197,7 @@ function Sidebar() {
                                             급여
                                         </div>
                                             <Link to="/salary/check" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>내 급여 조회</Link>
+                                            <Link to="/salary/my/require" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>정정 신청</Link>
                                     </div>
                                     { (token.auth.includes("ROLE_ADMIN")) ? 
                                     <div className={sidebarStyle.navDropdownContent}>
@@ -196,6 +205,7 @@ function Sidebar() {
                                             인사팀 관리
                                         </div>
                                             <Link to="/salary/check/All" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>급여 지급 현황 </Link>
+                                            <Link to="/salary/require/list" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>정정 신청 현황</Link>
                                             <Link to="/salary/bonus" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>상여금 지급 현황</Link>
                                             {/* <Link to="/salary/severance/N" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>퇴직금 지급 현황</Link> */}
                                     </div>
