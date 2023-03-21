@@ -22,19 +22,24 @@ const Item = styled(Paper)(({ theme }) => ({
   height: 100
 }));
 
-function LOAForm() {
-  const [value, setValue] = React.useState(dayjs('2022-04-07'));
+function LOAInfo({docu}) {
+  const eaCode = docu?.eaCode;
+  const dispatch = useDispatch();
+  const certDocument = useSelector(state => state.eaDocumentReducer2);
+  
+  React.useEffect(() => {  
+      dispatch(callEaCertDocumentAPI(
+        { eaCode }
+      ));
+  }, []);
+
 
 
   return (
     <>
-      <Grid item xs={3}><label htmlFor="">예비군 훈련 시작일</label></Grid>
-      <Grid item xs={3}><label htmlFor="">예비군 훈련 종료일</label></Grid>
-
-      <Grid item xs={3}><label htmlFor="">첨부파일</label></Grid>
-      <Grid item xs={3}><input type="file" /></Grid>
+      <Grid item xs={3}><label htmlFor="">휴직 예정일</label></Grid>
     </>
   );
 }
 
-export default LOAForm;
+export default LOAInfo;

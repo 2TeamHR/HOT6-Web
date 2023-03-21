@@ -38,7 +38,6 @@ function CertificationInfo({docu}) {
       <ThemeProvider theme={theme}>
 
         <Grid item xs={6}><label>증명서 종류</label></Grid>{certDocument?.eaCode}
-        <Grid item xs={6}></Grid>
 
       </ThemeProvider>
     </>

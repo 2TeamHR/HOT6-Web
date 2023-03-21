@@ -23,8 +23,6 @@ export default function LeaveInfo({ docu }) {
       <Grid item xs={6}><label>휴가종류</label></Grid><Grid item xs={6}>{leaveDocument?.leaveCategory?.leaveCategoryName}</Grid>
       <Grid item xs={6}><label>휴가시작일</label></Grid><Grid item xs={6}>{leaveDocument?.leaveStartDate}</Grid>
       <Grid item xs={6}><label>휴가종료일</label></Grid><Grid item xs={6}>{leaveDocument?.leaveEndDate}</Grid>
-      <Grid item xs={6}><label>첨부파일</label></Grid>
-
     </>
   );
 }

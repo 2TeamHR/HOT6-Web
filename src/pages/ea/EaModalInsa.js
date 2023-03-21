@@ -10,6 +10,10 @@ import { Button, Grid} from '@mui/material';
 import LeaveInfo from './LeaveInfo';
 import CertificationInfo from './CertificationInfo';
 import SalaryInfo from './SalaryInfo';
+import DutyInfo from './DutyInfo';
+import LOAInfo from './LOAInfo';
+import RetireInfo from './RetireInfo'
+import ReinstatementInfo from './ReinstatementInfo'
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -92,16 +96,17 @@ export default function EaModalNew({ documentInfo }) {
             <Grid item xs={6}><label>내용</label></Grid><Grid item xs={6}>{documentInfo?.eaDetail}</Grid>
 
 
-            {documentInfo?.dtype === "휴가신청" ? <React.Suspense> <LeaveInfo docu={documentInfo} /> </React.Suspense> : <div />}
+            {documentInfo?.dtype === "휴가신청" ? <LeaveInfo docu={documentInfo} /> : <div />}
+
             {documentInfo?.dtype === "증명서 신청" ? <CertificationInfo docu={documentInfo} /> : <div />}
 
-            {documentInfo?.dtype === "예비군 신청" ? <div>예비군</div> : <div />}
+            {documentInfo?.dtype === "예비군 신청" ? <DutyInfo docu={documentInfo} /> : <div />}
 
-            {documentInfo?.dtype === "휴직신청" ? <div>휴직신청</div> : <div />}
+            {documentInfo?.dtype === "휴직신청" ? <LOAInfo docu={documentInfo} /> : <div />}
 
-            {documentInfo?.dtype === "퇴직신청" ? <div>퇴직신청</div> : <div />}
+            {documentInfo?.dtype === "퇴직신청" ? <RetireInfo  docu={documentInfo}/> : <div />}
 
-            {documentInfo?.dtype === "복직신청" ? <div>복직신청</div> : <div />}
+            {documentInfo?.dtype === "복직신청" ? <ReinstatementInfo docu={documentInfo} /> : <div />}
 
             {documentInfo?.dtype === "급여정정 신청" ? <SalaryInfo docu={documentInfo} /> : <div />}
 

@@ -16,13 +16,12 @@ const Item = styled(Paper)(({ theme }) => ({
   height: 100
 }));
 
-function RetireForm() {
+function RetireInfo() {
   return (
     <>
               <Grid item xs={6}><label>퇴직예정일</label></Grid><Grid item xs={3}><input type="date" name="" id="" /></Grid>
-              <Grid item xs={6}><label>첨부파일</label></Grid><Grid item xs={3}><input type="file" name="" id="" /></Grid>
     </>
   );
 }
 
-export default RetireForm;
+export default RetireInfo;

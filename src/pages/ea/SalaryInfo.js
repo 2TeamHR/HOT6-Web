@@ -33,8 +33,6 @@ function SalaryInfo({docu}) {
     <>
       <Grid item xs={6}><label>급여정정 날짜</label></Grid>
       <Grid item xs={6}>{salaryDocument?.salCorrectionDate}</Grid>
-      <Grid item xs={6}><label>첨부파일</label></Grid>
-      <Grid item xs={6}><input type="file" name="" id="" /></Grid>
     </>
   );
 }

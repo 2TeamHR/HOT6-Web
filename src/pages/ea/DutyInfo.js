@@ -17,15 +17,23 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 
-function DutyInfo() {
+function DutyInfo({docu}) {
+    const eaCode = docu?.eaCode;
+    const dispatch = useDispatch();
+    const certDocument = useSelector(state => state.eaDocumentReducer2);
+    
+    React.useEffect(() => {  
+        dispatch(callEaCertDocumentAPI(
+          { eaCode }
+        ));
+    }, []);
+  
     return (
         <>
             <Grid item xs={6}><label>예비군 훈련종류</label></Grid>
             <Grid item xs={6}></Grid>
             <Grid item xs={6}><label htmlFor="">예비군 훈련 시작일</label></Grid>
             <Grid item xs={6}><label htmlFor="">예비군 훈련 종료일</label></Grid>
-            <Grid item xs={6}><input type="file" /></Grid>
-            <Grid item xs={6}></Grid>
         </>
     );
 }
