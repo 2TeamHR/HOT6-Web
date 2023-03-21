@@ -45,7 +45,8 @@ function MypageMain() {
     const [countLate, setCountLate] = useState('');
     const [thisWeekTotalTime, setThisWeekTotalTime] = useState('');
 
-    console.log('=============', token);
+    console.log('myLeaveInfo : ', myLeaveInfo);
+
     const payload ={
         memberCode: token.sub,
     }
@@ -168,8 +169,6 @@ function MypageMain() {
     }, []);
 
 
-
-
     /*나의 근태 정보 출력*/
     useEffect(() => {
         axios.post(`http://localhost:8888/api/v1/attendance/myPageAttendanceMonth`,payload, {
@@ -191,12 +190,11 @@ function MypageMain() {
             });
     }, []);
 
-
-
-
-
-
     if (!memberDetail || Object.keys(memberDetail).length === 0) {
+        return <div>Loading...</div>;
+    };
+
+    if (!myLeaveInfo || Object.keys(myLeaveInfo).length === 0) {
         return <div>Loading...</div>;
     };
 
@@ -204,10 +202,16 @@ function MypageMain() {
      let myLeaveAll = 1;
      let myLeaveLeftover = 1;
  
-     if(myLeaveInfo !== undefined){
-         myLeaveAll =  myLeaveInfo[0].leavePaymentCount;
-         myLeaveLeftover = myLeaveInfo[0].leaveLeftoverCount;
-     }
+     if (myLeaveInfo !== undefined) {
+        const currentYear = new Date().getFullYear();
+        const matchingLeave = myLeaveInfo.find(item => 
+          item.leaveCategoryCode === 'LC1' && new Date(item.leavePaymentDate).getFullYear() === currentYear
+        );
+        if (matchingLeave !== undefined) {
+          myLeaveAll = matchingLeave.leavePaymentCount;
+          myLeaveLeftover = matchingLeave.leaveLeftoverCount;
+        }
+      }
 
     function tick() {
         setDate(new Date());
