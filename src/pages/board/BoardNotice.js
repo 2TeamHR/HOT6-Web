@@ -52,11 +52,11 @@ function BoardNotice() {
 
     return (
         <div className="container">
-            <h1 className="mt-5 text-center">공지사항</h1><br/>
+            <h1 className="mt-5 text-center"><b>공지사항</b></h1><br/>
             <div className="table-area">
                 <table className="table">
                     <thead>
-                        <tr style={{"textAlign": "center", "backgroundColor": "#DDDDDD"}}>
+                        <tr style={{"textAlign": "center", "backgroundColor": "#5EDCB3"}}>
                             <th>번호</th>
                             <th>제목</th>
                             <th>작성자</th>
@@ -90,22 +90,22 @@ function BoardNotice() {
                 {(memberDetail?.teamName === '인사팀') ? (
                         <Link to="/board/notice/write" className={""}>
                             <input type="submit" id="" className="btn btn-info me-1" value="글쓰기"
-                                style={{float: "right", backgroundColor: "black", borderColor: "black"}}
+                                style={{float: "right", color:"#000000", backgroundColor: "#5EDCB3", "borderColor": "#5EDCB3", fontWeight: "bold", fontSize: "larger"}}
                             />
                         </Link>
                 ) : ''}
                 </div>
                 <br/>
-                {/* <div className="search-area" align="center">
-                    <form name="search-form" autoComplete="off" style={{"display": "inline"}}>
-                        <select id="searchCondition" name="searchCondition">
-                            <option value="noticeTitle">제목</option>
-                            <option value="memberCode">작성자</option>
-                        </select>
-                        <input type="search" id="searchValue" name="searchValue" placeholder="검색할 내용을 입력하세요."/>
-                        <input type="submit" className="btn btn-secondary" value="검색"/>
-                    </form>
-                </div> */}
+                {/*<div className="search-area" align="center">*/}
+                {/*    <form name="search-form" autoComplete="off" style={{"display": "inline"}}>*/}
+                {/*        <select id="searchCondition" name="searchCondition">*/}
+                {/*            <option value="boardTitle">제목</option>*/}
+                {/*            <option value="nickName">작성자</option>*/}
+                {/*        </select>*/}
+                {/*        <input type="search" id="searchValue" name="searchValue" placeholder="검색할 내용을 입력하세요."/>*/}
+                {/*        <input type="submit" className="btn btn-secondary" style={{color:"black", backgroundColor: "#5EDCB3", "borderColor": "#5EDCB3"}} value="검색"/>*/}
+                {/*    </form>*/}
+                {/*</div>*/}
             </div>
         </div>
     );
