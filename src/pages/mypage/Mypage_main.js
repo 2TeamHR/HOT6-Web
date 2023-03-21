@@ -38,14 +38,8 @@ function MypageMain() {
     const myLeaveInfo = useSelector(state => state.leaveReducer);
     const [startTime, setStartTime] = useState("");
 
-
-    console.log('myLeaveInfo : ', myLeaveInfo);
     // hs
-    const [hrForm, setHrForm] = useState({
-
-        commuteStartTime: '',
-
-    });
+    const [hrForm, setHrForm] = useState({commuteStartTime: ''});
 
     useEffect(
         () => {
@@ -164,7 +158,6 @@ function MypageMain() {
 
             setStartTimeStamp(moment(date).format('HH:mm:ss'));
 
-
             const payload = {
                 commuteStartTime: date,
               };
@@ -184,7 +177,6 @@ function MypageMain() {
                   },
                 })
 
-
                 .then((response) => {
                   console.log("데이터 나오기 전");
                   console.log(response.data); // 응답 데이터를 콘솔에 출력
@@ -201,7 +193,6 @@ function MypageMain() {
         }
     }
 
-
     // hs
     /* 퇴근하기 버튼 핸들러 */
     const onClickEndTimeHandler = () => {
@@ -216,39 +207,35 @@ function MypageMain() {
                 setFinishTimeStore(date.toLocaleString());
                 setEndTimeStamp(moment(date).format('HH:mm:ss'));
 
-
-
                 const payload = {
                     commuteFinishTime: finishTimeStore,
                   };
 
-                  axios
-                    .get(`http://localhost:8888/api/v1/attendance/mypageAfinishRegist`, {
-                        params : {
-                            commuteFinishTime: date,
-                            memberCode: token.sub,
-                        },
-                      headers: {
-                        "Content-Type": "application/json",
-                        Accept: "*/*",
-                        Authorization: `Bearer ${window.localStorage.getItem(
-                          "accessToken"
-                        )}`,
-                      },
-                    })
+                axios
+                .get(`http://localhost:8888/api/v1/attendance/mypageAfinishRegist`, {
+                    params : {
+                        commuteFinishTime: date,
+                        memberCode: token.sub,
+                    },
+                    headers: {
+                    "Content-Type": "application/json",
+                    Accept: "*/*",
+                    Authorization: `Bearer ${window.localStorage.getItem(
+                        "accessToken"
+                    )}`,
+                    },
+                })
 
 
-                    .then((response) => {
-                      console.log("데이터 나오기 전");
-                      console.log(response.data); // 응답 데이터를 콘솔에 출력
-                      setEndTimeStamp(moment(response.data.date).format('HH:mm:ss'));
-                    })
-                    .catch((error) => {
-                      console.error(error);
-                      console.log("마이페이지 결과값 못 불러옴");
-                    });
-
-
+                .then((response) => {
+                    console.log("데이터 나오기 전");
+                    console.log(response.data); // 응답 데이터를 콘솔에 출력
+                    setEndTimeStamp(moment(response.data.date).format('HH:mm:ss'));
+                })
+                .catch((error) => {
+                    console.error(error);
+                    console.log("마이페이지 결과값 못 불러옴");
+                });
             }
         } else {
             alert('이미 퇴근을 하셨습니다.');
