@@ -75,7 +75,7 @@ function BonusInsert() {
             <button
                 className="ml-2 mr-2"
                 onClick={() => {
-                navigate(-1);
+                navigate('/salary/bonus');
                 }}
             >
                 이전 페이지로

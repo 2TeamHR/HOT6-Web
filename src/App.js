@@ -163,7 +163,7 @@ function App() {
             {/* 급여 */}
             <Route path="/salary/check/All" element={<AllCheckN />} />
             <Route path="/salary/month/insert" element={<SalaryInsert />} />
-            <Route path="/salary/require/update" element={<RequireSalaryUpdate />} />
+            <Route path="/salary/require/detail/:salaryCode" element={<RequireSalaryUpdate />} />
             {/* <Route path="/salary/severance/N" element={<SeveranceN />} /> */}
             {/* <Route path="/salary/severance/Y" element={<SeveranceY />} /> */}
             {/* <Route path="/salary/severance/insert" element={<SeveranceInsert />} /> */}

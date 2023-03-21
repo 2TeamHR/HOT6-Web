@@ -110,6 +110,7 @@ export default function MyRequireSalaryTable({requireSalary}) {
                   {salary.eaApproverInfoList && salary.eaApproverInfoList[1].eaMember.memberName}
                 </TableCell>
                 <TableCell align="center" style={{ width: 150 }}>
+                {salary.eaStatusCategory.eaStatusName === "결재완료" &&
                   <button
                     className="btn btn-primary"
                     onClick={() => handleButtonClick(salary)}
@@ -117,6 +118,7 @@ export default function MyRequireSalaryTable({requireSalary}) {
                   >
                     상세보기
                   </button>
+                }
                 </TableCell>
               </TableRow>
             ))}
