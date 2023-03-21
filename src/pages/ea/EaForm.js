@@ -25,7 +25,7 @@ function EsForm() {
                 <Item>최종결재자</Item>
               </Stack>
             </div></li>
-            <li><label>기안문서번호</label><input type="text" /></li>
+
             <li><label>기안일시</label><input type="date" name="" id="" /></li>
             <li><label>제목</label><input type="text" /></li>
             <li><label>내용</label><input type="text" name="" id="" /></li>

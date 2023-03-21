@@ -18,6 +18,8 @@ export const callEaDocumentListAPI = () => {
         if(result.status === 200) {
             dispatch({type: GET_EADOCUMENT_LIST, payload:result.data});
             console.log(result.data);
+        }else{
+            alert("데이터가 존재하지 않습니다.");
         }
     };
 }
@@ -41,6 +43,8 @@ export const callEaLeaveFinishListAPI = () => {
         if(result.status === 200) {
             dispatch({type: GET_FINISH_LEAVE_LIST, payload:result.data});
             console.log(result.data);
+        }else{
+            alert("데이터가 존재하지 않습니다.");
         }
     };
 }

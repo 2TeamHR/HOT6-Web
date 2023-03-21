@@ -1,15 +1,11 @@
 // 휴직신청 Leave of absence
 import * as React from 'react';
-import Divider from '@mui/material/Divider';
+
 import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
-import dayjs from 'dayjs';
 import { styled } from '@mui/material/styles';
-import { Button, Container, Grid, TextField } from '@mui/material';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import EaSignerSearch from './EaSignerSearch';
+import { Grid} from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { callEaCertDocumentAPI } from '../../apis/EaDocumentAPICalls2';
 
 
 const Item = styled(Paper)(({ theme }) => ({
