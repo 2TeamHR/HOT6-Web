@@ -10,20 +10,9 @@ import {
 } from "@mui/material";
 import * as React from "react";
 import Paper from "@mui/material/Paper";
-import EaTable from "./EaTable";
 import EaRealTable from "./EaRealTable";
 
-
-
-
 function EaMain() {
-
-
-
-
-
-
-
 
   return (
     <>
@@ -86,7 +75,7 @@ function EaMain() {
                 <h4>결재 기안 문서</h4>
               </Grid>
               <Divider />
-              <EaTable></EaTable>
+     
             </Paper>
           </Grid>
           <Grid item xs="12">
@@ -95,7 +84,7 @@ function EaMain() {
                 <h4>결재 대기 문서</h4>
               </Grid>
               <Divider />
-              <EaTable></EaTable>
+       
             </Paper>
           </Grid>
           <Grid item xs="12">
@@ -104,7 +93,7 @@ function EaMain() {
                 <h4>결재 진행 문서</h4>
               </Grid>
               <Divider />
-              <EaTable></EaTable>
+ 
             </Paper>
           </Grid>
           <Grid item xs="12">
@@ -113,7 +102,7 @@ function EaMain() {
                 <h4>결재 완료 문서</h4>
               </Grid>
               <Divider />
-              <EaTable></EaTable>
+       
             </Paper>
           </Grid>
         </Grid>

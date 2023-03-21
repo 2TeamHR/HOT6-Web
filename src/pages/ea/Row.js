@@ -21,14 +21,14 @@ export default function Row(docu1) {
             ].join(',')
         },
 
-        
-            palette: {
-              error: {
+
+        palette: {
+            error: {
                 main: '#64748B',
                 contrastText: '#fff',
-              },
             },
-      
+        },
+
     });
 
     useEffect(() => {
@@ -84,10 +84,11 @@ export default function Row(docu1) {
                         <Collapse in={open} timeout="auto" unmountOnExit>
                             <Box sx={{ margin: 1, }}>
 
+                                {/* 화살표 내리면 나오는 부분 시작 */}
+
                                 <Typography variant="h6" gutterBottom component="div">
                                     전자결재 미리보기
                                 </Typography>
-
                                 <Box sx={{ alignContent: 'center' }}>
                                     <Stepper activeStep={stepCount} alternativeLabel>
                                         <Step>
@@ -99,8 +100,9 @@ export default function Row(docu1) {
                                                 <StepLabel>{label?.eaMember?.memberName}</StepLabel>
                                             </Step>
                                         ))}
-
                                     </Stepper>
+
+                                    {/* 끝 */}
                                 </Box>
                             </Box>
                         </Collapse>

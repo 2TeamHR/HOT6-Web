@@ -37,7 +37,7 @@ function RetireForm() {
             </div>
 
             <Grid container columns={6}>
-              <Grid item xs={3}><label>기안문서번호</label></Grid><Grid item xs={3}><input type="text" /></Grid>
+
               <Grid item xs={3}><label>기안일시</label></Grid><Grid item xs={3}><input type="date" name="" id="" /></Grid>
               <Grid item xs={3}><label>제목</label></Grid><Grid item xs={3}><input type="text" /></Grid>
               <Grid item xs={3}><label>내용</label></Grid><Grid item xs={3}><input type="text" name="" id="" /></Grid>

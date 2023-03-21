@@ -1,6 +1,5 @@
 import { Button, Container, Paper } from "@mui/material";
-import EaExtendTable from "./EaExtendTable";
-
+import EaCompleteInboxTable from "./EaCompleteInboxTable";
 
 function EaCompleteInbox() {
 
@@ -14,7 +13,7 @@ function EaCompleteInbox() {
                         <option value="">사원번호</option>
                         <option value="">문서번호</option>
                     </select><input type="text" /><Button variant="outlined">검색</Button>
-                    <EaExtendTable></EaExtendTable>
+                    <EaCompleteInboxTable></EaCompleteInboxTable>
                 </Paper>
             </Container>
         </>
