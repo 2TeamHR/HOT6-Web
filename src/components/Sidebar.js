@@ -126,7 +126,7 @@ function Sidebar() {
                                             인사팀 관리
                                         </div>
                                             <Link to="/attendence/AttendanceManage" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>근태 이력 조회</Link>
-                                            <Link to="/attendence/AttendanceSelectTime" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>근무 시간 이력</Link>
+                                            {/* <Link to="/attendence/AttendanceSelectTime" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>근무 시간 이력</Link> */}
                                             <Link to="/annual/payment" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>휴가 결재 리스트</Link>
                                             <Link to="/annual/standardsManagement" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>휴가 기준 관리</Link>
                                             <Link to="/annual/management" className={`${sidebarStyle.a} ${sidebarStyle.navDropdownItem}`}>휴가 관리</Link>

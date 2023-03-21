@@ -128,6 +128,25 @@ function OrganizationCreate (){
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    /* 내선번호 제한 */
+    const onChangeInlinePhoneHandler = (e) => {
+
+        const maxLength = 4; // 최대 길이
+
+        if(e.target.value.length > maxLength) {
+            alert(`제목은 ${maxLength}자 이내로 입력해주세요.`);   
+            e.target.value = '';    // 빈칸으로 되돌리기
+        } else if(isNaN(e.target.value)) {
+            alert(`내선번호는 숫자만 입력 가능합니다.`);   
+            e.target.value = '';    // 빈칸으로 되돌리기
+        } else {
+            setForm({
+                ...form,
+                [e.target.name]: e.target.value
+            });
+        }
+    };
+
     return(
         <main className={mainTitleStyle.main}>
             <div>
@@ -136,7 +155,7 @@ function OrganizationCreate (){
                     <p>신규사원등록</p>
                 </div>
 
-                <div className='d-flex ml-5 mr-5'>
+                <div className='d-flex ml-5 mr-5 mb-3'>
                     <Paper elevation={3} className={mpManagement.profileMain}>
                         <div className={mpManagement.infoTitle}>
                             <p>프로필 관리</p>
@@ -221,7 +240,8 @@ function OrganizationCreate (){
                                         label="주소" 
                                         value={address}
                                         variant="outlined"
-                                        name="memberAddress" onChange={ onChangeHandler } 
+                                        name="memberAddress" o
+                                        nChange={ onChangeHandler } 
                                     />
                             
                                     <Modal show={show} onHide={handleClose}>
@@ -353,7 +373,7 @@ function OrganizationCreate (){
                                         label="내선번호" 
                                         variant="outlined"
                                         name="inlinePhone" 
-                                        onChange={ onChangeHandler }
+                                        onChange={ onChangeInlinePhoneHandler }
                                     />
                                 </div>
                             </Paper>

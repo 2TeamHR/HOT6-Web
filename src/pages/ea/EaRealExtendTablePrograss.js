@@ -26,9 +26,6 @@ import { callEaDocumentListAPI } from "../../apis/EaDocumentAPICalls";
 import { Suspense, useEffect, useState } from "react";
 
 
-
-
-
 function Row(docu1) {
   const { docu } = docu1;
   const [open, setOpen] = useState(false);

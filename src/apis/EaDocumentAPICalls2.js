@@ -18,6 +18,8 @@ export const callEaLeaveDocumentAPI = ({eaCode}) => {
         if(result.status === 200) {
             dispatch({type: GET_LEAVE_DOCUMENT, payload:result.data});
             console.log(result.data);
+        }else{
+            alert("데이터가 존재하지 않습니다.");
         }
     };
 }
@@ -40,6 +42,8 @@ export const callEaCertDocumentAPI = ({eaCode}) => {
         if(result.status === 200) {
             dispatch({type: GET_CERT_DOCUMENT, payload:result.data});
             console.log(result.data);
+        }else{
+            alert("데이터가 존재하지 않습니다.");
         }
     };
 }
@@ -62,6 +66,8 @@ export const callEaSalaryDocumentAPI = ({eaCode}) => {
         if(result.status === 200) {
             dispatch({type: GET_SALARY_DOCUMENT, payload:result.data});
             console.log(result.data);
+        }else{
+            alert("데이터가 존재하지 않습니다.");
         }
     };
 }

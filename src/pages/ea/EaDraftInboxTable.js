@@ -1,7 +1,9 @@
 import {
   Container,
   Grid,
+
 } from "@mui/material";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,16 +11,19 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+
+
 import { useDispatch, useSelector } from "react-redux";
 import { callEaDocumentListAPI } from "../../apis/EaDocumentAPICalls";
 import { useEffect } from "react";
+
 import Row from "./Row";
 
 
 
 
 
-export default function EaAllListTable() {
+export default function EaDraftInboxTable() {
 
   const dispatch = useDispatch();
   const documentList = useSelector(state => state.eaDocumentReducer);
@@ -31,6 +36,7 @@ export default function EaAllListTable() {
   console.log("2번째 렌더");
   return (
     <>
+
       <Container>
         <Grid item xs={12}>
           <TableContainer component={Paper}>
@@ -56,6 +62,8 @@ export default function EaAllListTable() {
               </TableBody>
             </Table>
           </TableContainer>
+
+
         </Grid>
       </Container >
     </>

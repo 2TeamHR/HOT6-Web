@@ -45,17 +45,13 @@ function MypageMain() {
     const [countLate, setCountLate] = useState('');
     const [thisWeekTotalTime, setThisWeekTotalTime] = useState('');
 
-    console.log('=============', token);
+    console.log('myLeaveInfo : ', myLeaveInfo);
+
     const payload ={
         memberCode: token.sub,
     }
     // hs
-    const [hrForm, setHrForm] = useState({
-
-        commuteStartTime: '',
-
-    });
-
+    const [hrForm, setHrForm] = useState({commuteStartTime: ''});
 
     useEffect(
         () => {
@@ -173,8 +169,6 @@ function MypageMain() {
     }, []);
 
 
-
-
     /*나의 근태 정보 출력*/
     useEffect(() => {
         axios.post(`http://localhost:8888/api/v1/attendance/myPageAttendanceMonth`,payload, {
@@ -196,12 +190,11 @@ function MypageMain() {
             });
     }, []);
 
-
-
-
-
-
     if (!memberDetail || Object.keys(memberDetail).length === 0) {
+        return <div>Loading...</div>;
+    };
+
+    if (!myLeaveInfo || Object.keys(myLeaveInfo).length === 0) {
         return <div>Loading...</div>;
     };
 
@@ -209,10 +202,16 @@ function MypageMain() {
      let myLeaveAll = 1;
      let myLeaveLeftover = 1;
  
-     if(myLeaveInfo.data !== undefined){
-         myLeaveAll =  myLeaveInfo.data[0].leavePaymentCount;
-         myLeaveLeftover = myLeaveInfo.data[0].leaveLeftoverCount;
-     }
+     if (myLeaveInfo !== undefined) {
+        const currentYear = new Date().getFullYear();
+        const matchingLeave = myLeaveInfo.find(item => 
+          item.leaveCategoryCode === 'LC1' && new Date(item.leavePaymentDate).getFullYear() === currentYear
+        );
+        if (matchingLeave !== undefined) {
+          myLeaveAll = matchingLeave.leavePaymentCount;
+          myLeaveLeftover = matchingLeave.leaveLeftoverCount;
+        }
+      }
 
     function tick() {
         setDate(new Date());
@@ -233,7 +232,6 @@ function MypageMain() {
 
             setStartTimeStamp(moment(date).format('HH:mm:ss'));
 
-
             const payload = {
                 commuteStartTime: date,
               };
@@ -253,7 +251,6 @@ function MypageMain() {
                   },
                 })
 
-
                 .then((response) => {
                   console.log("데이터 나오기 전");
                   console.log(response.data); // 응답 데이터를 콘솔에 출력
@@ -271,12 +268,11 @@ function MypageMain() {
         }
     }
 
-
     // hs
     /* 퇴근하기 버튼 핸들러 */
     const onClickEndTimeHandler = () => {
 
-        if(!endTimeStamp) {
+        if(!finishTimeStampRecord) {
 
             if (!startTimeStampRecord) {
 
@@ -286,26 +282,24 @@ function MypageMain() {
                 setFinishTimeStore(date.toLocaleString());
                 setEndTimeStamp(moment(date).format('HH:mm:ss'));
 
-
-
                 const payload = {
                     commuteFinishTime: finishTimeStore,
                   };
 
-                  axios
-                    .get(`http://localhost:8888/api/v1/attendance/mypageAfinishRegist`, {
-                        params : {
-                            commuteFinishTime: date,
-                            memberCode: token.sub,
-                        },
-                      headers: {
-                        "Content-Type": "application/json",
-                        Accept: "*/*",
-                        Authorization: `Bearer ${window.localStorage.getItem(
-                          "accessToken"
-                        )}`,
-                      },
-                    })
+                axios
+                .get(`http://localhost:8888/api/v1/attendance/mypageAfinishRegist`, {
+                    params : {
+                        commuteFinishTime: date,
+                        memberCode: token.sub,
+                    },
+                    headers: {
+                    "Content-Type": "application/json",
+                    Accept: "*/*",
+                    Authorization: `Bearer ${window.localStorage.getItem(
+                        "accessToken"
+                    )}`,
+                    },
+                })
 
 
                     .then((response) => {
@@ -325,12 +319,6 @@ function MypageMain() {
             alert('이미 퇴근을 하셨습니다.');
         }
     }
-
-
-
-
-
-
 
     return (
         <>

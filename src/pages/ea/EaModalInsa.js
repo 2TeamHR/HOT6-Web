@@ -2,8 +2,10 @@ import * as React from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
+
 import DialogTitle from '@mui/material/DialogTitle';
 import { createTheme, Divider,Input, Paper,  Stack,  styled, ThemeProvider } from '@mui/material';
+
 import { Button, Grid} from '@mui/material';
 import LeaveInfo from './LeaveInfo';
 import CertificationInfo from './CertificationInfo';
@@ -111,15 +113,8 @@ export default function EaModalNew({ documentInfo }) {
 
             <Grid item xs={6}><label>첨부파일</label></Grid>
             <Grid item xs={6}><Input /></Grid>
-
           </Grid>
-
         </DialogContent>
-
-        <DialogActions>
-          <Button onClick={handleClose}>승인</Button>
-          <Button onClick={handleClose}>반려</Button>
-        </DialogActions>
 
 
       </Dialog>

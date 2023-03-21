@@ -104,16 +104,17 @@ export const callGetReasonFileAPI = ({commuteNo}) => {
         const result = await fetch(requestURL, {
             method: "GET",
             headers: {
-                "Content-Type": "application/json",
+                // "Content-Type": "multipart/form-data",
                 "Accept": "*/*",
                 "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
             }
         })
-        .then(response => response.blob())
-        console.log(result);
-        if (result) {
-            console.log('[AttendanceAPICalls] callGetReasonFileAPI RESULT : ', result);
-            dispatch({ type: GET_REASONFILE, payload: result });
+        .then(response => response.json())
+        console.log(result.data);
+        if (result.status === 200) {
+            console.log('[AttendanceAPICalls] callGetReasonFileAPI RESULT : ', result.data);
+            dispatch({ type: GET_REASONFILE, payload: result.data });
+            return result.data;
         }
     } catch(error) {
             console.log('Error downloading file:', error);

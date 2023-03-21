@@ -52,11 +52,11 @@ function BoardNotice() {
 
     return (
         <div className="container">
-            <h1 className="mt-5 text-center">공지사항</h1><br/>
+            <h1 className="mt-5 text-center"><b>공지사항</b></h1><br/>
             <div className="table-area">
                 <table className="table">
                     <thead>
-                        <tr style={{"textAlign": "center", "backgroundColor": "#DDDDDD"}}>
+                        <tr style={{"textAlign": "center", "backgroundColor": "#5EDCB3"}}>
                             <th>번호</th>
                             <th>제목</th>
                             <th>작성자</th>
@@ -65,11 +65,11 @@ function BoardNotice() {
                         </tr>
                     </thead>
                     <tbody>
-                        {boardNotice.slice(startIndex, endIndex).map((notice, index) => (
+                        {Array.isArray(boardNotice) && boardNotice.slice(startIndex, endIndex).map((notice, index) => (
                             <tr key={notice.noticeCode} className="text-center">
                                 <td className='align-middle'>{startIndex + index + 1}</td>
-                                <td className='align-middle'>
-                                    <Link to={`${notice.noticeCode}`}>{notice.noticeTitle}</Link>
+                                <td className='align-middle' style={{"display":"textAlign: initial"}}>
+                                    <Link to={notice.noticeCode} style={{ textDecoration: "none", color: "black", float: "left"}}>{notice.noticeTitle}</Link>
                                 </td>
                                 <td className='align-middle'>{notice.member.memberName}</td>
                                 <td className='align-middle'>{displayTime(notice.noticeDate)}</td>
@@ -85,27 +85,27 @@ function BoardNotice() {
                         page={currentPage}
                         onChange={handlePageChange}
                     />
+                </div>
+                <div>
                 {(memberDetail?.teamName === '인사팀') ? (
-                    <>
                         <Link to="/board/notice/write" className={""}>
                             <input type="submit" id="" className="btn btn-info me-1" value="글쓰기"
-                                style={{ "backgroundColor": "black", "borderColor": "black"}}
+                                style={{float: "right", color:"#000000", backgroundColor: "#5EDCB3", "borderColor": "#5EDCB3", fontWeight: "bold", fontSize: "larger"}}
                             />
                         </Link>
-                    </>
                 ) : ''}
                 </div>
                 <br/>
-                {/* <div className="search-area" align="center">
-                    <form name="search-form" autoComplete="off" style={{"display": "inline"}}>
-                        <select id="searchCondition" name="searchCondition">
-                            <option value="noticeTitle">제목</option>
-                            <option value="memberCode">작성자</option>
-                        </select>
-                        <input type="search" id="searchValue" name="searchValue" placeholder="검색할 내용을 입력하세요."/>
-                        <input type="submit" className="btn btn-secondary" value="검색"/>
-                    </form>
-                </div> */}
+                {/*<div className="search-area" align="center">*/}
+                {/*    <form name="search-form" autoComplete="off" style={{"display": "inline"}}>*/}
+                {/*        <select id="searchCondition" name="searchCondition">*/}
+                {/*            <option value="boardTitle">제목</option>*/}
+                {/*            <option value="nickName">작성자</option>*/}
+                {/*        </select>*/}
+                {/*        <input type="search" id="searchValue" name="searchValue" placeholder="검색할 내용을 입력하세요."/>*/}
+                {/*        <input type="submit" className="btn btn-secondary" style={{color:"black", backgroundColor: "#5EDCB3", "borderColor": "#5EDCB3"}} value="검색"/>*/}
+                {/*    </form>*/}
+                {/*</div>*/}
             </div>
         </div>
     );

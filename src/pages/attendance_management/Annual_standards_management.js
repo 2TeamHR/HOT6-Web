@@ -19,7 +19,9 @@ function AnnualStandardsManagement() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const leave = useSelector(state => state.leaveReducer);  
+    const leave = useSelector(state => state.leaveReducer);
+    
+    console.log('leave : ', leave);
 
     useEffect(
         () => {

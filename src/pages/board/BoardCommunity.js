@@ -55,20 +55,24 @@ function BoardCommunity() {
     }
 
     function boardCommunityCommentColor(number) {
-        if (number >= 1) {
-            return {"color": "red"};
+        if (number < 1) {
+            return {color: "black"}
+        } else if (number < 4) {
+            return {color: "#f68d91"}
+        } else if (number < 7) {
+            return {color: "#f1545a"}
         } else {
-            return {"color": "black"};
+            return {color: "#ff0000"};
         }
     }
 
     return (
         <div className="container">
-            <h1 className="mt-5 text-center">커뮤니티</h1><br/>
+            <h1 className="mt-5 text-center"><b>커뮤니티</b></h1><br/>
             <div className="table-area">
                 <table className="table">
                     <thead>
-                    <tr style={{"textAlign": "center", "backgroundColor": "#DDDDDD"}}>
+                    <tr style={{"textAlign": "center", "backgroundColor": "#5EDCB3"}}>
                         <th>번호</th>
                         <th>제목</th>
                         <th>작성자</th>
@@ -81,7 +85,7 @@ function BoardCommunity() {
                         <tr key={community.boardCode} className="text-center"
                             onClick={() => onClickTableTr(community.boardCode)} style={{cursor: 'pointer'}}>
                             <td className='align-middle'>{communityIndex + 1}</td>
-                            <td className='align-middle'>{community.boardTitle}
+                            <td className='align-middle' style={{"display":"flex"}}>{community.boardTitle}
                                 <span style={boardCommunityCommentColor(community.boardCommunityComment.length)}>
                                     &ensp;[{community.boardCommunityComment.length}]
                                 </span>
@@ -103,7 +107,7 @@ function BoardCommunity() {
                 </div>
                 <Link to="/board/community/write" className={""}>
                     <input type="submit" id="" className="btn btn-info me-1"
-                           style={{"float": "right", "backgroundColor": "black", "borderColor": "black"}}
+                           style={{float: "right", color:"#000000", backgroundColor: "#5EDCB3", "borderColor": "#5EDCB3", fontWeight: "bold", fontSize: "larger"}}
                            value="글쓰기"/>
                 </Link><br/>
                 <div className="search-area" align="center">
@@ -113,7 +117,7 @@ function BoardCommunity() {
                             <option value="nickName">작성자</option>
                         </select>
                         <input type="search" id="searchValue" name="searchValue" placeholder="검색할 내용을 입력하세요."/>
-                        <input type="submit" className="btn btn-secondary" value="검색"/>
+                        <input type="submit" className="btn btn-secondary" style={{color:"black", backgroundColor: "#5EDCB3", "borderColor": "#5EDCB3"}} value="검색"/>
                     </form>
                 </div>
             </div>

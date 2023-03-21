@@ -9,6 +9,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { decodeJwt } from '../../utils/tokenUtils';
 
+import DaumPostcode from 'react-daum-postcode';
+import Modal from 'react-bootstrap/Modal';
+
 import {
     callGetMemberAPI,
     callMyInfoUpdateAPI
@@ -34,6 +37,17 @@ function MypageManagementUpdate (){
         }
         ,[]
     );
+
+    const [address, setAddress] = useState('');
+
+    const handleComplete = (data) => {
+        setAddress(data.address);
+        setShow(false);;
+    };
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     /* 변경할 데이터 form */
     const [form, setForm] = useState({
@@ -143,12 +157,30 @@ function MypageManagementUpdate (){
                                 <TextField 
                                     size="small" 
                                     className={mpManagement.managementInput}
+                                    onClick={handleShow}
                                     name="memberAddress" 
                                     id="outlined-basic" 
                                     label={memberDetail.memberAddress} 
                                     variant="outlined" 
                                     onChange={onChangeHandler}
                                 />
+                                <Modal show={show} onHide={handleClose}>
+                                    <Modal.Header closeButton>
+                                    <Modal.Title>주소 검색</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <div className="text-center">
+                                            <DaumPostcode
+                                                onComplete={handleComplete}
+                                                autoClose
+                                                width={500}
+                                                height={600}
+                                            />
+                                        </div>
+                                    </Modal.Body>
+                                    <Modal.Footer>
+                                    </Modal.Footer>
+                                </Modal>
                             </div>
                             <div className={mpManagement.infoModule}>
                                 <i className={`bx bx-calendar-alt mr-3`}></i>
