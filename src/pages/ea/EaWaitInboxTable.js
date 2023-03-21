@@ -9,7 +9,7 @@ import {
 
 import Paper from "@mui/material/Paper";
 import { useDispatch, useSelector } from "react-redux";
-import { callEaDocumentListAPI } from "../../apis/EaDocumentAPICalls";
+import {  callEaDocumentWaitingListAPI } from "../../apis/EaDocumentAPICalls";
 
 import { Box, Chip, Collapse, createTheme, IconButton, Step, StepLabel, Stepper, TableCell, TableRow, ThemeProvider, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -17,6 +17,13 @@ import { useEffect, useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import EaModalApprover from "./EaModalApprover";
+import { decodeJwt } from "../../utils/tokenUtils";
+
+
+
+
+
+
 
 function Row(docu1) {
   const { docu } = docu1;
@@ -133,10 +140,14 @@ export default function EaWaitInboxTable() {
   const dispatch = useDispatch();
   const documentList = useSelector(state => state.eaDocumentReducer);
 
+  const token = decodeJwt(window.localStorage.getItem("accessToken"));
+
   console.log("documentList{}", documentList);
 
   useEffect(() => {
-    dispatch(callEaDocumentListAPI());
+    dispatch(callEaDocumentWaitingListAPI(
+      {memberCode : token.sub}
+    ));
   }, []);
   console.log("2번째 렌더");
   return (
