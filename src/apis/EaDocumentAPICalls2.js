@@ -71,3 +71,28 @@ export const callEaSalaryDocumentAPI = ({eaCode}) => {
         }
     };
 }
+
+
+
+export const callApproverListAPI = ({memberSpl}) => {
+
+    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/message/search/${memberName1}`;
+    console.log('eaRequestUrl', requestURL);
+    return async (dispatch, getState) => {
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+            }
+        })
+        .then(response => response.json());
+        console.log("leaveDocument API data ======================= ", result);
+        if(result.status === 200) {
+            dispatch({type: GET_APPROVER_LIST, payload:result.data});
+            console.log(result.data);
+        }else{
+            alert("데이터가 존재하지 않습니다.");
+        }
+    };
+}

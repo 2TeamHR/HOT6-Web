@@ -11,6 +11,7 @@ export const GET_RETIRE_DOCUMENT = 'ea/GET_RETIRE_DOCUMENT'
 export const GET_DUTY_DOCUMENT = 'ea/GET_DUTY_DOCUMENT'
 export const GET_LOA_DOCUMENT = 'ea/GET_LOA_DOCUMENT'
 export const GET_RNSTT_DOCUMENT = 'ea/GET_RNSTT_DOCUMENT'
+export const GET_APPROVER_LIST = 'ea/GET_APPROVER_LIST'
 
 const actions = createActions({
 
@@ -21,6 +22,7 @@ const actions = createActions({
     [GET_DUTY_DOCUMENT]: ()=> {},
     [GET_LOA_DOCUMENT]: ()=> {},
     [GET_RNSTT_DOCUMENT]: ()=> {},
+    [GET_APPROVER_LIST]: ()=> {},
 
 });
 
@@ -47,6 +49,10 @@ const eaDocumentReducer2 = handleActions({
     [GET_RNSTT_DOCUMENT]: (state, {payload}) => {
         return payload;
     },
+    [GET_APPROVER_LIST]: (state, {payload}) => {
+        return payload;
+    },
+
 
 },
 initialState
