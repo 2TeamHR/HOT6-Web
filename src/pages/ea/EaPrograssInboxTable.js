@@ -154,7 +154,7 @@ export default function EaPrograssInboxTable() {
   return (
     <>
 
-      <Container>
+
         <Grid item xs={12}>
           <TableContainer component={Paper}>
             <Table aria-label="collapsible table">
@@ -178,11 +178,12 @@ export default function EaPrograssInboxTable() {
                 ))}
               </TableBody>
             </Table>
+            {documentList?.length <= 0 ? <Box align="center" sx={{height: '600px'}}><h3>데이터가 존재하지 않습니다</h3></Box>:<div></div>}
           </TableContainer>
 
 
         </Grid>
-      </Container >
+ 
     </>
   );
 }

@@ -153,7 +153,7 @@ export default function EaWaitInboxTable() {
   return (
     <>
 
-      <Container>
+ 
         <Grid item xs={12}>
           <TableContainer component={Paper}>
             <Table aria-label="collapsible table">
@@ -181,7 +181,7 @@ export default function EaWaitInboxTable() {
 
 
         </Grid>
-      </Container >
+ 
     </>
   );
 }

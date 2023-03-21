@@ -19,6 +19,7 @@ import { decodeJwt } from "../../utils/tokenUtils";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import EaModalApprover from "./EaModalApprover";
+import { height } from "@mui/system";
 
 
 function Row(docu1) {
@@ -153,7 +154,7 @@ export default function EaDraftInboxTable() {
   return (
     <>
 
-      <Container>
+   
         <Grid item xs={12}>
           <TableContainer component={Paper}>
             <Table aria-label="collapsible table">
@@ -172,16 +173,22 @@ export default function EaDraftInboxTable() {
                 </TableRow>
               </TableHead>
               <TableBody>
+
+            
+
+
+
                 {documentList && documentList?.map((row) => (
                   <Row key={row.eaCode} docu={row} />
                 ))}
-              </TableBody>
+              </TableBody>  
             </Table>
+            {documentList?.length <= 0 ? <Box align="center" sx={{height: '600px'}}><h3>데이터가 존재하지 않습니다</h3></Box>:<div></div>}
           </TableContainer>
 
 
         </Grid>
-      </Container >
+   
     </>
   );
 }
