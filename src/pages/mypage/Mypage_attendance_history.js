@@ -163,19 +163,13 @@ function  MypageAttendanceHistory () {
 
                 <div className={mainTitleStyle.title}>
                     <p>근태 이력</p>
-                    <p>{searchForm.attendanceSelect}</p>
-                    <p>{searchForm.startDate}</p>
-                    <p>{typeof searchForm.startDate}</p>
-                    <p>{searchForm.endDate}</p>
-
-                    <button onClick={onClickLeaveRegistrationHandler}>검색하기</button>
                 </div>
 
                 <div className={tableStyle.boxStyle}>
                     <div className={tableStyle.searchBox}>
                         <AttendanceState onAttendanceStateChange={handleAttendanceStateChange}/>
                         <Term onAttendanceStateChange={handleDateStateChange}/>
-                        <SearchBtn/>
+                        <button className={tableStyle.searchBtn} onClick={onClickLeaveRegistrationHandler}>검색하기</button>
                     </div>
                 </div>
 
@@ -226,7 +220,7 @@ function  MypageAttendanceHistory () {
                                                     <input 
                                                         className='w-100 rounded rounded-lg'
                                                         name='reasonFile'
-                                                        accept='file/pdf, file/word, file/png, file/jpg, file/jpeg'
+                                                        accept='file/pdf, file/word, file/png, file/jpg, file/jpeg, file/xlsx'
                                                         onChange={onChangeFileUpload}
                                                         type="file"
                                                     />

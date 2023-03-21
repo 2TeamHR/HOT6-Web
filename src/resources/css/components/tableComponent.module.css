@@ -1,5 +1,5 @@
 
-.searchBtn button {
+.searchBtn {
     width: 130px;
     height: 35px;
     border: none;
@@ -9,7 +9,7 @@
     box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.searchBtn button:hover {
+.searchBtn:hover {
     box-shadow: 3px 4px 8px rgba(0, 0, 0, 0.2);
 }
 

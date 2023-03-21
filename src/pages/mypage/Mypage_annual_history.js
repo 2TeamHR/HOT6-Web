@@ -19,13 +19,11 @@ function MypageAnnualHistory() {
     /* 차감 내역 */
     const leaveUseHistoryCodes = [];
 
-    if (memberLeaveList) {
-        memberLeaveList.forEach((leave) => {
-            leave.leaveUseHistoryList.forEach((use) => {
-                leaveUseHistoryCodes.push(use);
-            });
+    Array.isArray(memberLeaveList) && memberLeaveList?.forEach((leave) => {
+        leave.leaveUseHistoryList?.forEach((use) => {
+            leaveUseHistoryCodes.push(use);
         });
-    }
+    });
 
     useEffect(
         () => {
