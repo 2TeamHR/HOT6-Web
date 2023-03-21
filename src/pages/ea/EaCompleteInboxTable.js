@@ -1,7 +1,16 @@
 import {
+  Chip,
   Container,
   Grid,
+  Step,
+  StepLabel,
+  Stepper,
+  TablePagination,
+  Typography,
 } from "@mui/material";
+import Box from "@mui/material/Box";
+import Collapse from "@mui/material/Collapse";
+import IconButton from "@mui/material/IconButton";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,16 +18,19 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+
+import EaModal from "./EaModal";
 import { useDispatch, useSelector } from "react-redux";
 import { callEaDocumentListAPI } from "../../apis/EaDocumentAPICalls";
-import { useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
+import EaModalNew from "./EaModalNew";
 import Row from "./Row";
 
 
 
 
 
-export default function EaAllListTable() {
+export default function EaCompleteInboxTable() {
 
   const dispatch = useDispatch();
   const documentList = useSelector(state => state.eaDocumentReducer);
@@ -31,6 +43,7 @@ export default function EaAllListTable() {
   console.log("2번째 렌더");
   return (
     <>
+
       <Container>
         <Grid item xs={12}>
           <TableContainer component={Paper}>
@@ -56,6 +69,8 @@ export default function EaAllListTable() {
               </TableBody>
             </Table>
           </TableContainer>
+
+
         </Grid>
       </Container >
     </>

@@ -1,5 +1,6 @@
 import { 
     GET_MYATTENDANCE
+    , GET_MYATTENDANCESEARCH
     , GET_MYPAGESELECTATTENDANCE
     , GET_REASONFILE
     , POST_REASON
@@ -92,36 +93,6 @@ export const callCreateReasonAPI = ({form}) => {
     };
 }
 
-// export const callGetReasonFileAPI = ({commuteNo}) => {
-
-//     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/attendance/mypage/history/reason/${commuteNo}`;
-
-//     console.log('request', requestURL);
-
-//     return async (dispatch, getState) => {
-
-//         try {
-//         const result = await fetch(requestURL, {
-//             method: "GET",
-//             headers: {
-//                 "Content-Type": "application/json",
-//                 "Accept": "*/*",
-//                 "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
-//             }
-//         })
-//         .then(response => response.blob())
-//         console.log(result);
-//         if (result) {
-//             console.log('[AttendanceAPICalls] callGetReasonFileAPI RESULT : ', result);
-//             dispatch({ type: GET_REASONFILE, payload: result });
-//         }
-//     } catch(error) {
-//             console.log('Error downloading file:', error);
-//             return false;
-//         };
-//     };
-// }
-
 export const callGetReasonFileAPI = ({commuteNo}) => {
 
     let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/attendance/mypage/history/reason/${commuteNo}`;
@@ -133,7 +104,7 @@ export const callGetReasonFileAPI = ({commuteNo}) => {
         const result = await fetch(requestURL, {
             method: "GET",
             headers: {
-                "Content-Type": "application/json",
+                // "Content-Type": "multipart/form-data",
                 "Accept": "*/*",
                 "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
             }

@@ -46,7 +46,7 @@ function BoardNoticeUpdate() {
             noticeCode: noticeDetail.noticeCode
         }));
 
-        alert("게시글이 수정되었습니다.")
+        alert("게시글이 수정 되었습니다.")
         navigate("/board/notice", { replace: true })
         window.location.reload();
     }
@@ -87,10 +87,10 @@ function BoardNoticeUpdate() {
             <div>
                 <button
                     className="btn btn-info me-3"
-                    style={{"backgroundColor": "black", "borderColor": "black"}}
+                    style={{color:"#000000", backgroundColor: "#5EDCB3", "borderColor": "#5EDCB3", fontWeight: "bold", fontSize: "larger"}}
                     onClick={onClickNoticeUpdateHandler}>완료
                 </button>
-                    <button type="button" className="btn btn-secondary" onClick={cancelNoticeUpdateHref}>취소</button>
+                <button type="button" className="btn btn-secondary" onClick={cancelNoticeUpdateHref} style={{color:"#000000", backgroundColor: "#5EDCB3", "borderColor": "#5EDCB3", fontWeight: "bold", fontSize: "larger"}}>취소</button>
             </div>
         </div>
     );

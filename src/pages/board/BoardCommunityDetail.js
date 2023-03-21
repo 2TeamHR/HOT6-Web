@@ -51,6 +51,10 @@ function BoardCommunityDetail() {
         window.location.reload();
     }
 
+    /* 삭제 추가 예정 */
+    /* 삭제 추가 예정 */
+    /* 삭제 추가 예정 */
+
     const communityDate = communityDetail.boardInsertDate ? new Date(communityDetail.boardInsertDate) : null;
     const formattedCommunityDate = communityDate ? communityDate.toISOString().slice(0, 10) : '';
 
@@ -76,28 +80,11 @@ function BoardCommunityDetail() {
         }
     }
 
-    // 댓글 삭제 함수
-    const handleCommentDelete = (commentCode) => {
-        // fetch(`백엔드 서버에서 댓글 삭제를 요청하는 API URL/${commentId}`, {
-        //     method: 'DELETE'
-        // })
-        //     .then(response => {
-        //         if (response.ok) {
-        //             setComments(comments.filter(comment => comment.id !== commentId));
-        //         } else {
-        //             throw new Error('댓글 삭제 실패');
-        //         }
-        //     })
-        //     .catch(error => console.error(error));
-    };
-
     return (
         <main className={mainTitleStyle.main}>
             {communityDetail ? (
                 <>
-
                     {/* 제목 & 본문 */}
-
                     <div className={`justify-content-center `}>
                         <Paper elevation={3} className={mpManagement.profileInfoBox}
                                style={{height: '150px', "backgroundColor": "#5EDCB3"}}>
@@ -120,76 +107,86 @@ function BoardCommunityDetail() {
                     <br/>
 
                     {/* 버튼 */}
-
                     <button className="btn btn-info me-3" onClick={onClickCommunityListHandler}
-                            style={{"backgroundColor": "black", "borderColor": "black"}}>목록으로
+                            style={{
+                                color: "#000000",
+                                backgroundColor: "#5EDCB3",
+                                "borderColor": "#5EDCB3",
+                                fontWeight: "bold",
+                                fontSize: "larger"
+                            }}>목록으로
                     </button>
                     {(token.sub === communityDetail.memberCode) && (
                         <>
                             <button className="btn btn-info me-3" onClick={onClickCommunityDelete}
-                                    style={{float: 'right', "backgroundColor": "black", "borderColor": "black"}}>삭제
+                                    style={{
+                                        float: "right",
+                                        color: "#000000",
+                                        backgroundColor: "#5EDCB3",
+                                        "borderColor": "#5EDCB3",
+                                        fontWeight: "bold",
+                                        fontSize: "larger"
+                                    }}>삭제
                             </button>
                             <button className="btn btn-info me-3" onClick={communityUpdateHref}
-                                    style={{float: 'right', "backgroundColor": "black", "borderColor": "black"}}>수정
+                                    style={{
+                                        float: "right",
+                                        color: "#000000",
+                                        backgroundColor: "#5EDCB3",
+                                        "borderColor": "#5EDCB3",
+                                        fontWeight: "bold",
+                                        fontSize: "larger"
+                                    }}>수정
                             </button>
                         </>
                     )}
                     <br/><br/>
 
-                    {/*댓글*/}
-
                     <div>
-                        {/* 게시물 상세페이지 내용 */}
-                        {/* 댓글 리스트 출력 */}
+                        {/* 댓글 */}
                         {communityDetail.boardCommunityComment.length > 0 ? (
 
-                            <tbody>
-                            {Array.isArray(communityDetail.boardCommunityComment) && communityDetail.boardCommunityComment?.map((boardCommunityComment, boardCommunityCommentIndex) => (
-                                <tr key={boardCommunityComment.commentCode} className="text-center">
-                                    <td className='align-middle'>{`[${boardCommunityCommentIndex + 1}]`}</td>
-                                    <td className='align-middle'>&ensp;{`${boardCommunityComment.boardMember.memberName} : `}</td>
-                                    <td className='align-' style={{"text-align" : "initial"}}>&ensp;{boardCommunityComment.commentContent}</td>
-                                    <td className='align-middle'>&ensp;{displayTime(boardCommunityComment.commentInsertDate)}</td>
-                                </tr>
-                            ))}
-                            </tbody>
-                            // <ul>
-                            //     {Array.isArray(communityDetail) && communityDetail?.map((boardCommunityComment, boardCommunityCommentIndex) => (
-                            //         <li key={boardCommunityComment.commentCode}>
-                            //             <p>{boardCommunityComment.boardMember.memberName}: {boardCommunityComment.content}</p>
-                            //             {boardCommunityComment && boardCommunityComment.memberCode === boardCommunityComment.memberCode && (
-                            //                 <button onClick={() => handleCommentDelete(boardCommunityComment.commentCode)}>삭제</button>
-                            //             )}
-                            //         </li>
-                            //     ))}
-                            // </ul>
+                            <div>
+                                {Array.isArray(communityDetail.boardCommunityComment) && communityDetail.boardCommunityComment?.map((boardCommunityComment, boardCommunityCommentIndex) => (
+                                    <p style={{"display": "table"}} key={boardCommunityComment.commentCode}
+                                       className="text-center">
+                                        <h4><span
+                                            className='align-middle'>{`[댓글 ${boardCommunityCommentIndex + 1}]`}</span>
+                                            <span
+                                                className='align-middle'>{`[${boardCommunityComment.boardMember.memberName}]`}</span>
+                                            <span
+                                                className='align-middle'>{`[${displayTime(boardCommunityComment.commentInsertDate)}]`}</span>
+                                            <span className='align-middle'
+                                                  style={{"textAlign": "initial"}}>&ensp;{boardCommunityComment.commentContent}</span>
+                                        </h4>
+                                    </p>
+                                ))}
+                            </div>
                         ) : (
                             <p>댓글이 없습니다.</p>
                         )}
-                    </div><br />
-                    {/*<div className={`justify-content-center `}>*/}
-                    {/*    <Paper elevation={3} className={mpManagement.profileInfoBox} style={{height: '5em', width: '50ex', "backgroundColor" : "mintcream"}}>*/}
-                    {/*    사람 이름 -> 내용 -> 날짜시간*/}
-                    {/*    </Paper>*/}
-                    {/*</div><br />*/}
-                    {/*<div className={`justify-content-center `}>*/}
-                    {/*    <Paper elevation={3} className={mpManagement.profileInfoBox} style={{height: '5em', width: '50ex', "backgroundColor" : "mintcream"}}>*/}
-                    {/*    사람 이름 -> 내용 -> 날짜시간*/}
-                    {/*    </Paper>*/}
-                    {/*</div><br />*/}
+                    </div>
+                    <br/>
+
                     <div className="form-group" style={{"display": "inline-block"}}>
-                        <label htmlFor="exampleFormControlInput1"><h3>&ensp;댓글&ensp;</h3></label><br/>
+                        <label htmlFor="exampleFormControlInput1"><h3><b>&ensp;댓글&ensp;</b></h3></label><br/>
                         <span style={{"display": "inline-block"}}><input
                             className="form-control"
                             id="exampleFormControlInput1"
                             placeholder="댓글을 작성해주세요."
                             name="commentCode"
-                            style={{height: '5em', width: '50ex'}}/></span>
+                            style={{height: '5em', width: '100ex'}}/></span>
                         {/*onChange={onChangeHandler}/>*/}
                         &ensp;
                         <button
                             className="btn btn-info me-3"
-                            style={{"backgroundColor": "black", "borderColor": "black"}}>
+                            style={{
+                                color: "#000000",
+                                backgroundColor: "#5EDCB3",
+                                "borderColor": "#5EDCB3",
+                                fontWeight: "bold",
+                                fontSize: "larger"
+                            }}>
                             등록하기
                         </button>
                     </div>
@@ -199,6 +196,5 @@ function BoardCommunityDetail() {
         </main>
     );
 }
-
 
 export default BoardCommunityDetail;

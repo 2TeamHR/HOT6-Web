@@ -46,7 +46,7 @@ function BasicButtons2(props) {
             boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
         },
     });
-
+    
     const ColorButton = styled(Button)(({ theme }) => ({
         color: theme.palette.getContrastText(purple[500]),
         backgroundColor: purple[500],
@@ -66,32 +66,32 @@ function BasicButtons2(props) {
 
         const url = "http://localhost:8888/files/87362ee535d5454ead494176dc239e53.xlsx";       
 
-        fetch(url, {
-            method: "GET",
-
-        }).then((response) => response.blob())
-        .then((blob) => {
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            const name = '통합문서1.xlsx';
-            // alert('test',link);
-            link.setAttribute(
-                'href',
-                url
-            );
-
-            link.setAttribute(
-                'download',
-                name
-            );
-
-            document.body.appendChild(link);
-            link.click();
-
-            link.parentNode.removeChild(link);
-
-            window.URL.revokeObjectURL(url);
-        })
+        // fetch(url, {
+        //     method: "GET",
+        //
+        // }).then((response) => response.blob())
+        // .then((blob) => {
+        //     const url = window.URL.createObjectURL(blob);
+        //     const link = document.createElement('a');
+        //     const name = '통합문서1.xlsx';
+        //     // alert('test',link);
+        //     link.setAttribute(
+        //         'href',
+        //         url
+        //     );
+        //
+        //     link.setAttribute(
+        //         'download',
+        //         name
+        //     );
+        //
+        //     document.body.appendChild(link);
+        //     link.click();
+        //
+        //     link.parentNode.removeChild(link);
+        //
+        //     window.URL.revokeObjectURL(url);
+        // })
 
         // alert('다운로드 완료');
     };

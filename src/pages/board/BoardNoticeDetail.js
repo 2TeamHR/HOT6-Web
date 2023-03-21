@@ -37,29 +37,21 @@ function BoardNoticeDetail() {
   };
 
   /* 공지사항 게시글 삭제 핸들러 */
-  const onClickNoticeDeleteHandler = () => {
-
-    console.log('[NoticeDelete] onClickNoticeDeleteHandler');
-
-    const formData = new FormData();
-    formData.append("noticeDeleteYn", noticeDetail.noticeDeleteYn);
-
-    dispatch(callUpdateNoticeAPI({
-        form: formData,
-        noticeCode: noticeDetail.noticeCode
-    }));
-
-    alert('게시글이 삭제되었습니다.');
-    navigate('/board/notice', {replace: true});
-    window.location.reload();
-  }
-    // const onClickNoticeDelete = () => {
-    //     dispatch(
-    //         callUpdateNoticeAPI({
-    //             noticeCode: noticeDetail.noticeCode,
-    //             noticeDeleteYn: "Y",
-    //         })
-    //     );
+    // const onClickNoticeDeleteHandler = () => {
+    //
+    //     console.log("핸들러 작동")
+    //     const noticeDetail = { noticeDeleteYn: 'N' };
+    //     noticeDetail.noticeDeleteYn = 'Y';
+    //     // const del = notice.noticeDeleteYn;
+    //     // console.log(del);
+    //
+    //     dispatch(callUpdateNoticeAPI({
+    //         noticeDeleteYn : noticeDetail.noticeDeleteYn
+    //     }));
+    //
+    //     alert("게시글이 삭제 되었습니다.")
+    //     // navigate("/board/notice", { replace: true })
+    //     // window.location.reload();
     // }
 
   /* 목록으로 이동 핸들러 */
@@ -91,17 +83,17 @@ function BoardNoticeDetail() {
                 <br/>
                 <Paper elevation={3} className={mpManagement.profileInfoBox} style={{ height: '400px' }} >
                   <div className={mpManagement.infoModule}>
-                    <pre>{ noticeDetail.noticeContent || '' }</pre>
+                    <p>{ noticeDetail.noticeContent || '' }</p>
                     {/*<span>{ noticeDetail.noticeContent || '' }</span>*/}
                   </div>
                 </Paper>
               </div>
               <br/>
-              <button className="btn btn-info me-3" onClick={onClickNoticeListHandler}>목록으로</button>
+              <button className="btn btn-info me-3" onClick={onClickNoticeListHandler} style={{color:"#000000", backgroundColor: "#5EDCB3", "borderColor": "#5EDCB3", fontWeight: "bold", fontSize: "larger"}}>목록으로</button>
               {(memberDetail?.teamName === '인사팀') ? (
                   <>
-                    <button className="btn btn-info me-3" onClick={noticeUpdateHref}>수정</button>
-                    <button className="btn btn-info me-3" onClick={onClickNoticeDeleteHandler}>삭제</button>
+                    <button className="btn btn-info me-3" onClick={noticeUpdateHref} style={{float: "right", color:"#000000", backgroundColor: "#5EDCB3", "borderColor": "#5EDCB3", fontWeight: "bold", fontSize: "larger"}}>수정</button>
+                    {/*<button className="btn btn-info me-3" onClick={onClickNoticeDeleteHandler} style={{float: "right", color:"#000000", backgroundColor: "#5EDCB3", "borderColor": "#5EDCB3", fontWeight: "bold", fontSize: "larger"}} onClick={onClickNoticeDeleteHandler}>삭제</button>*/}
                   </>
               ) : ''}
             </>

@@ -91,11 +91,11 @@ function BoardNoticeWrite() {
                 <button
                     // type="submit"
                     className="btn btn-info me-3"
-                    style={{"backgroundColor": "black", "borderColor": "black"}}
+                    style={{color:"#000000", backgroundColor: "#5EDCB3", "borderColor": "#5EDCB3", fontWeight: "bold", fontSize: "larger"}}
                     onClick={onClickNoticeWriteHandler}>
                     등록하기
                 </button>
-                    <button type="button" className="btn btn-secondary" onClick={ () => navigate(-1) }>목록으로</button>
+                    <button type="button" className="btn btn-secondary" onClick={ () => navigate(-1) } style={{float: "right", color:"#000000", backgroundColor: "#5EDCB3", "borderColor": "#5EDCB3", fontWeight: "bold", fontSize: "larger"}}>목록으로</button>
             </div>
         </div>
     );

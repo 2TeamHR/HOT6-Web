@@ -2,8 +2,10 @@ import * as React from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
+
 import DialogTitle from '@mui/material/DialogTitle';
 import { createTheme, Divider,Input, Paper,  Stack,  styled, ThemeProvider } from '@mui/material';
+
 import { Button, Grid} from '@mui/material';
 import LeaveInfo from './LeaveInfo';
 import CertificationInfo from './CertificationInfo';
@@ -12,7 +14,6 @@ import DutyInfo from './DutyInfo';
 import LOAInfo from './LOAInfo';
 import RetireInfo from './RetireInfo'
 import ReinstatementInfo from './ReinstatementInfo'
-
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -24,7 +25,7 @@ const Item = styled(Paper)(({ theme }) => ({
   height: 100
 }));
 
-export default function EaModalNew({ documentInfo }) {
+export default function EaModalDraft({ documentInfo }) {
 
   const theme = createTheme({
     typography: {
@@ -117,8 +118,9 @@ export default function EaModalNew({ documentInfo }) {
         </DialogContent>
 
         <DialogActions>
-          <Button onClick={handleClose}>승인</Button>
-          <Button onClick={handleClose}>반려</Button>
+          <Button onClick={handleClose}>수정</Button>
+          <Button onClick={handleClose}>삭제</Button>
+          <Button onClick={handleClose}>회수</Button>
         </DialogActions>
 
 

@@ -1,4 +1,4 @@
-import { Button, Container, Divider, Grid, Paper, Stack, styled, TextField } from "@mui/material";
+import { Button, Divider, Grid, Paper, Stack, styled, TextField } from "@mui/material";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -25,7 +25,7 @@ function EsForm() {
                 <Item>최종결재자</Item>
               </Stack>
             </div></li>
-            <li><label>기안문서번호</label><input type="text" /></li>
+
             <li><label>기안일시</label><input type="date" name="" id="" /></li>
             <li><label>제목</label><input type="text" /></li>
             <li><label>내용</label><input type="text" name="" id="" /></li>
