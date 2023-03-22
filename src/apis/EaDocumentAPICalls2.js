@@ -1,4 +1,4 @@
-import {GET_CERT_DOCUMENT, GET_LEAVE_DOCUMENT, GET_SALARY_DOCUMENT} from '../modules/EaDocumentModule2';
+import { GET_CERT_DOCUMENT, GET_LEAVE_DOCUMENT, GET_SALARY_DOCUMENT, GET_APPROVER_LIST} from '../modules/EaDocumentModule2';
 
 
 export const callEaLeaveDocumentAPI = ({eaCode}) => {
@@ -65,6 +65,31 @@ export const callEaSalaryDocumentAPI = ({eaCode}) => {
         console.log("leaveDocument API data ======================= ", result);
         if(result.status === 200) {
             dispatch({type: GET_SALARY_DOCUMENT, payload:result.data});
+            console.log(result.data);
+        }else{
+            alert("데이터가 존재하지 않습니다.");
+        }
+    };
+}
+
+
+
+export const callApproverListAPI = ({memberName1}) => {
+
+    let requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/message/search/${memberName1}`;
+    console.log('eaRequestUrl', requestURL);
+    return async (dispatch, getState) => {
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+            }
+        })
+        .then(response => response.json());
+        console.log("leaveDocument API data ======================= ", result);
+        if(result.status === 200) {
+            dispatch({type: GET_APPROVER_LIST, payload:result.data});
             console.log(result.data);
         }else{
             alert("데이터가 존재하지 않습니다.");

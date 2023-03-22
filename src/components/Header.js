@@ -5,7 +5,6 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import { decodeJwt } from '../utils/tokenUtils';
 import moment from 'moment';
-import { BiTimeFive } from 'react-icons/bi';
 import { 
     callGetSimpleMemberAPI,
     callLogoutAPI
@@ -22,7 +21,6 @@ function Header() {
     const [now, setNow] = useState(new Date().getTime()); // 현재 시간 타임스탬프
     const [dDay, setDDay] = useState(null); // D-day 타임스탬프
     const dDayTime = presentationDate.toDate().getTime(); // D-day 시간 타임스탬프
-    // const [search, setSearch] = useState('');
 
     const [date, setDate] = useState(new Date());
 
@@ -88,23 +86,12 @@ function Header() {
         <>
             <header className={sidebarStyle.header}>
                 <div className={sidebarStyle.headerContainer}>
-
-                    {/* <div className={sidebarStyle.headerSearch}>
-                        <input type="search" placeholder="Search" className={sidebarStyle.headerInput}/>
-                        <i className={`bx bx-search ${sidebarStyle.headerIcon}`}></i>
-                    </div> */}
-
                     <div className="d-flex align-items-center">
-                    <BiTimeFive style={{ transform: `rotate(${rotation}deg)`, fontSize: "2rem" }} />
-                    <span className="ml-2 fs-3 fw-bold text-danger">
-                        {new Date().getHours() >= 21 || new Date().getHours() < 2 ? " [ 잠.이.오.니.?. ]" : ""}
-                        발표까지 남은 시간: {dDay !== null ? timestampToTime(dDay) : "loading..."}
-                    </span>
+                    
                     </div>
 
                     {memberDetail && (
                         <div className={headerStyle.headerRight}>
-                            {/* <button className="btn-primary mr-5 rounded-1" onClick={ onClickLogoutHandler }>로그아웃</button> */}
                             <div className="mr-3">
                                 <span className={`mr-2 ${headerStyle.profileText}`}>{memberDetail.teamName}</span>
                                 <span className={`${headerStyle.profileText}`}>{memberDetail.memberName} {memberDetail.rankName}</span>

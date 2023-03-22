@@ -152,9 +152,9 @@ function  MypageAttendanceHistory () {
             }));          
         }        
         
-        // alert('휴가 기준페이지로 이동합니다.');
-        // navigate('/annual/standardsManagement', { replace: true});
-        // window.location.reload();
+        alert('휴가 기준페이지로 이동합니다.');
+        navigate('/annual/standardsManagement', { replace: true});
+        window.location.reload();
     }
 
     return (
