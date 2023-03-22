@@ -68,10 +68,10 @@ export default function EaModalNew({ documentInfo }) {
               spacing={2}
             >
               <Item><Typography>기안자</Typography>
-              <Typography align='left'>{documentInfo?.eaMember?.memberName}</Typography>
+              <Typography>{documentInfo?.eaMember?.memberName}</Typography>
               <Grid>
-              <Typography align='left'>{documentInfo?.eaMember?.team.teamName}</Typography>
-              <Typography align='right'>{documentInfo?.eaMember?.rank.rankName}</Typography></Grid>
+              <Typography>{documentInfo?.eaMember?.team.teamName}</Typography>
+              <Typography>{documentInfo?.eaMember?.rank.rankName}</Typography></Grid>
 
               </Item>
 
