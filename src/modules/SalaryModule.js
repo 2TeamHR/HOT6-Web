@@ -14,8 +14,10 @@ export const GET_REQUIRE_LIST = 'salary/require/salary/list/GET_REQUIRE_LIST'
 export const GET_BONUS_MODAL = 'salary/bonus/detail/GET_BONUS_MODAL';
 export const GET_MEMBERCODE_SALARY = 'salary/check/insert/GET_MEMBERNAME_SALARY';
 export const GET_MEMBERCODE_BONUS = 'salary/bonus/insert/GET_MEMBERCODE_BONUS';
+export const GET_REQUIRE_SALARY_DETAIL = 'salary/require/update/GET_REQUIRE_SALARY_DETAIL';
 export const PUT_SALARY = 'salary/check/all/PUT_SALARY';
-export const PUT_BONUS = 'salary/bonus/insert/PUT_BONUS'
+export const PUT_REQUIRE_SALARY = 'salary/require/update/PUT_REQUIRE_SALARY';
+export const PUT_BONUS = 'salary/bonus/insert/PUT_BONUS';
 export const POST_SALARY = 'salary/month/insert/POST_SALARY';
  
 const actions = createActions({
@@ -29,7 +31,9 @@ const actions = createActions({
     [GET_BONUS_SALARY]: () => {},
     [GET_SEVERANCE_SALARY]: () => {},
     [GET_MEMBERCODE_BONUS]: () => {},
+    [GET_REQUIRE_SALARY_DETAIL]: () => {},
     [PUT_SALARY]: () => {},
+    [PUT_REQUIRE_SALARY]: () => {},
     [PUT_BONUS]: () => {},
     [POST_SALARY]: () => {},
     
@@ -66,6 +70,10 @@ const salaryReducer = handleActions(
 
             return payload;
         },
+        [GET_REQUIRE_SALARY_DETAIL]: (state, { payload }) => {
+
+            return payload;
+        },
         [GET_SEVERANCE_SALARY]: (state, { payload }) => {
             
             return payload;
@@ -80,6 +88,10 @@ const salaryReducer = handleActions(
         },
         [PUT_SALARY]: (state, { payload }) => {
             
+            return payload;
+        },
+        [PUT_REQUIRE_SALARY]: (state, { payload }) => {
+
             return payload;
         },
         [PUT_BONUS]: (state, { payload }) => {

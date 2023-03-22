@@ -70,7 +70,7 @@ function SalaryInsert() {
                 <form>
                 <div className={salaryInsertStyle.infoBtn}>
                     <button className="ml-2 mr-2" onClick={handleSubmit}>등록하기</button>
-                    <button className="ml-2 mr-2" onClick={ () => { navigate(-1)}}>이전 페이지로</button>
+                    <button className="ml-2 mr-2" onClick={ () => { navigate('/salary/check/All')}}>이전 페이지로</button>
                 </div>
 
                 <div className={salaryInsertStyle.parent}>

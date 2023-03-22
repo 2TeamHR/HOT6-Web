@@ -6,11 +6,13 @@ import { GET_PAYMENT_SALARY,
         GET_MEMBERCODE_BONUS,
         GET_BONUS_SALARY,
         GET_BONUS_MODAL,
-        POST_SALARY,
-        PUT_SALARY,
-        PUT_BONUS,
         GET_MY_REQUIRE_SALARY,
         GET_REQUIRE_LIST,
+        GET_REQUIRE_SALARY_DETAIL,
+        POST_SALARY,
+        PUT_SALARY,
+        PUT_REQUIRE_SALARY,
+        PUT_BONUS,
 } from '../modules/SalaryModule.js'
 
 
@@ -183,6 +185,30 @@ export const callGetSeverancePaymentAPI = ({severancePaymentsYN, year, month}) =
     };
 }
 
+/* 입력받은 급여코드로 급여 정보 조회 */
+export const callGetRequireSalaryDetailAPI = ({salaryCode}) => {
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/salary/require/detail/${salaryCode}`;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+            }
+        })
+        .then(response => response.json());
+
+        if(result.status === 200) {
+            console.log('[GetRequireSalaryDetailAPI] GetRequireSalaryDetailAPI RESULT : ', result);
+            dispatch({ type: GET_REQUIRE_SALARY_DETAIL, payload: result.data });
+        }
+
+    };
+}
+
 
 /* memberCode로 입력받은 급여정보를 명단에 추가 */
 export const callInsertSalaryAPI = (memberInfo) => {
@@ -331,8 +357,33 @@ export const callPutSalaryPaymentSalaryAPI = ({selectedSalaryCode}) => {
         .then(response => response.json());
 
         if(result.status === 200) {
-            console.log('[GetMemberCodeAPICalls] callGetPaymentSalaryAPI RESULT : ', result);
+            console.log('[PutSalaryAPI] PutSalaryAPI RESULT : ', result);
             dispatch({ type: PUT_SALARY, payload: result.data });
+        }
+
+    };
+}
+
+/* 수정하려는 급여 정보 변경 */
+export const callPutRequireSalary = ({salary}) => {
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8888/api/v1/salary/require/update`;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+            },
+            body: JSON.stringify(salary), 
+        })
+        .then(response => response.json());
+
+        if(result.status === 200) {
+            console.log('[PutRequireSalaryAPI] callGetPaymentSalaryAPI RESULT : ', result);
+            dispatch({ type: PUT_REQUIRE_SALARY, payload: result.data });
         }
 
     };

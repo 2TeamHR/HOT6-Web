@@ -1,21 +1,13 @@
-
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import RequireSalaryUpdate from "./Salary_RequireSalaryUpdate";
+import { Link, Route, useNavigate, Routes, useLocation } from "react-router-dom";
 
 function RequireSalaryListTable({requireSalary}) {
 
     const dispatch = useDispatch();
-    const [selectedSalaryCode, setSelectedSalaryCode] = useState();
     const navigate = useNavigate();
 
-    function handleButtonClick(salary) {
-
-        setSelectedSalaryCode(salary.salaryCode);
-        navigate(`/salary/require/update/${salary.salaryCode}`);
-    }
-
+    
     return (
         <>
             <div className="container-fluid">
@@ -37,19 +29,20 @@ function RequireSalaryListTable({requireSalary}) {
                             { requireSalary.length > 0 && requireSalary.map((salary, index) => (
                                 <tr style={{ "cursor": "pointer" }} key={ salary.eaCode }>
                                 <td>{ index + 1 }</td>
-                                <td>{salary.member.teamName}</td>
-                                <td>{salary.member.rankName}</td>
-                                <td>{salary.member.memberName}</td>
+                                <td>{salary.member?.teamName}</td>
+                                <td>{salary.member?.rankName}</td>
+                                <td>{salary.member?.memberName}</td>
                                 <td>{salary.eaDate}</td>
-                                <td>{salary.eaStatusCategory.eaStatusName}</td>
+                                <td>{salary.eaStatusCategory?.eaStatusName}</td>
                                 <td>{salary.eaApproverInfoList && salary.eaApproverInfoList[1].eaMember.memberName}</td>
                                 <td>
-                                    <button className="btn btn-primary"
-                                        onClick={() => {handleButtonClick(salary)}
-                                        }>
-                                        상세 조회
-                                    </button>
+                                {salary.eaStatusCategory.eaStatusName === "결재완료" &&
+                                <button>
+                                <Link to={{ pathname: `/salary/require/detail/${salary.salaryCode}`, state: { salaryCode: salary.salaryCode }} }>상세 보기</Link>
+                                </button>
+                                }
                                 </td>
+                                        
                                 </tr>
                             ))
                             }
@@ -63,3 +56,4 @@ function RequireSalaryListTable({requireSalary}) {
 }
 
 export default RequireSalaryListTable;
+ 

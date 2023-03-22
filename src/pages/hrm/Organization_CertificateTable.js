@@ -77,7 +77,8 @@ export function EmploymentModal({onClose, certificate}) {
             <br /> */}
 
         </div>
-        <button 
+        {certificate.eaStatusCategory.eaStatusName === "결재완료" && (
+          <button 
             style={{ position: 'absolute', top: "88%", left:"47%" }}
             onClick={() => {
                 alert("준비중입니다.");
@@ -85,6 +86,8 @@ export function EmploymentModal({onClose, certificate}) {
         >
             출력하기
         </button>
+        )}
+        
       </div>
     );
 }
@@ -111,7 +114,8 @@ export function CareerModal({onClose, certificate}) {
               </tr>
             </table>
         </div>
-        <button 
+        {certificate.eaStatusCategory.eaStatusName === "결재완료" && (
+          <button 
             style={{ position: 'absolute', top: "88%", left:"47%" }}
             onClick={() => {
                 alert("준비중입니다.");
@@ -119,6 +123,7 @@ export function CareerModal({onClose, certificate}) {
         >
             출력하기
         </button>
+        )}
       </div>
     );
 }
