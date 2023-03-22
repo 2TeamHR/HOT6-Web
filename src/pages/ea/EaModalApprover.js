@@ -14,6 +14,7 @@ import DutyInfo from './DutyInfo';
 import LOAInfo from './LOAInfo';
 import RetireInfo from './RetireInfo'
 import ReinstatementInfo from './ReinstatementInfo'
+import { useDispatch } from 'react-redux';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -28,6 +29,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function EaModalApprover({ documentInfo }) {
 
+  const dispatch = useDispatch();
   const theme = createTheme({
     typography: {
       fontFamily: [
@@ -50,6 +52,7 @@ export default function EaModalApprover({ documentInfo }) {
 
   const onHandleSuccess = () => {
     window.confirm("승인하시겠습니까?");
+    dispatch()
   }
 
   const onHandleDenied = () => {
