@@ -12,6 +12,9 @@ export const POST_DUTY_DOCUMENT = 'ea/POST_DUTY_DOCUMENT'
 export const POST_LOA_DOCUMENT = 'ea/POST_LOA_DOCUMENT'
 export const POST_RNSTT_DOCUMENT = 'ea/POST_RNSTT_DOCUMENT'
 
+export const PUT_APPROVAL_DOCUMENT ='ea/PUT_APPROVAL_DOCUMENT'
+
+
 const actions = createActions({
 
     [POST_LEAVE_DOCUMENT]: ()=> {},
@@ -21,7 +24,7 @@ const actions = createActions({
     [POST_DUTY_DOCUMENT]: ()=> {},
     [POST_LOA_DOCUMENT]: ()=> {},
     [POST_RNSTT_DOCUMENT]: ()=> {},
-
+[PUT_APPROVAL_DOCUMENT]: ()=> {},
 });
 
 const eaDocumentInsertReducer = handleActions({
@@ -47,7 +50,7 @@ const eaDocumentInsertReducer = handleActions({
     [POST_RNSTT_DOCUMENT]: (state, {payload}) => {
         return payload;
     },
-
+[PUT_APPROVAL_DOCUMENT]: (state, {payload}) => {return payload;},
 },
 initialState
 );
