@@ -92,7 +92,7 @@ function SalaryCheck() {
         </div>
 
         <div className="pt-5 text-center">
-            <Link to="/es/salaryForm" className="btn btn-primary mr-3">정정신청</Link>
+            <Link to="/ea/salaryForm" className="btn btn-primary mr-3">정정신청</Link>
             <button className="btn btn-primary ml-3" onClick={handleButtonClick}>급여 명세서</button>
             {showModal && <SpecificationModal onClose={handleCloseModal} salaryDetail={ salaryDetail } memberDetail={ memberDetail } />}
         </div>
