@@ -233,6 +233,14 @@ function OrganizationCreate (){
                                     </div>
                                     <TextField 
                                         className={organizationCreateStyle.managementInput} 
+                                        id="outline-basic" 
+                                        label="주소"
+                                        variant="outlined"
+                                        name="memberAddress" 
+                                        onChange={ onChangeHandler } 
+                                    />
+                                    {/* <TextField 
+                                        className={organizationCreateStyle.managementInput} 
                                         onClick={handleShow}
                                         id="outlined-basic" 
                                         label="주소" 
@@ -258,7 +266,7 @@ function OrganizationCreate (){
                                         </Modal.Body>
                                         <Modal.Footer>
                                         </Modal.Footer>
-                                    </Modal>
+                                    </Modal> */}
                                 </div>
                                 <div className={`d-flex align-items-center justify-content-between ${organizationCreateStyle.infoModule}`}>
                                     <div>

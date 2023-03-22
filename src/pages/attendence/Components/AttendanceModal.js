@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { callGetReasonFileAPI } from '../../../apis/AttendanceAPICalls';
 import { styled } from '@mui/material/styles';
+import { Await } from 'react-router-dom';
 
 const style = {
     position: 'absolute',
@@ -148,11 +149,40 @@ export default function AttendanceModal(props) {
           });
       };
 
-      const onClickDownloadHandler =  () => {
+      const onClickDownloadHandler = () => {
 
         dispatch(callGetReasonFileAPI({
             commuteNo: props.data.commuteCode
         })); 
+
+        const url =  'http://localhost:8888/files/07557f7c314a48abb2152c33fce40b48.jpeg';
+
+            fetch(url, {
+                method: "GET",
+
+            }).then((response) => response.blob())
+            .then((blob) => {
+                const url = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                const name = "지하철지연증명서.jpeg";
+
+                link.setAttribute(
+                    'href',
+                    url
+                );
+
+                link.setAttribute(
+                    'download',
+                    name
+                );
+
+                document.body.appendChild(link);
+                link.click();
+
+                link.parentNode.removeChild(link);
+
+                window.URL.revokeObjectURL(url);
+            })
  
         // const url =  attendance[0]?.reasonFaddress;
 

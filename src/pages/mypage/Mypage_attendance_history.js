@@ -22,12 +22,14 @@ function  MypageAttendanceHistory () {
     const attendanceList = useSelector(state => state.attendanceReducer);  
     const token = decodeJwt(window.localStorage.getItem("accessToken"));
 
-    console.log('attendanceList ', attendanceList);
-
+    const [selectedAttendance, setSelectedAttendance] = useState(null);
     /* 모달창 */
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = (attendance) => {
+        setSelectedAttendance(attendance);
+        setShow(true);
+    }
 
     const [file, setFile] = useState(null);
 
@@ -189,7 +191,7 @@ function  MypageAttendanceHistory () {
                             </tr>
                         </thead>
                         <tbody>
-                            {Array.isArray(attendanceList.content) && attendanceList?.content?.slice(startIndex, endIndex).map((attendance, index) => (
+                            {Array.isArray(attendanceList.content) && attendanceList.content.slice(startIndex, endIndex).map((attendance, index) => (
                                 <tr key={attendance.commuteNo} className="text-center">
                                     <td className='align-middle'>{index + 1}</td>
                                     <td className='align-middle'>{attendance.commuteDate ? attendance.commuteDate.slice(0, 10) : ""}</td>
@@ -200,7 +202,7 @@ function  MypageAttendanceHistory () {
                                     <td className='align-middle'>{attendance.commuteFcountTime ? attendance.commuteFcountTime.slice(11,19) : ""}</td>
                                     <td className='align-middle'>{attendance.commuteTotalTime}시간</td>
                                     <td className='align-middle'>
-                                        <Button onClick={handleShow} className={tableStyle.documentsSubmit}>
+                                        <Button onClick={() => handleShow(attendance)} className={tableStyle.documentsSubmit}>
                                         사유서 제출
                                         </Button>
 
@@ -224,6 +226,7 @@ function  MypageAttendanceHistory () {
                                                         onChange={onChangeFileUpload}
                                                         type="file"
                                                     />
+                                                    <input value={attendance.commuteCode}/>
                                                 </div>
                                             </Modal.Body>
                                             <Modal.Footer>

@@ -113,38 +113,7 @@ export const callGetReasonFileAPI = ({commuteNo}) => {
 
         if(result.status === 200){
 
-            console.log('요청 완료 됭');
-
-            dispatch({ type: GET_REASONFILE,  payload: result.data });
-
-            const url =  result.data[0]?.reasonFaddress;
-
-        fetch(url, {
-            method: "GET",
-
-        }).then((response) => response.blob())
-        .then((blob) => {
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            const name = result.data[0].reasonFname;
-            // alert('test',link);
-            link.setAttribute(
-                'href',
-                url
-            );
-
-            link.setAttribute(
-                'download',
-                name
-            );
-
-            document.body.appendChild(link);
-            link.click();
-
-            link.parentNode.removeChild(link);
-
-            window.URL.revokeObjectURL(url);
-        })
+            dispatch({ type: GET_REASONFILE,  payload: result });
         }
     };
 }
