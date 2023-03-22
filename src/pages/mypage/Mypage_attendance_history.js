@@ -162,7 +162,7 @@ function  MypageAttendanceHistory () {
             <div>
 
                 <div className={mainTitleStyle.title}>
-                    <p>근태 이력</p>
+                    <p>나의 근태 이력</p>
                 </div>
 
                 <div className={tableStyle.boxStyle}>
