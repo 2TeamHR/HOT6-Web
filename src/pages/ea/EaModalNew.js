@@ -3,7 +3,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { createTheme, Divider,Input, Paper,  Stack,  styled, ThemeProvider } from '@mui/material';
+import { createTheme, Divider,Input, Paper,  Stack,  styled, ThemeProvider, Typography } from '@mui/material';
 import { Button, Grid} from '@mui/material';
 import LeaveInfo from './LeaveInfo';
 import CertificationInfo from './CertificationInfo';
@@ -67,19 +67,20 @@ export default function EaModalNew({ documentInfo }) {
               divider={<Divider orientation="vertical" flexItem />}
               spacing={2}
             >
-              <Item>기안자
-                {documentInfo?.eaMember?.memberName}
-                {documentInfo?.eaMember?.team.teamName}
-                {documentInfo?.eaMember?.rank.rankName}
+              <Item><Typography>기안자</Typography>
+              <Typography align='left'>{documentInfo?.eaMember?.memberName}</Typography>
+              <Grid>
+              <Typography align='left'>{documentInfo?.eaMember?.team.teamName}</Typography>
+              <Typography align='right'>{documentInfo?.eaMember?.rank.rankName}</Typography></Grid>
 
               </Item>
 
               {documentInfo?.eaApproverInfoList.map((eaApproverCode) => (
                 <Item>
-                  {eaApproverCode?.eaAuthCode === "MIDDLE" ? "중간결재자" : "최종결재자"}
-                  {eaApproverCode?.eaMember?.memberName}
-                  {eaApproverCode?.eaMember?.team.teamName}
-                  {eaApproverCode?.eaMember?.rank.rankName}
+                 <Typography>{eaApproverCode?.eaAuthCode === "MIDDLE" ? "중간결재자" : "최종결재자"}</Typography> 
+                 <Typography>{eaApproverCode?.eaMember?.memberName}</Typography>
+                 <Typography>{eaApproverCode?.eaMember?.team.teamName}</Typography> 
+                 <Typography>{eaApproverCode?.eaMember?.rank.rankName}</Typography> 
                 </Item>
               )
               )}
