@@ -44,6 +44,10 @@ function OrganizationRetireeChart() {
     const startIndex = (currentPage - 1) * perPage;
     const endIndex = startIndex + perPage;
 
+    if(!members) {
+        <div>loading...</div>
+    }
+
 
     return (
         <main className={mainTitleStyle.main}>
@@ -76,7 +80,7 @@ function OrganizationRetireeChart() {
                             </tr>
                         </thead>
                         <tbody>
-                            {members && members.slice(startIndex, endIndex).map((member, index) => (
+                            {Array.isArray(members) && members.slice(startIndex, endIndex).map((member, index) => (
                                 <tr key={member.memberCode} className='text-center'>
                                     <td className='align-middle'>{startIndex + index + 1}</td>
                                     <td className='align-middle'>{member.teamName}</td>
