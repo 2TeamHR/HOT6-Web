@@ -46,6 +46,18 @@ export default function EaModalApprover({ documentInfo }) {
   const handleClose = () => {
     setOpen(false);
   };
+  
+  
+  const onHandleSuccess =() =>{
+    confirm("승인하시겠습니까?");
+  }
+  
+   const onHandleDenied =() =>{
+    confirm("반려하시겠습니까?");
+  }
+  
+  
+  
 
   return (
     <>
