@@ -9,6 +9,7 @@ import calendarReducer from "./CalendarModule"
 import eaDocumentReducer from "./EaDocumentModule"
 import eaDocumentReducer2 from "./EaDocumentModule2"
 import attendanceReducer from './AttendanceModule';
+import eaDocumentInsertReducer from './EaDocumentInsertModule';
 
 const rootReducer = combineReducers({
 
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
     , eaDocumentReducer
     , attendanceReducer
     , eaDocumentReducer2
+    , eaDocumentInsertReducer
 });
 
 export default rootReducer;

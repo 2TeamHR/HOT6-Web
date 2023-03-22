@@ -102,7 +102,9 @@ console.log("docuStatus",docuStatus);
 
         </TableCell>
         <TableCell align="center">
-          <EaModal documentInfo={docu} />
+
+          <EaModalNew documentInfo={docu} />
+          
         </TableCell>
         <TableCell align="center">
           <IconButton
