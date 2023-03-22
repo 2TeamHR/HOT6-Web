@@ -1,5 +1,5 @@
 import { Await } from 'react-router-dom';
-import {POST_LEAVE_DOCUMENT} from '../modules/EaDocumentInsertModule';
+import {POST_LEAVE_DOCUMENT, PUT_APPROVAL_DOCUMENT} from '../modules/EaDocumentInsertModule';
 
 export const callEaLeaveInsertAPI = ({form}) => {
 

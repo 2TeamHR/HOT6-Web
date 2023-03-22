@@ -16,6 +16,10 @@ import { decodeJwt } from "../../utils/tokenUtils";
 import { callEaLeaveInsertAPI } from "../../apis/EaDocumentInsertAPICalls";
 import { Avatar, Button, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, TextField } from "@mui/material";
 import React from "react";
+import { callApproverListAPI } from '../../apis/EaDocumentAPICalls2';
+import axios from 'axios';
+
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -29,163 +33,78 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function LeaveForm() {
 
-
-  // {
-  //   "memberCode": "220204",
-  //     "eaSubject": "new 휴가",
-  //       "eaDetail": "휴가신청합니다",
-  //         "eaApproverInfoList": [
-  //           {
-  //             "memberCode": "180034",
-  //             "eaAuthCode": "MIDDLE"
-  //           },
-  //           {
-  //             "memberCode": "160008",
-  //             "eaAuthCode": "FINAL"
-  //           }
-  //         ],
-  //           "leaveStartDate": "2023-03-16",
-  //             "leaveEndDate": "2023-03-16",
-  //               "leaveCategoryCode": "LC1"
-  // }
-
-
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+        const [memberName1, setMemberName1] = useState('');
+        const [members, setMembers] = useState([]);
+        const [recipients, setRecipients] = useState([])
+        const [form,setForm] = useState({
+            recipients:[],
+            messageTitle: '',
+            messageContent: ''
+        })
+        const dispatch = useDispatch();
+        const messageReducer = useSelector(state => state.messageReducer);
+        const [count , setCount] = useState('');
+        const [count2 , setCount2] = useState('');
+        const [count3 , setCount3] = useState('');
+  useEffect(() =>{
+    if(memberName1) {
+        axios.get(`http://localhost:8888/api/v1/message/search/${memberName1}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": `Bearer ${window.localStorage.getItem('accessToken')}`
+            }})
+        .then(response => {
+         const membersData = response.data.data.map(member =>({ name:member.memberName, email:member.memberEmail}));   
+        setMembers(membersData);
+        console.log("결과값");
+        console.log(response);
+        }).catch(error =>{
+            console.log(error)
+            console.log("메세지 단 오류 ");
+        })
+        }
+    }, [memberName1]);
 
-  const member = useSelector(state => state.memberReducer);
-  const document = useSelector(state => state.eaDocumentInsertReducer);
-  const approver = useSelector(state => state.eaDocumentReducer2);
-  const token = decodeJwt(window.localStorage.getItem("accessToken"));
-  const memberDetail = member.data;
-
-  console.log('memberDetail', memberDetail);
-
-  useEffect(
-    () => {
-      if (token !== null) {
-        dispatch(callGetMemberAPI({
-          memberCode: token.sub
-        }));
+    const handlerSearch = (e) => {
+      e.preventDefault(); // 기본 동작을 막는다.
+  
+      const { name, value } = e.target;
+      if (name === 'searchInput') {
+          setMemberName1(value || '');
       }
-    }
-    , []
-  );
-
-  const sampleSigner = [
-    { no: 1, deptName: "인사팀", rankName: "사원", name: "노재영" },
-    { no: 2, deptName: "인사팀", rankName: "대리", name: "이상목" },
-    { no: 3, deptName: "인사팀", rankName: "부장", name: "박준영" },
-    { no: 4, deptName: "인사팀", rankName: "임원", name: "서도원" },
-    { no: 5, deptName: "인사팀", rankName: "임원", name: "유호상" },
-    { no: 6, deptName: "인사팀", rankName: "사장", name: "이미소" }
-  ]
-
-  const [checked, setChecked] = React.useState([1]);
-
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
+  
+      setForm({
+          ...form,
+          [name]: value,
+      });
   };
 
+  const handleSelectRecipient = (recipient) => {
+    setRecipients([...recipients, recipient]);
+    setMembers([]);
+    document.getElementById('searchInput').value= '';
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+}
+const handleRemoveRecipient = (recipient) => {
+  setRecipients(recipients.filter( r=> r.id !== recipient.id));
+}
 
-  // const [form, setForm] = useState({
-  //   memberCode: '',
-  //   eaSubject: '',
-  //   eaDetail: '',
-  //   eaApproverInfoList: [
-  //     {
-  //       memberCode: '',
-  //       eaAuthCode: ''
-  //     }
+const complete =(recipient) => {
 
-  //   ],
-  //   leaveStartDate: startDate,
-  //   leaveEndDate: endDate,
-  //   leaveCategoryCode: ''
-  // });
+     
 
-  const [form, setForm] = useState({
-    memberCode: "220204",
-    eaSubject: "new 휴가",
-    eaDetail: "휴가신청합니다",
-    eaApproverInfoList: [
-      {
-        "memberCode": "180034",
-        "eaAuthCode": "MIDDLE"
-      },
-      {
-        "memberCode": "160008",
-        "eaAuthCode": "FINAL"
+      const names = recipients.map((r)=>r.name).join(', ');
+      if(names.length > 0){
+          document.getElementById('searchInput').value = names;
+          setMemberName1(names);
+      } else {
+          document.getElementById('searchInput').value ='';
+          setMemberName1('');
       }
-    ],
-    leaveStartDate: "2023-03-16",
-    leaveEndDate: "2023-03-16",
-    leaveCategoryCode: "LC1"
-  });
-
-
-
-
-
-
-
-
-  const onStartDateChangeHandler = (date) => {
-    setForm({
-      ...form,
-      leaveStartDate: startDate
-    });
-  };
-
-  const onEndDateChangeHandler = (date) => {
-    setForm({
-      ...form,
-      leaveEndDate: endDate
-    });
-  };
-
-  const onChangeHandler = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const onClickLeaveDocumentSubmitHandler = () => {
-    const formData = new FormData();
-
-    formData.append("memberCode", form.memberCode);
-    formData.append("eaSubject", form.eaSubject);
-    formData.append("eaDetail", form.eaDetail);
-    formData.append("eaApproverInfoList", form.eaApproverInfoList);
-    formData.append("leaveStartDate", form.leaveStartDate);
-    formData.append("leaveEndDate", form.leaveEndDate);
-    formData.append("leaveCategoryCode", form.leaveCategoryCode);
-
-    dispatch(callEaLeaveInsertAPI({
-      form: formData
-    }));
-
-
-
-    navigate('/ea/main', { replace: true });
-    window.location.reload();
-
-  }
-
-
+      // setRecipients([]);
+}
 
   return (
     <>
@@ -201,20 +120,16 @@ function LeaveForm() {
                   divider={<Divider orientation="vertical" flexItem />}
                   spacing={2}
                 >
-                  <Item><Typography>기안자</Typography>
-                    <Typography></Typography>
-                    <Grid>
-                      <Typography></Typography>
-                      <Typography></Typography></Grid>
-
-                  </Item>
+                  <Item>기안자</Item>
 
                   <Item>중간결재자</Item>
+
                   <Item>최종결재자</Item>
+
                 </Stack>
               </div>
 
-              <Grid container columns={6}>
+              {/* <Grid container columns={6}>
                 <Grid item xs={3}><label>기안일시</label></Grid>
                 <Grid item xs={3}><LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
@@ -245,7 +160,6 @@ function LeaveForm() {
                     inputFormat={'YYYY-MM-DD'}
                     minDate={new Date()}
                     value={startDate}
-                    onChange={onStartDateChangeHandler}
                     renderInput={(params) => <TextField size="small" {...params} />}
                   />
                 </LocalizationProvider></Grid>
@@ -257,14 +171,12 @@ function LeaveForm() {
                     inputFormat={'YYYY-MM-DD'}
                     value={endDate}
                     minDate={new Date()}
-                    onChange={onEndDateChangeHandler}
                     renderInput={(params) => <TextField size="small" {...params} />}
                   /></LocalizationProvider></Grid>
-                {/* <Grid item xs={3}><label htmlFor="">첨부파일</label></Grid>
-                <Grid item xs={3}><input type="file" /></Grid> */}
+        
                 <Grid item xs={3}></Grid>
-              </Grid>
-              <Button onClick={onClickLeaveDocumentSubmitHandler}>신청하기</Button><Button>취소하기</Button></Paper>
+              </Grid> */}
+              <Button>신청하기</Button><Button>취소하기</Button></Paper>
           </Grid>
 
           <Grid item xs={4}>
@@ -275,10 +187,10 @@ function LeaveForm() {
 
 
 
-                <TextField id="standard-basic" label="결재자 검색" variant="standard" />
+                <TextField id="standard-basic" label="결재자 검색" variant="standard" name="searchInput" onChange={handlerSearch} />
 
                 <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                  {sampleSigner.map((no) => {
+                  {/* {sampleSigner?.map((no) => {
                     const labelId = `checkbox-list-secondary-label-${no}`;
                     return (
                       <ListItem
@@ -299,9 +211,31 @@ function LeaveForm() {
                         </ListItemButton>
                       </ListItem>
                     );
-                  })}
+                  })} */}
                 </List>
+ 
+                <div >
+                            <span>받는 사람 &ensp;</span>
+                            <input type="text" 
+                                   id="searchInput" 
+                                   name="searchInput"
+                                   onChange={handlerSearch}
+                                   />
+                            {/* <button>주소록</button> */}
 
+
+                           
+                        <div>
+                            {recipients.map((recipient, index)=> (
+                                <div key={index} >
+                                    <b>{recipient.name} {recipient.email}</b>
+                                    <button onClick={()=>handleRemoveRecipient(recipient)}>삭제</button>
+                                    <button onClick={() =>complete(recipient)}>추가</button>
+                                    
+                                </div>    
+                                ))}
+                        </div>  
+                        </div>
               </Box>
 
 

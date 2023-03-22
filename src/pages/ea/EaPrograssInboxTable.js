@@ -18,6 +18,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { decodeJwt } from "../../utils/tokenUtils";
 import EaModalNew from "./EaModalNew";
+import EaModalApprover from "./EaModalApprover";
 
 
 
@@ -85,7 +86,7 @@ function Row(docu1) {
           <TableCell align="center">
 
             {/* 모달 */}
-            <EaModalNew documentInfo={docu} />
+            <EaModalApprover documentInfo={docu} />
 
 
           </TableCell>
