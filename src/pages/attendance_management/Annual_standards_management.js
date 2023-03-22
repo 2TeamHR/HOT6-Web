@@ -8,7 +8,7 @@ import Paper from '@mui/material/Paper';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 import {
     callLeaveCategoryListAPI
     , callLeaveRegistAPI
@@ -120,9 +120,10 @@ function AnnualStandardsManagement() {
                                     <label>
                                     <input type="radio" name="leavePayState" value="1" onChange={ onChangeHandler }/>무급</label>
                                 </div>
-                                <div className='w-100'>
-                                    <p className={asmStyle.modelInfo}>법정 휴가 가이드</p>
-                                    <p className={asmStyle.modelInfo}>기본 연차 가이드</p>
+                                <div className='w-100 d-flex flex-column'>
+                                    <Link to='https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EA%B7%BC%EB%A1%9C%EA%B8%B0%EC%A4%80%EB%B2%95'>법정 연차 가이드</Link>
+                                    <Link to="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EA%B7%BC%EB%A1%9C%EA%B8%B0%EC%A4%80%EB%B2%95/(20210105,17862,20210105)/%EC%A0%9C74%EC%A1%B0">출산 휴가 가이드</Link>
+                                    <Link to="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%82%A8%EB%85%80%EA%B3%A0%EC%9A%A9%ED%8F%89%EB%93%B1%EA%B3%BC%EC%9D%BC%E3%86%8D%EA%B0%80%EC%A0%95%EC%96%91%EB%A6%BD%EC%A7%80%EC%9B%90%EC%97%90%EA%B4%80%ED%95%9C%EB%B2%95%EB%A5%A0/(20201208,17602,20201208)/%EC%A0%9C18%EC%A1%B0%EC%9D%982">배우자 출산 휴가 가이드</Link>
                                 </div>
                             </div>
                         </Modal.Body>

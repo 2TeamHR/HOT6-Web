@@ -66,8 +66,6 @@ function MypageManagementUpdate (){
     /* 개인 정보 변경 핸들러 */
     const onClickMyInfoUpdateHandler = () => {
 
-        console.log('[MyInfoUpdate] onClickMyInfoUpdateHandler');
-
         const formData = new FormData();
 
         formData.append("memberPhone", form.memberPhone);
@@ -158,10 +156,10 @@ function MypageManagementUpdate (){
                                     size="small" 
                                     className={mpManagement.managementInput}
                                     onClick={handleShow}
-                                    name="memberAddress" 
                                     id="outlined-basic" 
                                     label={memberDetail.memberAddress} 
                                     variant="outlined" 
+                                    name="memberAddress" 
                                     onChange={onChangeHandler}
                                 />
                                 <Modal show={show} onHide={handleClose}>

@@ -85,8 +85,6 @@ function OrganizationCreate (){
 
     const onClickMemberRegistrationHandler = () => {
 
-        console.log('[MemberRegistration] onClickMemberRegistrationHandler');
-
         const formData = new FormData();
 
         formData.append("memberName", form.memberName);
@@ -231,7 +229,7 @@ function OrganizationCreate (){
                                 <div className={`d-flex align-items-center justify-content-between ${organizationCreateStyle.infoModule}`}>
                                     <div>
                                         <i className={`bx bx-home mr-3`}></i>
-                                        <span cl>주소</span>
+                                        <span>주소</span>
                                     </div>
                                     <TextField 
                                         className={organizationCreateStyle.managementInput} 
@@ -240,7 +238,7 @@ function OrganizationCreate (){
                                         label="주소" 
                                         value={address}
                                         variant="outlined"
-                                        name="memberAddress" o
+                                        name="memberAddress"
                                         nChange={ onChangeHandler } 
                                     />
                             

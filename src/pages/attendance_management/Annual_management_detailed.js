@@ -18,10 +18,6 @@ function AnnualManagementDetailed() {
     const memberInfo = useSelector(state => state.memberReducer);
     const memberDetail = memberInfo?.data;
     
-    console.log('memberCode =====', memberDetailCode);
-    console.log('memberInfo =====', memberInfo);
-    console.log('memberleaveList =====', memberLeaveList);
-
     /* 차감 내역 */
     const leaveUseHistoryCodes = [];
 
