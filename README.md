@@ -1,15 +1,11 @@
 # 프로젝트 명
 The Tech Titan
 
---- 
-
 ## 프로젝트 소개
 인사관리(HR)을 중점으로 제작된 그룹웨어 입니다.
 
-
 ## 프로젝트 작업 기간
 2023.01.17 ~ 2023.03.22
-
 
 ## 프로젝트 참여 인원
 6명
@@ -23,12 +19,12 @@ The Tech Titan 프로젝트는 직관적이고 쉬운 UI/UX를 제공하여 사�
 
 ### 상세 내용
 
-요구사항 명세 : https://www.notion.so/coffit23/81f4729aa4a2434ca8b02ca5d8308253
+요구사항 명세 : https://www.notion.so/3ed30e91b18e4fd9ab84e027f4e3856d?pvs=4
 
-피그마 : https://www.notion.so/coffit23/1cbc56c9ede24413a8cad6936c178129
+피그마 : https://www.figma.com/file/y6scZophgjShhdhKjE4b75/2%EC%A1%B0-HOT6?node-id=8-1569
 
-논리/물리 모델링 : https://www.erdcloud.com/d/TLCCtvJwLf8xR5r5f
-
+논리/물리 모델링 : https://www.notion.so/ada3bf77b6064b35a673847ea614e4d6?pvs=4
 
 ### 기능 정리 PDF 파일
 https://www.notion.so/coffit23/62aedc36a1d641c7aa85af18877b6a4d
+
