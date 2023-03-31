@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+# 프로젝트 명
+The Teck Titan
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 프로젝트 소개
+인사관리(HR)을 중점으로 제작된 그룹웨어 입니다.
 
-## Available Scripts
+## 프로젝트 작업 기간
+2023.01.17 ~ 2023.03.22
 
-In the project directory, you can run:
+## 프로젝트 참여 인원
+6명
 
-### `npm start`
+## 기획 사유 : 
+기존 상용화된 그룹웨어들은 찾고자 하는 기능이 어디에 위치해있는지 찾기 어려워 내부 기능들을 자유롭게 사용하기가 어려웠는데,
+The Teck Titan 프로젝트는 해당 내용들을 보완하기 위해 사이드바의 편의성을 늘려 기능을 보다 편리하게 사용할 수 있게 제작되었습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 상세 내용
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+요구사항 명세 : https://www.notion.so/coffit23/81f4729aa4a2434ca8b02ca5d8308253
 
-### `npm test`
+피그마 : https://www.notion.so/coffit23/1cbc56c9ede24413a8cad6936c178129
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+논리/물리 모델링 : https://www.erdcloud.com/d/TLCCtvJwLf8xR5r5f
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 기능 정리 PDF 파일
+https://www.notion.so/coffit23/62aedc36a1d641c7aa85af18877b6a4d
